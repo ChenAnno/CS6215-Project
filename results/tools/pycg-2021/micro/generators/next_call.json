@@ -1,0 +1,10 @@
+{
+ "<builtin>.next": [],
+ "main": [
+  "<builtin>.next",
+  "main.func1",
+  "main.gen"
+ ],
+ "main.func1": [],
+ "main.gen": []
+}

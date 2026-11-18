@@ -1,0 +1,16 @@
+{
+ "<builtin>.isinstance": [],
+ "main": [
+  "main.start",
+  "pickle.dumps",
+  "pickle.loads"
+ ],
+ "main.Plugin.run": [],
+ "main.start": [
+  "<builtin>.isinstance",
+  "pickle.loads.run"
+ ],
+ "pickle.dumps": [],
+ "pickle.loads": [],
+ "pickle.loads.run": []
+}

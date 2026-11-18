@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.list",
+  "itertools.groupby",
+  "itertools.starmap",
+  "itertools.takewhile"
+ ],
+ "main.q7b28_0": [],
+ "main.q7b28_1": [],
+ "main.q7b28_2": []
+}

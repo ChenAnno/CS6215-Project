@@ -1,0 +1,7 @@
+{
+ "main.add": [],
+ "main": [
+  "functools.reduce"
+ ],
+ "functools.reduce": []
+}

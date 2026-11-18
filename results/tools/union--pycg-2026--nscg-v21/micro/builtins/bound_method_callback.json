@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.sorted",
+  "main.Scorer.score"
+ ],
+ "<builtin>.sorted": [],
+ "main.Scorer.score": [
+  "<builtin>.len"
+ ],
+ "<builtin>.len": []
+}

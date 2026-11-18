@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.property",
+  "main.func1"
+ ],
+ "main.Command.action": [],
+ "main.func1": []
+}

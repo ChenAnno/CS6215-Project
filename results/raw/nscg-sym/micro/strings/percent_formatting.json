@@ -1,0 +1,1 @@
+{"units": [{"unit": "strings/percent_formatting", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 5, "kind": "call", "text": "Value()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

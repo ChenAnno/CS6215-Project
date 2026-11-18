@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.Token.__new__",
+  "main.Token.text"
+ ],
+ "main.Token.text": [
+  "<builtin>.str"
+ ],
+ "<builtin>.object.__new__": [],
+ "<builtin>.str": [],
+ "<builtin>.super": [],
+ "main.Token.__new__": [
+  "<builtin>.object.__new__",
+  "<builtin>.super"
+ ]
+}

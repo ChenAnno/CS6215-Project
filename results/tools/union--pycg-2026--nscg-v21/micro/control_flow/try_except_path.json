@@ -1,0 +1,19 @@
+{
+ "main.func4": [],
+ "main": [
+  "main.fail",
+  "main.func1",
+  "main.func2",
+  "main.func3",
+  "main.func4",
+  "main.func5"
+ ],
+ "main.func5": [],
+ "main.fail": [
+  "<builtin>.ValueError"
+ ],
+ "<builtin>.ValueError": [],
+ "main.func1": [],
+ "main.func2": [],
+ "main.func3": []
+}

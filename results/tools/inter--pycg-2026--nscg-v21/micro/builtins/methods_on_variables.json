@@ -1,0 +1,14 @@
+{
+ "main": [
+  "<builtin>.list.append",
+  "<builtin>.list.copy",
+  "<builtin>.list.sort",
+  "<builtin>.set",
+  "<builtin>.set.add"
+ ],
+ "<builtin>.set.add": [],
+ "<builtin>.list.copy": [],
+ "<builtin>.list.sort": [],
+ "<builtin>.set": [],
+ "<builtin>.list.append": []
+}

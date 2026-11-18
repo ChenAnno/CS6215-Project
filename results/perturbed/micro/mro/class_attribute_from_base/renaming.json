@@ -1,0 +1,7 @@
+{
+ "Base": "qe206_0",
+ "Custom": "qe206_1",
+ "Plain": "qe206_2",
+ "custom_handler": "qe206_3",
+ "default_handler": "qe206_4"
+}

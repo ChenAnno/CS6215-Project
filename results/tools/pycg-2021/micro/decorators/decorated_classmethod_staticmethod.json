@@ -1,0 +1,15 @@
+{
+ "main": [
+  "main.Tool.build",
+  "main.Tool.helper"
+ ],
+ "main.Tool": [
+  "main.traced"
+ ],
+ "main.Tool.build": [],
+ "main.Tool.helper": [],
+ "main.traced": [],
+ "main.traced.wrapper": [
+  "main.Tool.build"
+ ]
+}

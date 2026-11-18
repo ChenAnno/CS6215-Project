@@ -1,0 +1,11 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.q6fe8_1"
+ ],
+ "main.q6fe8_0": [],
+ "main.q6fe8_1": [
+  "main.q6fe8_2"
+ ],
+ "main.q6fe8_2": []
+}

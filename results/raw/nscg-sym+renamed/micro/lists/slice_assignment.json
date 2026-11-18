@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/slice_assignment", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 12, "col": 1, "kind": "call", "text": "handlers[0]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

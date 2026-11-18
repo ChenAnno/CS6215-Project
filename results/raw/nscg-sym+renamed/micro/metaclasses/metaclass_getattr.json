@@ -1,0 +1,1 @@
+{"units": [{"unit": "metaclasses/metaclass_getattr", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 14, "col": 1, "kind": "call", "text": "q7b78_0.anything()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,10 @@
+{
+    "main": [
+        "from_module.nested_module.q3979_0",
+        "from_module.nested_module.q3979_1"
+    ],
+    "from_module.nested_module.q3979_0": [],
+    "from_module.nested_module.q3979_1": [],
+    "from_module": [],
+    "from_module.nested_module": []
+}

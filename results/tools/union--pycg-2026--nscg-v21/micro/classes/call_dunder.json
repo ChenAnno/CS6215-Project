@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.apply"
+ ],
+ "main.Doubler.__call__": [],
+ "main.Adder.__call__": [],
+ "main.apply": [
+  "main.Adder.__call__",
+  "main.Doubler.__call__"
+ ]
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/concatenation", "answers": {"main": ["main.qc726_0", "main.qc726_1"], "main.qc726_0": [], "main.qc726_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "combined[1]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

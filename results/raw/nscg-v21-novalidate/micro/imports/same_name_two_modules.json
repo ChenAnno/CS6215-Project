@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/same_name_two_modules", "answers": {"s1": ["jsonout.write"]}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 1, "kind": "call", "text": "write()", "resolved": ["jsonout.write"], "candidates": ["csvout.write"], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,13 @@
+{
+ "<builtin>.super": [],
+ "main": [
+  "main.C.__init__"
+ ],
+ "main.A.__init__": [],
+ "main.B.__init__": [
+  "<builtin>.super"
+ ],
+ "main.C.__init__": [
+  "<builtin>.super"
+ ]
+}

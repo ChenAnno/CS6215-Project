@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.Fast.run",
+  "main.Safe.run"
+ ],
+ "main.Fast.run": [],
+ "main.Safe.run": []
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/init_reexport_attribute", "answers": {"s1": ["geometry.shapes.area"]}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "geometry.area()", "resolved": ["geometry.shapes.area"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

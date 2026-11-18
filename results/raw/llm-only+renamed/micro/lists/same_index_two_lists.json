@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/same_index_two_lists", "answers": {"main": ["main.qab0f_1"], "main.qab0f_0": [], "main.qab0f_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "second[0]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

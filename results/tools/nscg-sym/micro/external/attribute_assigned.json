@@ -1,0 +1,7 @@
+{
+ "main": [
+  "ext.Cls",
+  "main.fn"
+ ],
+ "main.fn": []
+}

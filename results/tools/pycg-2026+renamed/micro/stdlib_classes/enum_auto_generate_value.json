@@ -1,0 +1,9 @@
+{
+ "<builtin>.staticmethod": [],
+ "enum.auto": [],
+ "main": [
+  "<builtin>.staticmethod",
+  "enum.auto"
+ ],
+ "main.q5496_0.q5496_1": []
+}

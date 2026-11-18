@@ -1,0 +1,10 @@
+{
+ "<builtin>.super": [],
+ "main": [],
+ "main.Alpha.q1c6b_3": [],
+ "main.q1c6b_0.q1c6b_3": [],
+ "main.q1c6b_1.q1c6b_3": [],
+ "main.q1c6b_2.__init__": [
+  "<builtin>.super"
+ ]
+}

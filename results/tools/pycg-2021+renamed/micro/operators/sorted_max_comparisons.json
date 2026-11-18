@@ -1,0 +1,14 @@
+{
+ "<builtin>.max": [],
+ "<builtin>.sorted": [],
+ "main": [
+  "<builtin>.max",
+  "<builtin>.sorted",
+  "main.q664b_0.__init__"
+ ],
+ "main.q664b_0.__ge__": [],
+ "main.q664b_0.__gt__": [],
+ "main.q664b_0.__init__": [],
+ "main.q664b_0.__le__": [],
+ "main.q664b_0.__lt__": []
+}

@@ -1,0 +1,10 @@
+{
+ "main": [],
+ "main.func": [],
+ "to_import2.func": [],
+ "to_import2": [],
+ "nested": [],
+ "__init__": [],
+ "nested.to_import.func": [],
+ "nested.to_import": []
+}

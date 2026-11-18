@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.Plugin.__init_subclass__"
+ ],
+ "main.Plugin.__init_subclass__": [
+  "<builtin>.list.append"
+ ]
+}

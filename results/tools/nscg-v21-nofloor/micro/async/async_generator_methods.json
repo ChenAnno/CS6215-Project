@@ -1,0 +1,18 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.cleanup": [],
+ "main.first": [],
+ "main.start": [
+  "<builtin>.async_generator.__aiter__",
+  "<builtin>.async_generator.__anext__",
+  "<builtin>.async_generator.aclose",
+  "main.first",
+  "main.ticks"
+ ],
+ "main.ticks": [
+  "main.cleanup"
+ ]
+}

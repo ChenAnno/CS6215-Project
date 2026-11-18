@@ -1,0 +1,10 @@
+{
+ "<builtin>.super": [],
+ "main": [],
+ "main.qcea1_0.__init__": [
+  "<builtin>.super"
+ ],
+ "main.qcea1_0.__new__": [
+  "<builtin>.super"
+ ]
+}

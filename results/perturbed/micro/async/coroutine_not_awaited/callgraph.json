@@ -1,0 +1,14 @@
+{
+    "main": [
+        "asyncio.run",
+        "main.q1ff3_1"
+    ],
+    "main.q1ff3_1": [
+        "main.q1ff3_2",
+        "types.CoroutineType.close"
+    ],
+    "main.q1ff3_2": [],
+    "main.q1ff3_0": [],
+    "asyncio.run": [],
+    "types.CoroutineType.close": []
+}

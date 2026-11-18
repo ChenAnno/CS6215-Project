@@ -1,0 +1,13 @@
+{
+ "main": [
+  "app.jobs.nightly.run"
+ ],
+ "app.util.clean": [],
+ "app.jobs.nightly.run": [
+  "app.util.clean"
+ ],
+ "app.jobs.nightly": [],
+ "app": [],
+ "app.jobs": [],
+ "app.util": []
+}

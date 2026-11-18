@@ -1,0 +1,20 @@
+{
+    "main": [
+        "io.StringIO",
+        "main.q8388_0.q8388_3",
+        "main.q8388_0.q8388_4",
+        "unittest.TestLoader.loadTestsFromTestCase",
+        "unittest.TextTestRunner",
+        "unittest.TextTestRunner.run"
+    ],
+    "main.q8388_2": [],
+    "main.q8388_0.q8388_3": [],
+    "main.q8388_0.q8388_4": [
+        "main.q8388_2"
+    ],
+    "main.q8388_0.q8388_1": [],
+    "unittest.TestLoader.loadTestsFromTestCase": [],
+    "io.StringIO": [],
+    "unittest.TextTestRunner": [],
+    "unittest.TextTestRunner.run": []
+}

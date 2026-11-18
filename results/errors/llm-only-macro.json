@@ -1,0 +1,4654 @@
+{
+ "summary": {
+  "fn-ext-omitted": 199,
+  "fn-ext-misnamed": 24,
+  "fp-ext-spurious": 16,
+  "fp-ext-misnamed": 10,
+  "fn-no-evidence": 276,
+  "fn-rejected": 25,
+  "fp-llm-added": 13,
+  "fp-accepted-hint": 16
+ },
+ "overlap_with_pycg-2026": {
+  "fn-also-baseline": 372,
+  "fn-only-tool": 152,
+  "fn-only-baseline": 67,
+  "fp-only-tool": 49,
+  "fp-also-baseline": 6,
+  "fp-only-baseline": 183
+ },
+ "edges": [
+  {
+   "edge": [
+    "autojump_data.entriefy",
+    "<builtin>.dict.items"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.entriefy",
+    "<builtin>.dict.iteritems"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.save",
+    "io.BufferedRandom.close"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.save",
+    "io.BufferedWriter.flush"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.save",
+    "tempfile._TemporaryFileWrapper.close"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.encode_local",
+    "<builtin>.bytes.encode"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.encode_local",
+    "<builtin>.str.encode"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.get_pwd",
+    "os.getcwdu"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.get_tab_entry_info",
+    "_sre.SRE_Match.group"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.has_uppercase",
+    "<builtin>.str"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.last",
+    "builtins.list_iterator.__next__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.last",
+    "builtins.list_iterator.next"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.last",
+    "builtins.tuple_iterator.__next__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.last",
+    "builtins.tuple_iterator.next"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.sanitize.<lambda1>",
+    "<builtin>.str.rstrip"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.unico",
+    "<builtin>.str"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.save",
+    "<builtin>.dict.items"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.save",
+    "codecs.StreamReaderWriter.flush"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_data.save",
+    "tempfile.NamedTemporaryFile.close"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_match.match_anywhere",
+    "re.escape"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_match.match_consecutive",
+    "re.escape"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.has_uppercase",
+    "<builtin>.unicode"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "autojump_utils.unico",
+    "<builtin>.unicode"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "autojump"
+  },
+  {
+   "edge": [
+    "fabric.config",
+    "<builtin>.staticmethod"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.__init__",
+    "fabric.config.Config.global_defaults"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.__init__",
+    "fabric.connection.Connection.__repr__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config._clone_init_kwargs",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config._clone_init_kwargs",
+    "fabric.config.Config.global_defaults"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config._load_ssh_file",
+    "logging.Logger.debug"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.clone",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.clone",
+    "fabric.config.Config.__init__"
+   ],
+   "label": "fn-rejected",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.clone",
+    "fabric.config.Config._clone_init_kwargs"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config.clone",
+    "fabric.connection.Connection.__repr__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection",
+    "decorator.decorator.dec"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "<builtin>.ValueError"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "<builtin>.str.format"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "invoke.config.Config.clone.base_ssh_config.lookup"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "invoke.config.Config.clone.base_ssh_config.lookup.get"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "paramiko.config.SSHConfig.lookup.get"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.create_session",
+    "paramiko.client.SSHClient.get_transport.open_session"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_local",
+    "fabric.tunnels.TunnelManager._run"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "paramiko.client.SSHClient.get_transport.cancel_port_forward"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "paramiko.client.SSHClient.get_transport.request_port_forward"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote.callback",
+    "fabric.tunnels.Tunnel._run"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.get_gateway",
+    "invoke.config.Config.clone.clone"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.local",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.open_gateway",
+    "invoke.config.Config.clone.gateway.open"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.open_gateway",
+    "invoke.config.Config.clone.gateway.transport.open_channel"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.open_gateway",
+    "paramiko.client.SSHClient.get_transport.open_channel"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.resolve_connect_kwargs",
+    "invoke.config.Config.clone.connect_kwargs.setdefault"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.resolve_connect_kwargs",
+    "invoke.config.DataProxy.setdefault"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote._write_proc_stdin"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.generate_result"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.process_is_finished"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.read_proc_stderr"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.read_proc_stdout"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.returncode"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.send_interrupt"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.start"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote.stop"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "invoke.config.Config.clone.runners.remote"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote._write_proc_stdin"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.generate_result"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.process_is_finished"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.read_proc_stderr"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.read_proc_stdout"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.returncode"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.send_interrupt"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.start"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote.stop"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "invoke.config.Config.clone.runners.remote"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.executor.FabExecutor.expand_calls",
+    "<builtin>.str.split"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.executor.FabExecutor.expand_calls.anonymous",
+    "decorator.decorate.fun"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.executor.FabExecutor.expand_calls.anonymous",
+    "fabric.connection.opens"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.executor.FabExecutor.parameterize",
+    "invoke.Call.clone"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.executor.FabExecutor.parameterize",
+    "logging.Logger.debug"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.GroupResult.__init__",
+    "<builtin>.object.__init__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.GroupResult._bifurcate",
+    "fabric.connection.Connection.__eq__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.GroupResult._bifurcate",
+    "fabric.connection.Connection.__hash__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.SerialGroup.run",
+    "decorator.decorate.fun"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.SerialGroup.run",
+    "fabric.connection.Connection.__eq__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.SerialGroup.run",
+    "fabric.connection.Connection.__hash__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.SerialGroup.run",
+    "fabric.connection.opens"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main",
+    "<builtin>.property"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.core_args",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.create_config",
+    "fabric.connection.Connection.__repr__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.create_config",
+    "invoke.config.Config"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.load_collection",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.load_collection",
+    "fabric.connection.Connection.__repr__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.no_tasks_given",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.no_tasks_given",
+    "fabric.main.Fab.core_args"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.print_version",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.update_config",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.main.Fab.update_config",
+    "fabric.connection.Connection.__repr__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners",
+    "<builtin>.property"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote._write_proc_stdin",
+    "paramiko.client.SSHClient.get_transport.open_session.sendall"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.process_is_finished",
+    "paramiko.client.SSHClient.get_transport.open_session.exit_status_ready"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.read_proc_stderr",
+    "paramiko.client.SSHClient.get_transport.open_session.recv_stderr"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.read_proc_stdout",
+    "paramiko.client.SSHClient.get_transport.open_session.recv"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.returncode",
+    "paramiko.client.SSHClient.get_transport.open_session.recv_exit_status"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.send_interrupt",
+    "paramiko.client.SSHClient.get_transport.open_session.send"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.start",
+    "decorator.decorate.fun"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.start",
+    "fabric.connection.opens"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.start",
+    "paramiko.client.SSHClient.get_transport.open_session.exec_command"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.start",
+    "paramiko.client.SSHClient.get_transport.open_session.get_pty"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.start",
+    "paramiko.client.SSHClient.get_transport.open_session.update_environment"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.stop",
+    "paramiko.client.SSHClient.get_transport.open_session.close"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Result.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer",
+    "<builtin>.property"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.get",
+    "paramiko.client.SSHClient.open_sftp.get"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.get",
+    "paramiko.client.SSHClient.open_sftp.getcwd"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.get",
+    "paramiko.client.SSHClient.open_sftp.getfo"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.get",
+    "paramiko.client.SSHClient.open_sftp.normalize"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.get",
+    "paramiko.client.SSHClient.open_sftp.stat"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.is_remote_dir",
+    "paramiko.client.SSHClient.open_sftp.stat"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "logging.Logger.debug"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "paramiko.client.SSHClient.open_sftp.chmod"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "paramiko.client.SSHClient.open_sftp.getcwd"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "paramiko.client.SSHClient.open_sftp.normalize"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "paramiko.client.SSHClient.open_sftp.put"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "paramiko.client.SSHClient.open_sftp.putfo"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.sftp",
+    "decorator.decorate.fun"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.sftp",
+    "fabric.connection.opens"
+   ],
+   "label": "fn-no-evidence",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.Tunnel.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.Tunnel._run",
+    "paramiko.transport.Transport.open_channel.close"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.Tunnel.read_and_write",
+    "paramiko.transport.Transport.open_channel.recv"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.Tunnel.read_and_write",
+    "paramiko.transport.Transport.open_channel.sendall"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.TunnelManager.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.TunnelManager._run",
+    "invoke.util.ExceptionHandlingThread.start"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.TunnelManager._run",
+    "paramiko.transport.Transport.open_channel"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.config.Config._load_ssh_file",
+    "fabric.util.debug"
+   ],
+   "label": "fp-llm-added",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection",
+    "fabric.connection.opens"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.__init__",
+    "<builtin>.dict.get"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.create_session",
+    "paramiko.transport.Transport.open_session"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "fabric.connection.Connection.forward_remote.callback"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "invoke.util.ExceptionHandlingThread.join"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "paramiko.transport.Transport.cancel_port_forward"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "paramiko.transport.Transport.request_port_forward"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.forward_remote",
+    "threading.Event.set"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.get_gateway",
+    "<builtin>.str.split"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.open_gateway",
+    "paramiko.transport.Transport.open_channel"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.run",
+    "fabric.runners.Remote"
+   ],
+   "label": "fp-llm-added",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.connection.Connection.sudo",
+    "fabric.runners.Remote"
+   ],
+   "label": "fp-llm-added",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.executor.FabExecutor.parameterize",
+    "fabric.util.debug"
+   ],
+   "label": "fp-llm-added",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.Group.get",
+    "<builtin>.NotImplementedError"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.Group.run",
+    "<builtin>.NotImplementedError"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.SerialGroup.run",
+    "fabric.connection.Connection.run"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.ThreadingGroup.run",
+    "fabric.group.thread_worker"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.thread_worker",
+    "fabric.connection.Connection.run"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.thread_worker",
+    "invoke.vendor.six.moves.queue.Queue.put"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.group.thread_worker",
+    "six.moves.queue.Queue.put"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.runners.Remote.start",
+    "fabric.connection.Connection.create_session"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.put",
+    "fabric.util.debug"
+   ],
+   "label": "fp-llm-added",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.transfer.Transfer.sftp",
+    "fabric.connection.Connection.sftp"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "fabric.tunnels.TunnelManager._run",
+    "threading.Thread.start"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "fabric"
+  },
+  {
+   "edge": [
+    "jmespath.exceptions.EmptyExpressionError.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.exceptions.LexerError.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.exceptions.ParseError.__init__",
+    "<builtin>.str.upper"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.exceptions.ParseError.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._create_key_func.keyfunc",
+    "<builtin>.type"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._func_ends_with",
+    "<builtin>.str.endswith"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._func_join",
+    "<builtin>.str.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._func_keys",
+    "<builtin>.dict.keys"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._func_sort_by",
+    "<builtin>.type"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._func_starts_with",
+    "<builtin>.str.startswith"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.functions.Functions._func_values",
+    "<builtin>.dict.values"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.parser",
+    "<builtin>.classmethod"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.parser.Parser._expression",
+    "<builtin>.getattr"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.parser.Parser._parse_multi_select_hash",
+    "<builtin>.list.append"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.parser.Parser._token_led_dot",
+    "<builtin>.list.append"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.parser.Parser._token_led_lbracket",
+    "<builtin>.list.append"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.visitor.GraphvizVisitor.__init__",
+    "<builtin>.super"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "jmespath.visitor.TreeInterpreter.visit_field",
+    "<builtin>.dict.get"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "jmespath"
+  },
+  {
+   "edge": [
+    "funcy._inspect._sig_to_spec",
+    "builtins.mappingproxy.items"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy._inspect.get_spec",
+    "collections.namedtuple._replace"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc._make_lookuper.make_lookuper",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc._make_lookuper.make_lookuper",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc._make_lookuper.make_lookuper.wrapper",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc._memory_decorator.decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc._memory_decorator.decorator",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc._memory_decorator.decorator.wrapper",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc.has_arg_types",
+    "builtins.mappingproxy.values"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls._factory",
+    "<builtin>.bytes"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls._factory",
+    "<builtin>.str"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.all",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.all",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.all",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.all",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.any",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.any",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.empty",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.is_distinct",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.is_distinct",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.is_distinct",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.iteritems",
+    "<builtin>.dict.items"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.iteritems",
+    "collections.OrderedDict.items"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.itervalues",
+    "<builtin>.dict.values"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.bytes"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.dict.copy"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.dict.update"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.list"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.set.union"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.str"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join",
+    "<builtin>.tuple"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.join_with",
+    "funcy.seqs.first"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.omit",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.omit",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.project",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.project",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.bytes.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.iter"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.list"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.set"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.str.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "<builtin>.tuple"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "funcy.colls.select_keys.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "funcy.colls.select_values.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_keys.<lambda1>",
+    "<builtin>.bool"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_keys.<lambda1>",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_keys.<lambda1>",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_keys.<lambda1>",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_keys.<lambda1>",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_values.<lambda1>",
+    "<builtin>.bool"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_values.<lambda1>",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_values.<lambda1>",
+    "funcy.primitives.notnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_values.<lambda1>",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_values.<lambda1>",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.select_values.<lambda1>",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcs.autocurry.autocurried"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcs.iffy.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.funcs.ljuxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.seqs.first"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.seqs.lcat"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.seqs.second"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.some",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "<builtin>.bool"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "<builtin>.dict.items"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.split_keys",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.update_in",
+    "<builtin>.isinstance"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.update_in",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.bytes.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.iter"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.list"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.set"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.str.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "<builtin>.tuple"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "collections.OrderedDict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.colls.flip.flip_pair"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.colls.walk_keys.pair_f"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_keys.pair_f",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_keys.pair_f",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_keys.pair_f",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_keys.pair_f",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "<builtin>.bytes.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "<builtin>.iter"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "<builtin>.list"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "<builtin>.str.join"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values",
+    "funcy.colls.walk_values.pair_f"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values.pair_f",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values.pair_f",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values.pair_f",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values.pair_f",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values.pair_f",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.walk_values.pair_f",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.LabeledContextDecorator.__call__",
+    "<builtin>.callable"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.LabeledContextDecorator.decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.LabeledContextDecorator.decorator",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.LabeledContextDecorator.decorator.inner",
+    "<builtin>.object.__new__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.log_calls",
+    "<builtin>.print"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.log_enters",
+    "<builtin>.print"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.log_exits",
+    "<builtin>.print"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.print_calls",
+    "funcy.decorators.make_decorator._decorator"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.print_enters",
+    "funcy.decorators.make_decorator._decorator"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.print_exits",
+    "funcy.decorators.make_decorator._decorator"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.debug.signature_repr",
+    "<builtin>.dict.items"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.Call.__call__",
+    "<builtin>.dict"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.Call.__call__",
+    "funcy.debug.LabeledContextDecorator.decorator.inner"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.Call.__call__",
+    "funcy.decorators.make_decorator._decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.Call.__repr__",
+    "funcy.decorators.Call.__str__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.has_1pos_and_kwonly",
+    "builtins.mappingproxy.values"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.has_single_arg",
+    "builtins.mappingproxy.values"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.debug.log_calls"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.debug.log_enters"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.debug.log_exits"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.flow.joining"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.flow.post_processing"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.flow.retry"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.decorators.make_decorator._decorator.wrapper",
+    "funcy.flow.wrap_with"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow",
+    "funcy.decorators.decorator.decorator_fab"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.fallback",
+    "funcy.flow.raiser._raiser"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.ignore.decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.ignore.decorator",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.ignore.decorator.wrapper",
+    "funcy.debug.LabeledContextDecorator.decorator.inner"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.ignore.decorator.wrapper",
+    "funcy.decorators.make_decorator._decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.ignore.decorator.wrapper",
+    "funcy.flow.limit_error_rate.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.ignore.decorator.wrapper",
+    "funcy.flow.raiser._raiser"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.joining",
+    "<builtin>.bytes.join"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.joining",
+    "funcy.decorators.Call.__call__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.limit_error_rate.decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.limit_error_rate.decorator",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.limit_error_rate.decorator.wrapper",
+    "funcy.decorators.make_decorator._decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.once_per.once",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.once_per.once",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.post_processing",
+    "funcy.decorators.Call.__call__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.retry",
+    "funcy.decorators.Call.__call__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.throttle.decorator",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.throttle.decorator",
+    "funcy.decorators.update_wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.wrap_with",
+    "funcy.decorators.Call.__call__"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.autocurry",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.autocurry.autocurried",
+    "funcy.seqs.keep"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.autocurry.autocurried",
+    "funcy.seqs.lmap"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "<builtin>.all"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "<builtin>.any"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "<builtin>.dict.__getitem__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "_operator.not_"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.compose.<lambda1>.<lambda1>",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.curry.<lambda1>.<lambda1>",
+    "functools.partial.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.curry.<lambda1>.<lambda1>",
+    "funcy.colls.merge_with"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.curry.<lambda1>.<lambda1>",
+    "funcy.seqs.lmap"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.curry.<lambda1>.<lambda1>",
+    "funcy.strings.re_test"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "<builtin>.bool"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "funcy.funcs.caller.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.iffy.<lambda1>",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "<builtin>.dict.__getitem__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.juxt.<lambda1>",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.ljuxt.<lambda1>",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.ljuxt.<lambda1>",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.ljuxt.<lambda1>",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.ljuxt.<lambda1>",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.rcurry.<lambda1>.<lambda1>",
+    "funcy.funcs.rpartial.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.rpartial.<lambda1>",
+    "funcy.funcs.rpartial.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__del__",
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__del__"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__get__",
+    "<builtin>.property.__get__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__get__",
+    "funcy.objects.cached_property.__get__"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__get__",
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__get__"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__repr__",
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__repr__"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__set__",
+    "<builtin>.property.__set__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__set__",
+    "funcy.objects.cached_readonly.__set__"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__set__",
+    "funcy.objects.wrap_prop.decorator.WrapperProp.__set__"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.autocurry.autocurried"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.iffy.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.ljuxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.rcurry.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.rcurry.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.funcs.rcurry.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.seqs.first"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.seqs.lcat"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.seqs.second"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lfilter",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcs.autocurry.autocurried"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcs.iffy.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.funcs.ljuxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.seqs.first"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.seqs.lcat"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.seqs.second"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._lmap",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs._reductions",
+    "_operator.add"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.count_by",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.count_by",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.count_by",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.count_by",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.count_by",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.distinct",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.distinct",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.distinct",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.distinct",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.distinct",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.first",
+    "funcy.colls.where.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.first",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.first",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.first",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.flatten",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by_keys",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by_keys",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by_keys",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-rejected",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_by_keys",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_values",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_values",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.group_values",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.ilen",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.ilen",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.iterate",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcs.autocurry.autocurried"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcs.iffy.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.funcs.ljuxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.seqs.first"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.seqs.lcat"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.seqs.second"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lcat",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lkeep",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lkeep",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lkeep",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.calc._make_lookuper.make_lookuper.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.colls.none"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.colls.one"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.colls.some"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.flow.ignore.decorator.wrapper"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcs.autocurry.autocurried"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcs.compose.<lambda1>.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcs.identity"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcs.iffy.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcs.juxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.funcs.ljuxt.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.primitives.even"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.primitives.inc"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.seqs.first"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.seqs.lcat"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.seqs.second"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lremove",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit",
+    "<builtin>.bool"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit",
+    "funcy.primitives.odd"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit_by",
+    "funcy.primitives.isnone"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lsplit_by",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.lzip",
+    "<builtin>.len"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.partition_by",
+    "funcy.funcmakers.make_func.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.partition_by",
+    "funcy.strings.re_finder.<lambda2>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split",
+    "<builtin>.bool"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split",
+    "<builtin>.set.__contains__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split",
+    "funcy.primitives.odd"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split",
+    "operator.itemgetter.__call__"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.split._split",
+    "<builtin>.next"
+   ],
+   "label": "fn-ext-omitted",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.take",
+    "funcy.strings.re_tester.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.strings.re_all",
+    "funcy.strings._make_getter.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.strings.re_finder.<lambda2>",
+    "_sre.SRE_Pattern.search"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.strings.re_iter",
+    "_sre.SRE_Pattern.finditer"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.strings.re_tester.<lambda1>",
+    "_sre.SRE_Pattern.search"
+   ],
+   "label": "fn-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.tree.tree_leaves",
+    "funcy.seqs.rest"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.tree.tree_leaves",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.tree.tree_nodes",
+    "funcy.types.isa.<lambda1>"
+   ],
+   "label": "fn-no-evidence",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy._inspect._code_to_spec",
+    "funcy._inspect.Spec"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy._inspect._sig_to_spec",
+    "<builtin>.mappingproxy.items"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy._inspect._sig_to_spec",
+    "funcy._inspect.Spec"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy._inspect.get_spec",
+    "funcy._inspect.Spec"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy._inspect.get_spec",
+    "funcy._inspect.Spec._replace"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.calc.has_arg_types",
+    "<builtin>.mappingproxy.values"
+   ],
+   "label": "fp-ext-misnamed",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.del_in",
+    "funcy.calc.CacheMemory.__getitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.del_in",
+    "funcy.calc.CacheMemory.__setitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.empty",
+    "<builtin>.bytes.join"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.empty",
+    "<builtin>.str.join"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.empty",
+    "collections.defaultdict"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.flip",
+    "funcy.colls.flip.flip_pair"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.get_in",
+    "funcy.calc.CacheMemory.__getitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.get_lax",
+    "funcy.calc.CacheMemory.__getitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.has_path",
+    "funcy.calc.CacheMemory.__getitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.zip_dicts",
+    "funcy.calc.CacheMemory.__getitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.colls.zip_values",
+    "funcy.calc.CacheMemory.__getitem__"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow",
+    "funcy.flow.post_processing"
+   ],
+   "label": "fp-accepted-hint",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.flow.limit_error_rate.decorator.wrapper",
+    "<builtin>.Exception.__init__"
+   ],
+   "label": "fp-ext-spurious",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.funcs.autocurry",
+    "funcy._inspect.Spec"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.seqs.flatten",
+    "funcy.types.is_seqcont"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.tree.tree_leaves",
+    "funcy.types.is_seqcont"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  },
+  {
+   "edge": [
+    "funcy.tree.tree_nodes",
+    "funcy.types.is_seqcont"
+   ],
+   "label": "fp-llm-added",
+   "program": "funcy"
+  }
+ ]
+}

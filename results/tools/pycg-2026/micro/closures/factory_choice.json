@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.make",
+  "main.make.add",
+  "main.make.sub"
+ ],
+ "main.make": [],
+ "main.make.add": [],
+ "main.make.sub": []
+}

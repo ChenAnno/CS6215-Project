@@ -1,0 +1,15 @@
+{
+ "main": [
+  "main.AppError.report",
+  "main.DbError.report",
+  "main.NetError.report",
+  "main.query"
+ ],
+ "main.NetError.report": [],
+ "<builtin>.Exception.__init__": [],
+ "main.query": [
+  "<builtin>.Exception.__init__"
+ ],
+ "main.DbError.report": [],
+ "main.AppError.report": []
+}

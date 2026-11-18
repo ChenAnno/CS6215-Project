@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/starred_display", "answers": {"s1": ["main.func1", "main.func2", "main.func3"]}, "sites": [{"id": "s1", "caller": "main", "line": 13, "col": 1, "kind": "call", "text": "combined[2]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {"kept-internal": 3}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.q3323_0",
+  "main.q3323_1",
+  "main.q3323_2"
+ ],
+ "main.q3323_0": [],
+ "main.q3323_1": [],
+ "main.q3323_2": [
+  "<builtin>.list.append"
+ ]
+}

@@ -1,0 +1,79 @@
+[nscg-v21+renamed/micro] 580 programs, 580 units, 1734 sites
+  25/580 units, cost so far $0.023, errors 0
+  50/580 units, cost so far $0.052, errors 0
+  75/580 units, cost so far $0.081, errors 0
+  100/580 units, cost so far $0.107, errors 0
+  125/580 units, cost so far $0.137, errors 0
+  150/580 units, cost so far $0.162, errors 0
+  175/580 units, cost so far $0.190, errors 0
+  200/580 units, cost so far $0.222, errors 0
+  225/580 units, cost so far $0.253, errors 0
+  250/580 units, cost so far $0.279, errors 0
+  275/580 units, cost so far $0.305, errors 0
+  300/580 units, cost so far $0.332, errors 0
+  325/580 units, cost so far $0.357, errors 0
+  350/580 units, cost so far $0.378, errors 0
+  375/580 units, cost so far $0.398, errors 0
+  400/580 units, cost so far $0.424, errors 0
+  425/580 units, cost so far $0.448, errors 0
+  450/580 units, cost so far $0.480, errors 0
+  475/580 units, cost so far $0.513, errors 0
+  500/580 units, cost so far $0.544, errors 0
+  525/580 units, cost so far $0.575, errors 0
+  550/580 units, cost so far $0.608, errors 0
+  575/580 units, cost so far $0.637, errors 0
+  580/580 units, cost so far $0.644, errors 0
+[nscg-v21+renamed/micro] done in 195.6 s; requests 574, cache hits 0, cost $0.644, errors 0; validation {'kept-internal': 1394, 'missing_answers': 0, 'kept-external': 394, 'floor-added': 17, 'rejected-unknown-internal': 2}
+[llm-only+renamed/micro] 580 programs, 580 units, 1734 sites
+  25/580 units, cost so far $0.025, errors 0
+  50/580 units, cost so far $0.053, errors 0
+  75/580 units, cost so far $0.079, errors 0
+  100/580 units, cost so far $0.106, errors 0
+  125/580 units, cost so far $0.134, errors 0
+  150/580 units, cost so far $0.162, errors 0
+  175/580 units, cost so far $0.190, errors 0
+  200/580 units, cost so far $0.219, errors 0
+  225/580 units, cost so far $0.250, errors 0
+  250/580 units, cost so far $0.276, errors 0
+  275/580 units, cost so far $0.304, errors 0
+  300/580 units, cost so far $0.331, errors 0
+  325/580 units, cost so far $0.356, errors 0
+  350/580 units, cost so far $0.382, errors 0
+  375/580 units, cost so far $0.404, errors 0
+  400/580 units, cost so far $0.431, errors 0
+  425/580 units, cost so far $0.457, errors 0
+  450/580 units, cost so far $0.488, errors 0
+  475/580 units, cost so far $0.519, errors 0
+  500/580 units, cost so far $0.547, errors 0
+  525/580 units, cost so far $0.576, errors 0
+  550/580 units, cost so far $0.607, errors 0
+  575/580 units, cost so far $0.635, errors 0
+  580/580 units, cost so far $0.643, errors 0
+[llm-only+renamed/micro] done in 192.3 s; requests 580, cache hits 0, cost $0.643, errors 0; validation {'missing_answers': 0}
+[nscg-sym+renamed/micro] 580 programs, 580 units, 1734 sites
+  25/580 units, cost so far $0.000, errors 0
+  50/580 units, cost so far $0.000, errors 0
+  75/580 units, cost so far $0.000, errors 0
+  100/580 units, cost so far $0.000, errors 0
+  125/580 units, cost so far $0.000, errors 0
+  150/580 units, cost so far $0.000, errors 0
+  175/580 units, cost so far $0.000, errors 0
+  200/580 units, cost so far $0.000, errors 0
+  225/580 units, cost so far $0.000, errors 0
+  250/580 units, cost so far $0.000, errors 0
+  275/580 units, cost so far $0.000, errors 0
+  300/580 units, cost so far $0.000, errors 0
+  325/580 units, cost so far $0.000, errors 0
+  350/580 units, cost so far $0.000, errors 0
+  375/580 units, cost so far $0.000, errors 0
+  400/580 units, cost so far $0.000, errors 0
+  425/580 units, cost so far $0.000, errors 0
+  450/580 units, cost so far $0.000, errors 0
+  475/580 units, cost so far $0.000, errors 0
+  500/580 units, cost so far $0.000, errors 0
+  525/580 units, cost so far $0.000, errors 0
+  550/580 units, cost so far $0.000, errors 0
+  575/580 units, cost so far $0.000, errors 0
+  580/580 units, cost so far $0.000, errors 0
+[nscg-sym+renamed/micro] done in 20.1 s; requests 0, cache hits 0, cost $0.000, errors 0; validation {'kept-internal': 890, 'missing_answers': 0, 'kept-external': 374}
+ALL-DONE

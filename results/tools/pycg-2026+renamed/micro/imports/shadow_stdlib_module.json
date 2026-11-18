@@ -1,0 +1,15 @@
+{
+ "<builtin>.len": [],
+ "<builtin>.sum": [],
+ "colorsys": [],
+ "colorsys.q7029_0": [
+  "<builtin>.len",
+  "<builtin>.sum"
+ ],
+ "colorsys.q7029_1": [
+  "colorsys.q7029_0"
+ ],
+ "main": [
+  "colorsys.q7029_1"
+ ]
+}

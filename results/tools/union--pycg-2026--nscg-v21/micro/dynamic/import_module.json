@@ -1,0 +1,12 @@
+{
+ "main": [
+  "importlib.import_module",
+  "plugins.alpha.run"
+ ],
+ "plugins.beta.run": [],
+ "plugins": [],
+ "plugins.beta": [],
+ "plugins.alpha": [],
+ "plugins.alpha.run": [],
+ "importlib.import_module": []
+}

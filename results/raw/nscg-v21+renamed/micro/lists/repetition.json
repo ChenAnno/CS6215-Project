@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/repetition", "answers": {"s1": ["main.q43c4_0", "main.q43c4_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "repeated[2]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

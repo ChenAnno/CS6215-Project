@@ -1,0 +1,9 @@
+{
+ "main": [
+  "A.B.__init__",
+  "main.A.B.bfunc",
+  "main.C.cfunc"
+ ],
+ "main.A.B.bfunc": [],
+ "main.C.cfunc": []
+}

@@ -1,0 +1,10 @@
+{
+ "main": [],
+ "main.q4a41_0.__get__": [
+  "<builtin>.getattr"
+ ],
+ "main.q4a41_0.__set__": [
+  "<builtin>.setattr"
+ ],
+ "main.q4a41_0.__set_name__": []
+}

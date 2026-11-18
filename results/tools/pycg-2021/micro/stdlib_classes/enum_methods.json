@@ -1,0 +1,10 @@
+{
+ "enum.Enum.name.lower": [],
+ "main": [
+  "main.Color.default"
+ ],
+ "main.Color.default": [],
+ "main.Color.describe": [
+  "enum.Enum.name.lower"
+ ]
+}

@@ -1,0 +1,10 @@
+{
+ "<builtin>.dict.update": [],
+ "main": [
+  "<builtin>.dict.update",
+  "main.func1",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

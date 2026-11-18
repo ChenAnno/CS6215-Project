@@ -1,0 +1,13 @@
+{
+ "main.Temperature.set_celsius": [],
+ "main": [
+  "<builtin>.property",
+  "main.Temperature.__init__",
+  "main.Temperature.get_celsius",
+  "main.Temperature.set_celsius"
+ ],
+ "main.Temperature.get_celsius": [],
+ "<builtin>.property": [],
+ "main.Temperature.del_celsius": [],
+ "main.Temperature.__init__": []
+}

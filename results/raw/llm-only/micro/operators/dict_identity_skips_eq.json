@@ -1,0 +1,1 @@
+{"units": [{"unit": "operators/dict_identity_skips_eq", "answers": {"main": ["main.Key.__hash__"], "main.Key.__eq__": [], "main.Key.__hash__": []}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 7, "kind": "call", "text": "Key()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

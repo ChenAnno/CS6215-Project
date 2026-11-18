@@ -1,0 +1,252 @@
+{
+ "autojump_data.entriefy.<lambda1>": [],
+ "os.path.exists": [],
+ "autojump_utils.is_autojump_sourced": [
+  "os.getenv"
+ ],
+ "os.fsync": [],
+ "os.path.dirname": [],
+ "platform.system": [],
+ "os.makedirs": [],
+ "re.search": [],
+ "autojump_data": [
+  "collections.namedtuple"
+ ],
+ "<builtin>.any": [],
+ "autojump_utils.is_linux": [
+  "platform.system"
+ ],
+ "codecs.StreamReaderWriter.flush": [],
+ "sys.getfilesystemencoding": [],
+ "sys.exit": [],
+ "os.getenv": [],
+ "codecs.open": [],
+ "autojump_utils": [],
+ "autojump_utils.get_pwd": [
+  "<builtin>.print"
+ ],
+ "itertools.islice": [],
+ "os.remove": [],
+ "<builtin>.str.split": [],
+ "autojump_match.match_fuzzy.<lambda4>": [
+  "autojump_match.match_fuzzy.<lambda2>",
+  "autojump_match.match_fuzzy.<lambda3>"
+ ],
+ "<builtin>.isinstance": [],
+ "autojump_data.load_backup": [
+  "autojump_data.load",
+  "autojump_utils.move_file",
+  "os.path.exists"
+ ],
+ "autojump_utils.get_tab_entry_info": [
+  "<builtin>.int",
+  "re.Match.group",
+  "re.search"
+ ],
+ "autojump_utils.create_dir": [
+  "os.makedirs"
+ ],
+ "autojump_data.load.<lambda1>": [
+  "<builtin>.str.split",
+  "<builtin>.str.strip"
+ ],
+ "re.Match.group": [],
+ "difflib.SequenceMatcher": [],
+ "autojump_utils.encode_local": [
+  "autojump_utils.is_python3",
+  "sys.getfilesystemencoding"
+ ],
+ "<builtin>.next": [],
+ "os.listdir": [],
+ "<builtin>.map": [],
+ "autojump_utils.sanitize.<lambda1>": [
+  "autojump_utils.unico"
+ ],
+ "autojump_utils.in_bash": [
+  "os.getenv"
+ ],
+ "<builtin>.iter": [],
+ "autojump_match": [
+  "autojump_utils.is_python3"
+ ],
+ "autojump_utils.is_python2": [],
+ "autojump_utils.unico": [
+  "<builtin>.isinstance",
+  "autojump_utils.is_python2"
+ ],
+ "<builtin>.print": [],
+ "time.time": [],
+ "<builtin>.str.strip": [],
+ "autojump_data.load.<lambda3>": [
+  "<builtin>.float"
+ ],
+ "unicodedata.category": [],
+ "autojump_data.load": [
+  "<builtin>.dict",
+  "<builtin>.filter",
+  "<builtin>.map",
+  "autojump_data.load.<lambda1>",
+  "autojump_data.load.<lambda2>",
+  "autojump_data.load.<lambda3>",
+  "autojump_data.load_backup",
+  "autojump_data.migrate_osx_xdg_data",
+  "autojump_utils.is_osx",
+  "codecs.open",
+  "itertools.ifilter",
+  "itertools.imap",
+  "os.path.exists",
+  "os.path.expanduser",
+  "os.path.join"
+ ],
+ "tempfile.NamedTemporaryFile": [],
+ "<builtin>.filter": [],
+ "autojump_utils.print_local": [
+  "<builtin>.print",
+  "autojump_utils.encode_local"
+ ],
+ "autojump_utils.print_tab_menu": [
+  "<builtin>.enumerate",
+  "autojump_utils.print_local"
+ ],
+ "autojump_data.entriefy": [
+  "<builtin>.map",
+  "autojump_utils.is_python3",
+  "itertools.imap"
+ ],
+ "autojump_match.match_consecutive": [
+  "<builtin>.filter",
+  "<builtin>.map",
+  "itertools.ifilter",
+  "itertools.imap"
+ ],
+ "autojump_utils.has_uppercase": [
+  "<builtin>.any",
+  "autojump_utils.is_python3",
+  "unicodedata.category"
+ ],
+ "os.path.expanduser": [],
+ "<builtin>.str.join": [],
+ "autojump_utils.is_osx": [
+  "platform.system"
+ ],
+ "autojump_match.match_anywhere.<lambda1>": [
+  "re.search"
+ ],
+ "os.path.split": [],
+ "difflib.SequenceMatcher.ratio": [],
+ "os.path.getmtime": [],
+ "autojump_match.match_anywhere": [
+  "<builtin>.filter",
+  "<builtin>.map",
+  "<builtin>.str.join",
+  "itertools.ifilter",
+  "itertools.imap"
+ ],
+ "autojump_match.match_consecutive.<lambda1>": [
+  "re.search"
+ ],
+ "autojump_data.migrate_osx_xdg_data": [
+  "<builtin>.len",
+  "autojump_utils.is_osx",
+  "autojump_utils.move_file",
+  "os.listdir",
+  "os.path.exists",
+  "os.path.expanduser",
+  "os.path.join"
+ ],
+ "autojump_utils.sanitize": [
+  "<builtin>.list",
+  "<builtin>.map",
+  "autojump_utils.sanitize.<lambda1>",
+  "itertools.imap"
+ ],
+ "<builtin>.len": [],
+ "autojump_data.load.<lambda2>": [
+  "<builtin>.len"
+ ],
+ "autojump_utils.second": [
+  "<builtin>.iter",
+  "<builtin>.next",
+  "autojump_utils.is_python2",
+  "autojump_utils.is_python3"
+ ],
+ "tempfile._TemporaryFileWrapper.close": [],
+ "autojump_utils.is_python3": [],
+ "autojump_utils.take": [
+  "itertools.islice"
+ ],
+ "<builtin>.list": [],
+ "autojump_data.save": [
+  "<builtin>.print",
+  "autojump_utils.create_dir",
+  "autojump_utils.move_file",
+  "autojump_utils.unico",
+  "codecs.StreamReaderWriter.flush",
+  "codecs.StreamReaderWriter.write",
+  "codecs.open",
+  "os.fsync",
+  "os.path.dirname",
+  "os.path.exists",
+  "os.path.getmtime",
+  "shutil.copy",
+  "sys.exit",
+  "tempfile.NamedTemporaryFile",
+  "time.time"
+ ],
+ "<builtin>.enumerate": [],
+ "autojump_utils.last": [
+  "<builtin>.iter",
+  "autojump_utils.is_python3"
+ ],
+ "<builtin>.dict": [],
+ "autojump_match.match_fuzzy": [
+  "<builtin>.filter",
+  "autojump_utils.last",
+  "itertools.ifilter"
+ ],
+ "itertools.imap": [],
+ "shutil.move": [],
+ "autojump_utils.first": [
+  "<builtin>.iter",
+  "autojump_utils.is_python3"
+ ],
+ "<builtin>.str.format": [],
+ "itertools.ifilter": [],
+ "autojump_match.match_fuzzy.<lambda3>": [
+  "autojump_match.match_fuzzy.<lambda1>",
+  "difflib.SequenceMatcher",
+  "difflib.SequenceMatcher.ratio"
+ ],
+ "os.path.join": [],
+ "collections.namedtuple": [],
+ "autojump_match.match_fuzzy.<lambda1>": [
+  "autojump_utils.last",
+  "os.path.split"
+ ],
+ "<builtin>.int": [],
+ "autojump_match.match_fuzzy.<lambda2>": [
+  "autojump_match.match_fuzzy.<lambda1>",
+  "difflib.SequenceMatcher",
+  "difflib.SequenceMatcher.ratio"
+ ],
+ "codecs.StreamReaderWriter.write": [],
+ "<builtin>.float": [],
+ "autojump_data.dictify": [],
+ "shutil.copy": [],
+ "autojump_utils.surround_quotes": [
+  "<builtin>.str.format",
+  "autojump_utils.in_bash"
+ ],
+ "autojump_utils.is_windows": [
+  "platform.system"
+ ],
+ "autojump_utils.print_entry": [
+  "autojump_utils.print_local"
+ ],
+ "autojump_utils.move_file": [
+  "autojump_utils.is_windows",
+  "os.path.exists",
+  "os.remove",
+  "shutil.move"
+ ]
+}

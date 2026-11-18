@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.Alarm.configure",
+  "main.Alarm.trigger"
+ ],
+ "main.Alarm.configure": [],
+ "main.Alarm.trigger": [
+  "main.beep"
+ ],
+ "main.beep": [],
+ "main.flash": []
+}

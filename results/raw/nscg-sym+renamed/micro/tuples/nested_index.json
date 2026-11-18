@@ -1,0 +1,1 @@
+{"units": [{"unit": "tuples/nested_index", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 14, "col": 1, "kind": "call", "text": "table[1][0]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

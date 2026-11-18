@@ -1,0 +1,9 @@
+{
+ "main": [
+  "collections.namedtuple",
+  "main.Point.norm"
+ ],
+ "main.Point.norm": [
+  "<builtin>.abs"
+ ]
+}

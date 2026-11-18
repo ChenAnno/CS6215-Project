@@ -1,0 +1,72 @@
+\documentclass[sigconf]{acmart}
+
+\settopmatter{printacmref=false}
+\setcopyright{none}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\acmConference[CS6215 Fall 2026]{CS6215 Advanced Topics in Program Analysis, Individual Course Project}{Fall 2026}{National University of Singapore}
+\acmYear{2026}
+\acmDOI{}
+\acmISBN{}
+
+\usepackage{enumitem}
+\usepackage{xspace}
+\newcommand{\nscg}{NSCG\xspace}
+\input{numbers}
+\newcommand{\repo}{\url{https://github.com/YOUR-GITHUB-ID/cs6215-nscg}}
+
+\begin{document}
+
+\title{Symbolic vs.\ Neuro-Symbolic Call-Graph Construction for Python:\\
+An Empirical Comparison of PyCG and an LLM-Guided Analyzer}
+
+\author{YOUR NAME}
+\affiliation{%
+  \institution{School of Computing, National University of Singapore}
+  \city{Singapore}
+  \country{Singapore}}
+\email{Student ID: A0000000X}
+
+\begin{abstract}
+Static call graphs underlie most interprocedural analyses, but for Python every
+static generator must trade precision against recall in the face of
+first-class functions, dynamic dispatch, implicit calls and library callbacks. We
+compare the state-of-the-art symbolic generator PyCG, in its original ICSE 2021
+version and its 2026 redesign, with \nscg, a neuro-symbolic analyzer designed
+for this project: a symbolic front-end enumerates every call site (explicit and
+implicit), pre-resolves callees and proposes candidates; an LLM (Claude
+Haiku~5.5) decides each site; and a symbolic validator checks the answers
+against the program's definitions. All tools are scored with the official
+scorer of the PyCG evaluation on its 622-case micro-benchmark and on four real
+packages with audited ground truths (1,973 call sites). On the packages, \nscg
+reaches an inside-edge $F_1$ of \R{macro-ins-f1-nscg-v21}, on par with PyCG-2026
+(\R{macro-ins-f1-pycg-2026}) and far above PyCG-2021 (\R{macro-ins-f1-pycg-2021});
+on the micro-benchmark it is more complete but much less often exact than
+PyCG-2026. Ablations, repetitions, a second model and a renaming probe explain
+the result: the LLM is a strong filter but almost never discovers a callee that
+the symbolic front-end did not propose, so \nscg's recall is set by its
+candidates (identical in all repetitions) while its precision varies; symbolic
+hints buy recall with precision; the validator was nearly neutral and the
+symbolic floor even overrode correct control-flow judgements of the LLM; renaming
+identifiers does not hurt the LLM; and a stronger model helps \nscg (it uses the
+library-hook candidates to recover Fabric's callbacks from Invoke) but not the
+LLM alone. Both approaches miss the same hard core of edges --- library
+callbacks and documented parameter roles --- while making different false
+positives, so their intersection is the most precise configuration. All LLM
+requests of the study cost US\$\input{tables/total_cost}.
+\end{abstract}
+
+\keywords{call graph, Python, static analysis, large language models, neuro-symbolic analysis, PyCG}
+
+\maketitle
+
+\input{sections/intro}
+\input{sections/prelim}
+\input{sections/approach}
+\input{sections/evaluation}
+\input{sections/discussion}
+\input{sections/conclusion}
+
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{refs}
+
+\end{document}

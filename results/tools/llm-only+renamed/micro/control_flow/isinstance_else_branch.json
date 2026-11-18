@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.q283d_3"
+ ],
+ "main.q283d_0.q283d_2": [],
+ "main.q283d_1.q283d_2": [],
+ "main.q283d_3": [
+  "<builtin>.isinstance",
+  "main.q283d_0.q283d_2",
+  "main.q283d_1.q283d_2"
+ ]
+}

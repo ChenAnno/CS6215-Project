@@ -1,0 +1,9 @@
+{
+ "main": [
+  "<builtin>.sorted",
+  "main.qa385_0.qa385_1"
+ ],
+ "main.qa385_0.qa385_1": [
+  "<builtin>.len"
+ ]
+}

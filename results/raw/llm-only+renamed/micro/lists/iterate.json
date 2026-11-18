@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/iterate", "answers": {"main": ["main.q951b_0", "main.q951b_1"], "main.q951b_0": [], "main.q951b_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 5, "kind": "call", "text": "f()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

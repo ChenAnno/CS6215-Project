@@ -1,0 +1,9 @@
+{
+    "main": [
+        "main.make_type",
+        "typing.get_type_hints"
+    ],
+    "main.make_type": [],
+    "main.qdd64_0": [],
+    "typing.get_type_hints": []
+}

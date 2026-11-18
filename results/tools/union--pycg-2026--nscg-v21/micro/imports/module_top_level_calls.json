@@ -1,0 +1,14 @@
+{
+ "main": [
+  "pkg.sub.work"
+ ],
+ "pkg.setup": [],
+ "pkg.sub.work": [],
+ "pkg.sub": [
+  "pkg.sub.register"
+ ],
+ "pkg.sub.register": [],
+ "pkg": [
+  "pkg.setup"
+ ]
+}

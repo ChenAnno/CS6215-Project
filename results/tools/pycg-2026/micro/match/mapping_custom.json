@@ -1,0 +1,14 @@
+{
+ "<builtin>.iter": [],
+ "main": [
+  "main.Config.__getitem__",
+  "main.Config.__len__",
+  "main.func1"
+ ],
+ "main.Config.__getitem__": [],
+ "main.Config.__iter__": [
+  "<builtin>.iter"
+ ],
+ "main.Config.__len__": [],
+ "main.func1": []
+}

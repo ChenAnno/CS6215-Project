@@ -1,0 +1,15 @@
+{
+    "main": [
+        "functools.singledispatch",
+        "functools.singledispatch.register",
+        "functools.singledispatch.wrapper",
+        "main.q8dcf_0",
+        "main.q8dcf_1"
+    ],
+    "main.q8dcf_0": [],
+    "main.q8dcf_1": [],
+    "main.q8dcf_2": [],
+    "functools.singledispatch": [],
+    "functools.singledispatch.register": [],
+    "functools.singledispatch.wrapper": []
+}

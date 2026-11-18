@@ -1,0 +1,11 @@
+{
+ "ext.parent.__init__": [],
+ "ext.parent.parent_fn": [],
+ "main": [
+  "ext.parent.__init__",
+  "main.A.fn"
+ ],
+ "main.A.fn": [
+  "ext.parent.parent_fn"
+ ]
+}

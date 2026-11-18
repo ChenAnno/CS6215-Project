@@ -1,0 +1,12 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.fetch": [],
+ "main.start": [
+  "main.fetch",
+  "main.wait_for_it"
+ ],
+ "main.wait_for_it": []
+}

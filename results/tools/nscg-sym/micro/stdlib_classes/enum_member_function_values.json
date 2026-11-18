@@ -1,0 +1,11 @@
+{
+ "main": [
+  "enum.member",
+  "enum.member.apply"
+ ],
+ "main.Operation.apply": [
+  "enum.Enum.value"
+ ],
+ "main.add": [],
+ "main.subtract": []
+}

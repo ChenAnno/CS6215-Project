@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.lookup",
+  "typing.NewType",
+  "typing.NewType.__call__"
+ ],
+ "typing.NewType": [],
+ "main.lookup": [],
+ "typing.NewType.__call__": []
+}

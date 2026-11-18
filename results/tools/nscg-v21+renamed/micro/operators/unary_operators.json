@@ -1,0 +1,13 @@
+{
+ "main": [
+  "<builtin>.abs",
+  "main.q1b9c_0.__abs__",
+  "main.q1b9c_0.__invert__",
+  "main.q1b9c_0.__neg__",
+  "main.q1b9c_0.__pos__"
+ ],
+ "main.q1b9c_0.__abs__": [],
+ "main.q1b9c_0.__invert__": [],
+ "main.q1b9c_0.__neg__": [],
+ "main.q1b9c_0.__pos__": []
+}

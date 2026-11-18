@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.wrapper"
+ ],
+ "main.func1": [],
+ "main.func2": [],
+ "main.target": [
+  "main.func1",
+  "main.func2"
+ ],
+ "main.wrapper": [
+  "main.target"
+ ]
+}

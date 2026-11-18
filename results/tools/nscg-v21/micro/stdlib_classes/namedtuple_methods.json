@@ -1,0 +1,10 @@
+{
+ "main": [
+  "collections.namedtuple",
+  "main.Point.norm",
+  "namedtuple('Point', 'x y').__init__"
+ ],
+ "main.Point.norm": [
+  "<builtin>.abs"
+ ]
+}

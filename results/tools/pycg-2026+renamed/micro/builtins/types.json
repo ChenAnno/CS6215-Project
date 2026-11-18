@@ -1,0 +1,10 @@
+{
+ "<builtin>.dict.items": [],
+ "<builtin>.str.join": [],
+ "<builtin>.str.split": [],
+ "main": [
+  "<builtin>.dict.items",
+  "<builtin>.str.join",
+  "<builtin>.str.split"
+ ]
+}

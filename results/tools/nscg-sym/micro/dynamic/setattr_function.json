@@ -1,0 +1,6 @@
+{
+ "main": [
+  "<builtin>.setattr"
+ ],
+ "main.on_click": []
+}

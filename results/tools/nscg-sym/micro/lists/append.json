@@ -1,0 +1,6 @@
+{
+ "main": [
+  "<builtin>.list.append"
+ ],
+ "main.func1": []
+}

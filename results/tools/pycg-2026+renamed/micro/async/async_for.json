@@ -1,0 +1,15 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.qd36b_1"
+ ],
+ "main.qd36b_0.__aiter__": [],
+ "main.qd36b_0.__anext__": [],
+ "main.qd36b_0.__init__": [],
+ "main.qd36b_1": [
+  "main.qd36b_0.__aiter__",
+  "main.qd36b_0.__anext__",
+  "main.qd36b_0.__init__"
+ ]
+}

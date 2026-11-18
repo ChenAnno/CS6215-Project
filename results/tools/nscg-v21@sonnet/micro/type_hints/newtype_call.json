@@ -1,0 +1,7 @@
+{
+ "main": [
+  "main.lookup",
+  "typing.NewType"
+ ],
+ "main.lookup": []
+}

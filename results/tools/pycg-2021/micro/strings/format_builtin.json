@@ -1,0 +1,7 @@
+{
+ "<builtin>.format": [],
+ "main": [
+  "<builtin>.format"
+ ],
+ "main.Money.__format__": []
+}

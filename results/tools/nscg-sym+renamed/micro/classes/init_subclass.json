@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.q37a9_1.__init_subclass__"
+ ],
+ "main.q37a9_1.__init_subclass__": [
+  "<builtin>.list.append",
+  "<builtin>.super"
+ ]
+}

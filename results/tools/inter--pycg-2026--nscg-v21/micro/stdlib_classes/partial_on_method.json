@@ -1,0 +1,8 @@
+{
+ "functools.partial": [],
+ "main": [
+  "functools.partial"
+ ],
+ "functools.partial.__call__": [],
+ "main.Logger.log": []
+}

@@ -1,0 +1,13 @@
+{
+    "main": [
+        "main.qc0a3_0.__init__",
+        "main.qc0a3_0.__iter__",
+        "main.qc0a3_0.__next__"
+    ],
+    "main.qc0a3_0.__init__": [],
+    "main.qc0a3_0.__iter__": [],
+    "main.qc0a3_0.__next__": [
+        "<builtin>.StopIteration"
+    ],
+    "<builtin>.StopIteration": []
+}

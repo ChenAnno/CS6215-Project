@@ -1,0 +1,1 @@
+{"units": [{"unit": "functions/assigned_call", "answers": {"main": ["main.q99b2_0"], "main.q99b2_0": []}, "sites": [{"id": "s1", "caller": "main", "line": 5, "col": 1, "kind": "call", "text": "a()", "resolved": ["main.q99b2_0"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

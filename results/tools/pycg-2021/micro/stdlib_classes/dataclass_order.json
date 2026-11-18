@@ -1,0 +1,9 @@
+{
+ "<builtin>.sorted": [],
+ "main": [
+  "<builtin>.sorted"
+ ],
+ "main.Part.__eq__": [],
+ "main.Part.__init__": [],
+ "main.Part.__lt__": []
+}

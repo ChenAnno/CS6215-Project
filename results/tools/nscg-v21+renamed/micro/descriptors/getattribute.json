@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.q5bd0_0.__getattribute__",
+  "main.q5bd0_0.q5bd0_2"
+ ],
+ "main.q5bd0_0.__getattribute__": [
+  "<builtin>.object.__getattribute__",
+  "main.q5bd0_1"
+ ],
+ "main.q5bd0_0.q5bd0_2": [],
+ "main.q5bd0_1": []
+}

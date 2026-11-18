@@ -1,0 +1,13 @@
+{
+ "<builtin>.iter": [],
+ "<builtin>.len": [],
+ "main": [
+  "<builtin>.len"
+ ],
+ "main.Meta.__iter__": [
+  "<builtin>.iter"
+ ],
+ "main.Meta.__len__": [
+  "<builtin>.len"
+ ]
+}

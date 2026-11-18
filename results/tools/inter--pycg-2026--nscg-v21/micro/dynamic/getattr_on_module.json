@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.getattr",
+  "commands.build"
+ ],
+ "commands.build": [],
+ "<builtin>.getattr": [],
+ "commands.clean": [],
+ "commands": []
+}

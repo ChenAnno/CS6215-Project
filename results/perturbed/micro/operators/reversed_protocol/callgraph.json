@@ -1,0 +1,18 @@
+{
+    "main": [
+        "<builtin>.list",
+        "<builtin>.reversed",
+        "main.q4969_0.__reversed__",
+        "main.q4969_1.__getitem__",
+        "main.q4969_1.__len__"
+    ],
+    "main.q4969_0.__reversed__": [
+        "<builtin>.iter"
+    ],
+    "main.q4969_0.__len__": [],
+    "main.q4969_1.__len__": [],
+    "main.q4969_1.__getitem__": [],
+    "<builtin>.reversed": [],
+    "<builtin>.iter": [],
+    "<builtin>.list": []
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/submodule_bound_by_other_import", "answers": {"s1": ["pkg.extra.run"]}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 1, "kind": "call", "text": "pkg.extra.run()", "resolved": ["pkg.extra.run"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

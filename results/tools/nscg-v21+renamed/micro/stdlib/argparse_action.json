@@ -1,0 +1,12 @@
+{
+ "main": [
+  "argparse.Action.__init__",
+  "argparse.ArgumentParser",
+  "argparse.ArgumentParser.add_argument",
+  "argparse.ArgumentParser.parse_args",
+  "main.qf5bc_0.__call__"
+ ],
+ "main.qf5bc_0.__call__": [
+  "<builtin>.setattr"
+ ]
+}

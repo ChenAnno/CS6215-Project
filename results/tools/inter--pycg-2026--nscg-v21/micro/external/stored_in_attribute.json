@@ -1,0 +1,11 @@
+{
+ "main.Service.__init__": [
+  "ext.Client"
+ ],
+ "main": [
+  "main.Service.__init__",
+  "main.Service.run"
+ ],
+ "main.Service.run": [],
+ "ext.Client": []
+}

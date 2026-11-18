@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.staticmethod",
+  "main.MyClass.func"
+ ],
+ "<builtin>.staticmethod": [],
+ "main.MyClass.func": []
+}

@@ -1,0 +1,16 @@
+{
+ "main": [
+  "contextlib.contextmanager",
+  "main.fail",
+  "main.guarded",
+  "main.never"
+ ],
+ "main.fail": [
+  "<builtin>.ValueError"
+ ],
+ "main.guarded": [
+  "main.recover"
+ ],
+ "main.never": [],
+ "main.recover": []
+}

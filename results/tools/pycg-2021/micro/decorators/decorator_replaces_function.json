@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.disabled",
+  "main.expensive"
+ ],
+ "main.disabled": [],
+ "main.expensive": [],
+ "main.noop": []
+}

@@ -1,0 +1,12 @@
+{
+ "main": [
+  "<builtin>.generator.send",
+  "<builtin>.next",
+  "main.func1",
+  "main.worker"
+ ],
+ "main.func1": [],
+ "main.worker": [
+  "main.func1"
+ ]
+}

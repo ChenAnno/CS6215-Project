@@ -1,0 +1,1 @@
+{"units": [{"unit": "comprehensions/dict_comprehension_lookup", "answers": {"s1": ["main.func1", "main.func2"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "table['second']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

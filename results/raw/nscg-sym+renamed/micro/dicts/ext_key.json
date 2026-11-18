@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/ext_key", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "d[key]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.compute"
+ ],
+ "main.make_type": [],
+ "main.compute": [
+  "main.make_type"
+ ]
+}

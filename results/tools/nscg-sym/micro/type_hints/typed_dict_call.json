@@ -1,0 +1,6 @@
+{
+ "main": [
+  "typing.TypedDict.__init__",
+  "typing.TypedDict.get"
+ ]
+}

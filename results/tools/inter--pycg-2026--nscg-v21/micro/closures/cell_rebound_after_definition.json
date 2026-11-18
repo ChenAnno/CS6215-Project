@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.outer",
+  "main.outer.inner"
+ ],
+ "main.func1": [],
+ "main.outer.inner": [
+  "main.func2"
+ ],
+ "main.func2": [],
+ "main.outer": []
+}

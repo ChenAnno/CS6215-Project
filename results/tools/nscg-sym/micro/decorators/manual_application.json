@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.hello",
+  "main.shout",
+  "main.shout.wrapper"
+ ],
+ "main.hello": [],
+ "main.shout": [],
+ "main.shout.wrapper": []
+}

@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.bytes",
+  "<builtin>.dict",
+  "<builtin>.int",
+  "<builtin>.list",
+  "<builtin>.set",
+  "<builtin>.str",
+  "<builtin>.tuple"
+ ]
+}

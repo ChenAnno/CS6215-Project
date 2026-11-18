@@ -1,0 +1,13 @@
+{
+ "main.func4": [],
+ "main": [
+  "main.run"
+ ],
+ "main.func1": [],
+ "main.func2": [],
+ "main.func3": [],
+ "main.run": [
+  "main.func2",
+  "main.func4"
+ ]
+}

@@ -1,0 +1,18 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.q9973_2"
+ ],
+ "main.q9973_0": [],
+ "main.q9973_1": [],
+ "main.q9973_2": [
+  "<builtin>.async_generator.__aiter__",
+  "<builtin>.async_generator.__anext__",
+  "<builtin>.async_generator.aclose",
+  "main.q9973_1",
+  "main.q9973_3"
+ ],
+ "main.q9973_3": [
+  "main.q9973_0"
+ ]
+}

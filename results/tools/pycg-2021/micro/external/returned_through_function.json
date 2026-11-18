@@ -1,0 +1,11 @@
+{
+ "ext.connect": [],
+ "ext.connect.send": [],
+ "main": [
+  "ext.connect.send",
+  "main.get_client"
+ ],
+ "main.get_client": [
+  "ext.connect"
+ ]
+}

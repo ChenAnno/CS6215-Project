@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.qe5ff_1"
+ ],
+ "main.qe5ff_0.qe5ff_2": [],
+ "main.qe5ff_0.start": [],
+ "main.qe5ff_1": [
+  "<builtin>.getattr",
+  "main.qe5ff_0.qe5ff_2",
+  "main.qe5ff_0.start"
+ ]
+}

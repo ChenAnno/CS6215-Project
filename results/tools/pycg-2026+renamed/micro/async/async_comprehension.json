@@ -1,0 +1,13 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.qe35a_2"
+ ],
+ "main.qe35a_0": [],
+ "main.qe35a_1": [],
+ "main.qe35a_2": [
+  "main.qe35a_0",
+  "main.qe35a_1"
+ ]
+}

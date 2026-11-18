@@ -1,0 +1,15 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "asyncio.gather": [],
+ "asyncio.run": [],
+ "main.second": [],
+ "main.start": [
+  "asyncio.gather",
+  "main.first",
+  "main.second"
+ ],
+ "main.first": []
+}

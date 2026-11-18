@@ -1,0 +1,1 @@
+{"units": [{"unit": "strings/fstring_call", "answers": {"main": ["main.qef5b_0"], "main.qef5b_0": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 20, "kind": "call", "text": "qef5b_0()", "resolved": ["main.qef5b_0"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

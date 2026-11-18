@@ -1,0 +1,7 @@
+{
+ "main": [
+  "io.StringIO",
+  "io.StringIO.getvalue",
+  "io.StringIO.write"
+ ]
+}

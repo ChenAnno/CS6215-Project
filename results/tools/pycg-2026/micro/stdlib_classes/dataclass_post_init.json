@@ -1,0 +1,16 @@
+{
+ "<builtin>.str.lower": [],
+ "dataclasses.dataclass": [],
+ "dataclasses.field": [],
+ "main": [
+  "dataclasses.dataclass",
+  "dataclasses.field"
+ ],
+ "main.Item.__post_init__": [
+  "main.normalize"
+ ],
+ "main.empty_tags": [],
+ "main.normalize": [
+  "<builtin>.str.lower"
+ ]
+}

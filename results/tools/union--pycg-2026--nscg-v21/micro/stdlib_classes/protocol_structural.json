@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.welcome"
+ ],
+ "main.welcome": [
+  "main.English.greet",
+  "main.French.greet"
+ ],
+ "main.Greeter.greet": [],
+ "main.English.greet": [],
+ "main.French.greet": []
+}

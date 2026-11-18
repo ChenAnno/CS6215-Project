@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.q0358_0.__init__"
+ ],
+ "main.q0358_0.__init__": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.super"
+ ]
+}

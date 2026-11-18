@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.classmethod",
+  "main.Color.default"
+ ],
+ "main.Color.default": [],
+ "main.Color.describe": [
+  "enum.Enum.name.lower"
+ ]
+}

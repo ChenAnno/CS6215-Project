@@ -1,0 +1,16 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.Deferred.__await__": [
+  "main.compute",
+  "types.CoroutineType.__await__"
+ ],
+ "main.compute": [],
+ "main.start": [
+  "main.Deferred.__await__"
+ ],
+ "types.CoroutineType.__await__": []
+}

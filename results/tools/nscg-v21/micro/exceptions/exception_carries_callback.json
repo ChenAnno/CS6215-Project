@@ -1,0 +1,18 @@
+{
+ "main": [
+  "main.fetch",
+  "main.retry_fetch"
+ ],
+ "main.RetryError.__init__": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.super"
+ ],
+ "main.fetch": [
+  "main.RetryError.__init__"
+ ],
+ "main.retry_fetch": [],
+ "main.retry_store": [],
+ "main.store": [
+  "main.RetryError.__init__"
+ ]
+}

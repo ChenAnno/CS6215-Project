@@ -1,0 +1,9 @@
+{
+ "<builtin>.sorted": [],
+ "functools.cmp_to_key": [],
+ "main": [
+  "<builtin>.sorted",
+  "functools.cmp_to_key"
+ ],
+ "main.q319c_0": []
+}

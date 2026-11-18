@@ -1,0 +1,18 @@
+{
+    "main": [
+        "dataclasses.dataclass",
+        "dataclasses.field",
+        "main.q387c_0.__post_init__",
+        "main.q387c_1"
+    ],
+    "main.q387c_1": [],
+    "main.q387c_2": [
+        "<builtin>.str.lower"
+    ],
+    "main.q387c_0.__post_init__": [
+        "main.q387c_2"
+    ],
+    "dataclasses.field": [],
+    "dataclasses.dataclass": [],
+    "<builtin>.str.lower": []
+}

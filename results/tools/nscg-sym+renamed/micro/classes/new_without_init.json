@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.qf5b1_0.__new__",
+  "main.qf5b1_0.qf5b1_1"
+ ],
+ "main.qf5b1_0.__new__": [
+  "<builtin>.super"
+ ],
+ "main.qf5b1_0.qf5b1_1": [
+  "<builtin>.str"
+ ]
+}

@@ -1,0 +1,25 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "types.AsyncGeneratorType.aclose": [],
+ "types.AsyncGeneratorType.__anext__": [],
+ "asyncio.run": [],
+ "main.cleanup": [],
+ "main.start": [
+  "<builtin>.async_generator.__aiter__",
+  "<builtin>.async_generator.__anext__",
+  "<builtin>.async_generator.aclose",
+  "main.first",
+  "main.ticks",
+  "types.AsyncGeneratorType.__aiter__",
+  "types.AsyncGeneratorType.__anext__",
+  "types.AsyncGeneratorType.aclose"
+ ],
+ "main.first": [],
+ "main.ticks": [
+  "main.cleanup"
+ ],
+ "types.AsyncGeneratorType.__aiter__": []
+}

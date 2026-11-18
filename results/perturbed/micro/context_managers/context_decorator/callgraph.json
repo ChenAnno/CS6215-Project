@@ -1,0 +1,20 @@
+{
+    "main": [
+        "contextlib.ContextDecorator.__call__",
+        "contextlib.ContextDecorator.__call__.inner",
+        "main.q7805_0.__enter__",
+        "main.q7805_0.__exit__",
+        "main.q7805_3"
+    ],
+    "main.q7805_0.__enter__": [
+        "main.q7805_1"
+    ],
+    "main.q7805_0.__exit__": [
+        "main.q7805_2"
+    ],
+    "main.q7805_1": [],
+    "main.q7805_2": [],
+    "main.q7805_3": [],
+    "contextlib.ContextDecorator.__call__": [],
+    "contextlib.ContextDecorator.__call__.inner": []
+}

@@ -1,0 +1,107 @@
+{
+ "key": "661fd7dd67ea2c29a38b75713917171b4021da5dd7af66a25e23f1a2a49f56ab",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Notes\nFor implicit sites (kind is not call/decorator/raise) answer only package functions that really run. For `call` and `decorator` sites also add callees outside the package, named by the conventions above.\n\n## Source (a small program; `main.py` is run as the script `main`), with line numbers\n### file main.py (module `main`)\n 1| def func1():\n 2|     pass\n 3| \n 4| def func2():\n 5|     pass\n 6| \n 7| handlers = [func1]\n 8| snapshot = handlers.copy()\n 9| handlers[0] = func2\n10| snapshot[0]()\n\n## Call sites to decide\ns1 | caller main | line 8 col 12 | call | `handlers.copy()`\ns2 | caller main | line 10 col 1 | call | `snapshot[0]()`\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s1",
+    "callees": [
+     "<builtin>.list.copy"
+    ]
+   },
+   {
+    "id": "s2",
+    "callees": [
+     "main.func1"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2449,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 321,
+  "output_tokens_details": {
+   "thinking_tokens": 218
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2449,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 321,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 2449,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2449
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00094498,
+ "seconds": 3.78,
+ "attempt": 1,
+ "time": "2026-11-18T18:17:27+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 2780,
+   "outputTokens": 343,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 2449,
+   "webSearchRequests": 0,
+   "costUSD": 0.00094498,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 218,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 2449,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

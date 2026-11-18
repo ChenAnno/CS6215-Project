@@ -1,0 +1,14 @@
+{
+    "main": [
+        "collections.OrderedDict",
+        "collections.OrderedDict.items",
+        "collections.OrderedDict.setdefault",
+        "main.q91c3_0",
+        "main.q91c3_1"
+    ],
+    "main.q91c3_0": [],
+    "main.q91c3_1": [],
+    "collections.OrderedDict": [],
+    "collections.OrderedDict.setdefault": [],
+    "collections.OrderedDict.items": []
+}

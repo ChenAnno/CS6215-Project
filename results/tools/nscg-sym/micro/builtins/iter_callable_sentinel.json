@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.iter"
+ ],
+ "main.next_value": [
+  "<builtin>.list.pop"
+ ]
+}

@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.qb629_1.__init__"
+ ],
+ "main.qb629_0.__set__": [
+  "main.qb629_2"
+ ],
+ "main.qb629_1.__init__": [
+  "<builtin>.object.__setattr__"
+ ],
+ "main.qb629_2": []
+}

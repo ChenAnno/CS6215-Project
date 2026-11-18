@@ -1,0 +1,17 @@
+{
+ "<builtin>.object.__setattr__": [],
+ "<builtin>.super": [],
+ "main": [
+  "main.qb465_0.__init__",
+  "main.qb465_0.__setattr__"
+ ],
+ "main.qb465_0.__init__": [
+  "main.qb465_0.__setattr__"
+ ],
+ "main.qb465_0.__setattr__": [
+  "<builtin>.object.__setattr__",
+  "<builtin>.super",
+  "main.qb465_1"
+ ],
+ "main.qb465_1": []
+}

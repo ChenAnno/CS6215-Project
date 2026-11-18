@@ -1,0 +1,9 @@
+{
+ "hooks": [],
+ "hooks.q53dc_1": [],
+ "main": [
+  "hooks.q53dc_1",
+  "main.q53dc_0"
+ ],
+ "main.q53dc_0": []
+}

@@ -1,0 +1,12 @@
+{
+ "<builtin>.str.title": [],
+ "main": [
+  "<builtin>.list.append",
+  "<builtin>.str.title",
+  "main.make_list",
+  "main.make_name"
+ ],
+ "main.make_name": [],
+ "<builtin>.list.append": [],
+ "main.make_list": []
+}

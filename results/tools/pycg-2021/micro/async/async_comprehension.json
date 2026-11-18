@@ -1,0 +1,13 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.double": [],
+ "main.numbers": [],
+ "main.start": [
+  "main.double",
+  "main.numbers"
+ ]
+}

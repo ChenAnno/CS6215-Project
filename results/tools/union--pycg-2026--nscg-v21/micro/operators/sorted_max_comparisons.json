@@ -1,0 +1,16 @@
+{
+ "main": [
+  "<builtin>.max",
+  "<builtin>.sorted",
+  "main.Score.__gt__",
+  "main.Score.__init__",
+  "main.Score.__lt__"
+ ],
+ "main.Score.__le__": [],
+ "main.Score.__ge__": [],
+ "<builtin>.sorted": [],
+ "main.Score.__init__": [],
+ "<builtin>.max": [],
+ "main.Score.__gt__": [],
+ "main.Score.__lt__": []
+}

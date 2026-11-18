@@ -1,0 +1,8 @@
+{
+ "enum.auto": [],
+ "main": [],
+ "main.Color": [
+  "enum.auto"
+ ],
+ "main.Color._generate_next_value_": []
+}

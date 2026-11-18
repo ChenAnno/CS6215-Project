@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.make",
+  "main.make.inner"
+ ],
+ "main.func1": [],
+ "main.func2": [],
+ "main.make": [],
+ "main.make.inner": []
+}

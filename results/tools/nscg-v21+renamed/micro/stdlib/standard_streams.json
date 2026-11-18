@@ -1,0 +1,9 @@
+{
+ "main": [
+  "io.TextIOWrapper.write",
+  "main.q6e71_0"
+ ],
+ "main.q6e71_0": [
+  "io.TextIOWrapper.write"
+ ]
+}

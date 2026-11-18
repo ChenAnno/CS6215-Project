@@ -1,0 +1,15 @@
+{
+ "main": [
+  "<builtin>.list",
+  "<builtin>.map",
+  "main.qa32d_0",
+  "main.qa32d_1",
+  "main.qa32d_2.qa32d_0"
+ ],
+ "main.qa32d_0": [],
+ "main.qa32d_1": [
+  "main.qa32d_0"
+ ],
+ "main.qa32d_2": [],
+ "main.qa32d_2.qa32d_0": []
+}

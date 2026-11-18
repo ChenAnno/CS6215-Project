@@ -1,0 +1,12 @@
+{
+ "collections.OrderedDict": [],
+ "collections.OrderedDict.items": [],
+ "collections.OrderedDict.setdefault": [],
+ "main": [
+  "collections.OrderedDict",
+  "collections.OrderedDict.items",
+  "collections.OrderedDict.setdefault"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

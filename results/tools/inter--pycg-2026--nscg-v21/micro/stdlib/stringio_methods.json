@@ -1,0 +1,10 @@
+{
+ "io.StringIO": [],
+ "main": [
+  "io.StringIO",
+  "io.StringIO.getvalue",
+  "io.StringIO.write"
+ ],
+ "io.StringIO.getvalue": [],
+ "io.StringIO.write": []
+}

@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.Point.shifted",
+  "main.Point.total",
+  "typing.NamedTuple.__init__"
+ ],
+ "main.Point.shifted": [
+  "typing.NamedTuple.__init__"
+ ],
+ "main.Point.total": [],
+ "typing.NamedTuple.__init__": []
+}

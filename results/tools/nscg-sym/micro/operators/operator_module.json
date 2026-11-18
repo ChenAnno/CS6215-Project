@@ -1,0 +1,9 @@
+{
+ "main": [
+  "functools.reduce",
+  "operator.add",
+  "operator.getitem"
+ ],
+ "main.Vector.__add__": [],
+ "main.Vector.__getitem__": []
+}

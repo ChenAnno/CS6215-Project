@@ -1,0 +1,13 @@
+{
+ "<builtin>.list.append": [],
+ "<builtin>.object.__init_subclass__": [],
+ "<builtin>.super": [],
+ "main": [
+  "main.Plugin.__init_subclass__"
+ ],
+ "main.Plugin.__init_subclass__": [
+  "<builtin>.list.append",
+  "<builtin>.object.__init_subclass__",
+  "<builtin>.super"
+ ]
+}

@@ -1,0 +1,17 @@
+{
+ "<builtin>.classmethod": [],
+ "<builtin>.staticmethod": [],
+ "main": [
+  "<builtin>.classmethod",
+  "<builtin>.staticmethod",
+  "main.traced",
+  "main.traced.wrapper"
+ ],
+ "main.Tool.build": [],
+ "main.Tool.helper": [],
+ "main.traced": [],
+ "main.traced.wrapper": [
+  "main.Tool.build",
+  "main.Tool.helper"
+ ]
+}

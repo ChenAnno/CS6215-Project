@@ -1,0 +1,13 @@
+{
+ "asyncio.TaskGroup": [],
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.qdc89_0"
+ ],
+ "main.qdc89_0": [
+  "asyncio.TaskGroup",
+  "main.qdc89_1"
+ ],
+ "main.qdc89_1": []
+}

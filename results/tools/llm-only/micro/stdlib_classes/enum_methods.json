@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.Color.default",
+  "main.Color.describe"
+ ],
+ "main.Color.default": [],
+ "main.Color.describe": [
+  "<builtin>.str.lower"
+ ]
+}

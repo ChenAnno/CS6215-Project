@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.classmethod",
+  "main.qb7c5_0.qb7c5_1"
+ ],
+ "main.qb7c5_0.qb7c5_1": [],
+ "main.qb7c5_0.qb7c5_2": [
+  "enum.Enum.name.lower"
+ ]
+}

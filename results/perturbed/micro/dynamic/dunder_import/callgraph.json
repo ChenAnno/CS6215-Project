@@ -1,0 +1,10 @@
+{
+    "main": [
+        "<builtin>.__import__",
+        "shop.cart.q5fc6_0"
+    ],
+    "shop": [],
+    "shop.cart": [],
+    "shop.cart.q5fc6_0": [],
+    "<builtin>.__import__": []
+}

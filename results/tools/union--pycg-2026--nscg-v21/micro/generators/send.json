@@ -1,0 +1,15 @@
+{
+ "main": [
+  "<builtin>.generator.send",
+  "<builtin>.next",
+  "main.func1",
+  "main.worker",
+  "types.GeneratorType.send"
+ ],
+ "main.func1": [],
+ "<builtin>.next": [],
+ "main.worker": [
+  "main.func1"
+ ],
+ "types.GeneratorType.send": []
+}

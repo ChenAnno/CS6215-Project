@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.sorted",
+  "dataclasses.dataclass",
+  "main.q09bd_0.__init__"
+ ],
+ "main.q09bd_0.__eq__": [],
+ "main.q09bd_0.__init__": [],
+ "main.q09bd_0.__lt__": []
+}

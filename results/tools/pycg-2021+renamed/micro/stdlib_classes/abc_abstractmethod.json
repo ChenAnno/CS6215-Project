@@ -1,0 +1,17 @@
+{
+ "abc.ABC.__init__": [],
+ "abc.abstractmethod": [],
+ "main": [
+  "abc.ABC.__init__",
+  "main.qddcf_0.qddcf_3"
+ ],
+ "main.qddcf_0": [
+  "abc.abstractmethod"
+ ],
+ "main.qddcf_0.qddcf_2": [],
+ "main.qddcf_0.qddcf_3": [
+  "main.qddcf_0.qddcf_2",
+  "main.qddcf_1.qddcf_2"
+ ],
+ "main.qddcf_1.qddcf_2": []
+}

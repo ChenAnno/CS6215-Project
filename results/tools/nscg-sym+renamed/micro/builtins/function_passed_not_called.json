@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.callable",
+  "<builtin>.id",
+  "<builtin>.isinstance",
+  "<builtin>.issubclass",
+  "<builtin>.print"
+ ],
+ "main.q3c8f_1": []
+}

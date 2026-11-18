@@ -1,0 +1,20 @@
+{
+ "main": [
+  "contextlib.contextmanager",
+  "contextlib.contextmanager.helper",
+  "main.fail",
+  "main.guarded",
+  "main.never"
+ ],
+ "main.never": [],
+ "main.recover": [],
+ "main.fail": [
+  "<builtin>.ValueError"
+ ],
+ "main.guarded": [
+  "main.recover"
+ ],
+ "<builtin>.ValueError": [],
+ "contextlib.contextmanager.helper": [],
+ "contextlib.contextmanager": []
+}

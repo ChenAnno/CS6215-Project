@@ -1,0 +1,18 @@
+{
+ "main": [
+  "main.q9356_3",
+  "main.q9356_4"
+ ],
+ "main.q9356_1.__instancecheck__": [
+  "main.q9356_2"
+ ],
+ "main.q9356_2": [],
+ "main.q9356_3": [
+  "<builtin>.isinstance",
+  "main.q9356_1.__instancecheck__"
+ ],
+ "main.q9356_4": [
+  "<builtin>.isinstance",
+  "main.q9356_1.__instancecheck__"
+ ]
+}

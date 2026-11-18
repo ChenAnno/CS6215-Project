@@ -1,0 +1,10 @@
+{
+ "accel.native.compute": [],
+ "main": [
+  "accel.native.compute",
+  "accel.pure.compute"
+ ],
+ "accel.pure": [],
+ "accel": [],
+ "accel.pure.compute": []
+}

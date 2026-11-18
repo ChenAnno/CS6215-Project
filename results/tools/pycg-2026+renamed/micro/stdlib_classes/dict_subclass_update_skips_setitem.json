@@ -1,0 +1,23 @@
+{
+ "<builtin>.dict.__init__": [],
+ "<builtin>.dict.__setitem__": [],
+ "<builtin>.dict.update": [],
+ "<builtin>.super": [],
+ "main": [
+  "<builtin>.dict.__init__",
+  "main.qa32f_1",
+  "main.qa32f_2"
+ ],
+ "main.qa32f_0.__setitem__": [
+  "<builtin>.dict.__setitem__",
+  "<builtin>.super",
+  "main.qa32f_3"
+ ],
+ "main.qa32f_1": [
+  "main.qa32f_0.__setitem__"
+ ],
+ "main.qa32f_2": [
+  "<builtin>.dict.update"
+ ],
+ "main.qa32f_3": []
+}

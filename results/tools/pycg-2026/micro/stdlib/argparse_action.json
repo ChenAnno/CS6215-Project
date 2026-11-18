@@ -1,0 +1,14 @@
+{
+ "<builtin>.setattr": [],
+ "argparse.ArgumentParser": [],
+ "argparse.ArgumentParser.add_argument": [],
+ "argparse.ArgumentParser.parse_args": [],
+ "main": [
+  "argparse.ArgumentParser",
+  "argparse.ArgumentParser.add_argument",
+  "argparse.ArgumentParser.parse_args"
+ ],
+ "main.Store.__call__": [
+  "<builtin>.setattr"
+ ]
+}

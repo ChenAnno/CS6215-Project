@@ -1,0 +1,12 @@
+{
+    "main": [
+        "<builtin>.list.append",
+        "<builtin>.str.title",
+        "main.qb9c9_0",
+        "main.qb9c9_1"
+    ],
+    "main.qb9c9_0": [],
+    "main.qb9c9_1": [],
+    "<builtin>.list.append": [],
+    "<builtin>.str.title": []
+}

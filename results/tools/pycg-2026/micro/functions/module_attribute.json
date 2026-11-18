@@ -1,0 +1,10 @@
+{
+ "helpers": [],
+ "helpers.run": [
+  "main.func1"
+ ],
+ "main": [
+  "helpers.run"
+ ],
+ "main.func1": []
+}

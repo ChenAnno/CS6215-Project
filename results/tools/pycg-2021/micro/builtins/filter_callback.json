@@ -1,0 +1,9 @@
+{
+ "<builtin>.filter": [],
+ "<builtin>.list": [],
+ "main": [
+  "<builtin>.filter",
+  "<builtin>.list"
+ ],
+ "main.is_even": []
+}

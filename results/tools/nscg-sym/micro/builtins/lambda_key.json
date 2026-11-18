@@ -1,0 +1,9 @@
+{
+ "main": [
+  "<builtin>.max"
+ ],
+ "main.<lambda1>": [
+  "main.weight"
+ ],
+ "main.weight": []
+}

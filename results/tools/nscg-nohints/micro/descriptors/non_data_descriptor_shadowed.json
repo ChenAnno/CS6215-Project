@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.first_read",
+  "main.second_read"
+ ],
+ "main.Lazy.__get__": [
+  "main.compute"
+ ],
+ "main.compute": [],
+ "main.first_read": [],
+ "main.second_read": []
+}

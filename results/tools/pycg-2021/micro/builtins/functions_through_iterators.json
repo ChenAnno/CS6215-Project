@@ -1,0 +1,22 @@
+{
+ "<builtin>.enumerate": [],
+ "<builtin>.reversed": [],
+ "<builtin>.zip": [],
+ "main": [
+  "main.via_enumerate",
+  "main.via_reversed",
+  "main.via_zip"
+ ],
+ "main.load": [],
+ "main.reset": [],
+ "main.save": [],
+ "main.via_enumerate": [
+  "<builtin>.enumerate"
+ ],
+ "main.via_reversed": [
+  "<builtin>.reversed"
+ ],
+ "main.via_zip": [
+  "<builtin>.zip"
+ ]
+}

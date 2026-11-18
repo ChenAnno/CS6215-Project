@@ -1,0 +1,10 @@
+{
+ "<builtin>.len": [],
+ "<builtin>.sorted": [],
+ "main": [
+  "<builtin>.sorted"
+ ],
+ "main.q01b4_0": [
+  "<builtin>.len"
+ ]
+}

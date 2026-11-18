@@ -1,0 +1,14 @@
+{
+    "main": [
+        "pkg.sub.q098b_2"
+    ],
+    "pkg": [
+        "pkg.q098b_1"
+    ],
+    "pkg.q098b_1": [],
+    "pkg.sub": [
+        "pkg.sub.q098b_0"
+    ],
+    "pkg.sub.q098b_0": [],
+    "pkg.sub.q098b_2": []
+}

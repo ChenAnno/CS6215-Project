@@ -1,0 +1,12 @@
+{
+ "<builtin>.getattr": [],
+ "<builtin>.setattr": [],
+ "main": [],
+ "main.Field.__get__": [
+  "<builtin>.getattr"
+ ],
+ "main.Field.__set__": [
+  "<builtin>.setattr"
+ ],
+ "main.Field.__set_name__": []
+}

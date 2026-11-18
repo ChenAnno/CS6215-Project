@@ -1,0 +1,15 @@
+{
+ "html.parser.HTMLParser.__init__": [],
+ "main": [
+  "html.parser.HTMLParser.__init__",
+  "html.parser.HTMLParser.feed",
+  "main.LinkParser.handle_comment",
+  "main.LinkParser.handle_starttag"
+ ],
+ "main.LinkParser.handle_comment": [],
+ "main.record": [],
+ "html.parser.HTMLParser.feed": [],
+ "main.LinkParser.handle_starttag": [
+  "main.record"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.Lazy.__init__",
+  "main.Lazy.run"
+ ],
+ "main.work": [],
+ "main.Lazy.__init__": [],
+ "main.Lazy.__getattr__": [],
+ "main.Lazy.run": [
+  "main.fallback",
+  "main.work"
+ ],
+ "main.fallback": []
+}

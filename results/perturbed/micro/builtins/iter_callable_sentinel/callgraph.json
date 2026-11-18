@@ -1,0 +1,11 @@
+{
+    "main": [
+        "<builtin>.iter",
+        "main.q8c1c_0"
+    ],
+    "main.q8c1c_0": [
+        "<builtin>.list.pop"
+    ],
+    "<builtin>.iter": [],
+    "<builtin>.list.pop": []
+}

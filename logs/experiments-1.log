@@ -1,0 +1,134 @@
+[nscg-sym/micro] 622 programs, 622 units, 1867 sites
+  25/622 units, cost so far $0.000, errors 0
+  50/622 units, cost so far $0.000, errors 0
+  75/622 units, cost so far $0.000, errors 0
+  100/622 units, cost so far $0.000, errors 0
+  125/622 units, cost so far $0.000, errors 0
+  150/622 units, cost so far $0.000, errors 0
+  175/622 units, cost so far $0.000, errors 0
+  200/622 units, cost so far $0.000, errors 0
+  225/622 units, cost so far $0.000, errors 0
+  250/622 units, cost so far $0.000, errors 0
+  275/622 units, cost so far $0.000, errors 0
+  300/622 units, cost so far $0.000, errors 0
+  325/622 units, cost so far $0.000, errors 0
+  350/622 units, cost so far $0.000, errors 0
+  375/622 units, cost so far $0.000, errors 0
+  400/622 units, cost so far $0.000, errors 0
+  425/622 units, cost so far $0.000, errors 0
+  450/622 units, cost so far $0.000, errors 0
+  475/622 units, cost so far $0.000, errors 0
+  500/622 units, cost so far $0.000, errors 0
+  525/622 units, cost so far $0.000, errors 0
+  550/622 units, cost so far $0.000, errors 0
+  575/622 units, cost so far $0.000, errors 0
+  600/622 units, cost so far $0.000, errors 0
+  622/622 units, cost so far $0.000, errors 0
+[nscg-sym/micro] done in 80.6 s; requests 0, cache hits 0, cost $0.000, errors 0; validation {'kept-internal': 908, 'missing_answers': 0, 'kept-external': 463}
+[nscg-sym/macro] 4 programs, 67 units, 1973 sites
+  25/67 units, cost so far $0.000, errors 0
+  50/67 units, cost so far $0.000, errors 0
+  67/67 units, cost so far $0.000, errors 0
+[nscg-sym/macro] done in 0.6 s; requests 0, cache hits 0, cost $0.000, errors 0; validation {'kept-external': 916, 'kept-internal': 684, 'floor-added': 12, 'missing_answers': 0}
+[nscg/micro] 622 programs, 622 units, 1867 sites
+  25/622 units, cost so far $0.022, errors 0
+  50/622 units, cost so far $0.051, errors 0
+  75/622 units, cost so far $0.080, errors 0
+  100/622 units, cost so far $0.105, errors 0
+  125/622 units, cost so far $0.132, errors 0
+  150/622 units, cost so far $0.159, errors 0
+  175/622 units, cost so far $0.186, errors 0
+  200/622 units, cost so far $0.212, errors 0
+  225/622 units, cost so far $0.240, errors 0
+  250/622 units, cost so far $0.268, errors 0
+  275/622 units, cost so far $0.293, errors 0
+  300/622 units, cost so far $0.322, errors 0
+  325/622 units, cost so far $0.348, errors 0
+  350/622 units, cost so far $0.372, errors 0
+  375/622 units, cost so far $0.393, errors 0
+  400/622 units, cost so far $0.414, errors 0
+  425/622 units, cost so far $0.440, errors 0
+  450/622 units, cost so far $0.463, errors 0
+  475/622 units, cost so far $0.492, errors 0
+  500/622 units, cost so far $0.522, errors 0
+  525/622 units, cost so far $0.551, errors 0
+  550/622 units, cost so far $0.578, errors 0
+  575/622 units, cost so far $0.611, errors 0
+  600/622 units, cost so far $0.639, errors 0
+  622/622 units, cost so far $0.665, errors 0
+[nscg/micro] done in 1336.9 s; requests 604, cache hits 12, cost $0.665, errors 0; validation {'kept-internal': 1438, 'missing_answers': 0, 'kept-external': 490, 'rejected-unknown-internal': 5, 'floor-added': 18, 'init->constructor': 2}
+[nscg/macro] 4 programs, 67 units, 1973 sites
+  25/67 units, cost so far $0.090, errors 0
+  50/67 units, cost so far $0.245, errors 0
+  67/67 units, cost so far $0.376, errors 0
+[nscg/macro] done in 81.5 s; requests 64, cache hits 0, cost $0.376, errors 0; validation {'kept-external': 1093, 'kept-internal': 928, 'floor-added': 16, 'missing_answers': 0, 'rejected-unknown-internal': 3}
+[llm-only/micro] 622 programs, 622 units, 1867 sites
+  25/622 units, cost so far $0.026, errors 0
+  50/622 units, cost so far $0.052, errors 0
+  75/622 units, cost so far $0.077, errors 0
+  100/622 units, cost so far $0.102, errors 0
+  125/622 units, cost so far $0.129, errors 0
+  150/622 units, cost so far $0.157, errors 0
+  175/622 units, cost so far $0.184, errors 0
+  200/622 units, cost so far $0.210, errors 0
+  225/622 units, cost so far $0.240, errors 0
+  250/622 units, cost so far $0.265, errors 0
+  275/622 units, cost so far $0.292, errors 0
+  300/622 units, cost so far $0.319, errors 0
+  325/622 units, cost so far $0.343, errors 0
+  350/622 units, cost so far $0.367, errors 0
+  375/622 units, cost so far $0.391, errors 0
+  400/622 units, cost so far $0.415, errors 0
+  425/622 units, cost so far $0.440, errors 0
+  450/622 units, cost so far $0.463, errors 0
+  475/622 units, cost so far $0.492, errors 0
+  500/622 units, cost so far $0.521, errors 0
+  525/622 units, cost so far $0.549, errors 0
+  550/622 units, cost so far $0.574, errors 0
+  575/622 units, cost so far $0.606, errors 0
+  600/622 units, cost so far $0.632, errors 0
+  622/622 units, cost so far $0.657, errors 0
+[llm-only/micro] done in 231.5 s; requests 622, cache hits 0, cost $0.657, errors 0; validation {'missing_answers': 0}
+[llm-only/macro] 4 programs, 67 units, 1973 sites
+  25/67 units, cost so far $0.085, errors 0
+  50/67 units, cost so far $0.238, errors 0
+  67/67 units, cost so far $0.349, errors 0
+[llm-only/macro] done in 79.2 s; requests 67, cache hits 0, cost $0.349, errors 0; validation {'missing_answers': 0}
+[nscg-nohints/micro] 622 programs, 622 units, 1867 sites
+  25/622 units, cost so far $0.022, errors 0
+  50/622 units, cost so far $0.049, errors 0
+  75/622 units, cost so far $0.077, errors 0
+  100/622 units, cost so far $0.101, errors 0
+  125/622 units, cost so far $0.127, errors 0
+  150/622 units, cost so far $0.151, errors 0
+  175/622 units, cost so far $0.179, errors 0
+  200/622 units, cost so far $0.204, errors 0
+  225/622 units, cost so far $0.232, errors 0
+  250/622 units, cost so far $0.258, errors 0
+  275/622 units, cost so far $0.283, errors 0
+  300/622 units, cost so far $0.310, errors 0
+  325/622 units, cost so far $0.336, errors 0
+  350/622 units, cost so far $0.358, errors 0
+  375/622 units, cost so far $0.378, errors 0
+  400/622 units, cost so far $0.399, errors 0
+  425/622 units, cost so far $0.421, errors 0
+  450/622 units, cost so far $0.443, errors 0
+  475/622 units, cost so far $0.471, errors 0
+  500/622 units, cost so far $0.499, errors 0
+  525/622 units, cost so far $0.527, errors 0
+  550/622 units, cost so far $0.554, errors 0
+  575/622 units, cost so far $0.585, errors 0
+  600/622 units, cost so far $0.611, errors 0
+  622/622 units, cost so far $0.636, errors 0
+[nscg-nohints/micro] done in 253.6 s; requests 616, cache hits 0, cost $0.636, errors 0; validation {'kept-internal': 1405, 'missing_answers': 0, 'kept-external': 489, 'floor-added': 28, 'rejected-unknown-internal': 1}
+[nscg-nohints/macro] 4 programs, 67 units, 1973 sites
+  25/67 units, cost so far $0.086, errors 0
+  50/67 units, cost so far $0.232, errors 0
+  67/67 units, cost so far $0.347, errors 0
+[nscg-nohints/macro] done in 70.4 s; requests 64, cache hits 0, cost $0.347, errors 0; validation {'kept-external': 1034, 'kept-internal': 843, 'floor-added': 16, 'missing_answers': 0, 'rejected-unknown-internal': 12}
+[nscg-hybrid/macro] 4 programs, 67 units, 1973 sites
+  25/67 units, cost so far $0.089, errors 0
+  50/67 units, cost so far $0.255, errors 0
+  67/67 units, cost so far $0.387, errors 0
+[nscg-hybrid/macro] done in 79.8 s; requests 64, cache hits 0, cost $0.387, errors 0; validation {'kept-external': 1094, 'kept-internal': 914, 'floor-added': 16, 'missing_answers': 0}
+ALL-DONE

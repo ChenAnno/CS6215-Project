@@ -1,0 +1,7 @@
+{
+ "main": [],
+ "main.Meta.__prepare__": [
+  "main.make_namespace"
+ ],
+ "main.make_namespace": []
+}

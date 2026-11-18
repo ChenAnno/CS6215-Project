@@ -1,0 +1,11 @@
+{
+ "<builtin>.list.sort": [],
+ "main": [
+  "<builtin>.list.sort",
+  "main.<lambda1>",
+  "main.func_b"
+ ],
+ "main.<lambda1>": [],
+ "main.func_a": [],
+ "main.func_b": []
+}

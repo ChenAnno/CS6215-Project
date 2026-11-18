@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/ext_index", "answers": {"s1": ["main.func1", "main.func2"]}, "sites": [{"id": "s1", "caller": "main", "line": 11, "col": 1, "kind": "call", "text": "ls[key]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

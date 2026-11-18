@@ -1,0 +1,15 @@
+{
+ "main": [
+  "main.make",
+  "main.make.call",
+  "main.make.swap"
+ ],
+ "main.func2": [],
+ "main.make.swap": [],
+ "main.make.call": [
+  "main.func1",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.make": []
+}

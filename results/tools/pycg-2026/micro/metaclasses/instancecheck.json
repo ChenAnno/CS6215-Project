@@ -1,0 +1,17 @@
+{
+ "<builtin>.isinstance": [],
+ "main": [
+  "main.check_duck",
+  "main.check_number"
+ ],
+ "main.Meta.__instancecheck__": [
+  "main.check"
+ ],
+ "main.check": [],
+ "main.check_duck": [
+  "<builtin>.isinstance"
+ ],
+ "main.check_number": [
+  "<builtin>.isinstance"
+ ]
+}

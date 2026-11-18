@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.func1",
+  "main.func2",
+  "main.register"
+ ],
+ "main.func1": [],
+ "main.func2": [],
+ "main.register": [
+  "<builtin>.list.append"
+ ]
+}

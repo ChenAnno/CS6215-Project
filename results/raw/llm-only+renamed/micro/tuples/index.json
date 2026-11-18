@@ -1,0 +1,1 @@
+{"units": [{"unit": "tuples/index", "answers": {"main": ["main.qbf69_1"], "main.qbf69_0": [], "main.qbf69_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "handlers[1]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

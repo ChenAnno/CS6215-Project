@@ -1,0 +1,12 @@
+{
+ "main.Color.describe": [
+  "<builtin>.str.lower"
+ ],
+ "main": [
+  "<builtin>.classmethod",
+  "main.Color.default"
+ ],
+ "<builtin>.classmethod": [],
+ "<builtin>.str.lower": [],
+ "main.Color.default": []
+}

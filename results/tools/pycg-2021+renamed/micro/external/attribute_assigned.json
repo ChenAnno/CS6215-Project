@@ -1,0 +1,11 @@
+{
+ "ext.Cls": [],
+ "ext.Cls.fun": [],
+ "main": [
+  "ext.Cls",
+  "main.qf0a5_0"
+ ],
+ "main.qf0a5_0": [
+  "ext.Cls.fun"
+ ]
+}

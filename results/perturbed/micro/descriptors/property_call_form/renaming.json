@@ -1,0 +1,6 @@
+{
+ "Temperature": "q08f7_0",
+ "del_celsius": "q08f7_1",
+ "get_celsius": "q08f7_2",
+ "set_celsius": "q08f7_3"
+}

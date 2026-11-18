@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.render",
+  "main.tag",
+  "main.tag.decorator"
+ ],
+ "main.render": [],
+ "main.tag": [],
+ "main.tag.decorator": [],
+ "main.tag.decorator.wrapper": []
+}

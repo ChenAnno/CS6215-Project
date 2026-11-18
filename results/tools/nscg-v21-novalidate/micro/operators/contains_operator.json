@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.Inventory.__contains__"
+ ],
+ "main.Inventory.__contains__": [],
+ "main.Inventory.__iter__": [
+  "<builtin>.iter"
+ ]
+}

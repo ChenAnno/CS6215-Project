@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.Traced.__getattribute__",
+  "main.Traced.run"
+ ],
+ "main.Traced.__getattribute__": [
+  "<builtin>.object.__getattribute__",
+  "main.record"
+ ],
+ "main.Traced.run": [],
+ "main.record": []
+}

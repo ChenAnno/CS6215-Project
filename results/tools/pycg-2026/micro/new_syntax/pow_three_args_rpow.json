@@ -1,0 +1,7 @@
+{
+ "<builtin>.pow": [],
+ "main": [
+  "<builtin>.pow"
+ ],
+ "main.Modulus.__rpow__": []
+}

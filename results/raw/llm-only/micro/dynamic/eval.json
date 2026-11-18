@@ -1,0 +1,1 @@
+{"units": [{"unit": "dynamic/eval", "answers": {"main": ["<builtin>.eval", "main.func"], "main.func": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 1, "kind": "call", "text": "eval('func()')", "resolved": ["<builtin>.eval"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

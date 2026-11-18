@@ -1,0 +1,116 @@
+{
+ "key": "9ec5045815baa8536de2d6aaa3fd7d1a0ceb02be85e8c2bf8ce822d1313e33cd",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "edges": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "caller": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "caller",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "edges"
+  ]
+ },
+ "prompt": "# Task\nBuild the static call graph of the Python code below.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Source (a small program; `main.py` is run as the script `main`)\n### file main.py (module `main`)\n 1| def qb2a8_0():\n 2|     pass\n 3| \n 4| def qb2a8_1():\n 5|     return qb2a8_0\n 6| \n 7| def qb2a8_2(f=qb2a8_1()):\n 8|     f()\n 9| \n10| qb2a8_2()\n\n## Output\nReturn {\"edges\": [{\"caller\": <node>, \"callees\": [<callee>, ...]}, ...]} with one entry for every caller node below (use an empty list when it calls nothing):\nmain\nmain.qb2a8_0\nmain.qb2a8_1\nmain.qb2a8_2",
+ "output": {
+  "edges": [
+   {
+    "caller": "main",
+    "callees": [
+     "main.qb2a8_1",
+     "main.qb2a8_2"
+    ]
+   },
+   {
+    "caller": "main.qb2a8_0",
+    "callees": []
+   },
+   {
+    "caller": "main.qb2a8_1",
+    "callees": []
+   },
+   {
+    "caller": "main.qb2a8_2",
+    "callees": [
+     "main.qb2a8_0"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2344,
+  "cache_read_input_tokens": 570,
+  "output_tokens": 491,
+  "output_tokens_details": {
+   "thinking_tokens": 319
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2344,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 491,
+    "cache_read_input_tokens": 570,
+    "cache_creation_input_tokens": 2344,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2344
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.0011292,
+ "seconds": 3.98,
+ "attempt": 1,
+ "time": "2026-11-18T18:34:50+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 2677,
+   "outputTokens": 774,
+   "cacheReadInputTokens": 570,
+   "cacheCreationInputTokens": 2344,
+   "webSearchRequests": 0,
+   "costUSD": 0.0011292,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 585,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 2344,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

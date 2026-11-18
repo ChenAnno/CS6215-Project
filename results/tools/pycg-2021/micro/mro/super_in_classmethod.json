@@ -1,0 +1,11 @@
+{
+ "<builtin>.super": [],
+ "main": [
+  "main.Child.create"
+ ],
+ "main.Base.create": [],
+ "main.Child.__init__": [],
+ "main.Child.create": [
+  "<builtin>.super"
+ ]
+}

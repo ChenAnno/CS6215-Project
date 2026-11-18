@@ -1,0 +1,18 @@
+{
+    "main": [
+        "main.qd96f_1",
+        "main.qd96f_2",
+        "main.qd96f_3"
+    ],
+    "main.qd96f_3": [
+        "<builtin>.ExceptionGroup",
+        "<builtin>.TypeError",
+        "<builtin>.ValueError"
+    ],
+    "main.qd96f_2": [],
+    "main.qd96f_1": [],
+    "main.qd96f_0": [],
+    "<builtin>.ExceptionGroup": [],
+    "<builtin>.ValueError": [],
+    "<builtin>.TypeError": []
+}

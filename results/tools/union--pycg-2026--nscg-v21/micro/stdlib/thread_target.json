@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.work",
+  "threading.Thread",
+  "threading.Thread.join",
+  "threading.Thread.start"
+ ],
+ "main.work": [],
+ "threading.Thread": [],
+ "threading.Thread.join": [],
+ "threading.Thread.start": []
+}

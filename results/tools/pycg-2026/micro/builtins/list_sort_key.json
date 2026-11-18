@@ -1,0 +1,8 @@
+{
+ "<builtin>.list.sort": [],
+ "main": [
+  "<builtin>.list.sort",
+  "main.by_second"
+ ],
+ "main.by_second": []
+}

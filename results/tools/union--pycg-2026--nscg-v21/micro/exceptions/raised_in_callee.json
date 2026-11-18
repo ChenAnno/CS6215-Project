@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.request"
+ ],
+ "<builtin>.PermissionError": [],
+ "main.request": [
+  "main.check",
+  "main.deny"
+ ],
+ "main.audit": [],
+ "main.check": [
+  "<builtin>.PermissionError",
+  "main.audit"
+ ],
+ "main.deny": []
+}

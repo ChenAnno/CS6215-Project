@@ -1,0 +1,14 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.first": [],
+ "main.start": [
+  "<builtin>.async_generator.__aiter__",
+  "<builtin>.async_generator.aclose",
+  "main.first",
+  "main.wait"
+ ],
+ "main.wait": []
+}

@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.func1",
+  "main.func2",
+  "main.install"
+ ],
+ "main.install": [],
+ "main.func1": [],
+ "main.func2": []
+}

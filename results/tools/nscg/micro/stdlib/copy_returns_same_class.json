@@ -1,0 +1,7 @@
+{
+ "main": [
+  "copy.copy",
+  "main.Widget.render"
+ ],
+ "main.Widget.render": []
+}

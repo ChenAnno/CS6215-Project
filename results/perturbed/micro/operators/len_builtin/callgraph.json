@@ -1,0 +1,12 @@
+{
+    "main": [
+        "<builtin>.len",
+        "main.qde40_0.__init__",
+        "main.qde40_0.__len__"
+    ],
+    "main.qde40_0.__init__": [],
+    "main.qde40_0.__len__": [
+        "<builtin>.len"
+    ],
+    "<builtin>.len": []
+}

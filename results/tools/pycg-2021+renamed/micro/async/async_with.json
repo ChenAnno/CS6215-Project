@@ -1,0 +1,11 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.q876b_2"
+ ],
+ "main.q876b_0.__aenter__": [],
+ "main.q876b_0.__aexit__": [],
+ "main.q876b_0.q876b_1": [],
+ "main.q876b_2": []
+}

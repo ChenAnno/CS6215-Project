@@ -1,0 +1,11 @@
+{
+ "main": [
+  "pkg.hit"
+ ],
+ "pkg.x.hit": [],
+ "pkg.hit": [],
+ "pkg.x": [
+  "pkg.x.hit"
+ ],
+ "pkg": []
+}

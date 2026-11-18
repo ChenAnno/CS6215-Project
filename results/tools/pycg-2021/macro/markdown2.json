@@ -1,0 +1,1703 @@
+{
+ "<builtin>.ImportError": [],
+ "<builtin>.ValueError": [],
+ "<builtin>.any": [],
+ "<builtin>.callable": [],
+ "<builtin>.enumerate": [],
+ "<builtin>.filter": [],
+ "<builtin>.getattr": [],
+ "<builtin>.hasattr": [],
+ "<builtin>.hex": [],
+ "<builtin>.int": [],
+ "<builtin>.isinstance": [],
+ "<builtin>.issubclass": [],
+ "<builtin>.len": [],
+ "<builtin>.list": [],
+ "<builtin>.map": [],
+ "<builtin>.max": [],
+ "<builtin>.min": [],
+ "<builtin>.next": [],
+ "<builtin>.open": [],
+ "<builtin>.ord": [],
+ "<builtin>.pow": [],
+ "<builtin>.print": [],
+ "<builtin>.range": [],
+ "<builtin>.reversed": [],
+ "<builtin>.set": [],
+ "<builtin>.str": [],
+ "<builtin>.super": [],
+ "<builtin>.tuple": [],
+ "<builtin>.zip": [],
+ "abc.ABC._exec_order.setdefault": [],
+ "abc.ABC._exec_order.values": [],
+ "abc.ABC._exec_order.values.index": [],
+ "abc.ABC._exec_order.values.insert": [],
+ "abc.ABC._exec_order.values.remove": [],
+ "abc.ABC._registry.items": [],
+ "abc.abstractmethod": [],
+ "argparse.ArgumentParser": [],
+ "argparse.ArgumentParser.add_argument": [],
+ "argparse.ArgumentParser.parse_args": [],
+ "argparse.ArgumentParser.set_defaults": [],
+ "codecs.open": [],
+ "codecs.open.close": [],
+ "codecs.open.read": [],
+ "codecs.open.read.count": [],
+ "codecs.open.read.encode": [],
+ "codecs.open.read.endswith": [],
+ "codecs.open.read.index": [],
+ "codecs.open.read.lstrip": [],
+ "codecs.open.read.replace": [],
+ "codecs.open.read.replace.count": [],
+ "codecs.open.read.replace.encode": [],
+ "codecs.open.read.replace.endswith": [],
+ "codecs.open.read.replace.index": [],
+ "codecs.open.read.replace.lstrip": [],
+ "codecs.open.read.replace.rstrip": [],
+ "codecs.open.read.replace.rstrip.count": [],
+ "codecs.open.read.replace.rstrip.encode": [],
+ "codecs.open.read.replace.rstrip.endswith": [],
+ "codecs.open.read.replace.rstrip.lstrip": [],
+ "codecs.open.read.replace.rstrip.splitlines": [],
+ "codecs.open.read.replace.splitlines": [],
+ "codecs.open.read.replace.splitlines.count": [],
+ "codecs.open.read.replace.splitlines.find": [],
+ "codecs.open.read.replace.splitlines.startswith": [],
+ "codecs.open.read.replace.startswith": [],
+ "codecs.open.read.replace.strip": [],
+ "codecs.open.read.rstrip": [],
+ "codecs.open.read.rstrip.count": [],
+ "codecs.open.read.rstrip.encode": [],
+ "codecs.open.read.rstrip.endswith": [],
+ "codecs.open.read.rstrip.lstrip": [],
+ "codecs.open.read.rstrip.splitlines": [],
+ "codecs.open.read.splitlines": [],
+ "codecs.open.read.splitlines.count": [],
+ "codecs.open.read.splitlines.find": [],
+ "codecs.open.read.splitlines.startswith": [],
+ "codecs.open.read.startswith": [],
+ "codecs.open.read.strip": [],
+ "collections.OrderedDict": [],
+ "collections.OrderedDict.keys": [],
+ "collections.defaultdict": [],
+ "doctest.testmod": [],
+ "enum.auto": [],
+ "functools.lru_cache": [],
+ "functools.wraps": [],
+ "hashlib.sha256": [],
+ "hashlib.sha256.hexdigest": [],
+ "logging.basicConfig": [],
+ "logging.getLogger": [],
+ "logging.getLogger.debug": [],
+ "logging.getLogger.setLevel": [],
+ "markdown2": [
+  "<builtin>.map",
+  "logging.getLogger",
+  "markdown2.Extra.register",
+  "markdown2._hash_text",
+  "markdown2._memoized.__init__",
+  "markdown2.main",
+  "os.urandom",
+  "re.compile",
+  "sys.exit"
+ ],
+ "markdown2.Admonitions": [
+  "re.compile"
+ ],
+ "markdown2.Admonitions.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.Admonitions.sub": [],
+ "markdown2.Admonitions.test": [
+  "re.compile.search"
+ ],
+ "markdown2.Alerts": [
+  "re.compile"
+ ],
+ "markdown2.Alerts.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.Alerts.sub": [],
+ "markdown2.Alerts.test": [],
+ "markdown2.Breaks.run": [
+  "re.sub"
+ ],
+ "markdown2.CodeFriendly.__init__": [
+  "<builtin>.super"
+ ],
+ "markdown2.CodeFriendly._hash_text": [
+  "<builtin>.tuple",
+  "markdown2.CodeFriendly._hash_text"
+ ],
+ "markdown2.CodeFriendly.process_span": [
+  "<builtin>.len",
+  "<builtin>.super",
+  "markdown2.CodeFriendly._hash_text",
+  "re.sub",
+  "typing.cast"
+ ],
+ "markdown2.CodeFriendly.process_span.<lambda1>": [
+  "markdown2.CodeFriendly._hash_text"
+ ],
+ "markdown2.CodeFriendly.run": [
+  "<builtin>.super"
+ ],
+ "markdown2.CodeFriendly.test": [
+  "<builtin>.super",
+  "re.search"
+ ],
+ "markdown2.Extra": [
+  "abc.abstractmethod"
+ ],
+ "markdown2.Extra.__init__": [],
+ "markdown2.Extra.deregister": [
+  "abc.ABC._exec_order.values",
+  "abc.ABC._exec_order.values.remove"
+ ],
+ "markdown2.Extra.register": [
+  "<builtin>.enumerate",
+  "<builtin>.isinstance",
+  "<builtin>.issubclass",
+  "<builtin>.len",
+  "abc.ABC._exec_order.setdefault",
+  "abc.ABC._exec_order.values",
+  "abc.ABC._exec_order.values.index",
+  "abc.ABC._exec_order.values.insert"
+ ],
+ "markdown2.Extra.run": [],
+ "markdown2.Extra.test": [],
+ "markdown2.FencedCodeBlocks": [
+  "re.compile"
+ ],
+ "markdown2.FencedCodeBlocks._code_block_with_lexer_sub": [
+  "markdown2.FencedCodeBlocks._code_block_with_lexer_sub.unhash_code"
+ ],
+ "markdown2.FencedCodeBlocks._code_block_with_lexer_sub.unhash_code": [
+  "<builtin>.list"
+ ],
+ "markdown2.FencedCodeBlocks.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.FencedCodeBlocks.sub": [
+  "<builtin>.len",
+  "markdown2.FencedCodeBlocks._code_block_with_lexer_sub",
+  "markdown2.FencedCodeBlocks.tags",
+  "re.search",
+  "re.search.group"
+ ],
+ "markdown2.FencedCodeBlocks.tags": [],
+ "markdown2.FencedCodeBlocks.test": [],
+ "markdown2.GFMItalicAndBoldProcessor": [
+  "<builtin>.tuple",
+  "functools.lru_cache"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor._body_crosses_span_borders": [
+  "<builtin>.set",
+  "re.findall"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor._delimiter_left_or_right": [
+  "re.match"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor._next_run": [
+  "<builtin>.next",
+  "markdown2.GFMItalicAndBoldProcessor.delimiter_left_or_right"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.body_crosses_span_borders": [
+  "<builtin>.len",
+  "markdown2.GFMItalicAndBoldProcessor._body_crosses_span_borders"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.delimiter_left_or_right": [
+  "<builtin>.max",
+  "markdown2.GFMItalicAndBoldProcessor._delimiter_left_or_right"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.has_middle": [
+  "<builtin>.next",
+  "markdown2.GFMItalicAndBoldProcessor.body_crosses_span_borders"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.process_span": [
+  "<builtin>.len",
+  "<builtin>.max",
+  "<builtin>.min",
+  "typing.cast"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.run": [
+  "<builtin>.len",
+  "markdown2.GFMItalicAndBoldProcessor._next_run",
+  "markdown2.GFMItalicAndBoldProcessor.body_crosses_span_borders",
+  "markdown2.GFMItalicAndBoldProcessor.has_middle",
+  "markdown2.GFMItalicAndBoldProcessor.process_span",
+  "markdown2.GFMItalicAndBoldProcessor.should_process_imbalanced_delimiter_runs",
+  "markdown2._hash_text",
+  "re.finditer"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.should_process_imbalanced_delimiter_runs": [
+  "<builtin>.len",
+  "markdown2.GFMItalicAndBoldProcessor.delimiter_left_or_right"
+ ],
+ "markdown2.GFMItalicAndBoldProcessor.test": [
+  "codecs.open.read.count",
+  "codecs.open.read.replace.count",
+  "codecs.open.read.replace.rstrip.count",
+  "codecs.open.read.rstrip.count",
+  "re.compile.sub.count",
+  "re.compile.sub.lstrip.count",
+  "re.compile.sub.lstrip.replace.count",
+  "re.compile.sub.lstrip.replace.rstrip.count",
+  "re.compile.sub.lstrip.rstrip.count",
+  "re.compile.sub.lstrip.rstrip.replace.count",
+  "re.compile.sub.replace.count",
+  "re.compile.sub.replace.rstrip.count",
+  "re.compile.sub.rstrip.count",
+  "re.compile.sub.rstrip.lstrip.count",
+  "re.compile.sub.rstrip.lstrip.replace.count",
+  "re.compile.sub.rstrip.replace.count",
+  "re.sub.count",
+  "re.sub.lstrip.count",
+  "re.sub.lstrip.replace.count",
+  "re.sub.lstrip.replace.rstrip.count",
+  "re.sub.lstrip.rstrip.count",
+  "re.sub.lstrip.rstrip.replace.count",
+  "re.sub.replace.count",
+  "re.sub.replace.rstrip.count",
+  "re.sub.rstrip.count",
+  "re.sub.rstrip.lstrip.count",
+  "re.sub.rstrip.lstrip.replace.count",
+  "re.sub.rstrip.replace.count",
+  "sys.stdin.read.count",
+  "sys.stdin.read.replace.count",
+  "sys.stdin.read.replace.rstrip.count",
+  "sys.stdin.read.rstrip.count"
+ ],
+ "markdown2.ItalicAndBoldProcessor": [
+  "abc.abstractmethod"
+ ],
+ "markdown2.ItalicAndBoldProcessor.__init__": [
+  "<builtin>.super"
+ ],
+ "markdown2.ItalicAndBoldProcessor.run": [
+  "re.compile.sub",
+  "re.compile.sub.replace"
+ ],
+ "markdown2.ItalicAndBoldProcessor.sub": [],
+ "markdown2.ItalicAndBoldProcessor.sub_hash": [],
+ "markdown2.ItalicAndBoldProcessor.test": [
+  "re.search"
+ ],
+ "markdown2.Latex": [
+  "re.compile"
+ ],
+ "markdown2.Latex._convert_double_match": [
+  "markdown2.Latex.converter.convert"
+ ],
+ "markdown2.Latex._convert_single_match": [
+  "markdown2.Latex.converter.convert"
+ ],
+ "markdown2.Latex.code_placeholder": [
+  "<builtin>.len"
+ ],
+ "markdown2.Latex.converter.convert": [],
+ "markdown2.Latex.run": [
+  "<builtin>.ImportError",
+  "re.compile.sub",
+  "re.compile.sub.replace"
+ ],
+ "markdown2.LinkPatterns": [
+  "re.compile"
+ ],
+ "markdown2.LinkPatterns.run": [
+  "<builtin>.any",
+  "<builtin>.callable",
+  "<builtin>.list",
+  "<builtin>.reversed"
+ ],
+ "markdown2.LinkPatterns.test": [],
+ "markdown2.LinkProcessor.__init__": [
+  "<builtin>.super"
+ ],
+ "markdown2.LinkProcessor.parse_inline_anchor_or_image": [
+  "<builtin>.len"
+ ],
+ "markdown2.LinkProcessor.parse_ref_anchor_or_ref_image": [
+  "markdown2.LinkProcessor.process_link_shortrefs"
+ ],
+ "markdown2.LinkProcessor.process_anchor": [
+  "<builtin>.len"
+ ],
+ "markdown2.LinkProcessor.process_image": [
+  "<builtin>.len",
+  "markdown2._xml_escape_attr"
+ ],
+ "markdown2.LinkProcessor.process_link_shortrefs": [
+  "re.match"
+ ],
+ "markdown2.LinkProcessor.run": [
+  "<builtin>.len",
+  "<builtin>.min",
+  "<builtin>.range",
+  "markdown2.LinkProcessor.parse_inline_anchor_or_image",
+  "markdown2.LinkProcessor.parse_ref_anchor_or_ref_image",
+  "markdown2.LinkProcessor.process_anchor",
+  "markdown2.LinkProcessor.process_image",
+  "markdown2._xml_escape_attr",
+  "re.compile.sub.replace",
+  "re.sub"
+ ],
+ "markdown2.LinkProcessor.test": [],
+ "markdown2.Markdown": [
+  "markdown2.mark_stage",
+  "markdown2.mark_stage.wrapper",
+  "re.compile"
+ ],
+ "markdown2.Markdown.__init__": [
+  "<builtin>.getattr",
+  "<builtin>.isinstance",
+  "markdown2._hash_text",
+  "re.compile"
+ ],
+ "markdown2.Markdown._add_footnotes": [
+  "<builtin>.enumerate",
+  "<builtin>.len",
+  "logging.getLogger.debug",
+  "markdown2.Markdown._do_footnote_marker",
+  "markdown2.Markdown._run_block_gamut"
+ ],
+ "markdown2.Markdown._add_footnotes.<lambda1>": [
+  "<builtin>.list",
+  "collections.OrderedDict.keys"
+ ],
+ "markdown2.Markdown._auto_email_link_sub": [
+  "markdown2.Markdown._encode_email_address",
+  "markdown2.Markdown._unescape_special_chars"
+ ],
+ "markdown2.Markdown._auto_link_sub": [
+  "markdown2.Markdown._protect_url"
+ ],
+ "markdown2.Markdown._block_quote_sub": [
+  "markdown2.Markdown._run_block_gamut",
+  "re.compile.match",
+  "re.compile.sub",
+  "re.sub"
+ ],
+ "markdown2.Markdown._code_block_sub": [
+  "markdown2.Markdown._detab",
+  "markdown2.Markdown._encode_code",
+  "markdown2.Markdown._html_class_str_from_tag",
+  "markdown2.Markdown._outdent",
+  "re.compile.sub.lstrip",
+  "re.compile.sub.lstrip.rstrip",
+  "re.compile.sub.rstrip",
+  "re.compile.sub.rstrip.lstrip",
+  "re.sub.lstrip.rstrip",
+  "re.sub.rstrip.lstrip"
+ ],
+ "markdown2.Markdown._code_span_sub": [
+  "markdown2.Markdown._encode_code",
+  "markdown2.Markdown._html_class_str_from_tag"
+ ],
+ "markdown2.Markdown._color_with_pygments": [
+  "pygments.formatters.HtmlFormatter.__init__",
+  "pygments.highlight"
+ ],
+ "markdown2.Markdown._color_with_pygments.HtmlCodeFormatter._add_newline": [],
+ "markdown2.Markdown._color_with_pygments.HtmlCodeFormatter._wrap_code": [],
+ "markdown2.Markdown._color_with_pygments.HtmlCodeFormatter.wrap": [
+  "markdown2.Markdown._color_with_pygments.HtmlCodeFormatter._add_newline",
+  "markdown2.Markdown._color_with_pygments.HtmlCodeFormatter._wrap_code",
+  "pygments.formatters.HtmlFormatter._wrap_div",
+  "pygments.formatters.HtmlFormatter._wrap_pre"
+ ],
+ "markdown2.Markdown._dedent_two_spaces_sub": [
+  "re.sub"
+ ],
+ "markdown2.Markdown._detab": [
+  "codecs.open.read.replace.splitlines",
+  "codecs.open.read.splitlines",
+  "markdown2.Markdown._detab_line",
+  "re.compile.sub.lstrip.replace.splitlines",
+  "re.compile.sub.lstrip.rstrip.replace.splitlines",
+  "re.compile.sub.lstrip.rstrip.splitlines",
+  "re.compile.sub.lstrip.splitlines",
+  "re.compile.sub.replace.splitlines",
+  "re.compile.sub.rstrip.lstrip.replace.splitlines",
+  "re.compile.sub.rstrip.lstrip.splitlines",
+  "re.compile.sub.rstrip.replace.splitlines",
+  "re.compile.sub.rstrip.splitlines",
+  "re.compile.sub.splitlines",
+  "re.sub.lstrip.replace.splitlines",
+  "re.sub.lstrip.rstrip.replace.splitlines",
+  "re.sub.lstrip.rstrip.splitlines",
+  "re.sub.lstrip.splitlines",
+  "re.sub.replace.splitlines",
+  "re.sub.rstrip.lstrip.replace.splitlines",
+  "re.sub.rstrip.lstrip.splitlines",
+  "re.sub.rstrip.replace.splitlines",
+  "re.sub.rstrip.splitlines",
+  "re.sub.splitlines",
+  "sys.stdin.read.replace.splitlines",
+  "sys.stdin.read.splitlines"
+ ],
+ "markdown2.Markdown._detab_line": [
+  "<builtin>.len",
+  "markdown2.Markdown._detab_line"
+ ],
+ "markdown2.Markdown._do_auto_links": [
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._do_block_quotes": [
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._do_code_blocks": [
+  "re.compile",
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._do_code_spans": [
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._do_footnote_marker": [
+  "re.sub"
+ ],
+ "markdown2.Markdown._do_footnote_marker.footnote_sub": [
+  "<builtin>.len",
+  "<builtin>.str"
+ ],
+ "markdown2.Markdown._do_headers": [
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._do_italics_and_bold": [
+  "markdown2.Extra.__init__",
+  "markdown2.GFMItalicAndBoldProcessor.run",
+  "markdown2.GFMItalicAndBoldProcessor.test"
+ ],
+ "markdown2.Markdown._do_links": [
+  "markdown2.LinkProcessor.__init__",
+  "markdown2.LinkProcessor.run",
+  "markdown2.LinkProcessor.test"
+ ],
+ "markdown2.Markdown._do_lists": [
+  "<builtin>.len",
+  "markdown2.Markdown._list_sub",
+  "re.compile",
+  "re.compile.search",
+  "re.compile.search.span",
+  "re.compile.search.start"
+ ],
+ "markdown2.Markdown._emacs_vars_oneliner_sub": [
+  "re.findall"
+ ],
+ "markdown2.Markdown._encode_amps_and_angles": [
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._encode_backslash_escapes": [
+  "<builtin>.list"
+ ],
+ "markdown2.Markdown._encode_code": [
+  "markdown2._hash_text",
+  "re.compile.sub.lstrip.replace",
+  "re.compile.sub.lstrip.rstrip.replace",
+  "re.compile.sub.replace",
+  "re.compile.sub.rstrip.lstrip.replace",
+  "re.compile.sub.rstrip.replace",
+  "re.sub.lstrip.replace",
+  "re.sub.lstrip.rstrip.replace",
+  "re.sub.rstrip.lstrip.replace",
+  "re.sub.rstrip.replace"
+ ],
+ "markdown2.Markdown._encode_email_address": [
+  "markdown2._xml_encode_email_char_at_random"
+ ],
+ "markdown2.Markdown._encode_incomplete_tags": [
+  "markdown2.Markdown._is_auto_link",
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._encode_incomplete_tags.incomplete_tags_sub": [
+  "re.compile.match"
+ ],
+ "markdown2.Markdown._escape_special_chars": [
+  "markdown2.Markdown._encode_backslash_escapes",
+  "re.compile.match",
+  "re.compile.split",
+  "re.compile.split.replace"
+ ],
+ "markdown2.Markdown._extract_footnote_def_sub": [
+  "markdown2._dedent",
+  "re.sub"
+ ],
+ "markdown2.Markdown._extract_link_def_sub": [
+  "markdown2.Markdown._encode_amps_and_angles"
+ ],
+ "markdown2.Markdown._extract_metadata": [
+  "codecs.open.read.replace.startswith",
+  "codecs.open.read.startswith",
+  "markdown2.Markdown._extract_metadata.parse_structured_value",
+  "markdown2._dedent",
+  "re.compile.sub.lstrip.replace.startswith",
+  "re.compile.sub.lstrip.rstrip.replace.startswith",
+  "re.compile.sub.lstrip.rstrip.startswith",
+  "re.compile.sub.lstrip.startswith",
+  "re.compile.sub.replace.startswith",
+  "re.compile.sub.rstrip.lstrip.replace.startswith",
+  "re.compile.sub.rstrip.lstrip.startswith",
+  "re.compile.sub.rstrip.replace.startswith",
+  "re.compile.sub.rstrip.startswith",
+  "re.compile.sub.startswith",
+  "re.findall",
+  "re.split",
+  "re.sub.lstrip.replace.startswith",
+  "re.sub.lstrip.rstrip.replace.startswith",
+  "re.sub.lstrip.rstrip.startswith",
+  "re.sub.lstrip.startswith",
+  "re.sub.replace.startswith",
+  "re.sub.rstrip.lstrip.replace.startswith",
+  "re.sub.rstrip.lstrip.startswith",
+  "re.sub.rstrip.replace.startswith",
+  "re.sub.rstrip.startswith",
+  "re.sub.startswith",
+  "sys.stdin.read.replace.startswith",
+  "sys.stdin.read.startswith"
+ ],
+ "markdown2.Markdown._extract_metadata.parse_structured_value": [
+  "<builtin>.len",
+  "markdown2.Markdown._extract_metadata.parse_structured_value",
+  "re.findall"
+ ],
+ "markdown2.Markdown._find_balanced": [
+  "<builtin>.len"
+ ],
+ "markdown2.Markdown._find_non_whitespace": [
+  "<builtin>.len",
+  "re.compile.match",
+  "re.compile.match.end"
+ ],
+ "markdown2.Markdown._form_paragraphs": [
+  "<builtin>.enumerate",
+  "<builtin>.len",
+  "codecs.open.read.lstrip",
+  "codecs.open.read.replace.lstrip",
+  "codecs.open.read.replace.rstrip",
+  "codecs.open.read.replace.rstrip.lstrip",
+  "codecs.open.read.replace.strip",
+  "codecs.open.read.rstrip",
+  "codecs.open.read.rstrip.lstrip",
+  "codecs.open.read.strip",
+  "markdown2.Markdown._do_lists",
+  "markdown2.Markdown._html_class_str_from_tag",
+  "markdown2.Markdown._run_span_gamut",
+  "re.compile.search",
+  "re.compile.search.group",
+  "re.compile.search.start",
+  "re.compile.sub.lstrip",
+  "re.compile.sub.lstrip.replace.rstrip",
+  "re.compile.sub.lstrip.rstrip",
+  "re.compile.sub.replace.lstrip",
+  "re.compile.sub.replace.rstrip",
+  "re.compile.sub.replace.rstrip.lstrip",
+  "re.compile.sub.replace.strip",
+  "re.compile.sub.rstrip",
+  "re.compile.sub.rstrip.lstrip",
+  "re.compile.sub.rstrip.replace.lstrip",
+  "re.compile.sub.strip",
+  "re.match",
+  "re.split",
+  "re.sub.lstrip",
+  "re.sub.lstrip.replace.rstrip",
+  "re.sub.lstrip.rstrip",
+  "re.sub.replace.lstrip",
+  "re.sub.replace.rstrip",
+  "re.sub.replace.rstrip.lstrip",
+  "re.sub.replace.strip",
+  "re.sub.rstrip",
+  "re.sub.rstrip.lstrip",
+  "re.sub.rstrip.replace.lstrip",
+  "re.sub.strip",
+  "sys.stdin.read.lstrip",
+  "sys.stdin.read.replace.lstrip",
+  "sys.stdin.read.replace.rstrip",
+  "sys.stdin.read.replace.rstrip.lstrip",
+  "sys.stdin.read.replace.strip",
+  "sys.stdin.read.rstrip",
+  "sys.stdin.read.rstrip.lstrip",
+  "sys.stdin.read.strip"
+ ],
+ "markdown2.Markdown._get_emacs_vars": [
+  "<builtin>.enumerate",
+  "<builtin>.len",
+  "<builtin>.list",
+  "<builtin>.pow",
+  "logging.getLogger.debug",
+  "re.compile.search",
+  "re.compile.search.group",
+  "re.compile.search.group.split",
+  "re.compile.search.group.splitlines"
+ ],
+ "markdown2.Markdown._get_pygments_lexer": [
+  "pygments.lexers.get_lexer_by_name"
+ ],
+ "markdown2.Markdown._h_sub": [
+  "<builtin>.len",
+  "<builtin>.min",
+  "markdown2.Markdown._run_span_gamut",
+  "markdown2.Markdown._toc_add_entry",
+  "markdown2.Markdown.header_id_from_text"
+ ],
+ "markdown2.Markdown._h_tag_sub": [
+  "<builtin>.int",
+  "markdown2.Markdown._header_id_exists",
+  "markdown2.Markdown._toc_add_entry",
+  "markdown2.Markdown.header_id_from_text",
+  "re.match"
+ ],
+ "markdown2.Markdown._hash_html_block_sub": [
+  "<builtin>.filter",
+  "<builtin>.isinstance",
+  "<builtin>.list",
+  "markdown2.Markdown._sanitize_html",
+  "markdown2._hash_text",
+  "re.compile.match",
+  "re.compile.search",
+  "re.compile.search.end",
+  "re.compile.search.group",
+  "re.compile.search.start",
+  "re.compile.sub",
+  "re.compile.sub.replace.split",
+  "re.compile.sub.split",
+  "re.match",
+  "re.match.end",
+  "re.match.group",
+  "re.match.start",
+  "re.split"
+ ],
+ "markdown2.Markdown._hash_html_blocks": [
+  "<builtin>.len",
+  "<builtin>.range",
+  "codecs.open.read.index",
+  "codecs.open.read.replace.index",
+  "markdown2.Markdown._sanitize_html",
+  "markdown2.Markdown._strict_tag_block_sub",
+  "markdown2._curry",
+  "markdown2._hash_text",
+  "markdown2._memoized.__init__",
+  "re.compile.sub",
+  "re.compile.sub.index",
+  "re.compile.sub.lstrip.index",
+  "re.compile.sub.lstrip.replace.index",
+  "re.compile.sub.lstrip.rstrip.index",
+  "re.compile.sub.lstrip.rstrip.replace.index",
+  "re.compile.sub.replace.index",
+  "re.compile.sub.rstrip.index",
+  "re.compile.sub.rstrip.lstrip.index",
+  "re.compile.sub.rstrip.lstrip.replace.index",
+  "re.compile.sub.rstrip.replace.index",
+  "re.sub.index",
+  "re.sub.lstrip.index",
+  "re.sub.lstrip.replace.index",
+  "re.sub.lstrip.rstrip.index",
+  "re.sub.lstrip.rstrip.replace.index",
+  "re.sub.replace.index",
+  "re.sub.rstrip.index",
+  "re.sub.rstrip.lstrip.index",
+  "re.sub.rstrip.lstrip.replace.index",
+  "re.sub.rstrip.replace.index",
+  "sys.stdin.read.index",
+  "sys.stdin.read.replace.index"
+ ],
+ "markdown2.Markdown._hash_html_blocks.<lambda1>": [
+  "markdown2.Markdown._run_span_gamut",
+  "markdown2._curry.result"
+ ],
+ "markdown2.Markdown._hash_html_spans": [
+  "<builtin>.len",
+  "codecs.open.read.replace",
+  "markdown2.Markdown._encode_incomplete_tags",
+  "markdown2.Markdown._escape_special_chars",
+  "markdown2.Markdown._hash_html_spans._is_code_span",
+  "markdown2.Markdown._hash_html_spans._is_comment",
+  "markdown2.Markdown._hash_span",
+  "markdown2.Markdown._is_auto_link",
+  "markdown2.Markdown._sanitize_html",
+  "re.compile.match",
+  "re.compile.split",
+  "re.compile.sub",
+  "re.compile.sub.lstrip.replace",
+  "re.compile.sub.lstrip.rstrip.replace",
+  "re.compile.sub.replace",
+  "re.compile.sub.rstrip.lstrip.replace",
+  "re.compile.sub.rstrip.replace",
+  "re.match.group",
+  "re.sub.lstrip.replace",
+  "re.sub.lstrip.rstrip.replace",
+  "re.sub.replace",
+  "re.sub.rstrip.lstrip.replace",
+  "re.sub.rstrip.replace",
+  "sys.stdin.read.replace"
+ ],
+ "markdown2.Markdown._hash_html_spans.<lambda1>": [
+  "markdown2.Markdown._hash_span"
+ ],
+ "markdown2.Markdown._hash_html_spans._is_code_span": [
+  "re.match"
+ ],
+ "markdown2.Markdown._hash_html_spans._is_comment": [
+  "re.match"
+ ],
+ "markdown2.Markdown._hash_span": [
+  "markdown2._hash_text"
+ ],
+ "markdown2.Markdown._header_id_exists": [
+  "<builtin>.isinstance",
+  "<builtin>.map",
+  "markdown2._slugify"
+ ],
+ "markdown2.Markdown._header_id_exists.<lambda1>": [],
+ "markdown2.Markdown._html_class_str_from_tag": [
+  "<builtin>.isinstance"
+ ],
+ "markdown2.Markdown._is_auto_link": [
+  "re.compile.match"
+ ],
+ "markdown2.Markdown._list_item_sub": [
+  "<builtin>.len",
+  "codecs.open.read.endswith",
+  "codecs.open.read.replace.endswith",
+  "codecs.open.read.replace.rstrip.endswith",
+  "codecs.open.read.rstrip.endswith",
+  "markdown2.Markdown._do_lists",
+  "markdown2.Markdown._run_block_gamut",
+  "markdown2.Markdown._run_span_gamut",
+  "markdown2.Markdown._uniform_outdent",
+  "re.compile.sub",
+  "re.compile.sub.endswith",
+  "re.compile.sub.lstrip.endswith",
+  "re.compile.sub.lstrip.replace.endswith",
+  "re.compile.sub.lstrip.replace.rstrip.endswith",
+  "re.compile.sub.lstrip.rstrip.endswith",
+  "re.compile.sub.lstrip.rstrip.replace.endswith",
+  "re.compile.sub.replace.endswith",
+  "re.compile.sub.replace.rstrip.endswith",
+  "re.compile.sub.rstrip.endswith",
+  "re.compile.sub.rstrip.lstrip.endswith",
+  "re.compile.sub.rstrip.lstrip.replace.endswith",
+  "re.compile.sub.rstrip.replace.endswith",
+  "re.sub.endswith",
+  "re.sub.lstrip.endswith",
+  "re.sub.lstrip.replace.endswith",
+  "re.sub.lstrip.replace.rstrip.endswith",
+  "re.sub.lstrip.rstrip.endswith",
+  "re.sub.lstrip.rstrip.replace.endswith",
+  "re.sub.replace.endswith",
+  "re.sub.replace.rstrip.endswith",
+  "re.sub.rstrip.endswith",
+  "re.sub.rstrip.lstrip.endswith",
+  "re.sub.rstrip.lstrip.replace.endswith",
+  "re.sub.rstrip.replace.endswith",
+  "sys.stdin.read.endswith",
+  "sys.stdin.read.replace.endswith",
+  "sys.stdin.read.replace.rstrip.endswith",
+  "sys.stdin.read.rstrip.endswith"
+ ],
+ "markdown2.Markdown._list_sub": [
+  "markdown2.Markdown._html_class_str_from_tag",
+  "markdown2.Markdown._process_list_items",
+  "re.compile.search.group"
+ ],
+ "markdown2.Markdown._match_overlaps_substr": [
+  "re.escape",
+  "re.finditer",
+  "re.finditer.span"
+ ],
+ "markdown2.Markdown._outdent": [
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._process_list_items": [
+  "re.compile.search.group.rstrip",
+  "re.compile.sub",
+  "re.compile.sub.rstrip"
+ ],
+ "markdown2.Markdown._protect_url": [
+  "markdown2._hash_text",
+  "markdown2._html_escape_url",
+  "re.compile.match",
+  "re.compile.match.group"
+ ],
+ "markdown2.Markdown._run_block_gamut": [
+  "markdown2.Markdown._do_block_quotes",
+  "markdown2.Markdown._do_code_blocks",
+  "markdown2.Markdown._do_headers",
+  "markdown2.Markdown._do_lists",
+  "markdown2.Markdown._form_paragraphs",
+  "markdown2.Markdown._hash_html_blocks",
+  "re.sub"
+ ],
+ "markdown2.Markdown._run_span_gamut": [
+  "markdown2.Markdown._do_auto_links",
+  "markdown2.Markdown._do_code_spans",
+  "markdown2.Markdown._do_italics_and_bold",
+  "markdown2.Markdown._do_links",
+  "markdown2.Markdown._encode_amps_and_angles",
+  "markdown2.Markdown._escape_special_chars",
+  "re.sub"
+ ],
+ "markdown2.Markdown._safe_href": [
+  "re.compile"
+ ],
+ "markdown2.Markdown._sanitize_html": [
+  "re.compile.sub.replace"
+ ],
+ "markdown2.Markdown._setup_extras": [
+  "<builtin>.hasattr",
+  "abc.ABC._registry.items",
+  "collections.OrderedDict",
+  "collections.defaultdict",
+  "markdown2._hash_text"
+ ],
+ "markdown2.Markdown._strict_tag_block_sub": [
+  "codecs.open.read.replace.splitlines",
+  "codecs.open.read.replace.splitlines.startswith",
+  "codecs.open.read.splitlines",
+  "codecs.open.read.splitlines.startswith",
+  "markdown2.Markdown._tag_is_closed",
+  "markdown2._curry.result",
+  "re.compile.sub.lstrip.replace.splitlines",
+  "re.compile.sub.lstrip.replace.splitlines.startswith",
+  "re.compile.sub.lstrip.rstrip.replace.splitlines",
+  "re.compile.sub.lstrip.rstrip.replace.splitlines.startswith",
+  "re.compile.sub.lstrip.rstrip.splitlines",
+  "re.compile.sub.lstrip.rstrip.splitlines.startswith",
+  "re.compile.sub.lstrip.splitlines",
+  "re.compile.sub.lstrip.splitlines.startswith",
+  "re.compile.sub.replace.splitlines",
+  "re.compile.sub.replace.splitlines.startswith",
+  "re.compile.sub.rstrip.lstrip.replace.splitlines",
+  "re.compile.sub.rstrip.lstrip.replace.splitlines.startswith",
+  "re.compile.sub.rstrip.lstrip.splitlines",
+  "re.compile.sub.rstrip.lstrip.splitlines.startswith",
+  "re.compile.sub.rstrip.replace.splitlines",
+  "re.compile.sub.rstrip.replace.splitlines.startswith",
+  "re.compile.sub.rstrip.splitlines",
+  "re.compile.sub.rstrip.splitlines.startswith",
+  "re.compile.sub.splitlines",
+  "re.compile.sub.splitlines.startswith",
+  "re.match",
+  "re.match.group",
+  "re.sub.lstrip.replace.splitlines",
+  "re.sub.lstrip.replace.splitlines.startswith",
+  "re.sub.lstrip.rstrip.replace.splitlines",
+  "re.sub.lstrip.rstrip.replace.splitlines.startswith",
+  "re.sub.lstrip.rstrip.splitlines",
+  "re.sub.lstrip.rstrip.splitlines.startswith",
+  "re.sub.lstrip.splitlines",
+  "re.sub.lstrip.splitlines.startswith",
+  "re.sub.replace.splitlines",
+  "re.sub.replace.splitlines.startswith",
+  "re.sub.rstrip.lstrip.replace.splitlines",
+  "re.sub.rstrip.lstrip.replace.splitlines.startswith",
+  "re.sub.rstrip.lstrip.splitlines",
+  "re.sub.rstrip.lstrip.splitlines.startswith",
+  "re.sub.rstrip.replace.splitlines",
+  "re.sub.rstrip.replace.splitlines.startswith",
+  "re.sub.rstrip.splitlines",
+  "re.sub.rstrip.splitlines.startswith",
+  "re.sub.splitlines",
+  "re.sub.splitlines.startswith",
+  "sys.stdin.read.replace.splitlines",
+  "sys.stdin.read.replace.splitlines.startswith",
+  "sys.stdin.read.splitlines",
+  "sys.stdin.read.splitlines.startswith"
+ ],
+ "markdown2.Markdown._strip_footnote_definitions": [
+  "re.compile",
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._strip_link_definitions": [
+  "re.compile",
+  "re.compile.sub"
+ ],
+ "markdown2.Markdown._tag_is_closed": [
+  "<builtin>.len",
+  "codecs.open.read.replace.splitlines.count",
+  "codecs.open.read.replace.splitlines.find",
+  "codecs.open.read.splitlines.count",
+  "codecs.open.read.splitlines.find",
+  "re.compile.sub.lstrip.replace.splitlines.count",
+  "re.compile.sub.lstrip.replace.splitlines.find",
+  "re.compile.sub.lstrip.rstrip.replace.splitlines.count",
+  "re.compile.sub.lstrip.rstrip.replace.splitlines.find",
+  "re.compile.sub.lstrip.rstrip.splitlines.count",
+  "re.compile.sub.lstrip.rstrip.splitlines.find",
+  "re.compile.sub.lstrip.splitlines.count",
+  "re.compile.sub.lstrip.splitlines.find",
+  "re.compile.sub.replace.splitlines.count",
+  "re.compile.sub.replace.splitlines.find",
+  "re.compile.sub.rstrip.lstrip.replace.splitlines.count",
+  "re.compile.sub.rstrip.lstrip.replace.splitlines.find",
+  "re.compile.sub.rstrip.lstrip.splitlines.count",
+  "re.compile.sub.rstrip.lstrip.splitlines.find",
+  "re.compile.sub.rstrip.replace.splitlines.count",
+  "re.compile.sub.rstrip.replace.splitlines.find",
+  "re.compile.sub.rstrip.splitlines.count",
+  "re.compile.sub.rstrip.splitlines.find",
+  "re.compile.sub.splitlines.count",
+  "re.compile.sub.splitlines.find",
+  "re.findall",
+  "re.sub.lstrip.replace.splitlines.count",
+  "re.sub.lstrip.replace.splitlines.find",
+  "re.sub.lstrip.rstrip.replace.splitlines.count",
+  "re.sub.lstrip.rstrip.replace.splitlines.find",
+  "re.sub.lstrip.rstrip.splitlines.count",
+  "re.sub.lstrip.rstrip.splitlines.find",
+  "re.sub.lstrip.splitlines.count",
+  "re.sub.lstrip.splitlines.find",
+  "re.sub.replace.splitlines.count",
+  "re.sub.replace.splitlines.find",
+  "re.sub.rstrip.lstrip.replace.splitlines.count",
+  "re.sub.rstrip.lstrip.replace.splitlines.find",
+  "re.sub.rstrip.lstrip.splitlines.count",
+  "re.sub.rstrip.lstrip.splitlines.find",
+  "re.sub.rstrip.replace.splitlines.count",
+  "re.sub.rstrip.replace.splitlines.find",
+  "re.sub.rstrip.splitlines.count",
+  "re.sub.rstrip.splitlines.find",
+  "re.sub.splitlines.count",
+  "re.sub.splitlines.find",
+  "sys.stdin.read.replace.splitlines.count",
+  "sys.stdin.read.replace.splitlines.find",
+  "sys.stdin.read.splitlines.count",
+  "sys.stdin.read.splitlines.find"
+ ],
+ "markdown2.Markdown._task_list_item_sub": [],
+ "markdown2.Markdown._toc_add_entry": [
+  "markdown2.Markdown._unescape_special_chars"
+ ],
+ "markdown2.Markdown._unescape_special_chars": [
+  "<builtin>.reversed",
+  "<builtin>.tuple",
+  "codecs.open.read.replace",
+  "re.compile.sub.lstrip.replace",
+  "re.compile.sub.lstrip.rstrip.replace",
+  "re.compile.sub.replace",
+  "re.compile.sub.rstrip.lstrip.replace",
+  "re.compile.sub.rstrip.replace",
+  "re.sub.lstrip.replace",
+  "re.sub.lstrip.rstrip.replace",
+  "re.sub.replace",
+  "re.sub.rstrip.lstrip.replace",
+  "re.sub.rstrip.replace",
+  "sys.stdin.read.replace"
+ ],
+ "markdown2.Markdown._unhash_html_spans": [
+  "<builtin>.list",
+  "codecs.open.read.replace",
+  "re.compile.sub.lstrip.replace",
+  "re.compile.sub.lstrip.rstrip.replace",
+  "re.compile.sub.replace",
+  "re.compile.sub.rstrip.lstrip.replace",
+  "re.compile.sub.rstrip.replace",
+  "re.sub.lstrip.replace",
+  "re.sub.lstrip.rstrip.replace",
+  "re.sub.replace",
+  "re.sub.rstrip.lstrip.replace",
+  "re.sub.rstrip.replace",
+  "sys.stdin.read.replace"
+ ],
+ "markdown2.Markdown._uniform_indent": [],
+ "markdown2.Markdown._uniform_outdent": [
+  "<builtin>.min",
+  "<builtin>.zip",
+  "codecs.open.read.replace.rstrip.splitlines",
+  "codecs.open.read.replace.splitlines",
+  "codecs.open.read.rstrip.splitlines",
+  "codecs.open.read.splitlines",
+  "re.compile.sub.lstrip.replace.rstrip.splitlines",
+  "re.compile.sub.lstrip.replace.splitlines",
+  "re.compile.sub.lstrip.rstrip.replace.splitlines",
+  "re.compile.sub.lstrip.rstrip.splitlines",
+  "re.compile.sub.lstrip.splitlines",
+  "re.compile.sub.replace.rstrip.splitlines",
+  "re.compile.sub.replace.splitlines",
+  "re.compile.sub.rstrip.lstrip.replace.splitlines",
+  "re.compile.sub.rstrip.lstrip.splitlines",
+  "re.compile.sub.rstrip.replace.splitlines",
+  "re.compile.sub.rstrip.splitlines",
+  "re.compile.sub.splitlines",
+  "re.findall",
+  "re.sub.lstrip.replace.rstrip.splitlines",
+  "re.sub.lstrip.replace.splitlines",
+  "re.sub.lstrip.rstrip.replace.splitlines",
+  "re.sub.lstrip.rstrip.splitlines",
+  "re.sub.lstrip.splitlines",
+  "re.sub.replace.rstrip.splitlines",
+  "re.sub.replace.splitlines",
+  "re.sub.rstrip.lstrip.replace.splitlines",
+  "re.sub.rstrip.lstrip.splitlines",
+  "re.sub.rstrip.replace.splitlines",
+  "re.sub.rstrip.splitlines",
+  "re.sub.splitlines",
+  "sys.stdin.read.replace.rstrip.splitlines",
+  "sys.stdin.read.replace.splitlines",
+  "sys.stdin.read.rstrip.splitlines",
+  "sys.stdin.read.splitlines"
+ ],
+ "markdown2.Markdown.convert": [
+  "<builtin>.int",
+  "<builtin>.isinstance",
+  "<builtin>.str",
+  "codecs.open.read.replace",
+  "markdown2.Markdown._add_footnotes",
+  "markdown2.Markdown._detab",
+  "markdown2.Markdown._do_footnote_marker",
+  "markdown2.Markdown._extract_metadata",
+  "markdown2.Markdown._get_emacs_vars",
+  "markdown2.Markdown._hash_html_blocks",
+  "markdown2.Markdown._hash_html_spans",
+  "markdown2.Markdown._run_block_gamut",
+  "markdown2.Markdown._setup_extras",
+  "markdown2.Markdown._strip_footnote_definitions",
+  "markdown2.Markdown._strip_link_definitions",
+  "markdown2.Markdown._unescape_special_chars",
+  "markdown2.Markdown._unhash_html_spans",
+  "markdown2.Markdown.postprocess",
+  "markdown2.Markdown.preprocess",
+  "markdown2.Markdown.reset",
+  "markdown2.calculate_toc_html",
+  "re.compile",
+  "re.compile.split",
+  "re.compile.split.split",
+  "re.compile.sub",
+  "re.compile.sub.lstrip.replace",
+  "re.compile.sub.lstrip.rstrip.replace",
+  "re.compile.sub.replace",
+  "re.compile.sub.rstrip.lstrip.replace",
+  "re.compile.sub.rstrip.replace",
+  "re.sub.lstrip.replace",
+  "re.sub.lstrip.rstrip.replace",
+  "re.sub.replace",
+  "re.sub.rstrip.lstrip.replace",
+  "re.sub.rstrip.replace",
+  "sys.stdin.read.replace"
+ ],
+ "markdown2.Markdown.convert.toc_sort": [
+  "re.escape",
+  "re.search",
+  "re.search.start"
+ ],
+ "markdown2.Markdown.header_id_from_text": [
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "markdown2._slugify"
+ ],
+ "markdown2.Markdown.postprocess": [],
+ "markdown2.Markdown.preprocess": [],
+ "markdown2.Markdown.reset": [
+  "markdown2.Markdown._setup_extras"
+ ],
+ "markdown2.MarkdownFileLinks.__init__": [
+  "<builtin>.super"
+ ],
+ "markdown2.MarkdownFileLinks.parse_inline_anchor_or_image": [
+  "<builtin>.super"
+ ],
+ "markdown2.MarkdownFileLinks.run": [
+  "<builtin>.super"
+ ],
+ "markdown2.MarkdownFileLinks.test": [
+  "<builtin>.super"
+ ],
+ "markdown2.MarkdownInHTML.run": [],
+ "markdown2.MarkdownInHTML.run.callback": [],
+ "markdown2.MarkdownInHTML.test": [],
+ "markdown2.Mermaid.tags": [
+  "<builtin>.super"
+ ],
+ "markdown2.MiddleWordEm.__init__": [
+  "<builtin>.isinstance",
+  "<builtin>.super",
+  "markdown2._hash_text",
+  "re.compile"
+ ],
+ "markdown2.MiddleWordEm.run": [
+  "re.compile.sub",
+  "re.compile.sub.replace"
+ ],
+ "markdown2.MiddleWordEm.sub": [
+  "<builtin>.super"
+ ],
+ "markdown2.MiddleWordEm.test": [
+  "<builtin>.super",
+  "re.search"
+ ],
+ "markdown2.Numbering.run": [
+  "<builtin>.len",
+  "<builtin>.list",
+  "<builtin>.reversed",
+  "re.compile",
+  "re.compile.finditer",
+  "re.compile.finditer.end",
+  "re.compile.finditer.group",
+  "re.compile.finditer.group.strip",
+  "re.compile.finditer.groups",
+  "re.compile.finditer.start"
+ ],
+ "markdown2.PyShell.run": [
+  "re.compile",
+  "re.compile.sub"
+ ],
+ "markdown2.PyShell.sub": [
+  "markdown2._dedent",
+  "markdown2._dedentlines"
+ ],
+ "markdown2.PyShell.test": [],
+ "markdown2.SmartyPants": [
+  "re.compile"
+ ],
+ "markdown2.SmartyPants.contractions": [
+  "re.compile.sub",
+  "re.compile.sub.replace"
+ ],
+ "markdown2.SmartyPants.run": [
+  "markdown2.SmartyPants.contractions",
+  "re.compile.sub",
+  "re.compile.sub.replace"
+ ],
+ "markdown2.SmartyPants.test": [
+  "<builtin>.any"
+ ],
+ "markdown2.Stage": [
+  "enum.auto"
+ ],
+ "markdown2.Strike": [
+  "re.compile"
+ ],
+ "markdown2.Strike.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.Strike.test": [],
+ "markdown2.Tables.run": [
+  "re.compile",
+  "re.compile.sub"
+ ],
+ "markdown2.Tables.sub": [
+  "<builtin>.enumerate",
+  "re.split",
+  "re.sub"
+ ],
+ "markdown2.TelegramSpoiler": [
+  "re.compile"
+ ],
+ "markdown2.TelegramSpoiler.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.TelegramSpoiler.test": [],
+ "markdown2.Underline": [
+  "re.compile"
+ ],
+ "markdown2.Underline.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.Underline.test": [],
+ "markdown2.Wavedrom.run": [
+  "re.compile.sub"
+ ],
+ "markdown2.Wavedrom.sub": [
+  "markdown2._hash_text",
+  "wavedrom.render",
+  "wavedrom.render.tostring"
+ ],
+ "markdown2.Wavedrom.test": [
+  "re.compile.search",
+  "re.compile.search.group"
+ ],
+ "markdown2.WikiTables.run": [
+  "re.compile",
+  "re.compile.sub"
+ ],
+ "markdown2.WikiTables.sub": [
+  "markdown2.WikiTables.sub.add_hline",
+  "markdown2.WikiTables.sub.format_cell",
+  "re.match",
+  "re.split"
+ ],
+ "markdown2.WikiTables.sub.add_hline": [],
+ "markdown2.WikiTables.sub.format_cell": [
+  "re.sub",
+  "re.sub.strip"
+ ],
+ "markdown2.WikiTables.test": [],
+ "markdown2._NoReflowFormatter.format_description": [],
+ "markdown2._curry": [],
+ "markdown2._curry.result": [
+  "markdown2.Markdown._hash_html_block_sub"
+ ],
+ "markdown2._dedent": [
+  "markdown2._dedentlines"
+ ],
+ "markdown2._dedentlines": [
+  "<builtin>.ValueError",
+  "<builtin>.enumerate",
+  "<builtin>.min",
+  "<builtin>.print"
+ ],
+ "markdown2._hash_text": [
+  "codecs.open.read.encode",
+  "codecs.open.read.replace.encode",
+  "codecs.open.read.replace.rstrip.encode",
+  "codecs.open.read.rstrip.encode",
+  "hashlib.sha256",
+  "hashlib.sha256.hexdigest",
+  "re.compile.sub.encode",
+  "re.compile.sub.lstrip.encode",
+  "re.compile.sub.lstrip.replace.encode",
+  "re.compile.sub.lstrip.replace.rstrip.encode",
+  "re.compile.sub.lstrip.rstrip.encode",
+  "re.compile.sub.lstrip.rstrip.replace.encode",
+  "re.compile.sub.replace.encode",
+  "re.compile.sub.replace.rstrip.encode",
+  "re.compile.sub.rstrip.encode",
+  "re.compile.sub.rstrip.lstrip.encode",
+  "re.compile.sub.rstrip.lstrip.replace.encode",
+  "re.compile.sub.rstrip.replace.encode",
+  "re.sub.encode",
+  "re.sub.lstrip.encode",
+  "re.sub.lstrip.replace.encode",
+  "re.sub.lstrip.replace.rstrip.encode",
+  "re.sub.lstrip.rstrip.encode",
+  "re.sub.lstrip.rstrip.replace.encode",
+  "re.sub.replace.encode",
+  "re.sub.replace.rstrip.encode",
+  "re.sub.rstrip.encode",
+  "re.sub.rstrip.lstrip.encode",
+  "re.sub.rstrip.lstrip.replace.encode",
+  "re.sub.rstrip.replace.encode",
+  "sys.stdin.read.encode",
+  "sys.stdin.read.replace.encode",
+  "sys.stdin.read.replace.rstrip.encode",
+  "sys.stdin.read.rstrip.encode",
+  "wavedrom.render.tostring.encode"
+ ],
+ "markdown2._hr_tag_re_from_tab_width": [
+  "re.compile"
+ ],
+ "markdown2._html_escape_url": [],
+ "markdown2._memoized.__call__": [
+  "markdown2._memoized.__init__"
+ ],
+ "markdown2._memoized.__init__": [],
+ "markdown2._memoized.__repr__": [],
+ "markdown2._regex_from_encoded_pattern": [
+  "<builtin>.ValueError",
+  "<builtin>.list",
+  "re.compile",
+  "re.escape"
+ ],
+ "markdown2._slugify": [
+  "re.compile.sub",
+  "re.compile.sub.strip",
+  "re.compile.sub.strip.lower",
+  "unicodedata.normalize",
+  "unicodedata.normalize.encode",
+  "unicodedata.normalize.encode.decode"
+ ],
+ "markdown2._test": [
+  "doctest.testmod"
+ ],
+ "markdown2._xml_encode_email_char_at_random": [
+  "<builtin>.hex",
+  "<builtin>.ord",
+  "random.random"
+ ],
+ "markdown2._xml_escape_attr": [
+  "re.compile.sub",
+  "re.compile.sub.replace"
+ ],
+ "markdown2._xml_oneliner_re_from_tab_width": [
+  "re.compile"
+ ],
+ "markdown2.calculate_toc_html": [
+  "<builtin>.len",
+  "markdown2.calculate_toc_html.indent"
+ ],
+ "markdown2.calculate_toc_html.indent": [
+  "<builtin>.len"
+ ],
+ "markdown2.main": [
+  "<builtin>.enumerate",
+  "<builtin>.int",
+  "<builtin>.open",
+  "<builtin>.print",
+  "<builtin>.str",
+  "argparse.ArgumentParser",
+  "argparse.ArgumentParser.add_argument",
+  "argparse.ArgumentParser.parse_args",
+  "argparse.ArgumentParser.set_defaults",
+  "codecs.open",
+  "codecs.open.close",
+  "codecs.open.read",
+  "codecs.open.read.encode",
+  "logging.basicConfig",
+  "logging.getLogger.debug",
+  "logging.getLogger.setLevel",
+  "markdown2._regex_from_encoded_pattern",
+  "markdown2._test",
+  "markdown2.markdown",
+  "os.path.abspath",
+  "os.path.dirname",
+  "os.path.exists",
+  "os.path.join",
+  "re.compile",
+  "re.compile.split",
+  "re.compile.split.split",
+  "subprocess.Popen",
+  "subprocess.Popen.stdin.close",
+  "subprocess.Popen.stdin.write",
+  "subprocess.Popen.stdout.read",
+  "subprocess.Popen.stdout.read.decode",
+  "sys.path.insert",
+  "sys.stdin.read",
+  "sys.stdin.read.encode",
+  "sys.stdout.write",
+  "test_markdown2.norm_html_from_html"
+ ],
+ "markdown2.mark_stage": [],
+ "markdown2.mark_stage.wrapper": [
+  "functools.wraps"
+ ],
+ "markdown2.mark_stage.wrapper.inner": [],
+ "markdown2.markdown": [
+  "markdown2.Markdown.__init__",
+  "markdown2.Markdown.convert"
+ ],
+ "markdown2.markdown_path": [
+  "codecs.open",
+  "codecs.open.close",
+  "codecs.open.read",
+  "markdown2.Markdown.__init__",
+  "markdown2.Markdown.convert"
+ ],
+ "os.path.abspath": [],
+ "os.path.dirname": [],
+ "os.path.exists": [],
+ "os.path.join": [],
+ "os.urandom": [],
+ "pygments.formatters.HtmlFormatter.__init__": [],
+ "pygments.formatters.HtmlFormatter._wrap_div": [],
+ "pygments.formatters.HtmlFormatter._wrap_pre": [],
+ "pygments.highlight": [],
+ "pygments.lexers.get_lexer_by_name": [],
+ "random.random": [],
+ "re.compile": [],
+ "re.compile.finditer": [],
+ "re.compile.finditer.end": [],
+ "re.compile.finditer.group": [],
+ "re.compile.finditer.group.strip": [],
+ "re.compile.finditer.groups": [],
+ "re.compile.finditer.start": [],
+ "re.compile.match": [],
+ "re.compile.match.end": [],
+ "re.compile.match.group": [],
+ "re.compile.search": [],
+ "re.compile.search.end": [],
+ "re.compile.search.group": [],
+ "re.compile.search.group.rstrip": [],
+ "re.compile.search.group.split": [],
+ "re.compile.search.group.splitlines": [],
+ "re.compile.search.span": [],
+ "re.compile.search.start": [],
+ "re.compile.split": [],
+ "re.compile.split.replace": [],
+ "re.compile.split.split": [],
+ "re.compile.sub": [],
+ "re.compile.sub.count": [],
+ "re.compile.sub.encode": [],
+ "re.compile.sub.endswith": [],
+ "re.compile.sub.index": [],
+ "re.compile.sub.lstrip": [],
+ "re.compile.sub.lstrip.count": [],
+ "re.compile.sub.lstrip.encode": [],
+ "re.compile.sub.lstrip.endswith": [],
+ "re.compile.sub.lstrip.index": [],
+ "re.compile.sub.lstrip.replace": [],
+ "re.compile.sub.lstrip.replace.count": [],
+ "re.compile.sub.lstrip.replace.encode": [],
+ "re.compile.sub.lstrip.replace.endswith": [],
+ "re.compile.sub.lstrip.replace.index": [],
+ "re.compile.sub.lstrip.replace.rstrip": [],
+ "re.compile.sub.lstrip.replace.rstrip.count": [],
+ "re.compile.sub.lstrip.replace.rstrip.encode": [],
+ "re.compile.sub.lstrip.replace.rstrip.endswith": [],
+ "re.compile.sub.lstrip.replace.rstrip.splitlines": [],
+ "re.compile.sub.lstrip.replace.splitlines": [],
+ "re.compile.sub.lstrip.replace.splitlines.count": [],
+ "re.compile.sub.lstrip.replace.splitlines.find": [],
+ "re.compile.sub.lstrip.replace.splitlines.startswith": [],
+ "re.compile.sub.lstrip.replace.startswith": [],
+ "re.compile.sub.lstrip.rstrip": [],
+ "re.compile.sub.lstrip.rstrip.count": [],
+ "re.compile.sub.lstrip.rstrip.encode": [],
+ "re.compile.sub.lstrip.rstrip.endswith": [],
+ "re.compile.sub.lstrip.rstrip.index": [],
+ "re.compile.sub.lstrip.rstrip.replace": [],
+ "re.compile.sub.lstrip.rstrip.replace.count": [],
+ "re.compile.sub.lstrip.rstrip.replace.encode": [],
+ "re.compile.sub.lstrip.rstrip.replace.endswith": [],
+ "re.compile.sub.lstrip.rstrip.replace.index": [],
+ "re.compile.sub.lstrip.rstrip.replace.splitlines": [],
+ "re.compile.sub.lstrip.rstrip.replace.splitlines.count": [],
+ "re.compile.sub.lstrip.rstrip.replace.splitlines.find": [],
+ "re.compile.sub.lstrip.rstrip.replace.splitlines.startswith": [],
+ "re.compile.sub.lstrip.rstrip.replace.startswith": [],
+ "re.compile.sub.lstrip.rstrip.splitlines": [],
+ "re.compile.sub.lstrip.rstrip.splitlines.count": [],
+ "re.compile.sub.lstrip.rstrip.splitlines.find": [],
+ "re.compile.sub.lstrip.rstrip.splitlines.startswith": [],
+ "re.compile.sub.lstrip.rstrip.startswith": [],
+ "re.compile.sub.lstrip.splitlines": [],
+ "re.compile.sub.lstrip.splitlines.count": [],
+ "re.compile.sub.lstrip.splitlines.find": [],
+ "re.compile.sub.lstrip.splitlines.startswith": [],
+ "re.compile.sub.lstrip.startswith": [],
+ "re.compile.sub.replace": [],
+ "re.compile.sub.replace.count": [],
+ "re.compile.sub.replace.encode": [],
+ "re.compile.sub.replace.endswith": [],
+ "re.compile.sub.replace.index": [],
+ "re.compile.sub.replace.lstrip": [],
+ "re.compile.sub.replace.rstrip": [],
+ "re.compile.sub.replace.rstrip.count": [],
+ "re.compile.sub.replace.rstrip.encode": [],
+ "re.compile.sub.replace.rstrip.endswith": [],
+ "re.compile.sub.replace.rstrip.lstrip": [],
+ "re.compile.sub.replace.rstrip.splitlines": [],
+ "re.compile.sub.replace.split": [],
+ "re.compile.sub.replace.splitlines": [],
+ "re.compile.sub.replace.splitlines.count": [],
+ "re.compile.sub.replace.splitlines.find": [],
+ "re.compile.sub.replace.splitlines.startswith": [],
+ "re.compile.sub.replace.startswith": [],
+ "re.compile.sub.replace.strip": [],
+ "re.compile.sub.rstrip": [],
+ "re.compile.sub.rstrip.count": [],
+ "re.compile.sub.rstrip.encode": [],
+ "re.compile.sub.rstrip.endswith": [],
+ "re.compile.sub.rstrip.index": [],
+ "re.compile.sub.rstrip.lstrip": [],
+ "re.compile.sub.rstrip.lstrip.count": [],
+ "re.compile.sub.rstrip.lstrip.encode": [],
+ "re.compile.sub.rstrip.lstrip.endswith": [],
+ "re.compile.sub.rstrip.lstrip.index": [],
+ "re.compile.sub.rstrip.lstrip.replace": [],
+ "re.compile.sub.rstrip.lstrip.replace.count": [],
+ "re.compile.sub.rstrip.lstrip.replace.encode": [],
+ "re.compile.sub.rstrip.lstrip.replace.endswith": [],
+ "re.compile.sub.rstrip.lstrip.replace.index": [],
+ "re.compile.sub.rstrip.lstrip.replace.splitlines": [],
+ "re.compile.sub.rstrip.lstrip.replace.splitlines.count": [],
+ "re.compile.sub.rstrip.lstrip.replace.splitlines.find": [],
+ "re.compile.sub.rstrip.lstrip.replace.splitlines.startswith": [],
+ "re.compile.sub.rstrip.lstrip.replace.startswith": [],
+ "re.compile.sub.rstrip.lstrip.splitlines": [],
+ "re.compile.sub.rstrip.lstrip.splitlines.count": [],
+ "re.compile.sub.rstrip.lstrip.splitlines.find": [],
+ "re.compile.sub.rstrip.lstrip.splitlines.startswith": [],
+ "re.compile.sub.rstrip.lstrip.startswith": [],
+ "re.compile.sub.rstrip.replace": [],
+ "re.compile.sub.rstrip.replace.count": [],
+ "re.compile.sub.rstrip.replace.encode": [],
+ "re.compile.sub.rstrip.replace.endswith": [],
+ "re.compile.sub.rstrip.replace.index": [],
+ "re.compile.sub.rstrip.replace.lstrip": [],
+ "re.compile.sub.rstrip.replace.splitlines": [],
+ "re.compile.sub.rstrip.replace.splitlines.count": [],
+ "re.compile.sub.rstrip.replace.splitlines.find": [],
+ "re.compile.sub.rstrip.replace.splitlines.startswith": [],
+ "re.compile.sub.rstrip.replace.startswith": [],
+ "re.compile.sub.rstrip.splitlines": [],
+ "re.compile.sub.rstrip.splitlines.count": [],
+ "re.compile.sub.rstrip.splitlines.find": [],
+ "re.compile.sub.rstrip.splitlines.startswith": [],
+ "re.compile.sub.rstrip.startswith": [],
+ "re.compile.sub.split": [],
+ "re.compile.sub.splitlines": [],
+ "re.compile.sub.splitlines.count": [],
+ "re.compile.sub.splitlines.find": [],
+ "re.compile.sub.splitlines.startswith": [],
+ "re.compile.sub.startswith": [],
+ "re.compile.sub.strip": [],
+ "re.compile.sub.strip.lower": [],
+ "re.escape": [],
+ "re.findall": [],
+ "re.finditer": [],
+ "re.finditer.span": [],
+ "re.match": [],
+ "re.match.end": [],
+ "re.match.group": [],
+ "re.match.start": [],
+ "re.search": [],
+ "re.search.group": [],
+ "re.search.start": [],
+ "re.split": [],
+ "re.sub": [],
+ "re.sub.count": [],
+ "re.sub.encode": [],
+ "re.sub.endswith": [],
+ "re.sub.index": [],
+ "re.sub.lstrip": [],
+ "re.sub.lstrip.count": [],
+ "re.sub.lstrip.encode": [],
+ "re.sub.lstrip.endswith": [],
+ "re.sub.lstrip.index": [],
+ "re.sub.lstrip.replace": [],
+ "re.sub.lstrip.replace.count": [],
+ "re.sub.lstrip.replace.encode": [],
+ "re.sub.lstrip.replace.endswith": [],
+ "re.sub.lstrip.replace.index": [],
+ "re.sub.lstrip.replace.rstrip": [],
+ "re.sub.lstrip.replace.rstrip.count": [],
+ "re.sub.lstrip.replace.rstrip.encode": [],
+ "re.sub.lstrip.replace.rstrip.endswith": [],
+ "re.sub.lstrip.replace.rstrip.splitlines": [],
+ "re.sub.lstrip.replace.splitlines": [],
+ "re.sub.lstrip.replace.splitlines.count": [],
+ "re.sub.lstrip.replace.splitlines.find": [],
+ "re.sub.lstrip.replace.splitlines.startswith": [],
+ "re.sub.lstrip.replace.startswith": [],
+ "re.sub.lstrip.rstrip": [],
+ "re.sub.lstrip.rstrip.count": [],
+ "re.sub.lstrip.rstrip.encode": [],
+ "re.sub.lstrip.rstrip.endswith": [],
+ "re.sub.lstrip.rstrip.index": [],
+ "re.sub.lstrip.rstrip.replace": [],
+ "re.sub.lstrip.rstrip.replace.count": [],
+ "re.sub.lstrip.rstrip.replace.encode": [],
+ "re.sub.lstrip.rstrip.replace.endswith": [],
+ "re.sub.lstrip.rstrip.replace.index": [],
+ "re.sub.lstrip.rstrip.replace.splitlines": [],
+ "re.sub.lstrip.rstrip.replace.splitlines.count": [],
+ "re.sub.lstrip.rstrip.replace.splitlines.find": [],
+ "re.sub.lstrip.rstrip.replace.splitlines.startswith": [],
+ "re.sub.lstrip.rstrip.replace.startswith": [],
+ "re.sub.lstrip.rstrip.splitlines": [],
+ "re.sub.lstrip.rstrip.splitlines.count": [],
+ "re.sub.lstrip.rstrip.splitlines.find": [],
+ "re.sub.lstrip.rstrip.splitlines.startswith": [],
+ "re.sub.lstrip.rstrip.startswith": [],
+ "re.sub.lstrip.splitlines": [],
+ "re.sub.lstrip.splitlines.count": [],
+ "re.sub.lstrip.splitlines.find": [],
+ "re.sub.lstrip.splitlines.startswith": [],
+ "re.sub.lstrip.startswith": [],
+ "re.sub.replace": [],
+ "re.sub.replace.count": [],
+ "re.sub.replace.encode": [],
+ "re.sub.replace.endswith": [],
+ "re.sub.replace.index": [],
+ "re.sub.replace.lstrip": [],
+ "re.sub.replace.rstrip": [],
+ "re.sub.replace.rstrip.count": [],
+ "re.sub.replace.rstrip.encode": [],
+ "re.sub.replace.rstrip.endswith": [],
+ "re.sub.replace.rstrip.lstrip": [],
+ "re.sub.replace.rstrip.splitlines": [],
+ "re.sub.replace.splitlines": [],
+ "re.sub.replace.splitlines.count": [],
+ "re.sub.replace.splitlines.find": [],
+ "re.sub.replace.splitlines.startswith": [],
+ "re.sub.replace.startswith": [],
+ "re.sub.replace.strip": [],
+ "re.sub.rstrip": [],
+ "re.sub.rstrip.count": [],
+ "re.sub.rstrip.encode": [],
+ "re.sub.rstrip.endswith": [],
+ "re.sub.rstrip.index": [],
+ "re.sub.rstrip.lstrip": [],
+ "re.sub.rstrip.lstrip.count": [],
+ "re.sub.rstrip.lstrip.encode": [],
+ "re.sub.rstrip.lstrip.endswith": [],
+ "re.sub.rstrip.lstrip.index": [],
+ "re.sub.rstrip.lstrip.replace": [],
+ "re.sub.rstrip.lstrip.replace.count": [],
+ "re.sub.rstrip.lstrip.replace.encode": [],
+ "re.sub.rstrip.lstrip.replace.endswith": [],
+ "re.sub.rstrip.lstrip.replace.index": [],
+ "re.sub.rstrip.lstrip.replace.splitlines": [],
+ "re.sub.rstrip.lstrip.replace.splitlines.count": [],
+ "re.sub.rstrip.lstrip.replace.splitlines.find": [],
+ "re.sub.rstrip.lstrip.replace.splitlines.startswith": [],
+ "re.sub.rstrip.lstrip.replace.startswith": [],
+ "re.sub.rstrip.lstrip.splitlines": [],
+ "re.sub.rstrip.lstrip.splitlines.count": [],
+ "re.sub.rstrip.lstrip.splitlines.find": [],
+ "re.sub.rstrip.lstrip.splitlines.startswith": [],
+ "re.sub.rstrip.lstrip.startswith": [],
+ "re.sub.rstrip.replace": [],
+ "re.sub.rstrip.replace.count": [],
+ "re.sub.rstrip.replace.encode": [],
+ "re.sub.rstrip.replace.endswith": [],
+ "re.sub.rstrip.replace.index": [],
+ "re.sub.rstrip.replace.lstrip": [],
+ "re.sub.rstrip.replace.splitlines": [],
+ "re.sub.rstrip.replace.splitlines.count": [],
+ "re.sub.rstrip.replace.splitlines.find": [],
+ "re.sub.rstrip.replace.splitlines.startswith": [],
+ "re.sub.rstrip.replace.startswith": [],
+ "re.sub.rstrip.splitlines": [],
+ "re.sub.rstrip.splitlines.count": [],
+ "re.sub.rstrip.splitlines.find": [],
+ "re.sub.rstrip.splitlines.startswith": [],
+ "re.sub.rstrip.startswith": [],
+ "re.sub.splitlines": [],
+ "re.sub.splitlines.count": [],
+ "re.sub.splitlines.find": [],
+ "re.sub.splitlines.startswith": [],
+ "re.sub.startswith": [],
+ "re.sub.strip": [],
+ "subprocess.Popen": [],
+ "subprocess.Popen.stdin.close": [],
+ "subprocess.Popen.stdin.write": [],
+ "subprocess.Popen.stdout.read": [],
+ "subprocess.Popen.stdout.read.decode": [],
+ "sys.exit": [],
+ "sys.path.insert": [],
+ "sys.stdin.read": [],
+ "sys.stdin.read.count": [],
+ "sys.stdin.read.encode": [],
+ "sys.stdin.read.endswith": [],
+ "sys.stdin.read.index": [],
+ "sys.stdin.read.lstrip": [],
+ "sys.stdin.read.replace": [],
+ "sys.stdin.read.replace.count": [],
+ "sys.stdin.read.replace.encode": [],
+ "sys.stdin.read.replace.endswith": [],
+ "sys.stdin.read.replace.index": [],
+ "sys.stdin.read.replace.lstrip": [],
+ "sys.stdin.read.replace.rstrip": [],
+ "sys.stdin.read.replace.rstrip.count": [],
+ "sys.stdin.read.replace.rstrip.encode": [],
+ "sys.stdin.read.replace.rstrip.endswith": [],
+ "sys.stdin.read.replace.rstrip.lstrip": [],
+ "sys.stdin.read.replace.rstrip.splitlines": [],
+ "sys.stdin.read.replace.splitlines": [],
+ "sys.stdin.read.replace.splitlines.count": [],
+ "sys.stdin.read.replace.splitlines.find": [],
+ "sys.stdin.read.replace.splitlines.startswith": [],
+ "sys.stdin.read.replace.startswith": [],
+ "sys.stdin.read.replace.strip": [],
+ "sys.stdin.read.rstrip": [],
+ "sys.stdin.read.rstrip.count": [],
+ "sys.stdin.read.rstrip.encode": [],
+ "sys.stdin.read.rstrip.endswith": [],
+ "sys.stdin.read.rstrip.lstrip": [],
+ "sys.stdin.read.rstrip.splitlines": [],
+ "sys.stdin.read.splitlines": [],
+ "sys.stdin.read.splitlines.count": [],
+ "sys.stdin.read.splitlines.find": [],
+ "sys.stdin.read.splitlines.startswith": [],
+ "sys.stdin.read.startswith": [],
+ "sys.stdin.read.strip": [],
+ "sys.stdout.write": [],
+ "test_markdown2.norm_html_from_html": [],
+ "typing.cast": [],
+ "unicodedata.normalize": [],
+ "unicodedata.normalize.encode": [],
+ "unicodedata.normalize.encode.decode": [],
+ "wavedrom.render": [],
+ "wavedrom.render.tostring": [],
+ "wavedrom.render.tostring.encode": []
+}

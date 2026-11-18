@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.AppError.report",
+  "main.DbError.report",
+  "main.NetError.report",
+  "main.query"
+ ],
+ "main.AppError.report": [],
+ "main.DbError.report": [],
+ "main.NetError.report": [],
+ "main.query": []
+}

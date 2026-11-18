@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.log",
+  "sys.stdout.write"
+ ],
+ "main.log": [],
+ "sys.stdout.write": []
+}

@@ -1,0 +1,11 @@
+{
+    "main": [
+        "main.q1ede_1.q1ede_2"
+    ],
+    "main.q1ede_1.q1ede_2": [
+        "<builtin>.super",
+        "main.q1ede_0.q1ede_2"
+    ],
+    "main.q1ede_0.q1ede_2": [],
+    "<builtin>.super": []
+}

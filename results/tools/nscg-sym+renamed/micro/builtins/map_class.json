@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.list",
+  "<builtin>.map"
+ ],
+ "main.q8802_0.__init__": []
+}

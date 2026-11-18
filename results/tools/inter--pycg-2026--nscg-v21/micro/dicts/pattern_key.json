@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.run"
+ ],
+ "main.render_page": [],
+ "main.log_request": [],
+ "main.run": [
+  "main.render_page"
+ ]
+}

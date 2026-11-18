@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/nested", "answers": {"main": ["main.q6c99_0", "main.q6c99_1"], "main.q6c99_0": [], "main.q6c99_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 15, "col": 1, "kind": "call", "text": "d['a']['b']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

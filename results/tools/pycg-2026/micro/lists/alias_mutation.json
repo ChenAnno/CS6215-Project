@@ -1,0 +1,9 @@
+{
+ "<builtin>.list.append": [],
+ "main": [
+  "<builtin>.list.append",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

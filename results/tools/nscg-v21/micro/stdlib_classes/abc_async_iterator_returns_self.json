@@ -1,0 +1,14 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.Once.__anext__": [],
+ "main.Once.__init__": [],
+ "main.first": [],
+ "main.start": [
+  "main.Once.__anext__",
+  "main.Once.__init__",
+  "main.first"
+ ]
+}

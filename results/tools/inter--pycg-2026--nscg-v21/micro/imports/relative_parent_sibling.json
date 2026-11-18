@@ -1,0 +1,17 @@
+{
+ "main": [
+  "app.api.handlers.handle"
+ ],
+ "app.storage.disk.save": [],
+ "app.api.handlers": [],
+ "app": [],
+ "app.api.handlers.handle": [
+  "app.storage.disk.save"
+ ],
+ "storage.disk.save": [],
+ "app.storage": [],
+ "storage.disk": [],
+ "app.storage.disk": [],
+ "storage": [],
+ "app.api": []
+}

@@ -1,0 +1,4441 @@
+{
+ "tool": {
+  "name": "pycg-2026",
+  "flavour": "new",
+  "commit": "c5c6a8951ad7e662aa7dcd64b9af8849d689bca3",
+  "describe": "c5c6a89",
+  "dirty": false
+ },
+ "benchmark": {
+  "name": "micro",
+  "commit": "8a2e52cca102766067fd5c9de2a0af17861a5a0e",
+  "describe": "evaluation-2026",
+  "dirty": false
+ },
+ "python": "3.14.3",
+ "hash_seed": 0,
+ "timeout": 1800,
+ "memory_limit_mib": null,
+ "runs": {
+  "micro/args/arguments_that_cannot_bind": {
+   "status": "ok",
+   "seconds": 0.209,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.278,
+   "files": 1
+  },
+  "micro/args/assigned_call": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/args/bound_method": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/args/call": {
+   "status": "ok",
+   "seconds": 0.159,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.248,
+   "files": 1
+  },
+  "micro/args/call_site_unpacking": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/args/default_bound_at_definition": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/args/default_call_result": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/args/default_lambda": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/args/forward_star_args": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/args/imported_assigned_call": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/args/imported_call": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/args/keyword_only": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/args/mixed_kinds": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/args/multiple_unpacking_call": {
+   "status": "ok",
+   "seconds": 0.138,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/args/mutable_default_shared": {
+   "status": "ok",
+   "seconds": 0.157,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.269,
+   "files": 1
+  },
+  "micro/args/nested_call": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/args/param_call": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/args/passed_through_layers": {
+   "status": "ok",
+   "seconds": 0.155,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/args/positional_only_kwargs_collision": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/args/star_args_index": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/args/star_args_param": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/args/star_args_returned": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/assignments/annotated": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/assignments/attribute_target": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/assignments/augmented_list_in_place": {
+   "status": "ok",
+   "seconds": 0.154,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/assignments/augmented_tuple_rebinds": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/assignments/boolean_operators": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/assignments/chained": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/assignments/conditional_expression": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/assignments/del_then_rebind": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/assignments/global_rebind": {
+   "status": "ok",
+   "seconds": 0.109,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/assignments/multiple_targets_mixed": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/assignments/nonlocal_rebind": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/assignments/recursive_tuple": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/assignments/starred": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.189,
+   "files": 1
+  },
+  "micro/assignments/swap": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/assignments/tuple": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/assignments/unpack_returned_tuple": {
+   "status": "ok",
+   "seconds": 0.159,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/assignments/walrus": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/async/aiter_anext": {
+   "status": "ok",
+   "seconds": 0.185,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.269,
+   "files": 1
+  },
+  "micro/async/async_comprehension": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/async/async_for": {
+   "status": "ok",
+   "seconds": 0.125,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.268,
+   "files": 1
+  },
+  "micro/async/async_generator": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/async/async_generator_expression": {
+   "status": "ok",
+   "seconds": 0.145,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/async/async_generator_methods": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/async/async_with": {
+   "status": "ok",
+   "seconds": 0.125,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/async/await_call": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.189,
+   "files": 1
+  },
+  "micro/async/awaitable_object": {
+   "status": "ok",
+   "seconds": 0.113,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/async/call_soon_callback": {
+   "status": "ok",
+   "seconds": 0.113,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/async/coroutine_awaited_later": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/async/coroutine_not_awaited": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/async/create_task": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/async/explicit_event_loop": {
+   "status": "ok",
+   "seconds": 0.144,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.239,
+   "files": 1
+  },
+  "micro/async/gather": {
+   "status": "ok",
+   "seconds": 0.154,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/async/sync_async_bridge": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/async/task_group": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/builtins/bound_method_callback": {
+   "status": "ok",
+   "seconds": 0.107,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/builtins/builtin_as_callback": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/builtins/constructors": {
+   "status": "ok",
+   "seconds": 0.159,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/builtins/filter_callback": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/builtins/filter_elements": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/builtins/function_passed_not_called": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/builtins/functions": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/builtins/functions_through_iterators": {
+   "status": "ok",
+   "seconds": 0.141,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/builtins/functools_partial": {
+   "status": "ok",
+   "seconds": 0.122,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/builtins/functools_reduce": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/builtins/iter_callable_sentinel": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/builtins/iter_next_protocol": {
+   "status": "ok",
+   "seconds": 0.107,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/builtins/itertools_callbacks": {
+   "status": "ok",
+   "seconds": 0.169,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.249,
+   "files": 1
+  },
+  "micro/builtins/lambda_key": {
+   "status": "ok",
+   "seconds": 0.113,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/builtins/list_sort_key": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/builtins/map": {
+   "status": "ok",
+   "seconds": 0.158,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.24,
+   "files": 1
+  },
+  "micro/builtins/map_class": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/builtins/map_not_consumed": {
+   "status": "ok",
+   "seconds": 0.107,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/builtins/method_chain": {
+   "status": "ok",
+   "seconds": 0.109,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.199,
+   "files": 1
+  },
+  "micro/builtins/method_on_returned_value": {
+   "status": "ok",
+   "seconds": 0.146,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.229,
+   "files": 1
+  },
+  "micro/builtins/methods_on_variables": {
+   "status": "ok",
+   "seconds": 0.159,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/builtins/min_max_key": {
+   "status": "ok",
+   "seconds": 0.12,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.209,
+   "files": 1
+  },
+  "micro/builtins/same_method_name_builtin_and_snippet": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/builtins/sorted_key": {
+   "status": "ok",
+   "seconds": 0.111,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/builtins/types": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/classes/assigned_call": {
+   "status": "ok",
+   "seconds": 0.108,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.189,
+   "files": 1
+  },
+  "micro/classes/assigned_self_call": {
+   "status": "ok",
+   "seconds": 0.156,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/classes/base_class_attr": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.169,
+   "files": 1
+  },
+  "micro/classes/base_class_calls_child": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/call": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/call_dunder": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/class_as_value": {
+   "status": "ok",
+   "seconds": 0.113,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/classes/class_attribute_function": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/classes/class_body_calls": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/class_decorator": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/class_getitem": {
+   "status": "ok",
+   "seconds": 0.155,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.239,
+   "files": 1
+  },
+  "micro/classes/classmethod_alternative_constructor": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/classes/classmethod_on_instance": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/del_on_last_reference": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/direct_call": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/imported_attr_access": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/classes/imported_call": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/classes/imported_call_without_init": {
+   "status": "ok",
+   "seconds": 0.158,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.239,
+   "files": 1
+  },
+  "micro/classes/imported_nested_attr_access": {
+   "status": "ok",
+   "seconds": 0.153,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.288,
+   "files": 1
+  },
+  "micro/classes/init_subclass": {
+   "status": "ok",
+   "seconds": 0.167,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.43,
+   "files": 1
+  },
+  "micro/classes/instance": {
+   "status": "ok",
+   "seconds": 0.129,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.359,
+   "files": 1
+  },
+  "micro/classes/instance_attribute_outside_init": {
+   "status": "ok",
+   "seconds": 0.127,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.269,
+   "files": 1
+  },
+  "micro/classes/instance_attribute_shadows_method": {
+   "status": "ok",
+   "seconds": 0.111,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/classes/local_class": {
+   "status": "ok",
+   "seconds": 0.156,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.249,
+   "files": 1
+  },
+  "micro/classes/method_assigned_after_creation": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/method_chaining": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/nested_call": {
+   "status": "ok",
+   "seconds": 0.11,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/classes/nested_class": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/classes/nested_class_calls": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/classes/new_and_init": {
+   "status": "ok",
+   "seconds": 0.149,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.269,
+   "files": 1
+  },
+  "micro/classes/new_returns_other_class": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/classes/new_without_init": {
+   "status": "ok",
+   "seconds": 0.115,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.191,
+   "files": 1
+  },
+  "micro/classes/parameter_call": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/classes/per_instance_attributes": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/classes/private_name_mangling": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/classes/return_call": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/classes/return_call_direct": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/classes/same_method_name_unrelated_classes": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/classes/self_assign_func": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/classes/self_assignment": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/classes/self_call": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/classes/self_class_call": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/slots_attribute_function": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/classes/slots_skip_getattr": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/classes/static_method_call": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/classes/staticmethod_call_form": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.148,
+   "files": 1
+  },
+  "micro/classes/super_class_return": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/classes/tuple_assignment": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/classes/type_of_instance_call": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/classes/unbound_method_call": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/closures/captured_parameter": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/closures/cell_rebound_after_definition": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/closures/early_binding_default": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/closures/factory_choice": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/closures/late_binding_loop": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/closures/nested_wrappers": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/closures/nonlocal_state": {
+   "status": "ok",
+   "seconds": 0.117,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/closures/recursive_inner": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/closures/separate_instances": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/closures/two_level_capture": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/comprehensions/dict_comprehension": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/comprehensions/dict_comprehension_lookup": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/comprehensions/filtered_functions": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/comprehensions/generator_expression": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/comprehensions/generator_expression_consumed_elsewhere": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/comprehensions/generator_short_circuit": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/comprehensions/in_class_body": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/comprehensions/iterable_calls": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/comprehensions/lambda_in_generator_expression": {
+   "status": "ok",
+   "seconds": 0.108,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/comprehensions/lambda_late_binding": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/comprehensions/set_comprehension": {
+   "status": "ok",
+   "seconds": 0.108,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/comprehensions/variable_scope": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/comprehensions/walrus": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/context_managers/class_based": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/context_managers/closing": {
+   "status": "ok",
+   "seconds": 0.115,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.197,
+   "files": 1
+  },
+  "micro/context_managers/context_decorator": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/context_managers/contextmanager_generator": {
+   "status": "ok",
+   "seconds": 0.126,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/context_managers/contextmanager_handles_exception": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/context_managers/enter_returns_other": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/context_managers/exit_stack_callbacks": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/context_managers/exit_suppresses": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/context_managers/inherited_enter_exit": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/context_managers/multiple_items": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/context_managers/nested_with": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/context_managers/parenthesized_items": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/control_flow/assert_message_not_evaluated": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/control_flow/conditional_definition": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/control_flow/constant_condition": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/control_flow/continue_skips": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/control_flow/early_return": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/control_flow/finally_after_return": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/control_flow/for_else_completes": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/control_flow/generator_body_not_run": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/control_flow/if_else_branch": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/control_flow/isinstance_else_branch": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/control_flow/isinstance_filters_values": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/control_flow/isinstance_guard": {
+   "status": "ok",
+   "seconds": 0.109,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/control_flow/lazy_generator_expression": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/control_flow/loop_rebinds_callee": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/control_flow/loop_variable_after_loop": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/control_flow/main_guard": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/control_flow/match_case_not_taken": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/control_flow/reassigned_after_call": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/control_flow/reassigned_before_call": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/control_flow/short_circuit": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/control_flow/try_except_path": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/control_flow/try_no_exception": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/control_flow/while_break_else": {
+   "status": "ok",
+   "seconds": 0.156,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/decorators/assigned": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/decorators/bound_method_decorator": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/decorators/call": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/decorators/class_based_decorator": {
+   "status": "ok",
+   "seconds": 0.14,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/decorators/class_decorator_adds_method": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/class_decorator_replaces_method": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/decorators/decorated_classmethod_staticmethod": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/decorator_expression": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/decorators/decorator_in_class_body": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/decorators/decorator_on_method": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/decorator_replaces_function": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/decorators/factory_with_arguments": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/functools_cache": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/decorators/functools_wraps": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/decorators/manual_application": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/nested": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/nested_decorators": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/decorators/param_call": {
+   "status": "ok",
+   "seconds": 0.158,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/decorators/registry_decorator": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.148,
+   "files": 1
+  },
+  "micro/decorators/return": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/decorators/return_different_func": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/decorators/singledispatch": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/decorators/stacked_with_arguments": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/descriptors/cached_property": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/descriptors/data_descriptor": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/descriptors/descriptor_returns_function": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/descriptors/getattr_fallback": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/descriptors/getattribute": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/descriptors/non_data_descriptor_shadowed": {
+   "status": "ok",
+   "seconds": 0.119,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/descriptors/object_setattr_runs_set": {
+   "status": "ok",
+   "seconds": 0.139,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/descriptors/property_call_form": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/descriptors/property_calls_methods": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/descriptors/property_decorator": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/descriptors/property_overridden_in_subclass": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.197,
+   "files": 1
+  },
+  "micro/descriptors/setattr_dunder": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/dicts/add_key": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/dicts/alias_mutation": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/dicts/assign": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/dicts/call": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/dicts/computed_key": {
+   "status": "ok",
+   "seconds": 0.135,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dicts/constructor": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/dicts/defaultdict_factory": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/dicts/dispatch_table": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/dicts/equal_keys_overwrite": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/dicts/ext_key": {
+   "status": "ok",
+   "seconds": 0.137,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/dicts/fromkeys": {
+   "status": "ok",
+   "seconds": 0.136,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/dicts/function_keys": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/dicts/get": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dicts/get_compares_key": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/dicts/get_default": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dicts/items_iteration": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/dicts/merge_operator": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/dicts/mutated_in_function": {
+   "status": "ok",
+   "seconds": 0.105,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/dicts/nested": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/dicts/nested_list": {
+   "status": "ok",
+   "seconds": 0.137,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/dicts/new_key_param": {
+   "status": "ok",
+   "seconds": 0.127,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/dicts/ordereddict_items": {
+   "status": "ok",
+   "seconds": 0.139,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dicts/param": {
+   "status": "ok",
+   "seconds": 0.139,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dicts/param_key": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/dicts/pattern_key": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.148,
+   "files": 1
+  },
+  "micro/dicts/pop": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/dicts/return": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/dicts/return_assign": {
+   "status": "ok",
+   "seconds": 0.138,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/dicts/same_key_two_dicts": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/dicts/setdefault_existing": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/dicts/type_coercion": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/dicts/unpack_merge": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/dicts/update": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/dicts/values_iteration": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/direct_calls/assigned_call": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/direct_calls/imported_return_call": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/direct_calls/return_call": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/direct_calls/with_parameters": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/dynamic/compile_exec": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/dynamic/delattr_restores_method": {
+   "status": "ok",
+   "seconds": 0.11,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/dynamic/dunder_import": {
+   "status": "ok",
+   "seconds": 0.123,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/dynamic/eval": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/dynamic/eval_constructed_string": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/dynamic/exec_defines_function": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/dynamic/exec_in_function": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/dynamic/getattr_annotated_name": {
+   "status": "ok",
+   "seconds": 0.107,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/dynamic/getattr_concatenated": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/dynamic/getattr_constant": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/dynamic/getattr_default": {
+   "status": "ok",
+   "seconds": 0.132,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/dynamic/getattr_lowered_name": {
+   "status": "ok",
+   "seconds": 0.161,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.289,
+   "files": 1
+  },
+  "micro/dynamic/getattr_on_module": {
+   "status": "ok",
+   "seconds": 0.15,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.288,
+   "files": 1
+  },
+  "micro/dynamic/getattr_variable": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/dynamic/globals_lookup": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dynamic/hasattr_guard": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dynamic/import_module": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.248,
+   "files": 1
+  },
+  "micro/dynamic/import_module_constant": {
+   "status": "ok",
+   "seconds": 0.24,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.369,
+   "files": 1
+  },
+  "micro/dynamic/instance_dict_write": {
+   "status": "ok",
+   "seconds": 0.11,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.248,
+   "files": 1
+  },
+  "micro/dynamic/locals_lookup": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dynamic/monkey_patch_method": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/dynamic/monkey_patch_module_function": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/dynamic/operator_attrgetter": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/dynamic/operator_itemgetter": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/dynamic/operator_methodcaller": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "micro/dynamic/setattr_function": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/dynamic/sys_modules_lookup": {
+   "status": "ok",
+   "seconds": 0.163,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.299,
+   "files": 1
+  },
+  "micro/dynamic/vars_lookup": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/exceptions/assert_message_not_evaluated": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.248,
+   "files": 1
+  },
+  "micro/exceptions/assert_message_on_failure": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/exceptions/custom_init_super": {
+   "status": "ok",
+   "seconds": 0.104,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/exceptions/custom_str": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/exceptions/except_star": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/exceptions/exception_carries_callback": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/exceptions/finally_after_return": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/exceptions/handler_by_class": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/exceptions/handler_calls_exception_method": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/exceptions/inherited_init": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/exceptions/raise": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/exceptions/raise_assigned": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/exceptions/raise_attr": {
+   "status": "ok",
+   "seconds": 0.139,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/exceptions/raise_from": {
+   "status": "ok",
+   "seconds": 0.148,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/exceptions/raised_in_callee": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/exceptions/reraise": {
+   "status": "ok",
+   "seconds": 0.155,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/exceptions/try_except_else_finally": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/external/alias": {
+   "status": "ok",
+   "seconds": 0.164,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.236,
+   "files": 1
+  },
+  "micro/external/attribute": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/attribute_assigned": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/external/base_class_override": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/external/base_class_super": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/external/callback_to_external": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/chained_attributes": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/external/cls_parent": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/external/context_manager": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/external/decorator": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/exception_caught": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/exception_raised": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/external/function": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/function_asname": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/external/function_assigned": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/iteration": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/local_shadows_external": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/external/passed_to_snippet_function": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/external/returned_through_function": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/external/stored_in_attribute": {
+   "status": "ok",
+   "seconds": 0.114,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/external/stored_in_container": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/external/submodule_function": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/functions/assigned_call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/functions/assigned_call_lit_param": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/functions/call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/functions/defined_not_called": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/functions/function_attribute": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/functions/generic_function": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/functions/global_def_in_function": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/functions/higher_order_compose": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/functions/imported_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/functions/module_attribute": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/functions/mutual_recursion": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/functions/nested_shadows_global": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/functions/recursion": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/functions/redefined": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/functions/same_name_two_scopes": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/generators/close_runs_finally": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/generators/infinite_break": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/generators/iter_param": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/generators/iter_return": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/generators/iterable": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/generators/iterable_assigned": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/generators/list_consumption": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/generators/method": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/generators/next_call": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/generators/no_iter": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/generators/passed_to_function": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/generators/send": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/generators/throw": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/generators/unpacking": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/generators/yield": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/generators/yield_from": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/generators/yield_from_return_value": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/chained_import": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/conditional_import": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/cyclic_import": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/dotted_import_call": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/from_import_as": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/import_all": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/imports/import_all_skips_private": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/imports/import_all_with_dunder_all": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/import_as": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/imports/import_error_fallback": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/imports/import_from": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/import_in_function": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/imports/import_shadowed_by_def": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/init_func_import": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/imports/init_import": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/imports/init_reexport_attribute": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.148,
+   "files": 1
+  },
+  "micro/imports/main_guard": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/imports/module_attribute_assigned": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/imports/module_getattr": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/imports/module_top_level_calls": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/imports/namespace_package": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/imports/package_attribute_shadows_submodule": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/imports/parent_import": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/imports/relative_dot_init_name": {
+   "status": "ok",
+   "seconds": 0.108,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/imports/relative_dot_submodule": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/imports/relative_import": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.197,
+   "files": 1
+  },
+  "micro/imports/relative_import_with_name": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/imports/relative_parent": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/imports/relative_parent_sibling": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.197,
+   "files": 1
+  },
+  "micro/imports/same_function_two_names": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/imports/same_name_two_modules": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/imports/shadow_stdlib_module": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/imports/simple_import": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/submodule_bound_by_other_import": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/submodule_import": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/submodule_import_all": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/submodule_import_as": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/imports/submodule_import_as_call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/imports/submodule_import_from": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/kwargs/assigned_call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/kwargs/call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/kwargs/chained_call": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/kwargs/dict_unpacking_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/kwargs/double_star_param": {
+   "status": "ok",
+   "seconds": 0.09,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/kwargs/forwarded_kwargs": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/lambdas/call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lambdas/calls_parameter": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lambdas/chained_calls": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lambdas/default_is_lambda": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lambdas/default_parameter": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lambdas/immediately_invoked": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lambdas/in_dict": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lambdas/parameter_call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lambdas/recursive": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lambdas/return_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.148,
+   "files": 1
+  },
+  "micro/lambdas/returns_lambda": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lambdas/same_line_numbering": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/lists/alias_mutation": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lists/append": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lists/comprehension_if": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lists/comprehension_val": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/lists/concatenation": {
+   "status": "ok",
+   "seconds": 0.118,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.268,
+   "files": 1
+  },
+  "micro/lists/constructor": {
+   "status": "ok",
+   "seconds": 0.128,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.389,
+   "files": 1
+  },
+  "micro/lists/copy": {
+   "status": "ok",
+   "seconds": 0.09,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.278,
+   "files": 1
+  },
+  "micro/lists/del_element": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/lists/enumerate": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/lists/ext_index": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lists/extend": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lists/insert": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lists/iterate": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lists/mutated_in_function": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lists/negative_index": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lists/nested": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lists/nested_comprehension": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lists/param_index": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lists/pop": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/lists/repetition": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lists/reverse": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/lists/same_index_two_lists": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/lists/simple": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/lists/slice": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/lists/slice_assignment": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/lists/sort_key": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/lists/starred_display": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/lists/zip": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/match/as_pattern": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/match/capture_pattern": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/match/class_pattern_match_args": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/match/class_pattern_property": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/match/guard_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/match/literal_pattern": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/match/mapping_custom": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/match/mapping_pattern": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/match/mapping_rest": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/match/or_pattern": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/match/sequence_custom": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/match/sequence_pattern": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/match/string_not_sequence": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/match/value_pattern_eq": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/metaclasses/instancecheck": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_call": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_dunder_on_class": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_getattr": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_getitem_beats_class_getitem": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_method_on_class": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_new_init": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_prepare": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/metaclasses/metaclass_registry": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/metaclasses/type_three_args": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/mro/base_from_conditional": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/base_from_function_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/basic": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/mro/basic_init": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/mro/class_attribute_from_base": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/mro/deep_hierarchy": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/mro/diamond_cooperative": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/mro/dynamic_dispatch_base_parameter": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/mro/mixin": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/parents_same_superclass": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.137,
+   "files": 1
+  },
+  "micro/mro/self_assignment": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/super_call": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/mro/super_depends_on_receiver": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/super_in_classmethod": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/super_in_lambda": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/super_in_method": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/super_in_nested_function": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/mro/super_skips_parent_without_method": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/super_two_argument": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/mro/super_two_argument_receiver_check": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/mro/template_method": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/mro/two_parents": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/mro/two_parents_method_defined": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/new_syntax/comprehension_unpacking": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/copy_replace": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/new_syntax/except_without_parentheses": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/new_syntax/frozendict_dispatch": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/int_ignores_trunc": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/new_syntax/json_array_hook": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/lazy_from_import_in_function": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/lazy_import_unused": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/lazy_modules_list": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/match_unary_plus": {
+   "status": "skipped"
+  },
+  "micro/new_syntax/partial_placeholder": {
+   "status": "ok",
+   "seconds": 0.099,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/new_syntax/pow_three_args_rpow": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/new_syntax/sentinel_default": {
+   "status": "skipped"
+  },
+  "micro/operators/augmented_subscript": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/operators/binary_arithmetic": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/call_chain": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/operators/comparison_reflection": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/operators/contains_iter_fallback": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/contains_operator": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/operators/copy_protocol": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/dict_identity_skips_eq": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/operators/eq_via_list_search": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/format_spec": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/operators/getitem_iteration_fallback": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/operators/hash_eq_dict": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/operators/index_and_int": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/operators/inplace_fallback": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/operators/len_builtin": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/missing_dict_subclass": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/ne_falls_back_to_eq": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/operators/operator_dispatch_by_type": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/operators/operator_module": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/reflected_operand": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/operators/reflected_subclass_first": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/reversed_protocol": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/operators/short_circuit_bool": {
+   "status": "ok",
+   "seconds": 0.101,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/operators/sorted_max_comparisons": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/operators/str_repr": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/operators/subscript_protocol": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/operators/truthiness": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/operators/unary_operators": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/operators/unpacking_iter": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/returns/bound_method": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/returns/call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/returns/chained_calls": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/returns/fluent_self": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/returns/imported_call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/returns/multiple_returns": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/returns/nested_import_call": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/returns/return_complex": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/sets/add": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/sets/difference": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/sets/discard": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/sets/frozenset": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/sets/iterate": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/sets/pop": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/argparse_action": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/stdlib/cmp_to_key": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib/copy_returns_same_class": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.207,
+   "files": 1
+  },
+  "micro/stdlib/counter_methods": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib/datetime_methods": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/stdlib/deque_popleft": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/exit_stack_callback": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib/heapq_bisect_key": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/stdlib/html_parser_subclass": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/json_default_hook": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/json_encoder_subclass": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.228,
+   "files": 1
+  },
+  "micro/stdlib/json_object_hook": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/stdlib/logger_methods": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/logging_handler_emit": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib/module_function_import_forms": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/stdlib/pathlib_methods": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/re_sub_function": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/stdlib/regex_methods": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/sched_callbacks": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/standard_streams": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/stdlib/stringio_methods": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib/thread_subclass_run": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib/thread_target": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib/unittest_runner": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/abc_abstractmethod": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/abc_async_iterator_returns_self": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/abc_iterator_returns_self": {
+   "status": "ok",
+   "seconds": 0.102,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/stdlib_classes/dataclass_default_factory": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib_classes/dataclass_order": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib_classes/dataclass_post_init": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/dict_subclass_update_skips_setitem": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.197,
+   "files": 1
+  },
+  "micro/stdlib_classes/enum_auto_generate_value": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/enum_member_function_values": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/enum_methods": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib_classes/enum_missing": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/stdlib_classes/namedtuple_methods": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/stdlib_classes/partial_on_method": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/stdlib_classes/partialmethod": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/stdlib_classes/protocol_structural": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/stdlib_classes/total_ordering": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/stdlib_classes/typing_alias_base": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib_classes/typing_namedtuple_methods": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/stdlib_classes/userdict_update_calls_setitem": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/strings/container_repr": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/strings/format_builtin": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/strings/format_field_property": {
+   "status": "ok",
+   "seconds": 0.097,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/strings/fstring_call": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/strings/fstring_conversions": {
+   "status": "ok",
+   "seconds": 0.096,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/strings/fstring_debug_repr": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/strings/fstring_format_spec_call": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/strings/fstring_lambda": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/strings/fstring_nested_quotes": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/strings/fstring_str_fallback": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/strings/percent_format_variable": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.178,
+   "files": 1
+  },
+  "micro/strings/percent_formatting": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/strings/str_format_method": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/strings/template_string": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/tuples/concatenation": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/tuples/constructor": {
+   "status": "ok",
+   "seconds": 0.098,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/tuples/index": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/tuples/nested_index": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/tuples/returned_and_indexed": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/tuples/slice": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.177,
+   "files": 1
+  },
+  "micro/tuples/unpack_in_for": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/type_hints/abstract_class_annotation": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.157,
+   "files": 1
+  },
+  "micro/type_hints/annotated_assignment_declares": {
+   "status": "ok",
+   "seconds": 0.095,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/type_hints/annotated_metadata": {
+   "status": "ok",
+   "seconds": 0.1,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/type_hints/annotation_resolves_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.197,
+   "files": 1
+  },
+  "micro/type_hints/deferred_annotation_call": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/type_hints/deferred_annotation_evaluated": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/type_hints/future_annotations_call": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/type_hints/generic_alias_instantiation": {
+   "status": "ok",
+   "seconds": 0.106,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.258,
+   "files": 1
+  },
+  "micro/type_hints/isinstance_declares_class": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.208,
+   "files": 1
+  },
+  "micro/type_hints/local_variable_annotation": {
+   "status": "ok",
+   "seconds": 0.09,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/type_hints/newtype_call": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/type_hints/outside_class_annotation": {
+   "status": "ok",
+   "seconds": 0.103,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.218,
+   "files": 1
+  },
+  "micro/type_hints/overload": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/type_hints/pep695_generic_class": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.187,
+   "files": 1
+  },
+  "micro/type_hints/pep695_generic_function": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.188,
+   "files": 1
+  },
+  "micro/type_hints/self_type": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.167,
+   "files": 1
+  },
+  "micro/type_hints/string_annotation_evaluated": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/type_hints/subclass_behind_base_annotation": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.198,
+   "files": 1
+  },
+  "micro/type_hints/type_alias_never_evaluated": {
+   "status": "ok",
+   "seconds": 0.091,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  },
+  "micro/type_hints/type_checking_import": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.168,
+   "files": 1
+  },
+  "micro/type_hints/typed_dict_call": {
+   "status": "ok",
+   "seconds": 0.094,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/type_hints/typing_cast": {
+   "status": "ok",
+   "seconds": 0.093,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.147,
+   "files": 1
+  },
+  "micro/type_hints/wrong_annotation": {
+   "status": "ok",
+   "seconds": 0.092,
+   "peak_rss_mib": 25.8,
+   "wall_seconds": 0.158,
+   "files": 1
+  }
+ }
+}

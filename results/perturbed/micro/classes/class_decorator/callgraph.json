@@ -1,0 +1,11 @@
+{
+    "main": [
+        "main.q667b_0.__init__",
+        "main.q667b_1"
+    ],
+    "main.q667b_1": [
+        "<builtin>.list.append"
+    ],
+    "main.q667b_0.__init__": [],
+    "<builtin>.list.append": []
+}

@@ -1,0 +1,16 @@
+{
+ "functools.partial.__call__": [],
+ "functools.wraps": [],
+ "main": [
+  "main.logged",
+  "main.logged.wrapper"
+ ],
+ "main.add": [],
+ "main.logged": [
+  "functools.partial.__call__",
+  "functools.wraps"
+ ],
+ "main.logged.wrapper": [
+  "main.add"
+ ]
+}

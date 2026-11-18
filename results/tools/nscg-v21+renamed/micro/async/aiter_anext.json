@@ -1,0 +1,12 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.qbd65_0"
+ ],
+ "main.qbd65_0": [
+  "<builtin>.aiter",
+  "<builtin>.anext",
+  "main.qbd65_1"
+ ],
+ "main.qbd65_1": []
+}

@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.Empty.__contains__",
+  "typing.AbstractSet.__init__",
+  "typing.AbstractSet.isdisjoint",
+  "typing.Iterator.__init__",
+  "typing.Iterator.__iter__"
+ ],
+ "main.Countdown.__next__": [],
+ "main.Empty.__contains__": [],
+ "main.Empty.__iter__": [],
+ "main.Empty.__len__": []
+}

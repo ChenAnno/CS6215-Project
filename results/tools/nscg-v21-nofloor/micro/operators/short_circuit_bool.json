@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.Empty.__bool__",
+  "main.fallback",
+  "main.never"
+ ],
+ "main.Empty.__bool__": [],
+ "main.fallback": [],
+ "main.never": []
+}

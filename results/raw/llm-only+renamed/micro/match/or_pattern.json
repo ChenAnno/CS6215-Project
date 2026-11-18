@@ -1,0 +1,1 @@
+{"units": [{"unit": "match/or_pattern", "answers": {"main": ["main.qa3d7_1"], "main.qa3d7_0": [], "main.qa3d7_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 9, "kind": "call", "text": "handler()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

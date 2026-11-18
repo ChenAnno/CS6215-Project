@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.run"
+ ],
+ "main.helper": [],
+ "main.run": [
+  "<builtin>.exec",
+  "main.helper"
+ ]
+}

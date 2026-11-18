@@ -1,0 +1,14 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.qa035_1"
+ ],
+ "main.qa035_0": [],
+ "main.qa035_1": [
+  "asyncio.create_task",
+  "main.qa035_2"
+ ],
+ "main.qa035_2": [
+  "main.qa035_0"
+ ]
+}

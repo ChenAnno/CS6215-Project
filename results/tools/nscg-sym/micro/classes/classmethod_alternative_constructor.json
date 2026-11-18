@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.classmethod",
+  "main.Shape.unit"
+ ],
+ "main.Shape.__init__": [],
+ "main.Shape.unit": [
+  "main.Shape.__init__"
+ ],
+ "main.Square.__init__": []
+}

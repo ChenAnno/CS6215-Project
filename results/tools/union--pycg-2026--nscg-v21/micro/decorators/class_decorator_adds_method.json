@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.greet",
+  "main.with_greeting"
+ ],
+ "main.with_greeting": [],
+ "main.greet": []
+}

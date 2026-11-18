@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.list",
+  "itertools.groupby",
+  "itertools.starmap",
+  "itertools.takewhile"
+ ],
+ "main.multiply": [],
+ "main.parity": [],
+ "main.small": []
+}

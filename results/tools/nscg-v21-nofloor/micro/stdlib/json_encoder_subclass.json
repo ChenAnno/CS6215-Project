@@ -1,0 +1,18 @@
+{
+ "main": [
+  "main.dump_list",
+  "main.dump_set"
+ ],
+ "main.SetEncoder.default": [
+  "<builtin>.sorted"
+ ],
+ "main.dump_list": [
+  "json.JSONEncoder.__init__",
+  "json.dumps"
+ ],
+ "main.dump_set": [
+  "json.JSONEncoder.__init__",
+  "json.dumps",
+  "main.SetEncoder.default"
+ ]
+}

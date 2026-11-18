@@ -1,0 +1,13 @@
+{
+ "<builtin>.print": [],
+ "<builtin>.repr": [],
+ "<builtin>.str": [],
+ "main": [
+  "<builtin>.print",
+  "<builtin>.repr",
+  "<builtin>.str"
+ ],
+ "main.Plain.__repr__": [],
+ "main.Point.__repr__": [],
+ "main.Point.__str__": []
+}

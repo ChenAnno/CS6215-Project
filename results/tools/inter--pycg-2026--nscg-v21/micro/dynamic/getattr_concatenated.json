@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.dispatch"
+ ],
+ "<builtin>.getattr": [],
+ "main.Handler.on_open": [],
+ "main.dispatch": [
+  "<builtin>.getattr",
+  "main.Handler.on_close",
+  "main.Handler.on_open"
+ ],
+ "main.Handler.on_close": []
+}

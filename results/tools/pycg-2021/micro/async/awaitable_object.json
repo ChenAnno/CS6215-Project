@@ -1,0 +1,12 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.Deferred.__await__": [
+  "main.compute"
+ ],
+ "main.compute": [],
+ "main.start": []
+}

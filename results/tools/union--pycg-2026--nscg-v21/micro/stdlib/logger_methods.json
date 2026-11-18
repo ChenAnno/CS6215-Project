@@ -1,0 +1,8 @@
+{
+ "main": [
+  "logging.Logger.info",
+  "logging.getLogger"
+ ],
+ "logging.getLogger": [],
+ "logging.Logger.info": []
+}

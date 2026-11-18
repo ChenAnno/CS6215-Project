@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/module_getattr", "answers": {"s1": ["api._fetch", "api.__getattr__"]}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "api.fetch()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

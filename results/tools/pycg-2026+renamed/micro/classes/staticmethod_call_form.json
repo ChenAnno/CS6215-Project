@@ -1,0 +1,15 @@
+{
+ "<builtin>.staticmethod": [],
+ "<builtin>.str.strip": [],
+ "main": [
+  "<builtin>.staticmethod",
+  "main.q89a7_0.q89a7_1",
+  "main.q89a7_0.q89a7_2"
+ ],
+ "main.q89a7_0.q89a7_1": [
+  "<builtin>.str.strip"
+ ],
+ "main.q89a7_0.q89a7_2": [
+  "main.q89a7_0.q89a7_1"
+ ]
+}

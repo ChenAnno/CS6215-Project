@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.last_by_name",
+  "main.youngest"
+ ],
+ "main.by_age": [],
+ "main.by_name": [],
+ "main.last_by_name": [
+  "<builtin>.max",
+  "main.by_name"
+ ],
+ "main.youngest": [
+  "<builtin>.min",
+  "main.by_age"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+    "main": [
+        "ext.Model.__init__",
+        "main.q4522_0.q4522_1"
+    ],
+    "main.q4522_0.q4522_1": [
+        "ext.Model.commit",
+        "main.q4522_0.q4522_2"
+    ],
+    "main.q4522_0.q4522_2": [],
+    "ext.Model.__init__": [],
+    "ext.Model.commit": []
+}

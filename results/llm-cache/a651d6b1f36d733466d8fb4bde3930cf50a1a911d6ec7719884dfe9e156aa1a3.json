@@ -1,0 +1,176 @@
+{
+ "key": "a651d6b1f36d733466d8fb4bde3930cf50a1a911d6ec7719884dfe9e156aa1a3",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Notes\nFor implicit sites (kind is not call/decorator/raise) answer only package functions that really run. For `call` and `decorator` sites also add callees outside the package, named by the conventions above.\n\n## Definitions of the package (symbolic outline)\nmodule autojump_data\n  imports: __future__.print_function, autojump_utils.create_dir, autojump_utils.is_osx, autojump_utils.is_python3, autojump_utils.move_file, autojump_utils.unico, codecs.open, collections.namedtuple, itertools.ifilter, itertools.imap, tempfile.NamedTemporaryFile, time.time\n  def autojump_data.dictify(entries)\n  def autojump_data.entriefy(data)\n  def autojump_data.load(config)\n  def autojump_data.load_backup(config)\n  def autojump_data.migrate_osx_xdg_data(config)\n  def autojump_data.save(config, data)\nmodule autojump_match\n  imports: autojump_utils.is_python3, autojump_utils.last, difflib.SequenceMatcher, itertools.ifilter, itertools.imap\n  def autojump_match.match_anywhere(needles, haystack, ignore_case)\n  def autojump_match.match_consecutive(needles, haystack, ignore_case)\n  def autojump_match.match_fuzzy(needles, haystack, ignore_case, threshold)\nmodule autojump_utils\n  imports: __future__.print_function, itertools.imap, itertools.islice\n  def autojump_utils.create_dir(path)\n  def autojump_utils.encode_local(string)\n  def autojump_utils.first(xs)\n  def autojump_utils.get_tab_entry_info(entry, separator)\n  def autojump_utils.get_pwd()\n  def autojump_utils.has_uppercase(string)\n  def autojump_utils.in_bash()\n  def autojump_utils.is_autojump_sourced()\n  def autojump_utils.is_python2()\n  def autojump_utils.is_python3()\n  def autojump_utils.is_linux()\n  def autojump_utils.is_osx()\n  def autojump_utils.is_windows()\n  def autojump_utils.last(xs)\n  def autojump_utils.move_file(src, dst)\n  def autojump_utils.print_entry(entry)\n  def autojump_utils.print_local(string)\n  def autojump_utils.print_tab_menu(needle, tab_entries, separator)\n  def autojump_utils.sanitize(directories)\n  def autojump_utils.second(xs)\n  def autojump_utils.surround_quotes(string)\n  def autojump_utils.take(n, iterable)\n  def autojump_utils.unico(string)\n\n## Source (module `autojump_utils` of package `autojump`, part 2/2), with line numbers\n  1| #!/usr/bin/env python\n  2| # -*- coding: utf-8 -*-\n  3| from __future__ import print_function\n  4| \n  5| import errno\n  6| import os\n  7| import platform\n  8| import re\n  9| import shutil\n 10| import sys\n 11| import unicodedata\n 12| from itertools import islice\n 13| \n 14| if sys.version_info[0] == 3:\n 15|     imap = map\n 16|     os.getcwdu = os.getcwd\n 17| else:\n 18|     from itertools import imap\n 19| \n 20| \n 21| def create_dir(path):\n 22|     \"\"\"Creates a directory atomically.\"\"\"\n 23|     try:\n 24|         os.makedirs(path)\n 25|     except OSError as exception:\n 26|         if exception.errno != errno.EEXIST:\n 27|             raise\n 28| \n 29| \n 30| def encode_local(string):\n 31|     \"\"\"Converts string into user's preferred encoding.\"\"\"\n 32|     if is_python3():\n 33|         return string\n 34|     return string.encode(sys.getfilesystemencoding() or 'utf-8')\n 35| \n 36| \n 37| def first(xs):\n 38|     it = iter(xs)\n 39|     try:\n 40|         if is_python3():\n 41|             return it.__next__()\n 42|         return it.next()\n 43|     except StopIteration:\n 44|         return None\n 45| \n 46| \n 47| def get_tab_entry_info(entry, separator):\n 48|     \"\"\"\n 49|     Given a tab entry in the following format return needle, index, and path:\n 50| \n 51|         [needle]__[index]__[path]\n 52|     \"\"\"\n 53|     needle, index, path = None, None, None\n 54| \n 55|     match_needle = re.search(r'(.*?)' + separator, entry)\n 56|     match_index = re.search(separator + r'([0-9]{1})', entry)\n 57|     match_path = re.search(\n 58|         separator + r'[0-9]{1}' + separator + r'(.*)',\n 59|         entry,\n 60|     )\n 61| \n 62|     if match_needle:\n 63|         needle = match_needle.group(1)\n 64| \n 65|     if match_index:\n 66|         index = int(match_index.group(1))\n 67| \n 68|     if match_path:\n 69|         path = match_path.group(1)\n 70| \n 71|     return needle, index, path\n 72| \n 73| \n 74| def get_pwd():\n 75|     try:\n 76|         return os.getcwdu()\n 77|     except OSError:\n 78|         print('Current directory no longer exists.', file=sys.stderr)\n 79|         raise\n 80| \n 81| \n 82| def has_uppercase(string):\n 83|     if is_python3():\n 84|         return any(ch.isupper() for ch in string)\n 85|     return any(unicodedata.category(c) == 'Lu' for c in unicode(string))\n 86| \n 87| \n 88| def in_bash():\n 89|     return 'bash' in os.getenv('SHELL')\n 90| \n 91| \n 92| def is_autojump_sourced():\n 93|     return '1' == os.getenv('AUTOJUMP_SOURCED')\n 94| \n 95| \n 96| def is_python2():\n 97|     return sys.version_info[0] == 2\n 98| \n 99| \n100| def is_python3():\n101|     return sys.version_info[0] == 3\n102| \n103| \n104| def is_linux():\n105|     return platform.system() == 'Linux'\n106| \n107| \n108| def is_osx():\n109|     return platform.system() == 'Darwin'\n110| \n111| \n112| def is_windows():\n113|     return platform.system() == 'Windows'\n114| \n115| \n116| def last(xs):\n117|     it = iter(xs)\n118|     tmp = None\n119|     try:\n120|         if is_python3():\n121|             while True:\n122|                 tmp = it.__next__()\n123|         else:\n124|             while True:\n125|                 tmp = it.next()\n126|     except StopIteration:\n127|         return tmp\n128| \n129| \n130| def move_file(src, dst):\n131|     \"\"\"\n132|     Atomically move file.\n133| \n134|     Windows does not allow for atomic file renaming (which is used by\n135|     os.rename / shutil.move) so destination paths must first be deleted.\n136|     \"\"\"\n137|     if is_windows() and os.path.exists(dst):\n138|         # raises exception if file is in use on Windows\n139|         os.remove(dst)\n140|     shutil.move(src, dst)\n141| \n142| \n143| def print_entry(entry):\n144|     print_local('%.1f:\\t%s' % (entry.weight, entry.path))\n145| \n146| \n147| def print_local(string):\n148|     print(encode_local(string))\n149| \n150| \n151| def print_tab_menu(needle, tab_entries, separator):\n152|     \"\"\"\n153|     Prints the tab completion menu according to the following format:\n154| \n155|         [needle]__[index]__[possible_match]\n156| \n157|     The needle (search pattern) and index are necessary to recreate the results\n158|     on subsequent calls.\n159|     \"\"\"\n160|     for i, entry in enumerate(tab_entries):\n161|         print_local(\n162|             '%s%s%d%s%s' % (\n163|                 needle,\n164|                 separator,\n165|                 i + 1,\n166|                 separator,\n167|                 entry.path,\n168|             ),\n169|         )\n170| \n171| \n172| def sanitize(directories):\n173|     # edge case to allow '/' as a valid path\n174|     clean = lambda x: unico(x) if x == os.sep else unico(x).rstrip(os.sep)\n175|     return list(imap(clean, directories))\n176| \n177| \n178| def second(xs):\n179|     it = iter(xs)\n180|     try:\n181|         if is_python2():\n182|             it.next()\n183|             return it.next()\n184|         elif is_python3():\n185|             next(it)\n186|             return next(it)\n187|     except StopIteration:\n188|         return None\n189| \n190| \n191| def surround_quotes(string):\n192|     \"\"\"\n193|     Bash has problems dealing with certain paths so we're surrounding all\n194|     path outputs with quotes.\n195|     \"\"\"\n196|     if in_bash() and string:\n197|         # Python 2.6 requres field numbers\n198|         return '\"{0}\"'.format(string)\n199|     return string\n200| \n201| \n202| def take(n, iterable):\n203|     \"\"\"Return first n items of an iterable.\"\"\"\n204|     return islice(iterable, n)\n205| \n206| \n207| def unico(string):\n208|     \"\"\"Converts into Unicode string.\"\"\"\n209|     if is_python2() and not isinstance(string, unicode):\n210|         return unicode(string, encoding='utf-8', errors='replace')\n211|     return string\n\n## Call sites to decide\ns126 | caller autojump_utils.sanitize | line 175 col 17 | call | `imap(clean, directories)`\ns127 | caller autojump_utils.second | line 179 col 10 | call | `iter(xs)`\ns128 | caller autojump_utils.second | line 181 col 12 | call | `is_python2()`\ns129 | caller autojump_utils.second | line 182 col 13 | call | `it.next()`\ns130 | caller autojump_utils.second | line 183 col 20 | call | `it.next()`\ns131 | caller autojump_utils.second | line 184 col 14 | call | `is_python3()`\ns132 | caller autojump_utils.second | line 185 col 13 | call | `next(it)`\ns133 | caller autojump_utils.second | line 186 col 20 | call | `next(it)`\ns134 | caller autojump_utils.surround_quotes | line 196 col 8 | call | `in_bash()`\ns135 | caller autojump_utils.surround_quotes | line 198 col 16 | call | `'\"{0}\"'.format(string)`\ns136 | caller autojump_utils.take | line 204 col 12 | call | `islice(iterable, n)`\ns137 | caller autojump_utils.unico | line 209 col 8 | call | `is_python2()`\ns138 | caller autojump_utils.unico | line 209 col 29 | call | `isinstance(string, unicode)`\ns139 | caller autojump_utils.unico | line 210 col 16 | call | `unicode(string, encoding='utf-8', errors='replace')`\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s126",
+    "callees": [
+     "<builtin>.map",
+     "itertools.imap"
+    ]
+   },
+   {
+    "id": "s127",
+    "callees": [
+     "<builtin>.iter"
+    ]
+   },
+   {
+    "id": "s128",
+    "callees": [
+     "autojump_utils.is_python2"
+    ]
+   },
+   {
+    "id": "s129",
+    "callees": []
+   },
+   {
+    "id": "s130",
+    "callees": []
+   },
+   {
+    "id": "s131",
+    "callees": [
+     "autojump_utils.is_python3"
+    ]
+   },
+   {
+    "id": "s132",
+    "callees": [
+     "<builtin>.next"
+    ]
+   },
+   {
+    "id": "s133",
+    "callees": [
+     "<builtin>.next"
+    ]
+   },
+   {
+    "id": "s134",
+    "callees": [
+     "autojump_utils.in_bash"
+    ]
+   },
+   {
+    "id": "s135",
+    "callees": [
+     "<builtin>.str.format"
+    ]
+   },
+   {
+    "id": "s136",
+    "callees": [
+     "itertools.islice"
+    ]
+   },
+   {
+    "id": "s137",
+    "callees": [
+     "autojump_utils.is_python2"
+    ]
+   },
+   {
+    "id": "s138",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s139",
+    "callees": [
+     "<builtin>.unicode"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5973,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 1416,
+  "output_tokens_details": {
+   "thinking_tokens": 1040
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5973,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 1416,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 5973,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5973
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00254898,
+ "seconds": 7.42,
+ "attempt": 1,
+ "time": "2026-11-18T18:19:23+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 6302,
+   "outputTokens": 1437,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 5973,
+   "webSearchRequests": 0,
+   "costUSD": 0.00254898,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1040,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5973,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

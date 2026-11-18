@@ -1,0 +1,13 @@
+\begin{tabular}{l rrr rrr rr rr}
+\toprule
+& \multicolumn{3}{c}{original, inside} & \multicolumn{3}{c}{renamed, inside} & \multicolumn{2}{c}{all-edge F1} & \multicolumn{2}{c}{exact}\\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}\cmidrule(lr){8-9}\cmidrule(lr){10-11}
+Tool & P & R & F1 & P & R & F1 & orig. & ren. & orig. & ren.\\
+\midrule
+PyCG-2026 & 0.924 & 0.946 & 0.935 & 0.924 & 0.946 & 0.935 & 0.946 & 0.946 & 441 & 441 \\
+PyCG-2021 & 0.868 & 0.613 & 0.719 & 0.868 & 0.613 & 0.719 & 0.724 & 0.724 & 185 & 185 \\
+S1 only & 0.889 & 0.613 & 0.725 & 0.889 & 0.613 & 0.725 & 0.767 & 0.767 & 114 & 114 \\
+V0 LLM-only & 0.893 & 0.996 & 0.942 & 0.902 & 0.998 & 0.948 & 0.925 & 0.927 & 261 & 264 \\
+V2.1 NSCG & 0.888 & 0.976 & 0.930 & 0.893 & 0.976 & 0.933 & 0.928 & 0.932 & 247 & 255 \\
+\bottomrule
+\end{tabular}

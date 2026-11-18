@@ -1,0 +1,1 @@
+{"units": [{"unit": "comprehensions/variable_scope", "answers": {"s1": ["main.func1"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "f()", "resolved": ["main.func1"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

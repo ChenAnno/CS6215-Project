@@ -1,0 +1,469 @@
+{
+ "<builtin>.NotImplementedError": [],
+ "<builtin>.TypeError": [],
+ "<builtin>.ValueError": [],
+ "<builtin>.all": [],
+ "<builtin>.any": [],
+ "<builtin>.bool": [],
+ "<builtin>.callable": [],
+ "<builtin>.dict": [],
+ "<builtin>.enumerate": [],
+ "<builtin>.filter": [],
+ "<builtin>.getattr": [],
+ "<builtin>.hasattr": [],
+ "<builtin>.id": [],
+ "<builtin>.int": [],
+ "<builtin>.isinstance": [],
+ "<builtin>.issubclass": [],
+ "<builtin>.len": [],
+ "<builtin>.list": [],
+ "<builtin>.map": [],
+ "<builtin>.max": [],
+ "<builtin>.print": [],
+ "<builtin>.repr": [],
+ "<builtin>.reversed": [],
+ "<builtin>.set": [],
+ "<builtin>.str": [],
+ "<builtin>.super": [],
+ "<builtin>.tuple": [],
+ "<builtin>.type": [],
+ "argparse.ArgumentError": [],
+ "argparse.ArgumentParser": [],
+ "argparse.ArgumentParser.__init__": [],
+ "argparse.ArgumentParser._actions.dest.strip": [],
+ "argparse.ArgumentParser._actions.env_var.strip": [],
+ "argparse.ArgumentParser._actions.option_strings.startswith": [],
+ "argparse.ArgumentParser._add_action": [],
+ "argparse.ArgumentParser._get_formatter": [],
+ "argparse.ArgumentParser._option_string_actions.get": [],
+ "argparse.ArgumentParser.add_argument": [],
+ "argparse.ArgumentParser.error": [],
+ "argparse.ArgumentParser.exit": [],
+ "argparse.ArgumentParser.format_help": [],
+ "argparse.ArgumentParser.parse_known_args": [],
+ "ast.literal_eval": [],
+ "collections.OrderedDict": [],
+ "collections.OrderedDict.items": [],
+ "collections.OrderedDict.values": [],
+ "configargparse": [
+  "<builtin>.tuple",
+  "functools.lru_cache",
+  "re.compile"
+ ],
+ "configargparse.<lambda1>": [
+  "<builtin>.isinstance"
+ ],
+ "configargparse.<lambda2>": [],
+ "configargparse.ArgumentParser.__init__": [
+  "<builtin>.TypeError",
+  "<builtin>.callable",
+  "<builtin>.enumerate",
+  "<builtin>.isinstance",
+  "<builtin>.issubclass",
+  "argparse.ArgumentParser.__init__",
+  "argparse.ArgumentParser.add_argument"
+ ],
+ "configargparse.ArgumentParser._could_set_option": [
+  "<builtin>.all",
+  "<builtin>.getattr",
+  "<builtin>.len",
+  "argparse.ArgumentParser._option_string_actions.get"
+ ],
+ "configargparse.ArgumentParser._find_insertion_index": [
+  "<builtin>.any",
+  "<builtin>.enumerate",
+  "<builtin>.len",
+  "<builtin>.tuple",
+  "configargparse.ArgumentParser._find_subcommand_index"
+ ],
+ "configargparse.ArgumentParser._find_subcommand_index": [
+  "<builtin>.enumerate",
+  "<builtin>.isinstance"
+ ],
+ "configargparse.ArgumentParser._names_a_write_out_config_file_arg": [
+  "<builtin>.any",
+  "<builtin>.getattr",
+  "configargparse.ArgumentParser._write_out_config_file_args"
+ ],
+ "configargparse.ArgumentParser._open_config_files": [
+  "<builtin>.TypeError",
+  "<builtin>.enumerate",
+  "<builtin>.getattr",
+  "<builtin>.hasattr",
+  "<builtin>.isinstance",
+  "<builtin>.repr",
+  "<builtin>.str",
+  "argparse.ArgumentParser",
+  "argparse.ArgumentParser._add_action",
+  "argparse.ArgumentParser.error",
+  "argparse.ArgumentParser.parse_known_args",
+  "glob.glob",
+  "os.fspath",
+  "os.path.expanduser",
+  "types.MethodType"
+ ],
+ "configargparse.ArgumentParser._open_config_files.error_method": [],
+ "configargparse.ArgumentParser._option_strings_that_override": [
+  "<builtin>.list"
+ ],
+ "configargparse.ArgumentParser._reachable_parsers": [
+  "configargparse._subparsers_of"
+ ],
+ "configargparse.ArgumentParser._reject_write_out_config_file_args": [
+  "argparse.ArgumentParser.error",
+  "configargparse.ArgumentParser._names_a_write_out_config_file_arg",
+  "configargparse.ArgumentParser._write_out_config_file_args",
+  "configargparse._subparsers_of"
+ ],
+ "configargparse.ArgumentParser._write_out_config_file_args": [
+  "<builtin>.getattr"
+ ],
+ "configargparse.ArgumentParser.convert_item_to_command_line_arg": [
+  "<builtin>.ValueError",
+  "<builtin>.int",
+  "<builtin>.isinstance",
+  "<builtin>.str",
+  "<builtin>.type",
+  "argparse.ArgumentParser.error",
+  "configargparse.<lambda1>",
+  "configargparse.<lambda2>",
+  "configargparse.ArgumentParser.get_command_line_key_for_unknown_config_file_setting",
+  "json.loads.lower"
+ ],
+ "configargparse.ArgumentParser.format_help": [
+  "<builtin>.filter",
+  "<builtin>.getattr",
+  "<builtin>.max",
+  "<builtin>.tuple",
+  "argparse.ArgumentParser._get_formatter",
+  "argparse.ArgumentParser.format_help",
+  "configargparse.ArgumentParser.format_help._describe_default_config_file_entry",
+  "configargparse.ArgumentParser.get_possible_config_keys",
+  "configargparse.DefaultConfigFileParser.get_syntax_description",
+  "textwrap.fill"
+ ],
+ "configargparse.ArgumentParser.format_help._describe_default_config_file_entry": [
+  "<builtin>.getattr",
+  "<builtin>.isinstance",
+  "<builtin>.repr",
+  "os.fsdecode",
+  "os.fspath"
+ ],
+ "configargparse.ArgumentParser.format_values": [
+  "<builtin>.isinstance",
+  "<builtin>.tuple",
+  "collections.OrderedDict.items",
+  "io.StringIO",
+  "io.StringIO.getvalue",
+  "io.StringIO.write"
+ ],
+ "configargparse.ArgumentParser.get_command_line_key_for_unknown_config_file_setting": [
+  "argparse.ArgumentParser._actions.dest.strip",
+  "argparse.ArgumentParser._actions.env_var.strip"
+ ],
+ "configargparse.ArgumentParser.get_items_for_config_file_output": [
+  "<builtin>.getattr",
+  "collections.OrderedDict",
+  "collections.OrderedDict.items",
+  "configargparse.ArgumentParser.get_possible_config_keys",
+  "configargparse._convert_parsed_value_to_config_file_value",
+  "configargparse.already_on_command_line"
+ ],
+ "configargparse.ArgumentParser.get_possible_config_keys": [
+  "<builtin>.any",
+  "<builtin>.getattr",
+  "argparse.ArgumentParser._actions.option_strings.startswith"
+ ],
+ "configargparse.ArgumentParser.get_source_to_settings_dict": [],
+ "configargparse.ArgumentParser.parse_args": [
+  "argparse.ArgumentError",
+  "argparse.ArgumentParser.error",
+  "configargparse.ArgumentParser.parse_known_args"
+ ],
+ "configargparse.ArgumentParser.parse_known_args": [
+  "<builtin>.any",
+  "<builtin>.hasattr",
+  "<builtin>.isinstance",
+  "<builtin>.list",
+  "<builtin>.reversed",
+  "<builtin>.set",
+  "<builtin>.str",
+  "argparse.ArgumentParser.error",
+  "argparse.ArgumentParser.parse_known_args",
+  "collections.OrderedDict",
+  "collections.OrderedDict.items",
+  "collections.OrderedDict.values",
+  "configargparse.ArgumentParser._find_insertion_index",
+  "configargparse.ArgumentParser._open_config_files",
+  "configargparse.ArgumentParser._option_strings_that_override",
+  "configargparse.ArgumentParser._reachable_parsers",
+  "configargparse.ArgumentParser._reject_write_out_config_file_args",
+  "configargparse.ArgumentParser.convert_item_to_command_line_arg",
+  "configargparse.ArgumentParser.get_command_line_key_for_unknown_config_file_setting",
+  "configargparse.ArgumentParser.get_possible_config_keys",
+  "configargparse.ArgumentParser.write_config_file",
+  "configargparse.DefaultConfigFileParser.parse",
+  "configargparse.already_on_command_line",
+  "io.StringIO",
+  "io.StringIO.close",
+  "json.loads",
+  "json.loads.endswith",
+  "json.loads.startswith"
+ ],
+ "configargparse.ArgumentParser.print_values": [
+  "configargparse.ArgumentParser.format_values"
+ ],
+ "configargparse.ArgumentParser.write_config_file": [
+  "<builtin>.ValueError",
+  "<builtin>.print",
+  "argparse.ArgumentParser.exit",
+  "configargparse.ArgumentParser.get_items_for_config_file_output",
+  "configargparse.DefaultConfigFileParser.serialize"
+ ],
+ "configargparse.CompositeConfigParser.__call__": [],
+ "configargparse.CompositeConfigParser.__init__": [
+  "<builtin>.isinstance",
+  "<builtin>.super",
+  "warnings.warn"
+ ],
+ "configargparse.CompositeConfigParser.get_syntax_description": [
+  "<builtin>.enumerate",
+  "configargparse.CompositeConfigParser.get_syntax_description.guess_format_name"
+ ],
+ "configargparse.CompositeConfigParser.get_syntax_description.guess_format_name": [],
+ "configargparse.CompositeConfigParser.parse": [
+  "<builtin>.enumerate",
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "<builtin>.repr",
+  "<builtin>.str",
+  "warnings.warn"
+ ],
+ "configargparse.CompositeConfigParser.serialize": [],
+ "configargparse.ConfigFileParser.get_syntax_description": [
+  "<builtin>.NotImplementedError"
+ ],
+ "configargparse.ConfigFileParser.parse": [
+  "<builtin>.NotImplementedError"
+ ],
+ "configargparse.ConfigFileParser.serialize": [
+  "<builtin>.NotImplementedError"
+ ],
+ "configargparse.ConfigparserConfigFileParser.get_syntax_description": [],
+ "configargparse.ConfigparserConfigFileParser.parse": [
+  "<builtin>.isinstance",
+  "<builtin>.list",
+  "<builtin>.str",
+  "ast.literal_eval",
+  "collections.OrderedDict",
+  "configparser.ConfigParser",
+  "configparser.ConfigParser.read_string",
+  "configparser.ConfigParser.sections"
+ ],
+ "configargparse.ConfigparserConfigFileParser.serialize": [
+  "<builtin>.isinstance",
+  "<builtin>.repr",
+  "<builtin>.str",
+  "collections.OrderedDict",
+  "configargparse._keep_literal_or_convert_to_str",
+  "configparser.ConfigParser",
+  "configparser.ConfigParser.read_dict",
+  "configparser.ConfigParser.write",
+  "io.StringIO",
+  "io.StringIO.read",
+  "io.StringIO.seek",
+  "re.search",
+  "warnings.warn"
+ ],
+ "configargparse.DefaultConfigFileParser.get_syntax_description": [],
+ "configargparse.DefaultConfigFileParser.parse": [
+  "<builtin>.enumerate",
+  "<builtin>.getattr",
+  "collections.OrderedDict",
+  "json.loads",
+  "json.loads.endswith",
+  "json.loads.startswith",
+  "re.match",
+  "re.match.group",
+  "re.match.group.endswith",
+  "re.match.group.startswith"
+ ],
+ "configargparse.DefaultConfigFileParser.serialize": [
+  "<builtin>.ValueError",
+  "<builtin>.isinstance",
+  "<builtin>.map",
+  "<builtin>.str",
+  "collections.OrderedDict.items",
+  "io.StringIO",
+  "io.StringIO.getvalue",
+  "io.StringIO.write"
+ ],
+ "configargparse.IniConfigParser.__call__": [],
+ "configargparse.IniConfigParser.__init__": [
+  "<builtin>.super"
+ ],
+ "configargparse.IniConfigParser.get_syntax_description": [],
+ "configargparse.IniConfigParser.parse": [
+  "<builtin>.str",
+  "ast.literal_eval",
+  "collections.OrderedDict",
+  "configargparse.is_quoted",
+  "configargparse.unquote_str",
+  "configparser.ConfigParser",
+  "configparser.ConfigParser.read_string",
+  "configparser.ConfigParser.sections"
+ ],
+ "configargparse.IniConfigParser.serialize": [
+  "<builtin>.isinstance",
+  "<builtin>.str",
+  "configparser.ConfigParser",
+  "configparser.ConfigParser.add_section",
+  "configparser.ConfigParser.set",
+  "configparser.ConfigParser.write",
+  "io.StringIO",
+  "io.StringIO.read",
+  "io.StringIO.seek"
+ ],
+ "configargparse.TomlConfigParser.__call__": [],
+ "configargparse.TomlConfigParser.__init__": [
+  "<builtin>.super"
+ ],
+ "configargparse.TomlConfigParser.get_syntax_description": [],
+ "configargparse.TomlConfigParser.parse": [
+  "<builtin>.isinstance",
+  "<builtin>.str",
+  "collections.OrderedDict",
+  "configargparse.get_toml_section",
+  "toml.loads",
+  "toml.loads.get.items",
+  "tomllib.loads",
+  "tomllib.loads.get.items"
+ ],
+ "configargparse.TomlConfigParser.serialize": [
+  "<builtin>.dict",
+  "<builtin>.enumerate",
+  "configargparse.parse_toml_section_name",
+  "toml.dumps"
+ ],
+ "configargparse.YAMLConfigFileParser._load_yaml": [],
+ "configargparse.YAMLConfigFileParser.get_syntax_description": [],
+ "configargparse.YAMLConfigFileParser.parse": [
+  "<builtin>.getattr",
+  "<builtin>.isinstance",
+  "<builtin>.str",
+  "<builtin>.type",
+  "collections.OrderedDict",
+  "configargparse.YAMLConfigFileParser._load_yaml"
+ ],
+ "configargparse.YAMLConfigFileParser.serialize": [
+  "<builtin>.dict",
+  "configargparse.YAMLConfigFileParser._load_yaml"
+ ],
+ "configargparse._WriteOutConfigFileActionMixin.__call__": [
+  "<builtin>.getattr",
+  "<builtin>.hasattr",
+  "<builtin>.id",
+  "<builtin>.super"
+ ],
+ "configargparse._convert_parsed_value_to_config_file_value": [
+  "<builtin>.isinstance",
+  "<builtin>.str"
+ ],
+ "configargparse._dispatches_to_subparsers": [
+  "<builtin>.getattr",
+  "<builtin>.isinstance"
+ ],
+ "configargparse._keep_literal_or_convert_to_str": [
+  "<builtin>.repr",
+  "<builtin>.str",
+  "ast.literal_eval"
+ ],
+ "configargparse._subparsers_of": [
+  "<builtin>.getattr",
+  "<builtin>.id",
+  "<builtin>.isinstance",
+  "<builtin>.set",
+  "configargparse._dispatches_to_subparsers",
+  "configargparse._subparsers_of"
+ ],
+ "configargparse.add_argument": [
+  "<builtin>.ValueError",
+  "<builtin>.isinstance",
+  "<builtin>.type"
+ ],
+ "configargparse.already_on_command_line": [
+  "<builtin>.any"
+ ],
+ "configargparse.get_argument_parser": [
+  "<builtin>.len",
+  "configargparse.init_argument_parser"
+ ],
+ "configargparse.get_toml_section": [
+  "<builtin>.isinstance",
+  "configargparse.get_toml_section",
+  "configargparse.parse_toml_section_name",
+  "toml.loads.get",
+  "tomllib.loads.get"
+ ],
+ "configargparse.init_argument_parser": [
+  "<builtin>.ValueError",
+  "configargparse.ArgumentParser.__init__"
+ ],
+ "configargparse.is_quoted": [
+  "<builtin>.bool",
+  "re.compile.match"
+ ],
+ "configargparse.parse_toml_section_name": [
+  "<builtin>.tuple",
+  "configargparse.unquote_str",
+  "csv.reader",
+  "csv.reader.strip"
+ ],
+ "configargparse.unquote_str": [
+  "<builtin>.ValueError",
+  "<builtin>.isinstance",
+  "ast.literal_eval",
+  "configargparse.is_quoted"
+ ],
+ "configparser.ConfigParser": [],
+ "configparser.ConfigParser.add_section": [],
+ "configparser.ConfigParser.read_dict": [],
+ "configparser.ConfigParser.read_string": [],
+ "configparser.ConfigParser.sections": [],
+ "configparser.ConfigParser.set": [],
+ "configparser.ConfigParser.write": [],
+ "csv.reader": [],
+ "csv.reader.strip": [],
+ "functools.lru_cache": [],
+ "glob.glob": [],
+ "io.StringIO": [],
+ "io.StringIO.close": [],
+ "io.StringIO.getvalue": [],
+ "io.StringIO.read": [],
+ "io.StringIO.seek": [],
+ "io.StringIO.write": [],
+ "json.loads": [],
+ "json.loads.endswith": [],
+ "json.loads.lower": [],
+ "json.loads.startswith": [],
+ "os.fsdecode": [],
+ "os.fspath": [],
+ "os.path.expanduser": [],
+ "re.compile": [],
+ "re.compile.match": [],
+ "re.match": [],
+ "re.match.group": [],
+ "re.match.group.endswith": [],
+ "re.match.group.startswith": [],
+ "re.search": [],
+ "textwrap.fill": [],
+ "toml.dumps": [],
+ "toml.loads": [],
+ "toml.loads.get": [],
+ "toml.loads.get.items": [],
+ "tomllib.loads": [],
+ "tomllib.loads.get": [],
+ "tomllib.loads.get.items": [],
+ "types.MethodType": [],
+ "warnings.warn": []
+}

@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.talk"
+ ],
+ "main.Dog.speak": [],
+ "main.talk": [
+  "main.Animal.speak",
+  "main.Dog.speak"
+ ],
+ "main.Animal.speak": []
+}

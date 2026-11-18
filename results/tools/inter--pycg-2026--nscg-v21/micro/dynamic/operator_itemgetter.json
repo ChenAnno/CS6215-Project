@@ -1,0 +1,10 @@
+{
+ "main": [
+  "operator.itemgetter",
+  "operator.itemgetter.__call__"
+ ],
+ "main.load": [],
+ "operator.itemgetter.__call__": [],
+ "main.save": [],
+ "operator.itemgetter": []
+}

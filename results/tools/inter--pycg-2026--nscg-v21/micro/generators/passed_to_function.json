@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.consume",
+  "main.gen"
+ ],
+ "main.gen": [],
+ "main.func1": [],
+ "main.consume": [
+  "main.func1"
+ ]
+}

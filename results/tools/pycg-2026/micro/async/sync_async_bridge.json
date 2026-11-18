@@ -1,0 +1,14 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "main.run_sync"
+ ],
+ "main.load": [
+  "main.parse"
+ ],
+ "main.parse": [],
+ "main.run_sync": [
+  "asyncio.run",
+  "main.load"
+ ]
+}

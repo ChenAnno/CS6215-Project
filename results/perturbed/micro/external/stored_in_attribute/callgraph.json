@@ -1,0 +1,14 @@
+{
+    "main": [
+        "main.q9404_0.__init__",
+        "main.q9404_0.q9404_1"
+    ],
+    "main.q9404_0.__init__": [
+        "ext.Client"
+    ],
+    "main.q9404_0.q9404_1": [
+        "ext.Client.send"
+    ],
+    "ext.Client": [],
+    "ext.Client.send": []
+}

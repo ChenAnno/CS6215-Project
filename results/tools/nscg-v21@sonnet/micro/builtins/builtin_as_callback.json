@@ -1,0 +1,9 @@
+{
+ "main": [
+  "<builtin>.len",
+  "<builtin>.list",
+  "<builtin>.map",
+  "<builtin>.sorted",
+  "<builtin>.str.upper"
+ ]
+}

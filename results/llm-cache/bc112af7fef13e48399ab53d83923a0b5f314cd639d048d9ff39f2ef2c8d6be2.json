@@ -1,0 +1,365 @@
+{
+ "key": "bc112af7fef13e48399ab53d83923a0b5f314cd639d048d9ff39f2ef2c8d6be2",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Notes\nFor implicit sites (kind is not call/decorator/raise) answer only package functions that really run. For `call` and `decorator` sites also add callees outside the package, named by the conventions above.\n\n## Definitions of the package (symbolic outline)\nmodule jmespath\n  imports: jmespath.parser, jmespath.visitor.Options\n  def jmespath.compile(expression)\n  def jmespath.search(expression, data, options)\nmodule jmespath.ast\n  def jmespath.ast.comparator(name, first, second)\n  def jmespath.ast.current_node()\n  def jmespath.ast.expref(expression)\n  def jmespath.ast.function_expression(name, args)\n  def jmespath.ast.field(name)\n  def jmespath.ast.filter_projection(left, right, comparator)\n  def jmespath.ast.flatten(node)\n  def jmespath.ast.identity()\n  def jmespath.ast.index(index)\n  def jmespath.ast.index_expression(children)\n  def jmespath.ast.key_val_pair(key_name, node)\n  def jmespath.ast.literal(literal_value)\n  def jmespath.ast.multi_select_dict(nodes)\n  def jmespath.ast.multi_select_list(nodes)\n  def jmespath.ast.or_expression(left, right)\n  def jmespath.ast.and_expression(left, right)\n  def jmespath.ast.not_expression(expr)\n  def jmespath.ast.pipe(left, right)\n  def jmespath.ast.projection(left, right)\n  def jmespath.ast.subexpression(children)\n  def jmespath.ast.slice(start, end, step)\n  def jmespath.ast.value_projection(left, right)\nmodule jmespath.compat\n  imports: itertools.zip_longest\n  def jmespath.compat.with_str_method(cls)\n  def jmespath.compat.with_repr_method(cls)\n  def jmespath.compat.get_methods(cls)\nmodule jmespath.exceptions\n  imports: jmespath.compat.with_str_method\n  class jmespath.exceptions.JMESPathError(<builtin>.ValueError)\n  class jmespath.exceptions.ParseError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lex_position, token_value, token_type, msg); __str__(self)\n    class attrs: _ERROR_MESSAGE='Invalid jmespath expression'\n  class jmespath.exceptions.IncompleteExpressionError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: set_expression(self, expression); __str__(self)\n  class jmespath.exceptions.LexerError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lexer_position, lexer_value, message, expression); __str__(self)\n  class jmespath.exceptions.ArityError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, expected, actual, name); __str__(self); _pluralize(self, word, count)\n  class jmespath.exceptions.VariadictArityError(jmespath.exceptions.ArityError) mro: jmespath.exceptions.ArityError > jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __str__(self)\n  class jmespath.exceptions.JMESPathTypeError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, function_name, current_value, actual_type, expected_types); __str__(self)\n  class jmespath.exceptions.EmptyExpressionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self)\n  class jmespath.exceptions.UnknownFunctionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\nmodule jmespath.functions\n  imports: STRING_TYPE=jmespath.compat.string_type, jmespath.compat.get_methods, jmespath.exceptions\n  def jmespath.functions.signature()\n  def jmespath.functions.signature._record_signature(func)\n  def jmespath.functions.Functions._create_key_func.keyfunc(x)\n  class jmespath.functions.FunctionRegistry(<builtin>.type)\n    methods: __init__(cls, name, bases, attrs); _populate_function_table(cls)\n  class jmespath.functions.Functions()\n    methods: call_function(self, function_name, resolved_args); _validate_arguments(self, args, signature, function_name); _type_check(self, actual, signature, function_name); _type_check_single(self, current, types, function_name); _get_allowed_pytypes(self, types); _subtype_check(self, current, allowed_subtypes, types, function_name); @signature({'types': ['number']}) _func_abs(self, arg); @signature({'types': ['array-number']}) _func_avg(self, arg); @signature({'types': [], 'variadic': True}) _func_not_null(self); @signature({'types': []}) _func_to_array(self, arg); @signature({'types': []}) _func_to_string(self, arg); @signature({'types': []}) _func_to_number(self, arg); @signature({'types': ['array', 'string']}, {'types': []}) _func_contains(self, subject, search); @signature({'types': ['string', 'array', 'object']}) _func_length(self, arg); @signature({'types': ['string']}, {'types': ['string']}) _func_ends_with(self, search, suffix); @signature({'types': ['string']}, {'types': ['string']}) _func_starts_with(self, search, suffix); @signature({'types': ['array', 'string']}) _func_reverse(self, arg); @signature({'types': ['number']}) _func_ceil(self, arg); @signature({'types': ['number']}) _func_floor(self, arg); @signature({'types': ['string']}, {'types': ['array-string... _func_join(self, separator, array); @signature({'types': ['expref']}, {'types': ['array']}) _func_map(self, expref, arg); @signature({'types': ['array-number', 'array-string']}) _func_max(self, arg); @signature({'types': ['object'], 'variadic': True}) _func_merge(self); @signature({'types': ['array-number', 'array-string']}) _func_min(self, arg); @signature({'types': ['array-string', 'array-number']}) _func_sort(self, arg); @signature({'types': ['array-number']}) _func_sum(self, arg); @signature({'types': ['object']}) _func_keys(self, arg); @signature({'types': ['object']}) _func_values(self, arg); @signature({'types': []}) _func_type(self, arg); @signature({'types': ['array']}, {'types': ['expref']}) _func_sort_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_min_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_max_by(self, array, expref); _create_key_func(self, expref, allowed_types, function_name); _convert_to_jmespath_type(self, pyobject)\n    class attrs: FUNCTION_TABLE={}\nmodule jmespath.lexer\n  imports: jmespath.exceptions.EmptyExpressionError, jmespath.exceptions.LexerError, json.loads\n  class jmespath.lexer.Lexer(<builtin>.object)\n    methods: tokenize(self, expression); _consume_number(self); _initialize_for_expression(self, expression); _next(self); _consume_until(self, delimiter); _consume_literal(self); _consume_quoted_identifier(self); _consume_raw_string_literal(self); _match_or_else(self, expected, match_type, else_type)\n    class attrs: START_IDENTIFIER=set(string.ascii_letters + '_'), VALID_IDENTIFIER=set(string.ascii_letters + string.dig..., VALID_NUMBER=set(string.digits), WHITESPACE=set(' \\t\\n\\r'), SIMPLE_TOKENS={'.': 'dot', '*': 'star', ']': 'rbrac...\nmodule jmespath.parser\n  imports: jmespath.ast, jmespath.compat.with_repr_method, jmespath.exceptions, jmespath.lexer, jmespath.visitor\n  class jmespath.parser.Parser(<builtin>.object)\n    methods: __init__(self, lookahead); parse(self, expression); _do_parse(self, expression); _parse(self, expression); _expression(self, binding_power); _token_nud_literal(self, token); _token_nud_unquoted_identifier(self, token); _token_nud_quoted_identifier(self, token); _token_nud_star(self, token); _token_nud_filter(self, token); _token_nud_lbrace(self, token); _token_nud_lparen(self, token); _token_nud_flatten(self, token); _token_nud_not(self, token); _token_nud_lbracket(self, token); _parse_index_expression(self); _parse_slice_expression(self); _token_nud_current(self, token); _token_nud_expref(self, token); _token_led_dot(self, left); _token_led_pipe(self, left); _token_led_or(self, left); _token_led_and(self, left); _token_led_lparen(self, left); _token_led_filter(self, left); _token_led_eq(self, left); _token_led_ne(self, left); _token_led_gt(self, left); _token_led_gte(self, left); _token_led_lt(self, left); _token_led_lte(self, left); _token_led_flatten(self, left); _token_led_lbracket(self, left); _project_if_slice(self, left, right); _parse_comparator(self, left, comparator); _parse_multi_select_list(self); _parse_multi_select_hash(self); _parse_projection_rhs(self, binding_power); _parse_dot_rhs(self, binding_power); _error_nud_token(self, token); _error_led_token(self, token); _match(self, token_type); _match_multiple_tokens(self, token_types); _advance(self); _current_token(self); _lookahead(self, number); _lookahead_token(self, number); _raise_parse_error_for_token(self, token, reason); _raise_parse_error_maybe_eof(self, expected_type, token); @classmethod purge(cls)\n    class attrs: BINDING_POWER={'eof': 0, 'unquoted_identifier': 0, ..., _PROJECTION_STOP=10, _CACHE={}, _MAX_SIZE=512\n  class jmespath.parser.ParsedResult(<builtin>.object)\n    methods: __init__(self, expression, parsed); search(self, value, options); _render_dot_file(self); __repr__(self)\nmodule jmespath.visitor\n  imports: jmespath.compat.string_type, jmespath.functions, numbers.Number\n  def jmespath.visitor._equals(x, y)\n  def jmespath.visitor._is_special_number_case(x, y)\n  def jmespath.visitor._is_comparable(x)\n  def jmespath.visitor._is_actual_number(x)\n  class jmespath.visitor.Options(<builtin>.object)\n    methods: __init__(self, dict_cls, custom_functions)\n  class jmespath.visitor._Expression(<builtin>.object)\n    methods: __init__(self, expression, interpreter); visit(self, node)\n  class jmespath.visitor.Visitor(<builtin>.object)\n    methods: __init__(self); visit(self, node); default_visit(self, node)\n  class jmespath.visitor.TreeInterpreter(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self, options); default_visit(self, node); visit_subexpression(self, node, value); visit_field(self, node, value); visit_comparator(self, node, value); visit_current(self, node, value); visit_expref(self, node, value); visit_function_expression(self, node, value); visit_filter_projection(self, node, value); visit_flatten(self, node, value); visit_identity(self, node, value); visit_index(self, node, value); visit_index_expression(self, node, value); visit_slice(self, node, value); visit_key_val_pair(self, node, value); visit_literal(self, node, value); visit_multi_select_dict(self, node, value); visit_multi_select_list(self, node, value); visit_or_expression(self, node, value); visit_and_expression(self, node, value); visit_not_expression(self, node, value); visit_pipe(self, node, value); visit_projection(self, node, value); visit_value_projection(self, node, value); _is_false(self, value); _is_true(self, value)\n    class attrs: COMPARATOR_FUNC={'eq': _equals, 'ne': lambda x, y: no..., _EQUALITY_OPS=['eq', 'ne'], MAP_TYPE=dict\n  class jmespath.visitor.GraphvizVisitor(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self); visit(self, node); _visit(self, node, current)\n\n## Source (module `jmespath.lexer` of package `jmespath`, part 1/2), with line numbers\n  1| import string\n  2| import warnings\n  3| from json import loads\n  4| \n  5| from jmespath.exceptions import LexerError, EmptyExpressionError\n  6| \n  7| \n  8| class Lexer(object):\n  9|     START_IDENTIFIER = set(string.ascii_letters + '_')\n 10|     VALID_IDENTIFIER = set(string.ascii_letters + string.digits + '_')\n 11|     VALID_NUMBER = set(string.digits)\n 12|     WHITESPACE = set(\" \\t\\n\\r\")\n 13|     SIMPLE_TOKENS = {\n 14|         '.': 'dot',\n 15|         '*': 'star',\n 16|         ']': 'rbracket',\n 17|         ',': 'comma',\n 18|         ':': 'colon',\n 19|         '@': 'current',\n 20|         '(': 'lparen',\n 21|         ')': 'rparen',\n 22|         '{': 'lbrace',\n 23|         '}': 'rbrace',\n 24|     }\n 25| \n 26|     def tokenize(self, expression):\n 27|         self._initialize_for_expression(expression)\n 28|         while self._current is not None:\n 29|             if self._current in self.SIMPLE_TOKENS:\n 30|                 yield {'type': self.SIMPLE_TOKENS[self._current],\n 31|                        'value': self._current,\n 32|                        'start': self._position, 'end': self._position + 1}\n 33|                 self._next()\n 34|             elif self._current in self.START_IDENTIFIER:\n 35|                 start = self._position\n 36|                 buff = self._current\n 37|                 while self._next() in self.VALID_IDENTIFIER:\n 38|                     buff += self._current\n 39|                 yield {'type': 'unquoted_identifier', 'value': buff,\n 40|                        'start': start, 'end': start + len(buff)}\n 41|             elif self._current in self.WHITESPACE:\n 42|                 self._next()\n 43|             elif self._current == '[':\n 44|                 start = self._position\n 45|                 next_char = self._next()\n 46|                 if next_char == ']':\n 47|                     self._next()\n 48|                     yield {'type': 'flatten', 'value': '[]',\n 49|                            'start': start, 'end': start + 2}\n 50|                 elif next_char == '?':\n 51|                     self._next()\n 52|                     yield {'type': 'filter', 'value': '[?',\n 53|                            'start': start, 'end': start + 2}\n 54|                 else:\n 55|                     yield {'type': 'lbracket', 'value': '[',\n 56|                            'start': start, 'end': start + 1}\n 57|             elif self._current == \"'\":\n 58|                 yield self._consume_raw_string_literal()\n 59|             elif self._current == '|':\n 60|                 yield self._match_or_else('|', 'or', 'pipe')\n 61|             elif self._current == '&':\n 62|                 yield self._match_or_else('&', 'and', 'expref')\n 63|             elif self._current == '`':\n 64|                 yield self._consume_literal()\n 65|             elif self._current in self.VALID_NUMBER:\n 66|                 start = self._position\n 67|                 buff = self._consume_number()\n 68|                 yield {'type': 'number', 'value': int(buff),\n 69|                        'start': start, 'end': start + len(buff)}\n 70|             elif self._current == '-':\n 71|                 # Negative number.\n 72|                 start = self._position\n 73|                 buff = self._consume_number()\n 74|                 if len(buff) > 1:\n 75|                     yield {'type': 'number', 'value': int(buff),\n 76|                            'start': start, 'end': start + len(buff)}\n 77|                 else:\n 78|                     raise LexerError(lexer_position=start,\n 79|                                      lexer_value=buff,\n 80|                                      message=\"Unknown token '%s'\" % buff)\n 81|             elif self._current == '\"':\n 82|                 yield self._consume_quoted_identifier()\n 83|             elif self._current == '<':\n 84|                 yield self._match_or_else('=', 'lte', 'lt')\n 85|             elif self._current == '>':\n 86|                 yield self._match_or_else('=', 'gte', 'gt')\n 87|             elif self._current == '!':\n 88|                 yield self._match_or_else('=', 'ne', 'not')\n 89|             elif self._current == '=':\n 90|                 if self._next() == '=':\n 91|                     yield {'type': 'eq', 'value': '==',\n 92|                         'start': self._position - 1, 'end': self._position}\n 93|                     self._next()\n 94|                 else:\n 95|                     if self._current is None:\n 96|                         # If we're at the EOF, we never advanced\n 97|                         # the position so we don't need to rewind\n 98|                         # it back one location.\n 99|                         position = self._position\n100|                     else:\n101|                         position = self._position - 1\n102|                     raise LexerError(\n103|                         lexer_position=position,\n104|                         lexer_value='=',\n105|                         message=\"Unknown token '='\")\n106|             else:\n107|                 raise LexerError(lexer_position=self._position,\n108|                                  lexer_value=self._current,\n109|                                  message=\"Unknown token %s\" % self._current)\n110|         yield {'type': 'eof', 'value': '',\n111|                'start': self._length, 'end': self._length}\n112| \n113|     def _consume_number(self):\n114|         start = self._position\n115|         buff = self._current\n116|         while self._next() in self.VALID_NUMBER:\n117|             buff += self._current\n118|         return buff\n119| \n120|     def _initialize_for_expression(self, expression):\n121|         if not expression:\n122|             raise EmptyExpressionError()\n123|         self._position = 0\n124|         self._expression = expression\n125|         self._chars = list(self._expression)\n126|         self._current = self._chars[self._position]\n127|         self._length = len(self._expression)\n128| \n129|     def _next(self):\n130|         if self._position == self._length - 1:\n131|             self._current = None\n132|         else:\n133|             self._position += 1\n134|             self._current = self._chars[self._position]\n135|         return self._current\n136| \n137|     def _consume_until(self, delimiter):\n138|         # Consume until the delimiter is reached,\n139|         # allowing for the delimiter to be escaped with \"\\\".\n140|         start = self._position\n141|         buff = ''\n142|         self._next()\n143|         while self._current != delimiter:\n144|             if self._current == '\\\\':\n145|                 buff += '\\\\'\n146|                 self._next()\n147|             if self._current is None:\n148|                 # We're at the EOF.\n149|                 raise LexerError(lexer_position=start,\n150|                                  lexer_value=self._expression[start:],\n151|                                  message=\"Unclosed %s delimiter\" % delimiter)\n152|             buff += self._current\n153|             self._next()\n154|         # Skip the closing delimiter.\n155|         self._next()\n156|         return buff\n157| \n158|     def _consume_literal(self):\n159|         start = self._position\n160|         lexeme = self._consume_until('`').replace('\\\\`', '`')\n161|         try:\n162|             # Assume it is valid JSON and attempt to parse.\n163|             parsed_json = loads(lexeme)\n164|         except ValueError:\n165|             try:\n166|                 # Invalid JSON values should be converted to quoted\n167|                 # JSON strings during the JEP-12 deprecation period.\n168|                 parsed_json = loads('\"%s\"' % lexeme.lstrip())\n169|                 warnings.warn(\"deprecated string literal syntax\",\n170|                               PendingDeprecationWarning)\n171|             except ValueError:\n172|                 raise LexerError(lexer_position=start,\n173|                                  lexer_value=self._expression[start:],\n174|                                  message=\"Bad token %s\" % lexeme)\n175|         token_len = self._position - start\n176|         return {'type': 'literal', 'value': parsed_json,\n177|                 'start': start, 'end': token_len}\n178| \n179|     def _consume_quoted_identifier(self):\n180|         start = self._position\n181|         lexeme = '\"' + self._consume_until('\"') + '\"'\n182|         try:\n183|             token_len = self._position - start\n184|             return {'type': 'quoted_identifier', 'value': loads(lexeme),\n185|                     'start': start, 'end': token_len}\n186|         except ValueError as e:\n187|             error_message = str(e).split(':')[0]\n188|             raise LexerError(lexer_position=start,\n189|                              lexer_value=lexeme,\n190|                              message=error_message)\n191| \n192|     def _consume_raw_string_literal(self):\n193|         start = self._position\n194|         lexeme = self._consume_until(\"'\").replace(\"\\\\'\", \"'\")\n195|         token_len = self._position - start\n196|         return {'type': 'literal', 'value': lexeme,\n197|                 'start': start, 'end': token_len}\n198| \n199|     def _match_or_else(self, expected, match_type, else_type):\n200|         start = self._position\n201|         current = self._current\n202|         next_char = self._next()\n203|         if next_char == expected:\n204|             self._next()\n205|             return {'type': match_type, 'value': current + next_char,\n206|                     'start': start, 'end': start + 1}\n207|         return {'type': else_type, 'value': current,\n208|                 'start': start, 'end': start}\n\n## Call sites to decide\ns143 | caller jmespath.lexer | line 9 col 24 | call | `set(string.ascii_letters + '_')`\ns144 | caller jmespath.lexer | line 10 col 24 | call | `set(string.ascii_letters + string.digits + '_')`\ns145 | caller jmespath.lexer | line 11 col 20 | call | `set(string.digits)`\ns146 | caller jmespath.lexer | line 12 col 18 | call | `set(' \\t\\n\\r')`\ns147 | caller jmespath.lexer.Lexer.tokenize | line 27 col 9 | call | `self._initialize_for_expression(expression)`\ns148 | caller jmespath.lexer.Lexer.tokenize | line 33 col 17 | call | `self._next()`\ns149 | caller jmespath.lexer.Lexer.tokenize | line 37 col 23 | call | `self._next()`\ns150 | caller jmespath.lexer.Lexer.tokenize | line 40 col 55 | call | `len(buff)`\ns151 | caller jmespath.lexer.Lexer.tokenize | line 42 col 17 | call | `self._next()`\ns152 | caller jmespath.lexer.Lexer.tokenize | line 45 col 29 | call | `self._next()`\ns153 | caller jmespath.lexer.Lexer.tokenize | line 47 col 21 | call | `self._next()`\ns154 | caller jmespath.lexer.Lexer.tokenize | line 51 col 21 | call | `self._next()`\ns155 | caller jmespath.lexer.Lexer.tokenize | line 58 col 23 | call | `self._consume_raw_string_literal()`\ns156 | caller jmespath.lexer.Lexer.tokenize | line 60 col 23 | call | `self._match_or_else('|', 'or', 'pipe')`\ns157 | caller jmespath.lexer.Lexer.tokenize | line 62 col 23 | call | `self._match_or_else('&', 'and', 'expref')`\ns158 | caller jmespath.lexer.Lexer.tokenize | line 64 col 23 | call | `self._consume_literal()`\ns159 | caller jmespath.lexer.Lexer.tokenize | line 67 col 24 | call | `self._consume_number()`\ns160 | caller jmespath.lexer.Lexer.tokenize | line 68 col 51 | call | `int(buff)`\ns161 | caller jmespath.lexer.Lexer.tokenize | line 69 col 55 | call | `len(buff)`\ns162 | caller jmespath.lexer.Lexer.tokenize | line 73 col 24 | call | `self._consume_number()`\ns163 | caller jmespath.lexer.Lexer.tokenize | line 74 col 20 | call | `len(buff)`\ns164 | caller jmespath.lexer.Lexer.tokenize | line 75 col 55 | call | `int(buff)`\ns165 | caller jmespath.lexer.Lexer.tokenize | line 76 col 59 | call | `len(buff)`\ns166 | caller jmespath.lexer.Lexer.tokenize | line 78 col 27 | call | `LexerError(lexer_position=start, lexer_value=buff, message=\"Unknown token '%s'\" % buff)`\ns167 | caller jmespath.lexer.Lexer.tokenize | line 82 col 23 | call | `self._consume_quoted_identifier()`\ns168 | caller jmespath.lexer.Lexer.tokenize | line 84 col 23 | call | `self._match_or_else('=', 'lte', 'lt')`\ns169 | caller jmespath.lexer.Lexer.tokenize | line 86 col 23 | call | `self._match_or_else('=', 'gte', 'gt')`\ns170 | caller jmespath.lexer.Lexer.tokenize | line 88 col 23 | call | `self._match_or_else('=', 'ne', 'not')`\ns171 | caller jmespath.lexer.Lexer.tokenize | line 90 col 20 | call | `self._next()`\ns172 | caller jmespath.lexer.Lexer.tokenize | line 93 col 21 | call | `self._next()`\ns173 | caller jmespath.lexer.Lexer.tokenize | line 102 col 27 | call | `LexerError(lexer_position=position, lexer_value='=', message=\"Unknown token '='\")`\ns174 | caller jmespath.lexer.Lexer.tokenize | line 107 col 23 | call | `LexerError(lexer_position=self._position, lexer_value=self._current, message='Unknown token %s' % self._current)`\ns175 | caller jmespath.lexer.Lexer._consume_number | line 116 col 15 | call | `self._next()`\ns176 | caller jmespath.lexer.Lexer._initialize_for_expression | line 122 col 19 | call | `EmptyExpressionError()`\ns177 | caller jmespath.lexer.Lexer._initialize_for_expression | line 125 col 23 | call | `list(self._expression)`\ns178 | caller jmespath.lexer.Lexer._initialize_for_expression | line 127 col 24 | call | `len(self._expression)`\ns179 | caller jmespath.lexer.Lexer._consume_until | line 142 col 9 | call | `self._next()`\ns180 | caller jmespath.lexer.Lexer._consume_until | line 146 col 17 | call | `self._next()`\ns181 | caller jmespath.lexer.Lexer._consume_until | line 149 col 23 | call | `LexerError(lexer_position=start, lexer_value=self._expression[start:], message='Unclosed %s delimiter' % delimiter)`\ns182 | caller jmespath.lexer.Lexer._consume_until | line 153 col 13 | call | `self._next()`\ns183 | caller jmespath.lexer.Lexer._consume_until | line 155 col 9 | call | `self._next()`\ns184 | caller jmespath.lexer.Lexer._consume_literal | line 160 col 18 | call | `self._consume_until('`').replace('\\\\`', '`')`\ns185 | caller jmespath.lexer.Lexer._consume_literal | line 160 col 18 | call | `self._consume_until('`')`\ns186 | caller jmespath.lexer.Lexer._consume_literal | line 163 col 27 | call | `loads(lexeme)`\ns187 | caller jmespath.lexer.Lexer._consume_literal | line 168 col 31 | call | `loads('\"%s\"' % lexeme.lstrip())`\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s143",
+    "callees": [
+     "<builtin>.set"
+    ]
+   },
+   {
+    "id": "s144",
+    "callees": [
+     "<builtin>.set"
+    ]
+   },
+   {
+    "id": "s145",
+    "callees": [
+     "<builtin>.set"
+    ]
+   },
+   {
+    "id": "s146",
+    "callees": [
+     "<builtin>.set"
+    ]
+   },
+   {
+    "id": "s147",
+    "callees": [
+     "jmespath.lexer.Lexer._initialize_for_expression"
+    ]
+   },
+   {
+    "id": "s148",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s149",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s150",
+    "callees": [
+     "<builtin>.len"
+    ]
+   },
+   {
+    "id": "s151",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s152",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s153",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s154",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s155",
+    "callees": [
+     "jmespath.lexer.Lexer._consume_raw_string_literal"
+    ]
+   },
+   {
+    "id": "s156",
+    "callees": [
+     "jmespath.lexer.Lexer._match_or_else"
+    ]
+   },
+   {
+    "id": "s157",
+    "callees": [
+     "jmespath.lexer.Lexer._match_or_else"
+    ]
+   },
+   {
+    "id": "s158",
+    "callees": [
+     "jmespath.lexer.Lexer._consume_literal"
+    ]
+   },
+   {
+    "id": "s159",
+    "callees": [
+     "jmespath.lexer.Lexer._consume_number"
+    ]
+   },
+   {
+    "id": "s160",
+    "callees": [
+     "<builtin>.int"
+    ]
+   },
+   {
+    "id": "s161",
+    "callees": [
+     "<builtin>.len"
+    ]
+   },
+   {
+    "id": "s162",
+    "callees": [
+     "jmespath.lexer.Lexer._consume_number"
+    ]
+   },
+   {
+    "id": "s163",
+    "callees": [
+     "<builtin>.len"
+    ]
+   },
+   {
+    "id": "s164",
+    "callees": [
+     "<builtin>.int"
+    ]
+   },
+   {
+    "id": "s165",
+    "callees": [
+     "<builtin>.len"
+    ]
+   },
+   {
+    "id": "s166",
+    "callees": [
+     "jmespath.exceptions.LexerError.__init__"
+    ]
+   },
+   {
+    "id": "s167",
+    "callees": [
+     "jmespath.lexer.Lexer._consume_quoted_identifier"
+    ]
+   },
+   {
+    "id": "s168",
+    "callees": [
+     "jmespath.lexer.Lexer._match_or_else"
+    ]
+   },
+   {
+    "id": "s169",
+    "callees": [
+     "jmespath.lexer.Lexer._match_or_else"
+    ]
+   },
+   {
+    "id": "s170",
+    "callees": [
+     "jmespath.lexer.Lexer._match_or_else"
+    ]
+   },
+   {
+    "id": "s171",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s172",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s173",
+    "callees": [
+     "jmespath.exceptions.LexerError.__init__"
+    ]
+   },
+   {
+    "id": "s174",
+    "callees": [
+     "jmespath.exceptions.LexerError.__init__"
+    ]
+   },
+   {
+    "id": "s175",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s176",
+    "callees": [
+     "jmespath.exceptions.EmptyExpressionError.__init__"
+    ]
+   },
+   {
+    "id": "s177",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s178",
+    "callees": [
+     "<builtin>.len"
+    ]
+   },
+   {
+    "id": "s179",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s180",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s181",
+    "callees": [
+     "jmespath.exceptions.LexerError.__init__"
+    ]
+   },
+   {
+    "id": "s182",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s183",
+    "callees": [
+     "jmespath.lexer.Lexer._next"
+    ]
+   },
+   {
+    "id": "s184",
+    "callees": [
+     "<builtin>.str.replace"
+    ]
+   },
+   {
+    "id": "s185",
+    "callees": [
+     "jmespath.lexer.Lexer._consume_until"
+    ]
+   },
+   {
+    "id": "s186",
+    "callees": [
+     "json.loads"
+    ]
+   },
+   {
+    "id": "s187",
+    "callees": [
+     "json.loads"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 12441,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 2423,
+  "output_tokens_details": {
+   "thinking_tokens": 1064
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 12441,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2423,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 12441,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 12441
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.0049927800000000005,
+ "seconds": 9.82,
+ "attempt": 1,
+ "time": "2026-11-18T18:19:39+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 12774,
+   "outputTokens": 2443,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 12441,
+   "webSearchRequests": 0,
+   "costUSD": 0.0049927800000000005,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1064,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 12441,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

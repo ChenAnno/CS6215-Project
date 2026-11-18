@@ -1,0 +1,14 @@
+{
+ "<builtin>.super": [],
+ "main": [
+  "main.Child.load"
+ ],
+ "main.Base.load": [],
+ "main.Child.load": [
+  "main.Child.load.helper"
+ ],
+ "main.Child.load.helper": [
+  "<builtin>.super",
+  "main.Base.load"
+ ]
+}

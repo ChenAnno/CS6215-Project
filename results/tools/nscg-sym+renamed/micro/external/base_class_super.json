@@ -1,0 +1,10 @@
+{
+ "main": [
+  "ext.Model.__init__",
+  "main.q3228_0.save"
+ ],
+ "main.q3228_0.save": [
+  "<builtin>.super",
+  "ext.Model.save"
+ ]
+}

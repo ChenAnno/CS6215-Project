@@ -1,0 +1,7 @@
+{
+ "main": [
+  "json.loads"
+ ],
+ "main.decode": [],
+ "json.loads": []
+}

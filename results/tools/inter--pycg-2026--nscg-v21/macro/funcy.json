@@ -1,0 +1,1326 @@
+{
+ "funcy.strings.re_all": [
+  "<builtin>.list",
+  "funcy.strings.re_iter"
+ ],
+ "funcy.seqs.partition_by": [
+  "funcy.funcmakers.make_func",
+  "itertools.groupby"
+ ],
+ "funcy.debug.log_enters": [
+  "funcy.debug.signature_repr",
+  "funcy.decorators.Call.__call__"
+ ],
+ "funcy.funcs.rpartial": [],
+ "funcy.seqs.iterate": [],
+ "itertools.chain.from_iterable": [],
+ "inspect.signature": [],
+ "funcy.decorators.arggetter.get_arg": [
+  "<builtin>.TypeError",
+  "<builtin>.dict.get",
+  "<builtin>.len",
+  "funcy.colls.omit"
+ ],
+ "bisect.bisect": [],
+ "funcy.calc._make_lookuper.make_lookuper": [
+  "funcy.calc.has_arg_types",
+  "funcy.calc.memoize",
+  "funcy.decorators.wraps"
+ ],
+ "funcy.funcs.compose.<lambda1>": [],
+ "funcy.funcs.complement": [
+  "funcy.funcs.compose"
+ ],
+ "funcy.seqs._cut_iter": [
+  "<builtin>.iter",
+  "<builtin>.len",
+  "<builtin>.list.extend",
+  "funcy.seqs._cut_seq",
+  "funcy.seqs.take",
+  "itertools.islice"
+ ],
+ "funcy.flow.wrap_with": [
+  "funcy.decorators.Call.__call__"
+ ],
+ "funcy.seqs._cut": [
+  "<builtin>.isinstance",
+  "funcy.seqs._cut_iter",
+  "funcy.seqs._cut_seq"
+ ],
+ "funcy.primitives.even": [],
+ "funcy.debug.log_errors.__enter__": [],
+ "funcy.calc.CacheMemory.expire": [
+  "<builtin>.dict.get",
+  "<builtin>.dict.pop",
+  "<builtin>.range",
+  "bisect.bisect",
+  "collections.deque.popleft",
+  "time.time"
+ ],
+ "funcy.calc._memory_decorator.decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "funcy.debug.format_time": [],
+ "funcy.seqs.with_prev": [
+  "<builtin>.zip",
+  "itertools.chain",
+  "itertools.tee"
+ ],
+ "funcy.seqs.count_by": [
+  "<builtin>.bool",
+  "collections.defaultdict",
+  "funcy.funcmakers.make_func",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "<builtin>.repr": [],
+ "funcy.funcmakers": [],
+ "funcy.colls.set_in.<lambda1>": [],
+ "funcy.colls.update_in": [
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "funcy.colls.set_in.<lambda1>",
+  "funcy.colls.update_in"
+ ],
+ "funcy.colls.walk_keys": [
+  "funcy.colls.walk",
+  "funcy.funcmakers.make_func"
+ ],
+ "funcy.seqs.lwithout": [
+  "<builtin>.list",
+  "funcy.seqs.without"
+ ],
+ "funcy.strings._make_getter": [
+  "<builtin>.len",
+  "operator.methodcaller"
+ ],
+ "funcy.colls.pluck_attr": [
+  "<builtin>.map",
+  "operator.attrgetter"
+ ],
+ "funcy.primitives": [],
+ "funcy.seqs.takewhile": [
+  "funcy.funcmakers.make_pred",
+  "itertools.takewhile"
+ ],
+ "funcy.flow.nullcontext.__init__": [],
+ "re.Pattern.finditer": [],
+ "funcy.colls.any": [
+  "<builtin>.any",
+  "funcy.seqs.map"
+ ],
+ "funcy.colls.one": [
+  "<builtin>.len",
+  "funcy.colls.one",
+  "funcy.seqs.filter",
+  "funcy.seqs.take"
+ ],
+ "funcy.debug._format_error": [
+  "<builtin>.isinstance",
+  "traceback.format_exc"
+ ],
+ "funcy._inspect": [
+  "<builtin>.dict.fromkeys",
+  "<builtin>.dict.items",
+  "<builtin>.dict.update",
+  "<builtin>.set",
+  "<builtin>.str.split",
+  "<builtin>.str.strip",
+  "collections.namedtuple",
+  "platform.python_implementation"
+ ],
+ "<builtin>.str.partition": [],
+ "<builtin>.setattr": [],
+ "collections.Counter": [],
+ "<builtin>.list.__contains__": [],
+ "funcy.decorators.Call.__init__": [],
+ "funcy.colls.merge": [
+  "funcy.colls.join"
+ ],
+ "funcy.calc.memoize": [
+  "funcy.calc._memory_decorator",
+  "funcy.calc._memory_decorator.decorator",
+  "funcy.calc.memoize"
+ ],
+ "funcy.debug.LabeledContextDecorator.__call__": [
+  "<builtin>.callable",
+  "funcy.debug.LabeledContextDecorator.__init__",
+  "funcy.debug.LabeledContextDecorator.decorator",
+  "funcy.debug.log_durations.__init__",
+  "funcy.debug.log_errors.__init__"
+ ],
+ "funcy.funcs.func_partial.<lambda1>": [
+  "<builtin>.dict"
+ ],
+ "operator.itemgetter": [],
+ "funcy.funcs.constantly.<lambda1>": [],
+ "funcy.seqs.lflatten": [
+  "<builtin>.list",
+  "funcy.seqs.flatten"
+ ],
+ "funcy.colls.lpluck": [
+  "<builtin>.list",
+  "funcy.colls.pluck"
+ ],
+ "funcy.flow.raiser._raiser": [],
+ "<builtin>.zip": [],
+ "funcy.calc._make_lookuper.make_lookuper.wrapper.<lambda1>": [
+  "funcy.calc._make_lookuper.make_lookuper.wrapper.<lambda1>"
+ ],
+ "funcy.colls.select_keys": [
+  "funcy.colls.select",
+  "funcy.funcmakers.make_pred"
+ ],
+ "funcy.objects.wrap_prop.decorator.WrapperProp.__set__": [],
+ "funcy.funcs.autocurry": [
+  "<builtin>.set",
+  "functools.wraps",
+  "funcy._inspect.get_spec"
+ ],
+ "funcy.seqs.without": [],
+ "funcy.strings.re_finder.<lambda1>": [
+  "funcy.strings._make_getter.<lambda1>",
+  "operator.methodcaller.__call__"
+ ],
+ "funcy.colls.invoke": [
+  "<builtin>.map",
+  "operator.methodcaller"
+ ],
+ "funcy.flow.limit_error_rate": [
+  "<builtin>.isinstance",
+  "datetime.timedelta"
+ ],
+ "funcy.decorators.arggetter": [
+  "<builtin>.dict.update",
+  "<builtin>.enumerate",
+  "<builtin>.getattr",
+  "<builtin>.hasattr",
+  "<builtin>.len",
+  "<builtin>.set",
+  "<builtin>.zip",
+  "inspect.unwrap"
+ ],
+ "<builtin>.dict.update": [],
+ "funcy.objects.LazyObject.__setattr__": [
+  "<builtin>.setattr",
+  "funcy.objects.LazyObject._setup"
+ ],
+ "funcy.debug.log_iter_durations": [
+  "<builtin>.ValueError",
+  "<builtin>.enumerate",
+  "<builtin>.iter",
+  "<builtin>.print",
+  "funcy.debug.<lambda1>",
+  "funcy.debug.<lambda2>",
+  "funcy.debug.<lambda3>",
+  "funcy.debug.<lambda4>",
+  "funcy.debug.format_time"
+ ],
+ "functools.partial.__call__": [],
+ "funcy.flow": [
+  "contextlib.contextmanager",
+  "funcy.decorators.decorator",
+  "funcy.flow.once_per"
+ ],
+ "inspect.isclass": [],
+ "<builtin>.filter": [],
+ "funcy.objects.wrap_prop.decorator": [
+  "<builtin>.hasattr"
+ ],
+ "funcy.seqs.interpose": [
+  "funcy.seqs.drop",
+  "funcy.seqs.interleave",
+  "itertools.repeat"
+ ],
+ "<builtin>.Exception": [],
+ "funcy.seqs.sums": [
+  "funcy.seqs.reductions"
+ ],
+ "inspect.ismodule": [],
+ "<builtin>.bool": [],
+ "funcy.colls.zipdict": [
+  "<builtin>.dict",
+  "<builtin>.zip"
+ ],
+ "funcy.decorators.Call.__call__": [
+  "<builtin>.dict"
+ ],
+ "funcy.funcs.juxt": [
+  "<builtin>.list",
+  "<builtin>.map",
+  "funcy.funcmakers.make_func"
+ ],
+ "inspect.unwrap": [],
+ "funcy.seqs.flatten": [
+  "funcy.seqs.flatten"
+ ],
+ "funcy.seqs.partition": [
+  "funcy.seqs._cut"
+ ],
+ "funcy.tree.tree_nodes": [
+  "<builtin>.iter",
+  "collections.deque",
+  "collections.deque.append",
+  "collections.deque.pop"
+ ],
+ "funcy.flow.nullcontext.__enter__": [],
+ "funcy.colls.omit": [
+  "<builtin>.dict",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory",
+  "funcy.colls.iteritems"
+ ],
+ "funcy.flow.once_per.once": [
+  "<builtin>.list",
+  "<builtin>.set",
+  "funcy.decorators.arggetter",
+  "funcy.decorators.wraps",
+  "threading.Lock"
+ ],
+ "itertools.takewhile": [],
+ "funcy.seqs.reductions": [
+  "funcy.seqs._reductions",
+  "itertools.accumulate"
+ ],
+ "funcy.strings._prepare": [
+  "<builtin>.isinstance",
+  "funcy.strings._make_getter",
+  "re.compile"
+ ],
+ "funcy.strings": [
+  "<builtin>.type",
+  "re.compile"
+ ],
+ "traceback.format_exception": [],
+ "funcy.funcs.compose.<lambda1>.<lambda1>": [],
+ "funcy.decorators.Call.__repr__": [],
+ "functools.reduce": [],
+ "<builtin>.dict.items": [],
+ "<builtin>.hasattr": [],
+ "functools.update_wrapper": [],
+ "funcy.debug.smart_repr": [
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "<builtin>.repr",
+  "<builtin>.str",
+  "re.sub"
+ ],
+ "functools.wraps": [],
+ "<builtin>.any": [],
+ "funcy.colls.iteritems": [
+  "<builtin>.hasattr"
+ ],
+ "<builtin>.str": [],
+ "funcy.seqs.lsplit_at": [
+  "<builtin>.list",
+  "funcy.seqs.split_at"
+ ],
+ "funcy.strings.re_iter": [
+  "<builtin>.map",
+  "funcy.strings._prepare",
+  "re.Pattern.finditer"
+ ],
+ "funcy.colls.get_in": [],
+ "funcy.funcs.rcurry.<lambda2>": [
+  "funcy.funcs.rcurry",
+  "funcy.funcs.rpartial"
+ ],
+ "<builtin>.range": [],
+ "funcy.seqs.distinct": [
+  "<builtin>.bool",
+  "<builtin>.set",
+  "<builtin>.set.add",
+  "funcy.funcmakers.make_func",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "datetime.timedelta.total_seconds": [],
+ "funcy.debug.log_durations.__init__": [
+  "<builtin>.ValueError",
+  "funcy.debug.LabeledContextDecorator.__init__"
+ ],
+ "funcy.flow.ignore": [
+  "funcy.flow._ensure_exceptable"
+ ],
+ "funcy.flow.ignore.decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "funcy.seqs.repeatedly": [
+  "itertools.repeat"
+ ],
+ "types.MappingProxyType.values": [],
+ "<builtin>.issubclass": [],
+ "funcy.seqs.mapcat": [
+  "funcy.seqs.map",
+  "itertools.chain.from_iterable"
+ ],
+ "funcy.seqs.lsums": [
+  "funcy.seqs.lreductions"
+ ],
+ "funcy.objects.cached_property.__init__": [
+  "<builtin>.getattr"
+ ],
+ "time.time": [],
+ "funcy.objects.LazyObject.__init__": [],
+ "funcy.seqs._lmap": [
+  "<builtin>.list",
+  "funcy.seqs.map"
+ ],
+ "funcy.calc._memory_decorator.decorator.wrapper": [
+  "<builtin>.dict.items",
+  "<builtin>.sorted",
+  "<builtin>.tuple",
+  "funcy.calc.CacheMemory.__getitem__",
+  "funcy.calc.CacheMemory.__setitem__"
+ ],
+ "<builtin>.object.__new__": [],
+ "funcy.colls.join_with": [
+  "<builtin>.len",
+  "<builtin>.list",
+  "<builtin>.list.append",
+  "funcy.colls.iteritems"
+ ],
+ "funcy.funcs.rcurry": [
+  "funcy._inspect.get_spec"
+ ],
+ "funcy.flow.throttle.decorator.wrapper": [
+  "time.time"
+ ],
+ "funcy.strings.re_tester": [
+  "<builtin>.isinstance",
+  "re.compile"
+ ],
+ "funcy.seqs": [],
+ "itertools.accumulate": [],
+ "funcy.decorators.wraps": [
+  "functools.partial"
+ ],
+ "threading.Lock": [],
+ "<builtin>.str.join": [],
+ "funcy.colls.linvoke": [
+  "<builtin>.list",
+  "funcy.colls.invoke"
+ ],
+ "funcy.colls.select_values": [
+  "funcy.colls.select",
+  "funcy.funcmakers.make_pred"
+ ],
+ "funcy.seqs.split._split": [
+  "<builtin>.next",
+  "collections.deque.popleft"
+ ],
+ "funcy.seqs._zip_strict_iters": [
+  "<builtin>.enumerate",
+  "<builtin>.iter",
+  "<builtin>.list.append",
+  "<builtin>.next",
+  "<builtin>.tuple",
+  "funcy.seqs._zip_strict_error"
+ ],
+ "<builtin>.dict.clear": [],
+ "funcy.types.isa": [],
+ "<builtin>.getattr": [],
+ "itertools.tee": [],
+ "funcy.calc._make_lookuper": [],
+ "funcy.colls._factory": [
+  "<builtin>.isinstance",
+  "<builtin>.type",
+  "functools.partial",
+  "funcy.funcs.compose"
+ ],
+ "<builtin>.dict.__getitem__": [],
+ "funcy.seqs.ilen": [
+  "<builtin>.next",
+  "<builtin>.zip",
+  "collections.deque",
+  "itertools.count"
+ ],
+ "<builtin>.callable": [],
+ "funcy.flow.throttle": [
+  "<builtin>.isinstance",
+  "datetime.timedelta.total_seconds"
+ ],
+ "re.Pattern.search": [],
+ "funcy.seqs.group_values": [
+  "<builtin>.list.append",
+  "collections.defaultdict"
+ ],
+ "funcy.colls.select": [
+  "<builtin>.dict",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory",
+  "funcy.colls.iteritems",
+  "funcy.seqs.filter"
+ ],
+ "funcy.seqs.drop": [
+  "itertools.islice"
+ ],
+ "funcy.objects.wrap_prop.decorator.WrapperProp.__repr__": [
+  "<builtin>.repr"
+ ],
+ "collections.deque.append": [],
+ "<builtin>.Exception.__init__": [],
+ "funcy.seqs.lmap": [
+  "funcy.funcmakers.make_func",
+  "funcy.seqs._lmap"
+ ],
+ "funcy.primitives.odd": [],
+ "funcy.seqs.group_by": [
+  "<builtin>.bool",
+  "<builtin>.list.append",
+  "collections.defaultdict",
+  "funcy.funcmakers.make_func",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "funcy.funcs.iffy.<lambda1>": [
+  "<builtin>.bool",
+  "<builtin>.callable",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "funcy.flow.nullcontext.__exit__": [],
+ "funcy.funcs.curry.<lambda1>.<lambda1>": [],
+ "funcy.funcs.func_partial": [],
+ "funcy.funcs.constantly": [],
+ "funcy.colls.set_in": [
+  "funcy.colls.update_in"
+ ],
+ "funcy.seqs.remove": [
+  "funcy.funcmakers.make_pred",
+  "itertools.filterfalse"
+ ],
+ "funcy": [
+  "funcy.seqs.lcat"
+ ],
+ "funcy._inspect._code_to_spec": [
+  "<builtin>.bool",
+  "<builtin>.getattr",
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "<builtin>.set"
+ ],
+ "funcy.colls.walk_keys.pair_f": [
+  "<builtin>.bool",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "<builtin>.AttributeError": [],
+ "funcy.tree.tree_leaves": [
+  "<builtin>.iter",
+  "collections.deque",
+  "collections.deque.append",
+  "collections.deque.pop"
+ ],
+ "itertools.chain": [],
+ "<builtin>.dict.get": [],
+ "<builtin>.next": [],
+ "funcy.debug.tap": [
+  "<builtin>.print"
+ ],
+ "funcy.flow._is_exception_type": [
+  "<builtin>.isinstance",
+  "<builtin>.issubclass"
+ ],
+ "traceback.format_exc": [],
+ "<builtin>.iter": [],
+ "funcy.decorators.get_argnames": [
+  "<builtin>.getattr",
+  "inspect.unwrap"
+ ],
+ "funcy.seqs.chunks": [
+  "funcy.seqs._cut"
+ ],
+ "<builtin>.print": [],
+ "<builtin>.str.strip": [],
+ "<builtin>.hash": [],
+ "funcy.debug.<lambda2>": [],
+ "funcy.tree": [],
+ "re.compile": [],
+ "funcy.calc.cache": [
+  "<builtin>.isinstance",
+  "datetime.timedelta.total_seconds",
+  "funcy.calc.CacheMemory.__init__",
+  "funcy.calc._memory_decorator"
+ ],
+ "funcy.funcs.identity": [],
+ "funcy.seqs.take": [
+  "<builtin>.list",
+  "itertools.islice"
+ ],
+ "funcy.colls.walk_values.pair_f": [
+  "<builtin>.bool",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "funcy.flow.joining": [
+  "<builtin>.map",
+  "funcy.decorators.Call.__call__"
+ ],
+ "<builtin>.all": [],
+ "funcy.colls.select_values.<lambda1>": [
+  "<builtin>.bool",
+  "funcy.funcmakers.make_func.<lambda1>"
+ ],
+ "funcy.seqs.lzip": [
+  "<builtin>.len",
+  "<builtin>.list",
+  "<builtin>.zip",
+  "funcy.seqs._zip_strict"
+ ],
+ "types.MappingProxyType.items": [],
+ "funcy.colls.compact": [
+  "<builtin>.isinstance",
+  "funcy.colls.select",
+  "funcy.colls.select_values"
+ ],
+ "funcy.objects.wrap_prop": [],
+ "funcy.flow.silent": [
+  "funcy.flow.ignore",
+  "funcy.flow.ignore.decorator"
+ ],
+ "re.sub": [],
+ "funcy.strings.re_tester.<lambda1>": [
+  "<builtin>.bool",
+  "re.Pattern.search"
+ ],
+ "funcy.decorators.decorator.decorator_fab": [
+  "funcy.decorators.make_decorator",
+  "funcy.decorators.make_decorator._decorator"
+ ],
+ "funcy.colls.itervalues": [
+  "<builtin>.hasattr"
+ ],
+ "funcy.decorators.make_decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "<builtin>.tuple": [],
+ "<builtin>.KeyError": [],
+ "funcy.debug.LabeledContextDecorator.__init__": [],
+ "funcy.colls.lpluck_attr": [
+  "<builtin>.list",
+  "funcy.colls.pluck_attr"
+ ],
+ "funcy.debug.log_calls": [
+  "funcy.debug._format_error",
+  "funcy.debug.signature_repr",
+  "funcy.debug.smart_repr",
+  "funcy.decorators.Call.__call__"
+ ],
+ "funcy.funcolls.one_fn": [
+  "funcy.funcs.compose",
+  "funcy.funcs.juxt"
+ ],
+ "<builtin>.dict.keys": [],
+ "funcy.debug": [
+  "funcy.debug.log_durations.__init__",
+  "funcy.debug.log_errors.__init__",
+  "funcy.decorators.decorator"
+ ],
+ "funcy.debug.log_exits": [
+  "funcy.debug._format_error",
+  "funcy.debug.signature_repr",
+  "funcy.debug.smart_repr",
+  "funcy.decorators.Call.__call__"
+ ],
+ "funcy.seqs.ldistinct": [
+  "<builtin>.list",
+  "funcy.seqs.distinct"
+ ],
+ "funcy.seqs.lreductions": [
+  "<builtin>.list",
+  "funcy.seqs.reductions"
+ ],
+ "funcy.seqs.lconcat": [
+  "<builtin>.list",
+  "itertools.chain"
+ ],
+ "<builtin>.str.split": [],
+ "<builtin>.isinstance": [],
+ "<builtin>.reversed": [],
+ "<builtin>.sorted": [],
+ "time.sleep": [],
+ "<builtin>.dict.copy": [],
+ "funcy.seqs.split_at": [
+  "itertools.islice",
+  "itertools.tee"
+ ],
+ "funcy.calc._memory_decorator": [],
+ "funcy.funcs.compose": [
+  "<builtin>.map",
+  "functools.reduce",
+  "funcy.funcmakers.make_func"
+ ],
+ "funcy.debug.<lambda3>": [],
+ "funcy.flow._ensure_exceptable": [
+  "<builtin>.tuple",
+  "funcy.flow._is_exception_type"
+ ],
+ "funcy.funcs.curry": [
+  "funcy._inspect.get_spec"
+ ],
+ "funcy.colls.flip": [
+  "funcy.colls.walk"
+ ],
+ "contextlib.contextmanager": [],
+ "funcy.objects.monkey.decorator": [
+  "<builtin>.getattr",
+  "<builtin>.setattr",
+  "funcy.strings.cut_prefix"
+ ],
+ "<builtin>.object.__setattr__": [],
+ "funcy.colls.del_in": [
+  "<builtin>.len",
+  "copy.copy",
+  "funcy.colls.del_in"
+ ],
+ "funcy.primitives.EmptyType.__repr__": [],
+ "itertools.repeat": [],
+ "funcy.debug.print_exits": [
+  "<builtin>.callable",
+  "funcy.decorators.make_decorator._decorator"
+ ],
+ "operator.methodcaller.__call__": [],
+ "funcy.decorators.has_single_arg": [
+  "<builtin>.iter",
+  "<builtin>.len",
+  "<builtin>.next",
+  "inspect.signature"
+ ],
+ "funcy._inspect._sig_to_spec": [
+  "<builtin>.set",
+  "<builtin>.set.add"
+ ],
+ "funcy.calc.CacheMemory.clear": [
+  "<builtin>.dict.clear",
+  "collections.deque"
+ ],
+ "funcy.decorators.has_1pos_and_kwonly": [
+  "collections.Counter",
+  "inspect.signature"
+ ],
+ "funcy.objects": [],
+ "funcy.debug.signature_repr": [
+  "<builtin>.dict.items",
+  "<builtin>.getattr",
+  "<builtin>.hasattr",
+  "<builtin>.isinstance",
+  "<builtin>.str.join",
+  "funcy.debug.smart_repr",
+  "itertools.chain"
+ ],
+ "platform.python_implementation": [],
+ "funcy.seqs.map": [
+  "<builtin>.map",
+  "funcy.funcmakers.make_func"
+ ],
+ "funcy.seqs.second": [
+  "funcy.seqs.first",
+  "funcy.seqs.rest"
+ ],
+ "funcy.funcmakers.make_func": [
+  "<builtin>.TypeError",
+  "<builtin>.callable",
+  "<builtin>.isinstance",
+  "funcy.strings.re_finder",
+  "funcy.strings.re_tester",
+  "operator.itemgetter"
+ ],
+ "funcy.seqs.nth": [
+  "<builtin>.next",
+  "itertools.islice"
+ ],
+ "<builtin>.list": [],
+ "<builtin>.enumerate": [],
+ "funcy.seqs.dropwhile": [
+  "funcy.funcmakers.make_pred",
+  "itertools.dropwhile"
+ ],
+ "funcy.decorators.Call.__str__": [
+  "<builtin>.dict.items",
+  "<builtin>.getattr",
+  "<builtin>.list",
+  "<builtin>.map",
+  "<builtin>.str",
+  "<builtin>.str.join"
+ ],
+ "funcy.colls.empty": [
+  "<builtin>.dict",
+  "<builtin>.isinstance",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory"
+ ],
+ "funcy.colls.lwhere": [
+  "<builtin>.list",
+  "funcy.colls.where"
+ ],
+ "funcy.colls.zip_dicts": [
+  "<builtin>.TypeError",
+  "<builtin>.len",
+  "<builtin>.map",
+  "<builtin>.set.intersection",
+  "<builtin>.tuple"
+ ],
+ "funcy.seqs.lpartition": [
+  "<builtin>.list",
+  "funcy.seqs.partition"
+ ],
+ "<builtin>.list.__getitem__": [],
+ "funcy.colls.pluck": [
+  "<builtin>.map",
+  "operator.itemgetter"
+ ],
+ "itertools.groupby": [],
+ "funcy.funcs.caller": [],
+ "funcy.seqs.lchunks": [
+  "<builtin>.list",
+  "funcy.seqs.chunks"
+ ],
+ "funcy._inspect.get_spec": [
+  "<builtin>.ValueError",
+  "<builtin>.dict.get",
+  "<builtin>.getattr",
+  "<builtin>.hasattr",
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "<builtin>.set",
+  "<builtin>.str.partition",
+  "funcy._inspect._code_to_spec",
+  "funcy._inspect._sig_to_spec",
+  "funcy._inspect.get_spec",
+  "inspect.signature",
+  "inspect.unwrap",
+  "re.findall"
+ ],
+ "funcy.seqs.last": [],
+ "funcy.funcolls.all_fn": [
+  "funcy.funcs.compose",
+  "funcy.funcs.juxt"
+ ],
+ "collections.deque.pop": [],
+ "operator.attrgetter": [],
+ "funcy.primitives.isnone": [],
+ "funcy.colls.all": [
+  "<builtin>.all",
+  "funcy.seqs.map"
+ ],
+ "funcy.flow.ignore.decorator.wrapper": [],
+ "funcy.calc._memory_decorator.decorator.invalidate": [
+  "<builtin>.dict.items",
+  "<builtin>.dict.pop",
+  "<builtin>.sorted",
+  "<builtin>.tuple"
+ ],
+ "funcy.seqs.lsplit_by": [
+  "<builtin>.list",
+  "funcy.seqs.split_by"
+ ],
+ "funcy.funcs.autocurry.autocurried": [
+  "<builtin>.len",
+  "<builtin>.set",
+  "funcy.funcs.autocurry"
+ ],
+ "collections.defaultdict": [],
+ "funcy.tree.ltree_nodes": [
+  "<builtin>.list",
+  "funcy.tree.tree_nodes"
+ ],
+ "funcy.funcs.rcurry.<lambda1>.<lambda1>": [
+  "funcy.funcs.rpartial.<lambda1>"
+ ],
+ "funcy.strings.re_find": [
+  "funcy.strings.re_finder",
+  "funcy.strings.re_finder.<lambda2>"
+ ],
+ "itertools.islice": [],
+ "funcy.seqs.lcat": [
+  "<builtin>.list",
+  "itertools.chain.from_iterable"
+ ],
+ "<builtin>.object": [],
+ "funcy.objects.wrap_prop.decorator.WrapperProp.__del__": [],
+ "<builtin>.TypeError": [],
+ "funcy.colls.select_keys.<lambda1>": [
+  "<builtin>.bool",
+  "funcy.funcmakers.make_func.<lambda1>"
+ ],
+ "funcy.decorators": [],
+ "funcy.seqs.lsplit": [
+  "<builtin>.bool",
+  "<builtin>.list.append",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.funcmakers.make_pred"
+ ],
+ "<builtin>.list.copy": [],
+ "<builtin>.map": [],
+ "<builtin>.set.intersection": [],
+ "funcy.debug.log_durations.__enter__": [],
+ "funcy.funcs.ljuxt": [
+  "<builtin>.list",
+  "<builtin>.map",
+  "funcy.funcmakers.make_func"
+ ],
+ "funcy.seqs.first": [
+  "<builtin>.iter",
+  "<builtin>.next"
+ ],
+ "<builtin>.dict.values": [],
+ "funcy.debug.LabeledContextDecorator.decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "funcy.flow.raiser": [
+  "<builtin>.Exception",
+  "<builtin>.isinstance"
+ ],
+ "funcy.flow.limit_error_rate.decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "funcy.seqs.split_by": [
+  "funcy.seqs.dropwhile",
+  "funcy.seqs.takewhile",
+  "itertools.tee"
+ ],
+ "funcy.funcs.curry.<lambda2>": [
+  "functools.partial",
+  "funcy.funcs.curry"
+ ],
+ "funcy.strings.re_finder.<lambda2>": [
+  "funcy.strings.re_finder.<lambda1>",
+  "re.Pattern.search"
+ ],
+ "funcy.colls.where": [
+  "<builtin>.dict.items",
+  "<builtin>.filter"
+ ],
+ "itertools.count": [],
+ "funcy.flow.retry": [
+  "<builtin>.callable",
+  "<builtin>.range",
+  "funcy.flow._ensure_exceptable",
+  "time.sleep"
+ ],
+ "funcy.seqs.split": [
+  "<builtin>.bool",
+  "collections.deque",
+  "collections.deque.append",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.funcmakers.make_pred",
+  "funcy.seqs.split._split"
+ ],
+ "funcy.flow.once_per_args": [
+  "funcy.decorators.get_argnames",
+  "funcy.flow.once_per",
+  "funcy.flow.once_per.once"
+ ],
+ "funcy.funcs.rcurry.<lambda1>": [],
+ "funcy.decorators.decorator": [
+  "funcy.decorators.has_1pos_and_kwonly",
+  "funcy.decorators.has_single_arg",
+  "funcy.decorators.make_decorator",
+  "funcy.decorators.wraps"
+ ],
+ "funcy.seqs._cut_seq": [
+  "<builtin>.len",
+  "<builtin>.range"
+ ],
+ "funcy.seqs.interleave": [
+  "<builtin>.zip",
+  "itertools.chain.from_iterable"
+ ],
+ "funcy.funcs.caller.<lambda1>": [],
+ "<builtin>.dict.fromkeys": [],
+ "funcy.objects.LazyObject.__getattr__": [
+  "<builtin>.getattr",
+  "funcy.objects.LazyObject.__getattr__",
+  "funcy.objects.LazyObject._setup"
+ ],
+ "funcy.colls.flip.flip_pair": [],
+ "funcy.strings._make_getter.<lambda1>": [],
+ "funcy.primitives.inc": [],
+ "funcy.flow.limit_error_rate.decorator.wrapper": [
+  "datetime.datetime.now"
+ ],
+ "funcy.colls.has_path": [],
+ "funcy.tree.ltree_leaves": [
+  "<builtin>.list",
+  "funcy.tree.tree_leaves"
+ ],
+ "<builtin>.ValueError": [],
+ "funcy.decorators.make_decorator._decorator.wrapper": [
+  "funcy.debug.log_calls",
+  "funcy.debug.log_enters",
+  "funcy.debug.log_exits",
+  "funcy.decorators.Call.__init__",
+  "funcy.flow.joining",
+  "funcy.flow.post_processing",
+  "funcy.flow.retry",
+  "funcy.flow.wrap_with"
+ ],
+ "funcy.decorators.make_decorator._decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "funcy.seqs.lremove": [
+  "<builtin>.list",
+  "funcy.seqs.remove"
+ ],
+ "funcy.seqs.lkeep": [
+  "<builtin>.list",
+  "funcy.seqs.keep"
+ ],
+ "<builtin>.set": [],
+ "collections.deque.popleft": [],
+ "copy.copy": [],
+ "funcy.calc.CacheMemory.__getitem__": [
+  "<builtin>.KeyError",
+  "<builtin>.dict.__getitem__",
+  "funcy.calc.CacheMemory.expire",
+  "time.time"
+ ],
+ "funcy.calc._make_lookuper.make_lookuper.wrapper": [
+  "<builtin>.LookupError",
+  "<builtin>.dict.get",
+  "<builtin>.dict.update",
+  "<builtin>.map",
+  "<builtin>.object",
+  "<builtin>.str.join",
+  "funcy.calc._make_lookuper.make_lookuper",
+  "funcy.calc._make_lookuper.make_lookuper.wrapper.<lambda1>"
+ ],
+ "funcy.seqs.group_by_keys": [
+  "<builtin>.bool",
+  "<builtin>.list.append",
+  "collections.defaultdict",
+  "funcy.funcmakers.make_func",
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "functools.partial": [],
+ "funcy.calc.has_arg_types": [
+  "<builtin>.any",
+  "inspect.signature"
+ ],
+ "funcy.seqs.rest": [
+  "funcy.seqs.drop"
+ ],
+ "<builtin>.type": [],
+ "funcy.colls.get_lax": [],
+ "funcy.seqs.keep": [
+  "<builtin>.filter",
+  "funcy.seqs.map"
+ ],
+ "funcy.seqs.count_reps": [
+  "collections.defaultdict"
+ ],
+ "itertools.filterfalse": [],
+ "funcy.objects.monkey": [
+  "inspect.isclass",
+  "inspect.ismodule"
+ ],
+ "funcy.debug.print_enters": [
+  "<builtin>.callable",
+  "funcy.decorators.make_decorator._decorator"
+ ],
+ "funcy.flow.once_per": [],
+ "funcy.funcolls.some_fn": [
+  "funcy.funcs.compose",
+  "funcy.funcs.juxt"
+ ],
+ "funcy.colls.split_keys": [
+  "<builtin>.bool",
+  "<builtin>.dict",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory",
+  "funcy.funcmakers.make_pred"
+ ],
+ "<builtin>.list.append": [],
+ "funcy.colls.zip_values": [
+  "<builtin>.TypeError",
+  "<builtin>.len",
+  "<builtin>.map",
+  "<builtin>.set.intersection",
+  "<builtin>.tuple"
+ ],
+ "funcy.flow.throttle.decorator": [
+  "funcy.decorators.wraps"
+ ],
+ "funcy.decorators.Call.__getattr__": [
+  "<builtin>.AttributeError",
+  "funcy.decorators.arggetter",
+  "funcy.decorators.arggetter.get_arg"
+ ],
+ "<builtin>.len": [],
+ "funcy.debug.LabeledContextDecorator.decorator.inner": [
+  "<builtin>.dict.update",
+  "<builtin>.object.__new__",
+  "funcy.debug.log_durations.__enter__",
+  "funcy.debug.log_durations.__exit__",
+  "funcy.debug.log_errors.__enter__",
+  "funcy.debug.log_errors.__exit__",
+  "funcy.debug.signature_repr",
+  "funcy.decorators.Call.__init__"
+ ],
+ "funcy.strings.re_finder": [
+  "funcy.strings._prepare"
+ ],
+ "<builtin>.dict": [],
+ "funcy.flow.reraise": [
+  "<builtin>.callable",
+  "funcy.flow._ensure_exceptable",
+  "funcy.flow._is_exception_type"
+ ],
+ "funcy.funcs.rpartial.<lambda1>": [
+  "<builtin>.dict"
+ ],
+ "funcy.flow.once_per.once.wrapper": [
+  "<builtin>.hash",
+  "<builtin>.list.append",
+  "<builtin>.set.add",
+  "<builtin>.tuple",
+  "funcy.decorators.arggetter.get_arg"
+ ],
+ "funcy.seqs._lfilter": [
+  "<builtin>.list",
+  "funcy.seqs.filter"
+ ],
+ "funcy.funcs.ljuxt.<lambda1>": [
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "funcy.funcolls.none_fn": [
+  "funcy.funcs.compose",
+  "funcy.funcs.juxt"
+ ],
+ "re.findall": [],
+ "funcy.colls.project": [
+  "<builtin>.dict",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory"
+ ],
+ "funcy.flow.fallback": [
+  "<builtin>.callable",
+  "funcy.flow._ensure_exceptable"
+ ],
+ "funcy.seqs.lmapcat": [
+  "funcy.seqs.lcat",
+  "funcy.seqs.map"
+ ],
+ "funcy.seqs.butlast": [
+  "<builtin>.iter",
+  "<builtin>.next"
+ ],
+ "funcy.objects.LazyObject._setup": [
+  "<builtin>.object.__setattr__"
+ ],
+ "funcy.funcs.rcompose": [
+  "<builtin>.reversed",
+  "funcy.funcs.compose"
+ ],
+ "funcy.debug.<lambda4>": [],
+ "funcy.strings.str_join": [
+  "<builtin>.map",
+  "<builtin>.str.join",
+  "funcy.strings.str_join"
+ ],
+ "funcy.debug.log_errors.__exit__": [
+  "<builtin>.print",
+  "<builtin>.str.join",
+  "funcy.debug._format_error",
+  "traceback.format_exception"
+ ],
+ "funcy.seqs._zip_strict_error": [
+  "<builtin>.ValueError"
+ ],
+ "funcy.objects.cached_readonly.__set__": [
+  "<builtin>.AttributeError"
+ ],
+ "funcy.debug.<lambda1>": [],
+ "datetime.datetime.now": [],
+ "operator.methodcaller": [],
+ "funcy.types": [
+  "funcy.types.isa"
+ ],
+ "funcy.seqs.filter": [
+  "<builtin>.filter",
+  "funcy.funcmakers.make_pred"
+ ],
+ "funcy.seqs.lfilter": [
+  "funcy.funcmakers.make_pred",
+  "funcy.seqs._lfilter"
+ ],
+ "funcy.objects.cached_property.__get__": [],
+ "datetime.timedelta": [],
+ "funcy.colls.is_distinct": [
+  "<builtin>.len",
+  "<builtin>.set",
+  "funcy.seqs.map"
+ ],
+ "funcy.debug.print_iter_durations": [
+  "funcy.debug.log_iter_durations"
+ ],
+ "funcy.primitives.notnone": [],
+ "funcy.calc.CacheMemory.__init__": [
+  "funcy.calc.CacheMemory.clear"
+ ],
+ "funcy.debug.log_durations.__exit__": [
+  "<builtin>.print",
+  "funcy.debug.format_time"
+ ],
+ "funcy.strings.cut_prefix": [
+  "<builtin>.len"
+ ],
+ "funcy.debug.log_errors.__init__": [
+  "funcy.debug.LabeledContextDecorator.__init__"
+ ],
+ "funcy.calc._memory_decorator.decorator.invalidate_all": [
+  "<builtin>.dict.clear",
+  "funcy.calc.CacheMemory.clear"
+ ],
+ "funcy.colls": [
+  "<builtin>.dict.items",
+  "<builtin>.dict.keys",
+  "<builtin>.dict.values",
+  "<builtin>.type"
+ ],
+ "funcy.flow.post_processing": [
+  "funcy.decorators.Call.__call__"
+ ],
+ "funcy.objects.wrap_prop.decorator.WrapperProp.__get__": [],
+ "funcy.calc": [
+  "funcy.calc._make_lookuper"
+ ],
+ "operator.itemgetter.__call__": [],
+ "funcy.seqs.with_next": [
+  "<builtin>.next",
+  "<builtin>.zip",
+  "itertools.chain",
+  "itertools.tee"
+ ],
+ "funcy.funcmakers.make_func.<lambda1>": [],
+ "funcy.strings.re_test": [
+  "funcy.strings.re_tester",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "funcy.funcolls.any_fn": [
+  "funcy.funcs.compose",
+  "funcy.funcs.juxt"
+ ],
+ "funcy.funcmakers.make_pred": [
+  "funcy.funcmakers.make_func"
+ ],
+ "collections.deque": [],
+ "funcy.colls.join": [
+  "<builtin>.TypeError",
+  "<builtin>.dict.copy",
+  "<builtin>.dict.update",
+  "<builtin>.isinstance",
+  "<builtin>.iter",
+  "<builtin>.next",
+  "itertools.chain.from_iterable",
+  "itertools.tee"
+ ],
+ "funcy.seqs._reductions": [
+  "operator.add"
+ ],
+ "funcy.debug.print_calls": [
+  "<builtin>.callable",
+  "funcy.decorators.make_decorator._decorator"
+ ],
+ "funcy.funcs.juxt.<lambda1>": [
+  "funcy.funcmakers.make_func.<lambda1>",
+  "funcy.strings.re_finder.<lambda2>",
+  "funcy.strings.re_tester.<lambda1>"
+ ],
+ "<builtin>.LookupError": [],
+ "funcy.colls.some": [
+  "<builtin>.next",
+  "funcy.colls.some",
+  "funcy.seqs.filter"
+ ],
+ "itertools.dropwhile": [],
+ "funcy.colls.walk": [
+  "<builtin>.dict",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory",
+  "funcy.colls.iteritems",
+  "funcy.seqs.map"
+ ],
+ "funcy.funcs.iffy": [
+  "funcy.funcmakers.make_func",
+  "funcy.funcmakers.make_pred",
+  "funcy.funcs.iffy"
+ ],
+ "funcy.seqs._zip_strict": [
+  "<builtin>.enumerate",
+  "<builtin>.len",
+  "<builtin>.zip",
+  "funcy.seqs._zip_strict_error",
+  "funcy.seqs._zip_strict_iters"
+ ],
+ "<builtin>.set.add": [],
+ "funcy.funcolls": [],
+ "funcy.seqs.lpartition_by": [
+  "funcy.seqs._lmap",
+  "funcy.seqs.partition_by"
+ ],
+ "funcy.seqs.pairwise": [
+  "<builtin>.next",
+  "<builtin>.zip",
+  "itertools.tee"
+ ],
+ "collections.namedtuple": [],
+ "funcy.types.isa.<lambda1>": [
+  "<builtin>.isinstance"
+ ],
+ "funcy.strings.cut_suffix": [
+  "<builtin>.len"
+ ],
+ "funcy.funcs.curry.<lambda1>": [],
+ "funcy.funcs": [],
+ "funcy.colls.merge_with": [
+  "funcy.colls.join_with"
+ ],
+ "<builtin>.dict.__setitem__": [],
+ "funcy.colls.where.<lambda1>": [
+  "funcy.colls.all"
+ ],
+ "<builtin>.list.extend": [],
+ "funcy.calc.CacheMemory.__setitem__": [
+  "<builtin>.dict.__setitem__",
+  "collections.deque.append",
+  "time.time"
+ ],
+ "funcy.colls.walk_values": [
+  "<builtin>.dict",
+  "<builtin>.iter",
+  "<builtin>.list",
+  "funcy.colls._factory",
+  "funcy.colls.iteritems",
+  "funcy.funcmakers.make_func",
+  "funcy.seqs.map"
+ ],
+ "funcy.colls.none": [
+  "funcy.colls.any"
+ ],
+ "<builtin>.dict.pop": [],
+ "operator.add": [],
+ "funcy.primitives.dec": [],
+ "funcy.decorators.update_wrapper": [
+  "<builtin>.getattr",
+  "functools.update_wrapper",
+  "inspect.unwrap"
+ ]
+}

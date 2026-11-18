@@ -1,0 +1,9 @@
+{
+ "<builtin>.IndexError": [],
+ "main": [
+  "main.q6096_0.__getitem__"
+ ],
+ "main.q6096_0.__getitem__": [
+  "<builtin>.IndexError"
+ ]
+}

@@ -1,0 +1,13 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.start": [
+  "asyncio.AbstractEventLoop.call_soon",
+  "asyncio.get_running_loop",
+  "asyncio.sleep",
+  "main.tick"
+ ],
+ "main.tick": []
+}

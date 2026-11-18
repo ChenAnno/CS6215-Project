@@ -1,0 +1,119 @@
+{
+ "key": "b787cf53e9ec4b6929ec31ad90a2f39b208a7fe1c7193578b660d08415ebb07b",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Source (a small program; `main.py` is run as the script `main`), with line numbers\n### file main.py (module `main`)\n1| import ping\n2| \n3| ping.q1c42_2()\n\n### file ping.py (module `ping`)\n1| import pong\n2| \n3| def q1c42_2():\n4|     pong.q1c42_1(2)\n5| \n6| def q1c42_0(n):\n7|     pong.q1c42_1(n - 1)\n\n### file pong.py (module `pong`)\n1| import ping\n2| \n3| def q1c42_1(n):\n4|     if n > 0:\n5|         ping.q1c42_0(n)\n\n## Call sites to decide\ns1 | caller main | line 3 col 1 | call | `ping.q1c42_2()`\n    symbolic resolution: [ping.q1c42_2] (certain)\ns2 | caller ping.q1c42_2 | line 4 col 5 | call | `pong.q1c42_1(2)`\n    symbolic resolution: [pong.q1c42_1] (certain)\ns3 | caller ping.q1c42_0 | line 7 col 5 | call | `pong.q1c42_1(n - 1)`\n    symbolic resolution: [pong.q1c42_1] (certain)\ns4 | caller pong.q1c42_1 | line 5 col 9 | call | `ping.q1c42_0(n)`\n    symbolic resolution: [ping.q1c42_0] (certain)\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s1",
+    "callees": [
+     "ping.q1c42_2"
+    ]
+   },
+   {
+    "id": "s2",
+    "callees": [
+     "pong.q1c42_1"
+    ]
+   },
+   {
+    "id": "s3",
+    "callees": [
+     "pong.q1c42_1"
+    ]
+   },
+   {
+    "id": "s4",
+    "callees": [
+     "ping.q1c42_0"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 2895,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 274,
+  "output_tokens_details": {
+   "thinking_tokens": 113
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 2895,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 274,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 2895,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 2895
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00105578,
+ "seconds": 3.81,
+ "attempt": 1,
+ "time": "2026-11-18T18:33:19+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 3231,
+   "outputTokens": 296,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 2895,
+   "webSearchRequests": 0,
+   "costUSD": 0.00105578,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 113,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 2895,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

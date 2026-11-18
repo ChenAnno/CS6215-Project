@@ -1,0 +1,21 @@
+{
+ "main.via_alias": [
+  "os.path.join"
+ ],
+ "main": [
+  "main.via_alias",
+  "main.via_as",
+  "main.via_from",
+  "main.via_module"
+ ],
+ "os.path.join": [],
+ "main.via_from": [
+  "os.path.join"
+ ],
+ "main.via_as": [
+  "os.path.join"
+ ],
+ "main.via_module": [
+  "os.path.join"
+ ]
+}

@@ -1,0 +1,9 @@
+{
+ "main": [
+  "contextlib.ExitStack",
+  "contextlib.ExitStack.callback"
+ ],
+ "main.cleanup": [],
+ "contextlib.ExitStack": [],
+ "contextlib.ExitStack.callback": []
+}

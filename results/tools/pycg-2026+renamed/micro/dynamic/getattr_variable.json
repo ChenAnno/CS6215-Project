@@ -1,0 +1,9 @@
+{
+ "<builtin>.getattr": [],
+ "main": [
+  "<builtin>.getattr",
+  "main.q0a22_0.stop"
+ ],
+ "main.q0a22_0.q0a22_1": [],
+ "main.q0a22_0.stop": []
+}

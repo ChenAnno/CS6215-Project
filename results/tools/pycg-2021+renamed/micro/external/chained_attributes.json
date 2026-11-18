@@ -1,0 +1,8 @@
+{
+ "ext.client": [],
+ "ext.client.session.get": [],
+ "main": [
+  "ext.client",
+  "ext.client.session.get"
+ ]
+}

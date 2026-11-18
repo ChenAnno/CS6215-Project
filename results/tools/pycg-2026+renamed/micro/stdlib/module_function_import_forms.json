@@ -1,0 +1,21 @@
+{
+ "main": [
+  "main.q9273_0",
+  "main.q9273_1",
+  "main.q9273_2",
+  "main.q9273_3"
+ ],
+ "main.q9273_0": [
+  "os.path.join"
+ ],
+ "main.q9273_1": [
+  "os.path.join"
+ ],
+ "main.q9273_2": [
+  "os.path.join"
+ ],
+ "main.q9273_3": [
+  "os.path.join"
+ ],
+ "os.path.join": []
+}

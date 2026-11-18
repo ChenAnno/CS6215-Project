@@ -1,0 +1,13 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.q53f3_2"
+ ],
+ "main.q53f3_0": [],
+ "main.q53f3_1": [],
+ "main.q53f3_2": [
+  "asyncio.gather",
+  "main.q53f3_0",
+  "main.q53f3_1"
+ ]
+}

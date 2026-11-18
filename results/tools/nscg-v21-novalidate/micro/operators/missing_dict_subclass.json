@@ -1,0 +1,17 @@
+{
+ "main": [
+  "<builtin>.dict.__init__",
+  "main.lookup",
+  "main.safe_lookup"
+ ],
+ "main.Defaults.__missing__": [
+  "main.make_default"
+ ],
+ "main.lookup": [
+  "main.Defaults.__missing__"
+ ],
+ "main.make_default": [],
+ "main.safe_lookup": [
+  "<builtin>.dict.get"
+ ]
+}

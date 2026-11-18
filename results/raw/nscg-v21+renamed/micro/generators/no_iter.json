@@ -1,0 +1,1 @@
+{"units": [{"unit": "generators/no_iter", "answers": {"s1": ["main.qac89_0.__init__"]}, "sites": [{"id": "s1", "caller": "main", "line": 17, "col": 5, "kind": "call", "text": "qac89_0()", "resolved": ["main.qac89_0.__init__"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,11 @@
+{
+ "main": [
+  "contextlib.ExitStack",
+  "contextlib.ExitStack.callback",
+  "contextlib.ExitStack.enter_context"
+ ],
+ "main.Resource.__enter__": [],
+ "main.Resource.__exit__": [],
+ "main.close_file": [],
+ "main.close_socket": []
+}

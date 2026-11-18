@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.Both.setup"
+ ],
+ "main.Both.setup": [
+  "main.Left.setup"
+ ],
+ "main.Left.setup": [
+  "main.Right.setup",
+  "main.Root.setup"
+ ],
+ "main.Right.setup": [
+  "main.Root.setup"
+ ],
+ "main.Root.setup": []
+}

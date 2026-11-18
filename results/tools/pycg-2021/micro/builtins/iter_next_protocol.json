@@ -1,0 +1,10 @@
+{
+ "<builtin>.iter": [],
+ "<builtin>.next": [],
+ "main": [
+  "<builtin>.iter",
+  "<builtin>.next"
+ ],
+ "main.Numbers.__iter__": [],
+ "main.Numbers.__next__": []
+}

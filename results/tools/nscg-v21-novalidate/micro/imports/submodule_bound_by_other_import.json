@@ -1,0 +1,9 @@
+{
+ "loader": [],
+ "main": [
+  "pkg.extra.run"
+ ],
+ "pkg": [],
+ "pkg.extra": [],
+ "pkg.extra.run": []
+}

@@ -1,0 +1,8 @@
+{
+ "main": [
+  "contextlib.closing",
+  "contextlib.closing.send"
+ ],
+ "main.Connection.close": [],
+ "main.Connection.send": []
+}

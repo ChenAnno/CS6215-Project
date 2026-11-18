@@ -1,0 +1,11 @@
+{
+ "app.configure": [],
+ "main": [
+  "app.service.start"
+ ],
+ "app": [],
+ "app.service": [],
+ "app.service.start": [
+  "app.configure"
+ ]
+}

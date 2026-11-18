@@ -1,0 +1,17 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.first": [],
+ "main.start": [
+  "main.first",
+  "main.wait",
+  "types.AsyncGeneratorType.__aiter__",
+  "types.AsyncGeneratorType.aclose"
+ ],
+ "main.wait": [],
+ "types.AsyncGeneratorType.__aiter__": [],
+ "types.AsyncGeneratorType.aclose": []
+}

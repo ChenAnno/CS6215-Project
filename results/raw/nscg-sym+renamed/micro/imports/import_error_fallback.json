@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/import_error_fallback", "answers": {"s1": ["accel.pure.qc85e_0"]}, "sites": [{"id": "s1", "caller": "main", "line": 6, "col": 1, "kind": "call", "text": "qc85e_0()", "resolved": ["accel.pure.qc85e_0"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

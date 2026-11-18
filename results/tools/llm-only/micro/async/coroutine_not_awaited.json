@@ -1,0 +1,14 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.side_effect": [],
+ "main.start": [
+  "<builtin>.coroutine.close",
+  "main.task"
+ ],
+ "main.task": [
+  "main.side_effect"
+ ]
+}

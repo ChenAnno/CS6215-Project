@@ -1,0 +1,14 @@
+{
+ "<builtin>.range": [],
+ "main": [
+  "main.ping",
+  "main.repeat",
+  "main.repeat.decorator"
+ ],
+ "main.ping": [],
+ "main.repeat": [],
+ "main.repeat.decorator": [],
+ "main.repeat.decorator.wrapper": [
+  "<builtin>.range"
+ ]
+}

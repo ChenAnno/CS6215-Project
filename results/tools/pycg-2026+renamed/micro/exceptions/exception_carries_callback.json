@@ -1,0 +1,21 @@
+{
+ "<builtin>.Exception.__init__": [],
+ "<builtin>.super": [],
+ "main": [
+  "main.q73a6_1",
+  "main.q73a6_2",
+  "main.q73a6_3"
+ ],
+ "main.q73a6_0.__init__": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.super"
+ ],
+ "main.q73a6_1": [
+  "main.q73a6_0.__init__"
+ ],
+ "main.q73a6_2": [],
+ "main.q73a6_3": [],
+ "main.q73a6_4": [
+  "main.q73a6_0.__init__"
+ ]
+}

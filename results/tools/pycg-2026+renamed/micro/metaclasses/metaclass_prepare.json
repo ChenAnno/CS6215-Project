@@ -1,0 +1,11 @@
+{
+ "<builtin>.classmethod": [],
+ "main": [
+  "<builtin>.classmethod",
+  "main.q1839_0.__prepare__"
+ ],
+ "main.q1839_0.__prepare__": [
+  "main.q1839_2"
+ ],
+ "main.q1839_2": []
+}

@@ -1,0 +1,12 @@
+{
+ "<builtin>.list": [],
+ "main": [
+  "<builtin>.list",
+  "main.func1",
+  "main.func2",
+  "main.gen"
+ ],
+ "main.func1": [],
+ "main.func2": [],
+ "main.gen": []
+}

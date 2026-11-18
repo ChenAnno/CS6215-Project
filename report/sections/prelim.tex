@@ -1,0 +1,75 @@
+\section{Preliminaries}
+\label{sec:prelim}
+
+\subsection{Problem: static call graphs for Python}
+
+A \emph{call graph} of a program $P$ is a directed graph whose nodes are the
+modules, functions, methods and lambdas defined in $P$, and whose edges
+$A \rightarrow B$ state that the code of $A$ can call $B$ when $A$ runs. A
+\emph{static} call-graph generator computes such a graph without running $P$.
+For Python this is hard: callees are first-class values that flow through
+variables, attributes, containers, parameters and return values; methods are
+looked up dynamically through the C3 method resolution order (MRO); many calls
+are \emph{implicit} (\texttt{\_\_init\_\_} on instantiation, \texttt{\_\_iter\_\_}
+in a \texttt{for} loop, operators, properties, decorators); and libraries call
+code back (\texttt{sorted(xs, key=f)}, template methods of a framework base
+class).
+
+We adopt the exact semantics of the benchmark that we evaluate on
+(Section~\ref{sec:setup}). Nodes have dotted names (\texttt{pkg.mod.Class.method},
+\texttt{main.<lambda1>}); classes, class bodies and comprehensions are not
+nodes, and their calls belong to the enclosing function or module. A callee
+outside the analysed package (a builtin, the standard library, a third-party
+library) is named by a public path, e.g.\ \texttt{<builtin>.str.join},
+\texttt{os.path.join} or \texttt{re.Pattern.match}. For real packages an edge
+exists if \emph{some} client of the public API can make the call on a supported
+Python version, so the ground truth is a may-call graph over all inputs, not
+the trace of one run. Following the PyCG evaluation, we score edges whose
+callee is inside the package (\emph{inside}, the headline) separately from
+edges to outside code (\emph{outside}), whose names depend on how a tool models
+libraries. We report precision $P = |T \cap G| / |T|$ and recall
+$R = |T \cap G| / |G|$ of the edge set $T$ of a tool against the ground truth
+$G$, and $F_1$.
+
+\subsection{Baseline: PyCG}
+
+PyCG~\cite{salis2021pycg} is the reference static call-graph generator for
+Python and the strongest open-source baseline in the comparison of its
+evaluation repository (\textsc{Jarvis}, pyan3, PyAnalyzer, HeaderGen and
+CPyGraph are lower in both precision and recall). We use \emph{two} versions,
+both executable and both run by the official runner of the evaluation:
+
+\textbf{PyCG-2021} (the analysis of the ICSE 2021 paper, commit
+\texttt{046479e}, ported to Python~3.12+ by its authors). It builds an
+\emph{assignment graph} between program identifiers (variables, functions,
+classes, modules, attributes), processes imports module by module, and
+resolves a call by following the assignment relations from the called
+expression to the functions and classes that may reach it, until a fixpoint.
+It is flow- and context-insensitive and computes MROs for method lookup, but it
+models neither the standard library nor the builtins beyond their names, so
+calls through library values are mostly lost.
+
+\textbf{PyCG-2026} (the redesigned engine, commit \texttt{c5c6a89}). In our
+reading of its design document, it keeps the idea of a whole-program
+inclusion-based (Andersen-style) value flow but over \emph{objects} named by
+their creation site, with points-to sets for variables, attributes, container
+elements and returns. Names local to a scope are followed by definition (a
+limited form of flow sensitivity), statically dead code is skipped, outside
+code is typed from the \emph{typeshed} stubs~\cite{typeshed} (so \texttt{re.match(...).group()}
+resolves to \texttt{re.Match.group}), annotations and ``entry point''
+receivers supply the values that only clients could pass, and implicit calls
+of the interpreter and the special methods that builtins call are modelled.
+It deliberately does not model what outside code calls back, has no calling
+context and no flow-sensitive heap. Both versions read code and never import
+or run it.
+
+\textbf{How we use the baseline.} We run both engines unmodified, through
+\texttt{evaluation/common/run.py} of the evaluation repository (each analysis
+in a fresh interpreter, \texttt{PYTHONHASHSEED=0}, 30-minute limit per
+program), on exactly the same entry points and package roots that the
+benchmark prescribes, and score their graphs with the official scorer. Our
+reproduction matches the published numbers of PyCG-2026 exactly (micro
+P\,0.925/R\,0.936; 30 packages inside P\,0.945/R\,0.878), which validates the
+pipeline. PyCG-2026 is a demanding baseline: its authors developed it against
+this benchmark, so it is likely tuned to the benchmark's conventions, a point
+we return to in Section~\ref{sec:threats}.

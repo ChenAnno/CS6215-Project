@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.next",
+  "main.worker"
+ ],
+ "main.func1": [],
+ "main.worker": []
+}

@@ -1,0 +1,10 @@
+{
+ "copy.copy": [],
+ "copy.deepcopy": [],
+ "main": [
+  "copy.copy",
+  "copy.deepcopy"
+ ],
+ "main.qeb49_0.__copy__": [],
+ "main.qeb49_0.__deepcopy__": []
+}

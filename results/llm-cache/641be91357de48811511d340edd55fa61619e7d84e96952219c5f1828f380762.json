@@ -1,0 +1,239 @@
+{
+ "key": "641be91357de48811511d340edd55fa61619e7d84e96952219c5f1828f380762",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Definitions of the package (symbolic outline)\nmodule autojump_data\n  imports: __future__.print_function, autojump_utils.create_dir, autojump_utils.is_osx, autojump_utils.is_python3, autojump_utils.move_file, autojump_utils.unico, codecs.open, collections.namedtuple, itertools.ifilter, itertools.imap, tempfile.NamedTemporaryFile, time.time\n  def autojump_data.dictify(entries)\n  def autojump_data.entriefy(data)\n  def autojump_data.load(config)\n  def autojump_data.load_backup(config)\n  def autojump_data.migrate_osx_xdg_data(config)\n  def autojump_data.save(config, data)\nmodule autojump_match\n  imports: autojump_utils.is_python3, autojump_utils.last, difflib.SequenceMatcher, itertools.ifilter, itertools.imap\n  def autojump_match.match_anywhere(needles, haystack, ignore_case)\n  def autojump_match.match_consecutive(needles, haystack, ignore_case)\n  def autojump_match.match_fuzzy(needles, haystack, ignore_case, threshold)\nmodule autojump_utils\n  imports: __future__.print_function, itertools.imap, itertools.islice\n  def autojump_utils.create_dir(path)\n  def autojump_utils.encode_local(string)\n  def autojump_utils.first(xs)\n  def autojump_utils.get_tab_entry_info(entry, separator)\n  def autojump_utils.get_pwd()\n  def autojump_utils.has_uppercase(string)\n  def autojump_utils.in_bash()\n  def autojump_utils.is_autojump_sourced()\n  def autojump_utils.is_python2()\n  def autojump_utils.is_python3()\n  def autojump_utils.is_linux()\n  def autojump_utils.is_osx()\n  def autojump_utils.is_windows()\n  def autojump_utils.last(xs)\n  def autojump_utils.move_file(src, dst)\n  def autojump_utils.print_entry(entry)\n  def autojump_utils.print_local(string)\n  def autojump_utils.print_tab_menu(needle, tab_entries, separator)\n  def autojump_utils.sanitize(directories)\n  def autojump_utils.second(xs)\n  def autojump_utils.surround_quotes(string)\n  def autojump_utils.take(n, iterable)\n  def autojump_utils.unico(string)\n\n## Source (module `autojump_match` of package `autojump`), with line numbers\n  1| #!/usr/bin/env python\n  2| # -*- coding: utf-8 -*-\n  3| import os\n  4| import re\n  5| from difflib import SequenceMatcher\n  6| \n  7| from autojump_utils import is_python3\n  8| from autojump_utils import last\n  9| \n 10| \n 11| if is_python3():  # pragma: no cover\n 12|     ifilter = filter\n 13|     imap = map\n 14|     os.getcwdu = os.getcwd\n 15| else:\n 16|     from itertools import ifilter\n 17|     from itertools import imap\n 18| \n 19| \n 20| def match_anywhere(needles, haystack, ignore_case=False):\n 21|     \"\"\"\n 22|     Matches needles anywhere in the path as long as they're in the same (but\n 23|     not necessary consecutive) order.\n 24| \n 25|     For example:\n 26|         needles = ['foo', 'baz']\n 27|         regex needle = r'.*foo.*baz.*'\n 28|         haystack = [\n 29|             (path='/foo/bar/baz', weight=10),\n 30|             (path='/baz/foo/bar', weight=10),\n 31|             (path='/foo/baz', weight=10),\n 32|         ]\n 33| \n 34|         result = [\n 35|             (path='/moo/foo/baz', weight=10),\n 36|             (path='/foo/baz', weight=10),\n 37|         ]\n 38|     \"\"\"\n 39|     regex_needle = '.*' + '.*'.join(imap(re.escape, needles)) + '.*'\n 40|     regex_flags = re.IGNORECASE | re.UNICODE if ignore_case else re.UNICODE\n 41|     found = lambda haystack: re.search(\n 42|         regex_needle,\n 43|         haystack.path,\n 44|         flags=regex_flags,\n 45|     )\n 46|     return ifilter(found, haystack)\n 47| \n 48| \n 49| def match_consecutive(needles, haystack, ignore_case=False):\n 50|     \"\"\"\n 51|     Matches consecutive needles at the end of a path.\n 52| \n 53|     For example:\n 54|         needles = ['foo', 'baz']\n 55|         haystack = [\n 56|             (path='/foo/bar/baz', weight=10),\n 57|             (path='/foo/baz/moo', weight=10),\n 58|             (path='/moo/foo/baz', weight=10),\n 59|             (path='/foo/baz', weight=10),\n 60|         ]\n 61| \n 62|         # We can't actually use re.compile because of re.UNICODE\n 63|         regex_needle = re.compile(r'''\n 64|             foo     # needle #1\n 65|             [^/]*   # all characters except os.sep zero or more times\n 66|             /       # os.sep\n 67|             [^/]*   # all characters except os.sep zero or more times\n 68|             baz     # needle #2\n 69|             [^/]*   # all characters except os.sep zero or more times\n 70|             $       # end of string\n 71|             ''')\n 72| \n 73|         result = [\n 74|             (path='/moo/foo/baz', weight=10),\n 75|             (path='/foo/baz', weight=10),\n 76|         ]\n 77|     \"\"\"\n 78|     regex_no_sep = '[^' + os.sep + ']*'\n 79|     regex_no_sep_end = regex_no_sep + '$'\n 80|     regex_one_sep = regex_no_sep + os.sep + regex_no_sep\n 81|     regex_needle = regex_one_sep.join(imap(re.escape, needles)) + regex_no_sep_end\n 82|     regex_flags = re.IGNORECASE | re.UNICODE if ignore_case else re.UNICODE\n 83|     found = lambda entry: re.search(\n 84|         regex_needle,\n 85|         entry.path,\n 86|         flags=regex_flags,\n 87|     )\n 88|     return ifilter(found, haystack)\n 89| \n 90| \n 91| def match_fuzzy(needles, haystack, ignore_case=False, threshold=0.6):\n 92|     \"\"\"\n 93|     Performs an approximate match with the last needle against the end of\n 94|     every path past an acceptable threshold.\n 95| \n 96|     For example:\n 97|         needles = ['foo', 'bar']\n 98|         haystack = [\n 99|             (path='/foo/bar/baz', weight=11),\n100|             (path='/foo/baz/moo', weight=10),\n101|             (path='/moo/foo/baz', weight=10),\n102|             (path='/foo/baz', weight=10),\n103|             (path='/foo/bar', weight=10),\n104|         ]\n105| \n106|     result = [\n107|             (path='/foo/bar/baz', weight=11),\n108|             (path='/moo/foo/baz', weight=10),\n109|             (path='/foo/baz', weight=10),\n110|             (path='/foo/bar', weight=10),\n111|         ]\n112| \n113|     This is a weak heuristic and used as a last resort to find matches.\n114|     \"\"\"\n115|     end_dir = lambda path: last(os.path.split(path))\n116|     if ignore_case:\n117|         needle = last(needles).lower()\n118|         match_percent = lambda entry: SequenceMatcher(\n119|             a=needle,\n120|             b=end_dir(entry.path.lower()),\n121|         ).ratio()\n122|     else:\n123|         needle = last(needles)\n124|         match_percent = lambda entry: SequenceMatcher(\n125|             a=needle,\n126|             b=end_dir(entry.path),\n127|         ).ratio()\n128|     meets_threshold = lambda entry: match_percent(entry) >= threshold\n129|     return ifilter(meets_threshold, haystack)\n\n## Call sites to decide\ns58 | caller autojump_match | line 11 col 4 | call | `is_python3()`\n    symbolic resolution: [autojump_utils.is_python3] (certain)\ns59 | caller autojump_match.match_anywhere | line 39 col 27 | call | `'.*'.join(imap(re.escape, needles))`\n    symbolic resolution: [<builtin>.str.join]\ns60 | caller autojump_match.match_anywhere | line 39 col 37 | call | `imap(re.escape, needles)`\n    symbolic resolution: [<builtin>.map, itertools.imap]\ns61 | caller autojump_match.match_anywhere.<lambda1> | line 41 col 30 | call | `re.search(regex_needle, haystack.path, flags=regex_flags)`\n    symbolic resolution: [re.search]\ns62 | caller autojump_match.match_anywhere | line 46 col 12 | call | `ifilter(found, haystack)`\n    symbolic resolution: [<builtin>.filter, itertools.ifilter]\n    package functions passed as arguments: [autojump_match.match_anywhere.<lambda1>]\ns63 | caller autojump_match.match_consecutive | line 81 col 20 | call | `regex_one_sep.join(imap(re.escape, needles))`\n    no symbolic information\ns64 | caller autojump_match.match_consecutive | line 81 col 39 | call | `imap(re.escape, needles)`\n    symbolic resolution: [<builtin>.map, itertools.imap]\ns65 | caller autojump_match.match_consecutive.<lambda1> | line 83 col 27 | call | `re.search(regex_needle, entry.path, flags=regex_flags)`\n    symbolic resolution: [re.search]\ns66 | caller autojump_match.match_consecutive | line 88 col 12 | call | `ifilter(found, haystack)`\n    symbolic resolution: [<builtin>.filter, itertools.ifilter]\n    package functions passed as arguments: [autojump_match.match_consecutive.<lambda1>]\ns67 | caller autojump_match.match_fuzzy.<lambda1> | line 115 col 28 | call | `last(os.path.split(path))`\n    symbolic resolution: [autojump_utils.last] (certain)\ns68 | caller autojump_match.match_fuzzy.<lambda1> | line 115 col 33 | call | `os.path.split(path)`\n    symbolic resolution: [os.path.split]\ns69 | caller autojump_match.match_fuzzy | line 117 col 18 | call | `last(needles).lower()`\n    no symbolic information\ns70 | caller autojump_match.match_fuzzy | line 117 col 18 | call | `last(needles)`\n    symbolic resolution: [autojump_utils.last] (certain)\ns71 | caller autojump_match.match_fuzzy.<lambda2> | line 118 col 39 | call | `SequenceMatcher(a=needle, b=end_dir(entry.path.lower())).ratio()`\n    symbolic resolution: [difflib.SequenceMatcher.ratio]\ns72 | caller autojump_match.match_fuzzy.<lambda2> | line 118 col 39 | call | `SequenceMatcher(a=needle, b=end_dir(entry.path.lower()))`\n    symbolic resolution: [difflib.SequenceMatcher] (certain)\ns73 | caller autojump_match.match_fuzzy.<lambda2> | line 120 col 15 | call | `end_dir(entry.path.lower())`\n    symbolic resolution: [autojump_match.match_fuzzy.<lambda1>]\ns74 | caller autojump_match.match_fuzzy.<lambda2> | line 120 col 23 | call | `entry.path.lower()`\n    no symbolic information\ns75 | caller autojump_match.match_fuzzy | line 123 col 18 | call | `last(needles)`\n    symbolic resolution: [autojump_utils.last] (certain)\ns76 | caller autojump_match.match_fuzzy.<lambda3> | line 124 col 39 | call | `SequenceMatcher(a=needle, b=end_dir(entry.path)).ratio()`\n    symbolic resolution: [difflib.SequenceMatcher.ratio]\ns77 | caller autojump_match.match_fuzzy.<lambda3> | line 124 col 39 | call | `SequenceMatcher(a=needle, b=end_dir(entry.path))`\n    symbolic resolution: [difflib.SequenceMatcher] (certain)\ns78 | caller autojump_match.match_fuzzy.<lambda3> | line 126 col 15 | call | `end_dir(entry.path)`\n    symbolic resolution: [autojump_match.match_fuzzy.<lambda1>]\ns79 | caller autojump_match.match_fuzzy.<lambda4> | line 128 col 37 | call | `match_percent(entry)`\n    symbolic resolution: [autojump_match.match_fuzzy.<lambda2>, autojump_match.match_fuzzy.<lambda3>]\ns80 | caller autojump_match.match_fuzzy | line 129 col 12 | call | `ifilter(meets_threshold, haystack)`\n    symbolic resolution: [<builtin>.filter, itertools.ifilter]\n    package functions passed as arguments: [autojump_match.match_fuzzy.<lambda4>]\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s58",
+    "callees": [
+     "autojump_utils.is_python3"
+    ]
+   },
+   {
+    "id": "s59",
+    "callees": [
+     "<builtin>.str.join"
+    ]
+   },
+   {
+    "id": "s60",
+    "callees": [
+     "<builtin>.map",
+     "itertools.imap"
+    ]
+   },
+   {
+    "id": "s61",
+    "callees": [
+     "re.search"
+    ]
+   },
+   {
+    "id": "s62",
+    "callees": [
+     "<builtin>.filter",
+     "itertools.ifilter"
+    ]
+   },
+   {
+    "id": "s63",
+    "callees": [
+     "<builtin>.str.join"
+    ]
+   },
+   {
+    "id": "s64",
+    "callees": [
+     "<builtin>.map",
+     "itertools.imap"
+    ]
+   },
+   {
+    "id": "s65",
+    "callees": [
+     "re.search"
+    ]
+   },
+   {
+    "id": "s66",
+    "callees": [
+     "<builtin>.filter",
+     "itertools.ifilter"
+    ]
+   },
+   {
+    "id": "s67",
+    "callees": [
+     "autojump_utils.last"
+    ]
+   },
+   {
+    "id": "s68",
+    "callees": [
+     "os.path.split"
+    ]
+   },
+   {
+    "id": "s69",
+    "callees": [
+     "<builtin>.str.lower"
+    ]
+   },
+   {
+    "id": "s70",
+    "callees": [
+     "autojump_utils.last"
+    ]
+   },
+   {
+    "id": "s71",
+    "callees": [
+     "difflib.SequenceMatcher.ratio"
+    ]
+   },
+   {
+    "id": "s72",
+    "callees": [
+     "difflib.SequenceMatcher"
+    ]
+   },
+   {
+    "id": "s73",
+    "callees": [
+     "autojump_match.match_fuzzy.<lambda1>"
+    ]
+   },
+   {
+    "id": "s74",
+    "callees": [
+     "<builtin>.str.lower"
+    ]
+   },
+   {
+    "id": "s75",
+    "callees": [
+     "autojump_utils.last"
+    ]
+   },
+   {
+    "id": "s76",
+    "callees": [
+     "difflib.SequenceMatcher.ratio"
+    ]
+   },
+   {
+    "id": "s77",
+    "callees": [
+     "difflib.SequenceMatcher"
+    ]
+   },
+   {
+    "id": "s78",
+    "callees": [
+     "autojump_match.match_fuzzy.<lambda1>"
+    ]
+   },
+   {
+    "id": "s79",
+    "callees": [
+     "autojump_match.match_fuzzy.<lambda2>",
+     "autojump_match.match_fuzzy.<lambda3>"
+    ]
+   },
+   {
+    "id": "s80",
+    "callees": [
+     "<builtin>.filter",
+     "itertools.ifilter"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 578,
+  "cache_read_input_tokens": 7089,
+  "output_tokens": 2561,
+  "output_tokens_details": {
+   "thinking_tokens": 1862
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 578,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2561,
+    "cache_read_input_tokens": 7089,
+    "cache_creation_input_tokens": 578,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 578
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00222049,
+ "seconds": 11.57,
+ "attempt": 1,
+ "time": "2026-11-18T18:25:36+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 7435,
+   "outputTokens": 2581,
+   "cacheReadInputTokens": 7089,
+   "cacheCreationInputTokens": 578,
+   "webSearchRequests": 0,
+   "costUSD": 0.00222049,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1862,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 578,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

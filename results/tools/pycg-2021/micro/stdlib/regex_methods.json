@@ -1,0 +1,10 @@
+{
+ "main": [
+  "re.compile",
+  "re.compile.match",
+  "re.compile.match.group"
+ ],
+ "re.compile": [],
+ "re.compile.match": [],
+ "re.compile.match.group": []
+}

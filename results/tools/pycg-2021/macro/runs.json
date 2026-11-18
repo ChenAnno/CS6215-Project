@@ -1,0 +1,227 @@
+{
+ "tool": {
+  "name": "pycg-2021",
+  "flavour": "original",
+  "commit": "046479ebcbc27a3ff7a7fa45cc08336726fb0bc9",
+  "describe": "046479e",
+  "dirty": false
+ },
+ "benchmark": {
+  "name": "macro",
+  "commit": "8a2e52cca102766067fd5c9de2a0af17861a5a0e",
+  "describe": "evaluation-2026",
+  "dirty": false
+ },
+ "python": "3.14.3",
+ "hash_seed": 0,
+ "timeout": 1800,
+ "memory_limit_mib": null,
+ "runs": {
+  "macro/Sublist3r": {
+   "status": "ok",
+   "seconds": 0.236,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.309,
+   "files": 3
+  },
+  "macro/aiocache": {
+   "status": "ok",
+   "seconds": 0.265,
+   "peak_rss_mib": 29.0,
+   "wall_seconds": 0.329,
+   "files": 13
+  },
+  "macro/anytree": {
+   "status": "ok",
+   "seconds": 0.659,
+   "peak_rss_mib": 38.1,
+   "wall_seconds": 0.762,
+   "files": 33
+  },
+  "macro/argcomplete": {
+   "status": "ok",
+   "seconds": 0.433,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.489,
+   "files": 15
+  },
+  "macro/asciinema": {
+   "status": "ok",
+   "seconds": 0.566,
+   "peak_rss_mib": 33.0,
+   "wall_seconds": 0.643,
+   "files": 24
+  },
+  "macro/asyncstdlib": {
+   "status": "ok",
+   "seconds": 0.695,
+   "peak_rss_mib": 28.0,
+   "wall_seconds": 0.751,
+   "files": 11
+  },
+  "macro/autojump": {
+   "status": "ok",
+   "seconds": 0.09,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.148,
+   "files": 3
+  },
+  "macro/bottle": {
+   "status": "timeout",
+   "wall_seconds": 1800
+  },
+  "macro/cachetools": {
+   "status": "ok",
+   "seconds": 0.481,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.551,
+   "files": 7
+  },
+  "macro/configargparse": {
+   "status": "ok",
+   "seconds": 0.16,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.238,
+   "files": 1
+  },
+  "macro/dagster-pipes": {
+   "status": "ok",
+   "seconds": 0.174,
+   "peak_rss_mib": 25.5,
+   "wall_seconds": 0.238,
+   "files": 2
+  },
+  "macro/fabric": {
+   "status": "ok",
+   "seconds": 0.297,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.36,
+   "files": 12
+  },
+  "macro/face_classification": {
+   "status": "ok",
+   "seconds": 0.713,
+   "peak_rss_mib": 33.0,
+   "wall_seconds": 0.793,
+   "files": 19
+  },
+  "macro/fastjsonschema": {
+   "status": "ok",
+   "seconds": 0.232,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 0.309,
+   "files": 11
+  },
+  "macro/funcy": {
+   "status": "timeout",
+   "wall_seconds": 1800
+  },
+  "macro/h11": {
+   "status": "ok",
+   "seconds": 0.361,
+   "peak_rss_mib": 25.0,
+   "wall_seconds": 0.46,
+   "files": 11
+  },
+  "macro/itables": {
+   "status": "crash",
+   "error": "AttributeError: 'NoneType' object has no attribute 'inc_list_counter'",
+   "where": "pycg/processing/base.py:117 in visit_List",
+   "seconds": 2.549,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 5.934,
+   "files": 21
+  },
+  "macro/jmespath": {
+   "status": "ok",
+   "seconds": 0.461,
+   "peak_rss_mib": 27.0,
+   "wall_seconds": 0.53,
+   "files": 8
+  },
+  "macro/markdown2": {
+   "status": "ok",
+   "seconds": 0.696,
+   "peak_rss_mib": 40.1,
+   "wall_seconds": 1.018,
+   "files": 1
+  },
+  "macro/marshmallow": {
+   "status": "ok",
+   "seconds": 0.619,
+   "peak_rss_mib": 42.5,
+   "wall_seconds": 0.712,
+   "files": 14
+  },
+  "macro/netaddr": {
+   "status": "ok",
+   "seconds": 1.379,
+   "peak_rss_mib": 61.5,
+   "wall_seconds": 1.48,
+   "files": 20
+  },
+  "macro/pluggy": {
+   "status": "ok",
+   "seconds": 0.449,
+   "peak_rss_mib": 20.0,
+   "wall_seconds": 0.51,
+   "files": 13
+  },
+  "macro/pyflakes": {
+   "status": "ok",
+   "seconds": 0.261,
+   "peak_rss_mib": 30.6,
+   "wall_seconds": 0.329,
+   "files": 8
+  },
+  "macro/pypinyin": {
+   "status": "ok",
+   "seconds": 253.6,
+   "peak_rss_mib": 4805.5,
+   "wall_seconds": 258.14,
+   "files": 43
+  },
+  "macro/pyrate-limiter": {
+   "status": "ok",
+   "seconds": 2.815,
+   "peak_rss_mib": 77.2,
+   "wall_seconds": 2.995,
+   "files": 25
+  },
+  "macro/python-barcode": {
+   "status": "ok",
+   "seconds": 1.206,
+   "peak_rss_mib": 31.0,
+   "wall_seconds": 2.524,
+   "files": 19
+  },
+  "macro/sqlparse": {
+   "status": "ok",
+   "seconds": 1.111,
+   "peak_rss_mib": 40.6,
+   "wall_seconds": 1.206,
+   "files": 21
+  },
+  "macro/structlog": {
+   "status": "ok",
+   "seconds": 1.419,
+   "peak_rss_mib": 48.0,
+   "wall_seconds": 1.512,
+   "files": 21
+  },
+  "macro/tenacity": {
+   "status": "ok",
+   "seconds": 0.435,
+   "peak_rss_mib": 26.0,
+   "wall_seconds": 0.531,
+   "files": 12
+  },
+  "macro/whitenoise": {
+   "status": "ok",
+   "seconds": 1.117,
+   "peak_rss_mib": 24.0,
+   "wall_seconds": 1.259,
+   "files": 12
+  }
+ }
+}

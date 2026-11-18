@@ -1,0 +1,13 @@
+{
+    "main": [
+        "main.qe1a3_0",
+        "re.sub"
+    ],
+    "main.qe1a3_0": [
+        "<builtin>.str.upper",
+        "re.Match.group"
+    ],
+    "re.sub": [],
+    "re.Match.group": [],
+    "<builtin>.str.upper": []
+}

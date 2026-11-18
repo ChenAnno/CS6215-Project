@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.add",
+  "main.logged"
+ ],
+ "main.add": [],
+ "main.logged": [
+  "functools.wraps"
+ ],
+ "main.logged.wrapper": []
+}

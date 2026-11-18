@@ -1,0 +1,15 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "<builtin>.aiter": [],
+ "asyncio.run": [],
+ "<builtin>.anext": [],
+ "main.start": [
+  "<builtin>.aiter",
+  "<builtin>.anext",
+  "main.ticks"
+ ],
+ "main.ticks": []
+}

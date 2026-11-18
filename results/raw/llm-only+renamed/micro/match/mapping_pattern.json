@@ -1,0 +1,1 @@
+{"units": [{"unit": "match/mapping_pattern", "answers": {"main": ["main.q8e81_1"], "main.q8e81_0": [], "main.q8e81_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 9, "kind": "call", "text": "handler()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.compute"
+ ],
+ "main.never": [],
+ "main.release": [],
+ "main.compute": [
+  "main.prepare",
+  "main.release"
+ ],
+ "main.prepare": []
+}

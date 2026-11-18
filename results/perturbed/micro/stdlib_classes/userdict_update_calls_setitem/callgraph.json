@@ -1,0 +1,20 @@
+{
+    "main": [
+        "collections.UserDict.__init__",
+        "main.q8965_1"
+    ],
+    "main.q8965_1": [
+        "collections.UserDict.update",
+        "main.q8965_0.__setitem__"
+    ],
+    "main.q8965_0.__setitem__": [
+        "<builtin>.super",
+        "collections.UserDict.__setitem__",
+        "main.q8965_2"
+    ],
+    "main.q8965_2": [],
+    "collections.UserDict.__init__": [],
+    "collections.UserDict.update": [],
+    "<builtin>.super": [],
+    "collections.UserDict.__setitem__": []
+}

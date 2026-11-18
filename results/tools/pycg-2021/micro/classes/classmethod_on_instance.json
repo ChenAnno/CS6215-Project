@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.Counter.increment"
+ ],
+ "main.Counter.increment": [
+  "main.Counter.report"
+ ],
+ "main.Counter.report": []
+}

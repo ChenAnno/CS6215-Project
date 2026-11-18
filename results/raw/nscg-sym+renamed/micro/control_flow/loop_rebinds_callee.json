@@ -1,0 +1,1 @@
+{"units": [{"unit": "control_flow/loop_rebinds_callee", "answers": {"s1": ["main.q466f_0"]}, "sites": [{"id": "s1", "caller": "main", "line": 12, "col": 5, "kind": "call", "text": "handler()", "resolved": ["main.q466f_0"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

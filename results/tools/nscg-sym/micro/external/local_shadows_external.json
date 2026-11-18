@@ -1,0 +1,7 @@
+{
+ "main": [
+  "ext.process",
+  "main.process"
+ ],
+ "main.process": []
+}

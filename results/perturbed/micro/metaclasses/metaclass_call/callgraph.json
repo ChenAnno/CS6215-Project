@@ -1,0 +1,15 @@
+{
+    "main": [
+        "main.q2090_1.__call__"
+    ],
+    "main.q2090_1.__call__": [
+        "<builtin>.hasattr",
+        "<builtin>.super",
+        "<builtin>.type.__call__",
+        "main.q2090_0.__init__"
+    ],
+    "main.q2090_0.__init__": [],
+    "<builtin>.hasattr": [],
+    "<builtin>.super": [],
+    "<builtin>.type.__call__": []
+}

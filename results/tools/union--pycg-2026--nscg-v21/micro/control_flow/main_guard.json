@@ -1,0 +1,12 @@
+{
+ "main": [
+  "helper.run"
+ ],
+ "helper.run": [],
+ "helper.selftest": [
+  "helper.run"
+ ],
+ "helper": [
+  "helper.selftest"
+ ]
+}

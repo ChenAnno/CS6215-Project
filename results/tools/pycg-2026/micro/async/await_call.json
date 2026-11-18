@@ -1,0 +1,11 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.process"
+ ],
+ "main.fetch": [],
+ "main.process": [
+  "main.fetch"
+ ]
+}

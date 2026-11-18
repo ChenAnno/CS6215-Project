@@ -1,0 +1,10 @@
+{
+ "<builtin>.list.copy": [],
+ "main": [
+  "<builtin>.list.copy",
+  "main.func1",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

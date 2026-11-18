@@ -1,0 +1,17 @@
+== pycg-2021
+  micro (622 cases, 201 exact): inside P=0.8683 R=0.6054 | outside P=0.8623 R=0.6603 | all F1=0.7232
+  autojump         [ok] inside P=1.0 R=0.8857 (tp 31/fp 0/fn 4) | outside P=0.9571 R=0.67
+  fabric           [ok] inside P=0.92 R=0.4646 (tp 46/fp 4/fn 53) | outside P=0.7836 R=0.5317
+  jmespath         [ok] inside P=0.9195 R=0.7 (tp 217/fp 19/fn 93) | outside P=0.9861 R=0.5917
+  funcy            [timeout] inside P=None R=0.0 (tp 0/fp 0/fn 511) | outside P=None R=0.0
+  TOTAL            inside P=0.9274 R=0.3079 F1=0.4623 | outside P=0.869 R=0.2875 F1=0.4321
+== pycg-2026+renamed
+  micro (580 cases, 441 exact): inside P=0.9243 R=0.9464 | outside P=0.9946 R=0.9661 | all F1=0.9458
+== pycg-2021+renamed
+  micro (580 cases, 185 exact): inside P=0.8681 R=0.6134 | outside P=0.8611 R=0.6475 | all F1=0.7238
+== nscg-sym+renamed
+  micro (580 cases, 114 exact): inside P=0.8888 R=0.6125 | outside P=0.9134 R=0.8538 | all F1=0.767
+== llm-only+renamed
+  micro (580 cases, 264 exact): inside P=0.9023 R=0.9975 | outside P=0.9457 R=0.7728 | all F1=0.9268
+== nscg-v21+renamed
+  micro (580 cases, 255 exact): inside P=0.8929 R=0.9761 | outside P=0.9271 R=0.9295 | all F1=0.9316

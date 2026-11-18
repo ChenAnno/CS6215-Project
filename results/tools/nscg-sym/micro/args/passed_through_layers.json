@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.outer"
+ ],
+ "main.inner": [],
+ "main.middle": [
+  "main.inner"
+ ],
+ "main.outer": [
+  "main.middle"
+ ],
+ "main.target": []
+}

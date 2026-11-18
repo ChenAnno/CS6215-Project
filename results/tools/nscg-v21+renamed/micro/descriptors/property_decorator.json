@@ -1,0 +1,20 @@
+{
+ "main": [
+  "<builtin>.property",
+  "<builtin>.property.deleter",
+  "<builtin>.property.setter",
+  "main.q31f7_0.__init__",
+  "main.q31f7_0.q31f7_1"
+ ],
+ "main.q31f7_0.__init__": [
+  "main.q31f7_0.q31f7_1"
+ ],
+ "main.q31f7_0.q31f7_1": [
+  "main.q31f7_2",
+  "main.q31f7_3",
+  "main.q31f7_4"
+ ],
+ "main.q31f7_2": [],
+ "main.q31f7_3": [],
+ "main.q31f7_4": []
+}

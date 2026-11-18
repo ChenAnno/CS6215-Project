@@ -1,0 +1,8 @@
+{
+ "<builtin>.globals": [],
+ "main": [
+  "<builtin>.globals"
+ ],
+ "main.handle_get": [],
+ "main.handle_post": []
+}

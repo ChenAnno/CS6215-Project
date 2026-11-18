@@ -1,0 +1,1 @@
+{"units": [{"unit": "assignments/swap", "answers": {"s1": ["main.q9872_0", "main.q9872_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "a()", "resolved": ["main.q9872_0", "main.q9872_1"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

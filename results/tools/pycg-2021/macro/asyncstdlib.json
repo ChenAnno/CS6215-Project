@@ -1,0 +1,654 @@
+{
+ "<builtin>.RuntimeError": [],
+ "<builtin>.TypeError": [],
+ "<builtin>.ValueError": [],
+ "<builtin>.bool": [],
+ "<builtin>.callable": [],
+ "<builtin>.enumerate": [],
+ "<builtin>.getattr": [],
+ "<builtin>.hasattr": [],
+ "<builtin>.hash": [],
+ "<builtin>.id": [],
+ "<builtin>.isinstance": [],
+ "<builtin>.issubclass": [],
+ "<builtin>.len": [],
+ "<builtin>.map": [],
+ "<builtin>.object": [],
+ "<builtin>.range": [],
+ "<builtin>.reversed": [],
+ "<builtin>.set": [],
+ "<builtin>.slice": [],
+ "<builtin>.tuple": [],
+ "<builtin>.type": [],
+ "asyncstdlib": [],
+ "asyncstdlib._core": [],
+ "asyncstdlib._core.Awaitify.__call__": [
+  "<builtin>.isinstance",
+  "asyncstdlib._core.Awaitify.__init__",
+  "asyncstdlib._core.await_value",
+  "asyncstdlib._core.force_async",
+  "asyncstdlib.itertools.add"
+ ],
+ "asyncstdlib._core.Awaitify.__init__": [],
+ "asyncstdlib._core.ScopedIter.__aenter__": [],
+ "asyncstdlib._core.ScopedIter.__aexit__": [],
+ "asyncstdlib._core.ScopedIter.__init__": [
+  "asyncstdlib._core.aiter"
+ ],
+ "asyncstdlib._core.Sentinel.__init__": [],
+ "asyncstdlib._core.Sentinel.__repr__": [],
+ "asyncstdlib._core._aiter_sync": [],
+ "asyncstdlib._core.aiter": [
+  "<builtin>.isinstance",
+  "asyncstdlib._core._aiter_sync"
+ ],
+ "asyncstdlib._core.await_value": [],
+ "asyncstdlib._core.awaitify": [
+  "asyncstdlib._core.Awaitify.__init__",
+  "inspect.iscoroutinefunction"
+ ],
+ "asyncstdlib._core.borrow": [],
+ "asyncstdlib._core.force_async": [],
+ "asyncstdlib._core.force_async.async_wrapped": [
+  "asyncstdlib._core.Awaitify.__init__",
+  "asyncstdlib.itertools.add"
+ ],
+ "asyncstdlib._lrucache": [
+  "asyncstdlib._utility.public_module",
+  "asyncstdlib._utility.public_module.decorator",
+  "typing.TypeVar",
+  "typing.overload"
+ ],
+ "asyncstdlib._lrucache.CachedLRUAsyncCallable.__call__": [
+  "<builtin>.len",
+  "asyncstdlib._lrucache.CallKey.from_call",
+  "typing.cast"
+ ],
+ "asyncstdlib._lrucache.CachedLRUAsyncCallable.__init__": [
+  "collections.OrderedDict"
+ ],
+ "asyncstdlib._lrucache.CachedLRUAsyncCallable.cache_clear": [],
+ "asyncstdlib._lrucache.CachedLRUAsyncCallable.cache_discard": [
+  "asyncstdlib._lrucache.CallKey.from_call"
+ ],
+ "asyncstdlib._lrucache.CachedLRUAsyncCallable.cache_info": [
+  "<builtin>.len",
+  "typing.NamedTuple.__init__"
+ ],
+ "asyncstdlib._lrucache.CachedLRUAsyncCallable.cache_parameters": [
+  "typing.TypedDict.__init__"
+ ],
+ "asyncstdlib._lrucache.CallKey.__eq__": [
+  "<builtin>.type"
+ ],
+ "asyncstdlib._lrucache.CallKey.__hash__": [],
+ "asyncstdlib._lrucache.CallKey.__init__": [
+  "<builtin>.hash"
+ ],
+ "asyncstdlib._lrucache.CallKey.from_call": [
+  "<builtin>.len",
+  "<builtin>.map",
+  "<builtin>.tuple",
+  "<builtin>.type",
+  "asyncstdlib._lrucache.CallKey.__init__"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__annotations__": [],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__call__": [],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__doc__": [],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__func__": [],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__get__": [
+  "asyncstdlib._lrucache.LRUAsyncBoundCallable.__init__"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__getattr__": [
+  "<builtin>.getattr"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__init__": [],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__repr__": [
+  "<builtin>.getattr"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.__wrapped__": [],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.cache_clear": [
+  "asyncstdlib._lrucache.LRUAsyncCallable.cache_clear"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.cache_discard": [
+  "asyncstdlib._lrucache.LRUAsyncCallable.cache_discard"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.cache_info": [
+  "asyncstdlib._lrucache.LRUAsyncCallable.cache_info"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncBoundCallable.cache_parameters": [
+  "asyncstdlib._lrucache.LRUAsyncCallable.cache_parameters"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncCallable.__get__": [
+  "asyncstdlib._lrucache.LRUAsyncBoundCallable.__init__"
+ ],
+ "asyncstdlib._lrucache.LRUAsyncCallable.__wrapped__": [],
+ "asyncstdlib._lrucache.LRUAsyncCallable.cache_clear": [],
+ "asyncstdlib._lrucache.LRUAsyncCallable.cache_discard": [],
+ "asyncstdlib._lrucache.LRUAsyncCallable.cache_info": [],
+ "asyncstdlib._lrucache.LRUAsyncCallable.cache_parameters": [],
+ "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.__call__": [
+  "asyncstdlib._lrucache.CallKey.from_call"
+ ],
+ "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.__init__": [],
+ "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.cache_clear": [],
+ "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.cache_discard": [
+  "asyncstdlib._lrucache.CallKey.from_call"
+ ],
+ "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.cache_info": [
+  "<builtin>.len",
+  "typing.NamedTuple.__init__"
+ ],
+ "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.cache_parameters": [
+  "typing.TypedDict.__init__"
+ ],
+ "asyncstdlib._lrucache.UncachedLRUAsyncCallable.__call__": [],
+ "asyncstdlib._lrucache.UncachedLRUAsyncCallable.__init__": [],
+ "asyncstdlib._lrucache.UncachedLRUAsyncCallable.cache_clear": [],
+ "asyncstdlib._lrucache.UncachedLRUAsyncCallable.cache_discard": [],
+ "asyncstdlib._lrucache.UncachedLRUAsyncCallable.cache_info": [
+  "typing.NamedTuple.__init__"
+ ],
+ "asyncstdlib._lrucache.UncachedLRUAsyncCallable.cache_parameters": [
+  "asyncstdlib._typing.TypedDict.__init__",
+  "typing.TypedDict.__init__"
+ ],
+ "asyncstdlib._lrucache.lru_cache": [
+  "<builtin>.TypeError",
+  "<builtin>.callable",
+  "<builtin>.isinstance",
+  "asyncstdlib._lrucache.CachedLRUAsyncCallable.__init__",
+  "functools.update_wrapper",
+  "typing.cast"
+ ],
+ "asyncstdlib._lrucache.lru_cache.lru_decorator": [
+  "<builtin>.callable",
+  "asyncstdlib._lrucache.CachedLRUAsyncCallable.__init__",
+  "asyncstdlib._lrucache.MemoizedLRUAsyncCallable.__init__",
+  "asyncstdlib._lrucache.UncachedLRUAsyncCallable.__init__",
+  "functools.update_wrapper"
+ ],
+ "asyncstdlib._typing": [
+  "typing.TypeVar"
+ ],
+ "asyncstdlib._typing.ACloseable.aclose": [],
+ "asyncstdlib._typing.SupportsAdd.__add__": [],
+ "asyncstdlib._typing.SupportsBool.__bool__": [],
+ "asyncstdlib._typing.SupportsLT.__lt__": [],
+ "asyncstdlib._typing.TypedDict.__init__": [],
+ "asyncstdlib._utility": [
+  "typing.TypeVar"
+ ],
+ "asyncstdlib._utility.public_module": [],
+ "asyncstdlib._utility.public_module.decorator": [],
+ "asyncstdlib.asynctools": [
+  "typing.TypeVar",
+  "typing.overload"
+ ],
+ "asyncstdlib.asynctools._BorrowedAsyncIterator.__aiter__": [],
+ "asyncstdlib.asynctools._BorrowedAsyncIterator.__init__": [
+  "<builtin>.hasattr"
+ ],
+ "asyncstdlib.asynctools._BorrowedAsyncIterator.__repr__": [
+  "<builtin>.id"
+ ],
+ "asyncstdlib.asynctools._BorrowedAsyncIterator._aclose_wrapper": [
+  "<builtin>.hasattr"
+ ],
+ "asyncstdlib.asynctools._BorrowedAsyncIterator.aclose": [
+  "asyncstdlib.asynctools._BorrowedAsyncIterator._aclose_wrapper"
+ ],
+ "asyncstdlib.asynctools._ScopedAsyncIterator.__repr__": [
+  "<builtin>.id"
+ ],
+ "asyncstdlib.asynctools._ScopedAsyncIterator.aclose": [],
+ "asyncstdlib.asynctools._ScopedAsyncIteratorContext.__aenter__": [
+  "<builtin>.RuntimeError"
+ ],
+ "asyncstdlib.asynctools._ScopedAsyncIteratorContext.__aexit__": [],
+ "asyncstdlib.asynctools._ScopedAsyncIteratorContext.__init__": [],
+ "asyncstdlib.asynctools._ScopedAsyncIteratorContext.__repr__": [
+  "<builtin>.id"
+ ],
+ "asyncstdlib.asynctools.any_iter": [
+  "<builtin>.isinstance"
+ ],
+ "asyncstdlib.asynctools.apply": [],
+ "asyncstdlib.asynctools.await_each": [],
+ "asyncstdlib.asynctools.borrow": [
+  "<builtin>.TypeError",
+  "<builtin>.hasattr",
+  "<builtin>.type"
+ ],
+ "asyncstdlib.asynctools.scoped_iter": [
+  "<builtin>.hasattr",
+  "asyncstdlib._core.aiter",
+  "asyncstdlib.asynctools._ScopedAsyncIteratorContext.__init__",
+  "asyncstdlib.contextlib.NullContext.__init__"
+ ],
+ "asyncstdlib.asynctools.sync": [
+  "<builtin>.TypeError",
+  "<builtin>.callable",
+  "functools.wraps",
+  "inspect.iscoroutinefunction"
+ ],
+ "asyncstdlib.asynctools.sync.async_wrapped": [
+  "<builtin>.isinstance"
+ ],
+ "asyncstdlib.builtins": [
+  "asyncstdlib._core.Sentinel.__init__"
+ ],
+ "asyncstdlib.builtins._min_max": [
+  "<builtin>.ValueError",
+  "<builtin>.bool",
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.anext"
+ ],
+ "asyncstdlib.builtins._zip_inner": [
+  "asyncstdlib.builtins.anext"
+ ],
+ "asyncstdlib.builtins._zip_inner_strict": [
+  "<builtin>.ValueError",
+  "<builtin>.object",
+  "asyncstdlib.builtins.anext",
+  "builtins.enumerate"
+ ],
+ "asyncstdlib.builtins.acallable_iterator": [],
+ "asyncstdlib.builtins.all": [
+  "asyncstdlib._core.ScopedIter.__init__"
+ ],
+ "asyncstdlib.builtins.anext": [],
+ "asyncstdlib.builtins.any": [
+  "asyncstdlib._core.ScopedIter.__init__"
+ ],
+ "asyncstdlib.builtins.dict": [
+  "asyncstdlib._core.aiter"
+ ],
+ "asyncstdlib.builtins.enumerate": [
+  "asyncstdlib._core.ScopedIter.__init__"
+ ],
+ "asyncstdlib.builtins.filter": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify"
+ ],
+ "asyncstdlib.builtins.iter": [
+  "<builtin>.TypeError",
+  "<builtin>.callable",
+  "<builtin>.isinstance",
+  "asyncstdlib._core.aiter",
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.acallable_iterator"
+ ],
+ "asyncstdlib.builtins.list": [
+  "asyncstdlib._core.aiter"
+ ],
+ "asyncstdlib.builtins.map": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.zip"
+ ],
+ "asyncstdlib.builtins.max": [
+  "asyncstdlib.builtins._min_max"
+ ],
+ "asyncstdlib.builtins.min": [
+  "asyncstdlib.builtins._min_max"
+ ],
+ "asyncstdlib.builtins.set": [
+  "asyncstdlib._core.aiter"
+ ],
+ "asyncstdlib.builtins.sorted": [
+  "asyncstdlib._core.aiter",
+  "asyncstdlib._core.awaitify",
+  "builtins.sorted"
+ ],
+ "asyncstdlib.builtins.sorted.<lambda1>": [],
+ "asyncstdlib.builtins.sum": [
+  "asyncstdlib._core.aiter"
+ ],
+ "asyncstdlib.builtins.tuple": [
+  "asyncstdlib._core.aiter"
+ ],
+ "asyncstdlib.builtins.zip": [
+  "asyncstdlib._core.aiter",
+  "asyncstdlib.builtins._zip_inner",
+  "asyncstdlib.builtins._zip_inner_strict"
+ ],
+ "asyncstdlib.contextlib": [
+  "typing.TypeVar"
+ ],
+ "asyncstdlib.contextlib.Closing.__aenter__": [],
+ "asyncstdlib.contextlib.Closing.__aexit__": [],
+ "asyncstdlib.contextlib.Closing.__init__": [],
+ "asyncstdlib.contextlib.ContextDecorator.__call__": [
+  "functools.wraps"
+ ],
+ "asyncstdlib.contextlib.ContextDecorator.__call__.inner": [],
+ "asyncstdlib.contextlib.ContextDecorator._recreate_cm": [],
+ "asyncstdlib.contextlib.ExitStack.__aenter__": [],
+ "asyncstdlib.contextlib.ExitStack.__aexit__": [
+  "<builtin>.reversed",
+  "<builtin>.type",
+  "asyncstdlib.contextlib.ExitStack._stitch_context",
+  "sys.exc_info"
+ ],
+ "asyncstdlib.contextlib.ExitStack.__init__": [
+  "collections.deque"
+ ],
+ "asyncstdlib.contextlib.ExitStack._aexit_callback": [],
+ "asyncstdlib.contextlib.ExitStack._stitch_context": [],
+ "asyncstdlib.contextlib.ExitStack.aclose": [
+  "asyncstdlib.contextlib.ExitStack.__aexit__"
+ ],
+ "asyncstdlib.contextlib.ExitStack.callback": [
+  "asyncstdlib._core.awaitify",
+  "collections.deque.append",
+  "functools.partial"
+ ],
+ "asyncstdlib.contextlib.ExitStack.enter_context": [
+  "asyncstdlib._core.awaitify",
+  "collections.deque.append"
+ ],
+ "asyncstdlib.contextlib.ExitStack.pop_all": [
+  "<builtin>.type",
+  "collections.deque"
+ ],
+ "asyncstdlib.contextlib.ExitStack.push": [
+  "<builtin>.TypeError",
+  "<builtin>.callable",
+  "<builtin>.hasattr",
+  "asyncstdlib._core.awaitify",
+  "collections.deque.append"
+ ],
+ "asyncstdlib.contextlib.NullContext.__aenter__": [],
+ "asyncstdlib.contextlib.NullContext.__aexit__": [],
+ "asyncstdlib.contextlib.NullContext.__init__": [],
+ "asyncstdlib.contextlib._AsyncGeneratorContextManager.__aenter__": [
+  "<builtin>.RuntimeError"
+ ],
+ "asyncstdlib.contextlib._AsyncGeneratorContextManager.__aexit__": [
+  "<builtin>.RuntimeError",
+  "<builtin>.isinstance"
+ ],
+ "asyncstdlib.contextlib._AsyncGeneratorContextManager.__init__": [
+  "<builtin>.getattr",
+  "<builtin>.type"
+ ],
+ "asyncstdlib.contextlib._AsyncGeneratorContextManager._recreate_cm": [
+  "<builtin>.type"
+ ],
+ "asyncstdlib.contextlib.contextmanager": [
+  "functools.wraps"
+ ],
+ "asyncstdlib.contextlib.contextmanager.helper": [
+  "asyncstdlib.contextlib._AsyncGeneratorContextManager.__init__"
+ ],
+ "asyncstdlib.functools": [
+  "asyncstdlib._core.Sentinel.__init__"
+ ],
+ "asyncstdlib.functools.AwaitableValue.__await__": [],
+ "asyncstdlib.functools.AwaitableValue.__init__": [],
+ "asyncstdlib.functools.AwaitableValue.__repr__": [],
+ "asyncstdlib.functools.CachedProperty.__get__": [
+  "<builtin>.TypeError",
+  "<builtin>.type",
+  "asyncstdlib.contextlib.NullContext.__init__",
+  "asyncstdlib.functools._FutureCachedPropertyValue.__init__",
+  "typing.cast"
+ ],
+ "asyncstdlib.functools.CachedProperty.__init__": [],
+ "asyncstdlib.functools.CachedProperty.__set_name__": [
+  "<builtin>.TypeError"
+ ],
+ "asyncstdlib.functools._FutureCachedPropertyValue.__await__": [
+  "asyncstdlib.functools._FutureCachedPropertyValue._await_impl"
+ ],
+ "asyncstdlib.functools._FutureCachedPropertyValue.__init__": [],
+ "asyncstdlib.functools._FutureCachedPropertyValue.__repr__": [
+  "<builtin>.id",
+  "<builtin>.type"
+ ],
+ "asyncstdlib.functools._FutureCachedPropertyValue._await_impl": [
+  "asyncstdlib.functools._FutureCachedPropertyValue._get_attribute"
+ ],
+ "asyncstdlib.functools._FutureCachedPropertyValue._get_attribute": [
+  "asyncstdlib.functools.AwaitableValue.__init__"
+ ],
+ "asyncstdlib.functools._FutureCachedPropertyValue._instance_value": [
+  "<builtin>.getattr"
+ ],
+ "asyncstdlib.functools.cache": [
+  "asyncstdlib._lrucache.CachedLRUAsyncCallable.__init__",
+  "asyncstdlib._lrucache.lru_cache",
+  "asyncstdlib._lrucache.lru_cache.lru_decorator"
+ ],
+ "asyncstdlib.functools.cached_property": [
+  "<builtin>.ValueError",
+  "<builtin>.isinstance",
+  "<builtin>.issubclass",
+  "asyncstdlib.functools.CachedProperty.__init__",
+  "inspect.iscoroutinefunction"
+ ],
+ "asyncstdlib.functools.cached_property.decorator": [
+  "asyncstdlib.functools.CachedProperty.__init__",
+  "typing.cast"
+ ],
+ "asyncstdlib.functools.reduce": [
+  "<builtin>.TypeError",
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.anext"
+ ],
+ "asyncstdlib.heapq": [],
+ "asyncstdlib.heapq.ReverseLT.__init__": [],
+ "asyncstdlib.heapq.ReverseLT.__lt__": [
+  "<builtin>.bool"
+ ],
+ "asyncstdlib.heapq._KeyIter": [
+  "typing.overload"
+ ],
+ "asyncstdlib.heapq._KeyIter.__eq__": [],
+ "asyncstdlib.heapq._KeyIter.__init__": [],
+ "asyncstdlib.heapq._KeyIter.__lt__": [
+  "<builtin>.bool"
+ ],
+ "asyncstdlib.heapq._KeyIter.from_iters": [
+  "asyncstdlib._core.aiter",
+  "asyncstdlib.heapq._KeyIter.__init__"
+ ],
+ "asyncstdlib.heapq._KeyIter.pull_head": [],
+ "asyncstdlib.heapq._identity": [],
+ "asyncstdlib.heapq._largest": [
+  "<builtin>.range",
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.borrow",
+  "asyncstdlib.builtins.zip",
+  "heapq.heapify",
+  "heapq.heapreplace"
+ ],
+ "asyncstdlib.heapq._largest.<lambda1>": [],
+ "asyncstdlib.heapq.merge": [
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.enumerate",
+  "heapq.heapify",
+  "heapq.heappop",
+  "heapq.heapreplace"
+ ],
+ "asyncstdlib.heapq.nlargest": [
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.heapq._largest"
+ ],
+ "asyncstdlib.heapq.nsmallest": [
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.heapq._largest"
+ ],
+ "asyncstdlib.itertools": [
+  "itertools.count",
+  "typing.TypeVar"
+ ],
+ "asyncstdlib.itertools.GroupBy.__anext__": [
+  "asyncstdlib.itertools._GroupByState.maybe_step",
+  "asyncstdlib.itertools._GroupByState.step",
+  "asyncstdlib.itertools._Grouper.__init__"
+ ],
+ "asyncstdlib.itertools.GroupBy.__init__": [
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.iter",
+  "asyncstdlib.itertools._GroupByState.__init__",
+  "typing.cast"
+ ],
+ "asyncstdlib.itertools.GroupBy.aclose": [
+  "asyncstdlib.itertools._GroupByState.aclose"
+ ],
+ "asyncstdlib.itertools.NoLock.__aenter__": [],
+ "asyncstdlib.itertools.NoLock.__aexit__": [],
+ "asyncstdlib.itertools.Tee": [
+  "typing.overload"
+ ],
+ "asyncstdlib.itertools.Tee.__aenter__": [],
+ "asyncstdlib.itertools.Tee.__aexit__": [
+  "asyncstdlib.itertools.Tee.aclose"
+ ],
+ "asyncstdlib.itertools.Tee.__getitem__": [],
+ "asyncstdlib.itertools.Tee.__init__": [
+  "<builtin>.isinstance",
+  "<builtin>.range",
+  "<builtin>.set",
+  "<builtin>.tuple",
+  "asyncstdlib.builtins.iter",
+  "asyncstdlib.itertools.TeePeer.__init__"
+ ],
+ "asyncstdlib.itertools.Tee.__iter__": [],
+ "asyncstdlib.itertools.Tee.__len__": [
+  "<builtin>.len"
+ ],
+ "asyncstdlib.itertools.Tee.aclose": [],
+ "asyncstdlib.itertools.TeePeer.__aiter__": [],
+ "asyncstdlib.itertools.TeePeer.__anext__": [
+  "asyncstdlib.itertools.TeePeer._extend_buffer"
+ ],
+ "asyncstdlib.itertools.TeePeer.__del__": [],
+ "asyncstdlib.itertools.TeePeer.__init__": [
+  "itertools.count.__next__"
+ ],
+ "asyncstdlib.itertools.TeePeer._extend_buffer": [],
+ "asyncstdlib.itertools.TeePeer.aclose": [
+  "<builtin>.isinstance"
+ ],
+ "asyncstdlib.itertools._GroupByState": [
+  "<builtin>.object",
+  "typing.cast"
+ ],
+ "asyncstdlib.itertools._GroupByState.__init__": [],
+ "asyncstdlib.itertools._GroupByState.aclose": [
+  "<builtin>.isinstance"
+ ],
+ "asyncstdlib.itertools._GroupByState.consume_value": [],
+ "asyncstdlib.itertools._GroupByState.maybe_step": [
+  "asyncstdlib.itertools._GroupByState.step"
+ ],
+ "asyncstdlib.itertools._GroupByState.step": [
+  "asyncstdlib.builtins.anext"
+ ],
+ "asyncstdlib.itertools._Grouper.__anext__": [
+  "asyncstdlib.itertools._GroupByState.consume_value",
+  "asyncstdlib.itertools._GroupByState.maybe_step"
+ ],
+ "asyncstdlib.itertools._Grouper.__init__": [],
+ "asyncstdlib.itertools._Grouper.aclose": [],
+ "asyncstdlib.itertools._repeat": [],
+ "asyncstdlib.itertools.accumulate": [
+  "<builtin>.TypeError",
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify",
+  "asyncstdlib.builtins.anext",
+  "asyncstdlib.itertools.add"
+ ],
+ "asyncstdlib.itertools.add": [],
+ "asyncstdlib.itertools.batched": [
+  "<builtin>.ValueError",
+  "<builtin>.len",
+  "<builtin>.range",
+  "<builtin>.tuple",
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib.builtins.anext"
+ ],
+ "asyncstdlib.itertools.chain.__anext__": [],
+ "asyncstdlib.itertools.chain.__init__": [
+  "<builtin>.isinstance",
+  "<builtin>.tuple",
+  "asyncstdlib.itertools.chain._chain_iterator"
+ ],
+ "asyncstdlib.itertools.chain._chain_iterator": [
+  "asyncstdlib._core.ScopedIter.__init__"
+ ],
+ "asyncstdlib.itertools.chain.aclose": [],
+ "asyncstdlib.itertools.chain.from_iterable": [
+  "asyncstdlib.itertools.chain.__init__"
+ ],
+ "asyncstdlib.itertools.compress": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib.builtins.zip"
+ ],
+ "asyncstdlib.itertools.cycle": [
+  "asyncstdlib._core.ScopedIter.__init__"
+ ],
+ "asyncstdlib.itertools.dropwhile": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify"
+ ],
+ "asyncstdlib.itertools.filterfalse": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify"
+ ],
+ "asyncstdlib.itertools.identity": [],
+ "asyncstdlib.itertools.islice": [
+  "<builtin>.slice",
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.borrow",
+  "asyncstdlib.builtins.enumerate"
+ ],
+ "asyncstdlib.itertools.pairwise": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib.builtins.anext"
+ ],
+ "asyncstdlib.itertools.starmap": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify"
+ ],
+ "asyncstdlib.itertools.takewhile": [
+  "asyncstdlib._core.ScopedIter.__init__",
+  "asyncstdlib._core.awaitify"
+ ],
+ "asyncstdlib.itertools.zip_longest": [
+  "<builtin>.enumerate",
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "<builtin>.tuple",
+  "asyncstdlib.builtins.anext",
+  "asyncstdlib.builtins.iter",
+  "asyncstdlib.itertools._repeat"
+ ],
+ "builtins.enumerate": [],
+ "builtins.sorted": [],
+ "collections.OrderedDict": [],
+ "collections.deque": [],
+ "collections.deque.append": [],
+ "functools.partial": [],
+ "functools.update_wrapper": [],
+ "functools.wraps": [],
+ "heapq.heapify": [],
+ "heapq.heappop": [],
+ "heapq.heapreplace": [],
+ "inspect.iscoroutinefunction": [],
+ "itertools.count": [],
+ "itertools.count.__next__": [],
+ "sys.exc_info": [],
+ "typing.NamedTuple.__init__": [],
+ "typing.TypeVar": [],
+ "typing.TypedDict.__init__": [],
+ "typing.cast": [],
+ "typing.overload": []
+}

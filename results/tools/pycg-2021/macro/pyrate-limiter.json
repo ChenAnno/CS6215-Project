@@ -1,0 +1,1980 @@
+{
+ "<builtin>.ImportError": [],
+ "<builtin>.RuntimeError": [],
+ "<builtin>.TimeoutError": [],
+ "<builtin>.TypeError": [],
+ "<builtin>.ValueError": [],
+ "<builtin>.abs": [],
+ "<builtin>.all": [],
+ "<builtin>.any": [],
+ "<builtin>.callable": [],
+ "<builtin>.enumerate": [],
+ "<builtin>.float": [],
+ "<builtin>.getattr": [],
+ "<builtin>.id": [],
+ "<builtin>.int": [],
+ "<builtin>.isinstance": [],
+ "<builtin>.len": [],
+ "<builtin>.list": [],
+ "<builtin>.max": [],
+ "<builtin>.min": [],
+ "<builtin>.object": [],
+ "<builtin>.range": [],
+ "<builtin>.reversed": [],
+ "<builtin>.sorted": [],
+ "<builtin>.str": [],
+ "<builtin>.super": [],
+ "<builtin>.tuple": [],
+ "<builtin>.type": [],
+ "<builtin>.zip": [],
+ "abc.ABC.__dict__.copy": [],
+ "abc.ABC.__dict__.copy.pop": [],
+ "abc.ABC.__dict__.update": [],
+ "abc.ABC.__init__": [],
+ "abc.ABC._scripts.get": [],
+ "abc.ABC.algorithm.consumed": [],
+ "abc.ABC.algorithm.max_weight": [],
+ "abc.ABC.algorithm.step": [],
+ "abc.ABC.allowed.cancel": [],
+ "abc.ABC.allowed.close": [],
+ "abc.ABC.allowed.done": [],
+ "abc.ABC.allowed.put": [],
+ "abc.ABC.allowed.put.cancel": [],
+ "abc.ABC.allowed.put.close": [],
+ "abc.ABC.allowed.put.done": [],
+ "abc.ABC.allowed.put.waiting": [],
+ "abc.ABC.allowed.put.waiting.cancel": [],
+ "abc.ABC.allowed.put.waiting.close": [],
+ "abc.ABC.allowed.put.waiting.done": [],
+ "abc.ABC.allowed.waiting": [],
+ "abc.ABC.allowed.waiting.cancel": [],
+ "abc.ABC.allowed.waiting.close": [],
+ "abc.ABC.allowed.waiting.done": [],
+ "abc.ABC.cancel": [],
+ "abc.ABC.dispose": [],
+ "abc.ABC.done": [],
+ "abc.ABC.get": [],
+ "abc.ABC.get.allowed.cancel": [],
+ "abc.ABC.get.allowed.close": [],
+ "abc.ABC.get.allowed.done": [],
+ "abc.ABC.get.allowed.put": [],
+ "abc.ABC.get.allowed.put.cancel": [],
+ "abc.ABC.get.allowed.put.close": [],
+ "abc.ABC.get.allowed.put.done": [],
+ "abc.ABC.get.allowed.put.waiting": [],
+ "abc.ABC.get.allowed.put.waiting.cancel": [],
+ "abc.ABC.get.allowed.put.waiting.close": [],
+ "abc.ABC.get.allowed.put.waiting.done": [],
+ "abc.ABC.get.allowed.waiting": [],
+ "abc.ABC.get.allowed.waiting.cancel": [],
+ "abc.ABC.get.allowed.waiting.close": [],
+ "abc.ABC.get.allowed.waiting.done": [],
+ "abc.ABC.get.cancel": [],
+ "abc.ABC.get.close": [],
+ "abc.ABC.get.done": [],
+ "abc.ABC.get.put": [],
+ "abc.ABC.get.put.allowed.cancel": [],
+ "abc.ABC.get.put.allowed.close": [],
+ "abc.ABC.get.put.allowed.done": [],
+ "abc.ABC.get.put.allowed.waiting": [],
+ "abc.ABC.get.put.allowed.waiting.cancel": [],
+ "abc.ABC.get.put.allowed.waiting.close": [],
+ "abc.ABC.get.put.allowed.waiting.done": [],
+ "abc.ABC.get.put.cancel": [],
+ "abc.ABC.get.put.close": [],
+ "abc.ABC.get.put.done": [],
+ "abc.ABC.get.put.waiting": [],
+ "abc.ABC.get.put.waiting.allowed.cancel": [],
+ "abc.ABC.get.put.waiting.allowed.close": [],
+ "abc.ABC.get.put.waiting.allowed.done": [],
+ "abc.ABC.get.put.waiting.cancel": [],
+ "abc.ABC.get.put.waiting.close": [],
+ "abc.ABC.get.put.waiting.done": [],
+ "abc.ABC.get.waiting": [],
+ "abc.ABC.get.waiting.allowed.cancel": [],
+ "abc.ABC.get.waiting.allowed.close": [],
+ "abc.ABC.get.waiting.allowed.done": [],
+ "abc.ABC.get.waiting.allowed.put": [],
+ "abc.ABC.get.waiting.allowed.put.cancel": [],
+ "abc.ABC.get.waiting.allowed.put.close": [],
+ "abc.ABC.get.waiting.allowed.put.done": [],
+ "abc.ABC.get.waiting.cancel": [],
+ "abc.ABC.get.waiting.close": [],
+ "abc.ABC.get.waiting.done": [],
+ "abc.ABC.get_buckets": [],
+ "abc.ABC.leak": [],
+ "abc.ABC.leak.allowed.cancel": [],
+ "abc.ABC.leak.allowed.close": [],
+ "abc.ABC.leak.allowed.done": [],
+ "abc.ABC.leak.allowed.put": [],
+ "abc.ABC.leak.allowed.put.cancel": [],
+ "abc.ABC.leak.allowed.put.close": [],
+ "abc.ABC.leak.allowed.put.done": [],
+ "abc.ABC.leak.allowed.put.waiting": [],
+ "abc.ABC.leak.allowed.put.waiting.cancel": [],
+ "abc.ABC.leak.allowed.put.waiting.close": [],
+ "abc.ABC.leak.allowed.put.waiting.done": [],
+ "abc.ABC.leak.allowed.waiting": [],
+ "abc.ABC.leak.allowed.waiting.cancel": [],
+ "abc.ABC.leak.allowed.waiting.close": [],
+ "abc.ABC.leak.allowed.waiting.done": [],
+ "abc.ABC.leak.cancel": [],
+ "abc.ABC.leak.close": [],
+ "abc.ABC.leak.done": [],
+ "abc.ABC.now": [],
+ "abc.ABC.now.allowed.cancel": [],
+ "abc.ABC.now.allowed.close": [],
+ "abc.ABC.now.allowed.done": [],
+ "abc.ABC.now.allowed.put": [],
+ "abc.ABC.now.allowed.put.cancel": [],
+ "abc.ABC.now.allowed.put.close": [],
+ "abc.ABC.now.allowed.put.done": [],
+ "abc.ABC.now.allowed.put.waiting": [],
+ "abc.ABC.now.allowed.put.waiting.cancel": [],
+ "abc.ABC.now.allowed.put.waiting.close": [],
+ "abc.ABC.now.allowed.put.waiting.done": [],
+ "abc.ABC.now.allowed.waiting": [],
+ "abc.ABC.now.allowed.waiting.cancel": [],
+ "abc.ABC.now.allowed.waiting.close": [],
+ "abc.ABC.now.allowed.waiting.done": [],
+ "abc.ABC.put": [],
+ "abc.ABC.put.allowed.cancel": [],
+ "abc.ABC.put.allowed.close": [],
+ "abc.ABC.put.allowed.done": [],
+ "abc.ABC.put.allowed.waiting": [],
+ "abc.ABC.put.allowed.waiting.cancel": [],
+ "abc.ABC.put.allowed.waiting.close": [],
+ "abc.ABC.put.allowed.waiting.done": [],
+ "abc.ABC.put.cancel": [],
+ "abc.ABC.put.close": [],
+ "abc.ABC.put.done": [],
+ "abc.ABC.put.waiting": [],
+ "abc.ABC.put.waiting.allowed.cancel": [],
+ "abc.ABC.put.waiting.allowed.close": [],
+ "abc.ABC.put.waiting.allowed.done": [],
+ "abc.ABC.put.waiting.cancel": [],
+ "abc.ABC.put.waiting.close": [],
+ "abc.ABC.put.waiting.done": [],
+ "abc.ABC.setter": [],
+ "abc.ABC.store.check": [],
+ "abc.ABC.store.check.allowed.cancel": [],
+ "abc.ABC.store.check.allowed.close": [],
+ "abc.ABC.store.check.allowed.done": [],
+ "abc.ABC.store.check.allowed.put": [],
+ "abc.ABC.store.check.allowed.put.cancel": [],
+ "abc.ABC.store.check.allowed.put.close": [],
+ "abc.ABC.store.check.allowed.put.done": [],
+ "abc.ABC.store.check.allowed.put.waiting": [],
+ "abc.ABC.store.check.allowed.put.waiting.cancel": [],
+ "abc.ABC.store.check.allowed.put.waiting.close": [],
+ "abc.ABC.store.check.allowed.put.waiting.done": [],
+ "abc.ABC.store.check.allowed.waiting": [],
+ "abc.ABC.store.check.allowed.waiting.cancel": [],
+ "abc.ABC.store.check.allowed.waiting.close": [],
+ "abc.ABC.store.check.allowed.waiting.done": [],
+ "abc.ABC.store.check.cancel": [],
+ "abc.ABC.store.check.close": [],
+ "abc.ABC.store.check.done": [],
+ "abc.ABC.store.close": [],
+ "abc.ABC.store.read": [],
+ "abc.ABC.store.read.allowed.cancel": [],
+ "abc.ABC.store.read.allowed.close": [],
+ "abc.ABC.store.read.allowed.done": [],
+ "abc.ABC.store.read.allowed.put": [],
+ "abc.ABC.store.read.allowed.put.cancel": [],
+ "abc.ABC.store.read.allowed.put.close": [],
+ "abc.ABC.store.read.allowed.put.done": [],
+ "abc.ABC.store.read.allowed.put.waiting": [],
+ "abc.ABC.store.read.allowed.put.waiting.cancel": [],
+ "abc.ABC.store.read.allowed.put.waiting.close": [],
+ "abc.ABC.store.read.allowed.put.waiting.done": [],
+ "abc.ABC.store.read.allowed.waiting": [],
+ "abc.ABC.store.read.allowed.waiting.cancel": [],
+ "abc.ABC.store.read.allowed.waiting.close": [],
+ "abc.ABC.store.read.allowed.waiting.done": [],
+ "abc.ABC.store.read.cancel": [],
+ "abc.ABC.store.read.close": [],
+ "abc.ABC.store.read.done": [],
+ "abc.ABC.store.reset": [],
+ "abc.ABC.waiting": [],
+ "abc.ABC.waiting.allowed.cancel": [],
+ "abc.ABC.waiting.allowed.close": [],
+ "abc.ABC.waiting.allowed.done": [],
+ "abc.ABC.waiting.allowed.put": [],
+ "abc.ABC.waiting.allowed.put.cancel": [],
+ "abc.ABC.waiting.allowed.put.close": [],
+ "abc.ABC.waiting.allowed.put.done": [],
+ "abc.ABC.waiting.cancel": [],
+ "abc.ABC.waiting.close": [],
+ "abc.ABC.waiting.done": [],
+ "abc.ABC.wrap_item": [],
+ "abc.ABC.wrap_item.allowed.cancel": [],
+ "abc.ABC.wrap_item.allowed.close": [],
+ "abc.ABC.wrap_item.allowed.done": [],
+ "abc.ABC.wrap_item.allowed.put": [],
+ "abc.ABC.wrap_item.allowed.put.cancel": [],
+ "abc.ABC.wrap_item.allowed.put.close": [],
+ "abc.ABC.wrap_item.allowed.put.done": [],
+ "abc.ABC.wrap_item.allowed.put.waiting": [],
+ "abc.ABC.wrap_item.allowed.put.waiting.cancel": [],
+ "abc.ABC.wrap_item.allowed.put.waiting.close": [],
+ "abc.ABC.wrap_item.allowed.put.waiting.done": [],
+ "abc.ABC.wrap_item.allowed.waiting": [],
+ "abc.ABC.wrap_item.allowed.waiting.cancel": [],
+ "abc.ABC.wrap_item.allowed.waiting.close": [],
+ "abc.ABC.wrap_item.allowed.waiting.done": [],
+ "abc.ABC.wrap_item.cancel": [],
+ "abc.ABC.wrap_item.close": [],
+ "abc.ABC.wrap_item.done": [],
+ "abc.abstractmethod": [],
+ "aiohttp.ClientSession": [],
+ "aiohttp.ClientSession.close": [],
+ "aiohttp.ClientSession.get": [],
+ "aiohttp.ClientSession.post": [],
+ "asyncio.Lock": [],
+ "asyncio.create_task": [],
+ "asyncio.create_task.cancel": [],
+ "asyncio.get_running_loop": [],
+ "asyncio.isfuture": [],
+ "asyncio.run": [],
+ "asyncio.sleep": [],
+ "asyncio.wait_for": [],
+ "bisect.bisect_left": [],
+ "bisect.bisect_left.allowed.cancel": [],
+ "bisect.bisect_left.allowed.close": [],
+ "bisect.bisect_left.allowed.done": [],
+ "bisect.bisect_left.allowed.put": [],
+ "bisect.bisect_left.allowed.put.cancel": [],
+ "bisect.bisect_left.allowed.put.close": [],
+ "bisect.bisect_left.allowed.put.done": [],
+ "bisect.bisect_left.allowed.put.waiting": [],
+ "bisect.bisect_left.allowed.put.waiting.cancel": [],
+ "bisect.bisect_left.allowed.put.waiting.close": [],
+ "bisect.bisect_left.allowed.put.waiting.done": [],
+ "bisect.bisect_left.allowed.waiting": [],
+ "bisect.bisect_left.allowed.waiting.cancel": [],
+ "bisect.bisect_left.allowed.waiting.close": [],
+ "bisect.bisect_left.allowed.waiting.done": [],
+ "bisect.bisect_left.cancel": [],
+ "bisect.bisect_left.close": [],
+ "bisect.bisect_left.done": [],
+ "collections.defaultdict": [],
+ "collections.defaultdict.clear": [],
+ "collections.defaultdict.items": [],
+ "contextlib.contextmanager": [],
+ "contextlib.nullcontext": [],
+ "filelock.FileLock": [],
+ "functools.wraps": [],
+ "importlib.metadata.version": [],
+ "inspect.isawaitable": [],
+ "inspect.iscoroutine": [],
+ "inspect.iscoroutinefunction": [],
+ "logging.getLogger": [],
+ "logging.getLogger.debug": [],
+ "logging.getLogger.exception": [],
+ "logging.getLogger.info": [],
+ "math.ceil": [],
+ "multiprocessing.Manager": [],
+ "multiprocessing.Manager.list": [],
+ "multiprocessing.RLock": [],
+ "operator.attrgetter": [],
+ "pathlib.Path": [],
+ "psycopg.sql.Identifier": [],
+ "psycopg.sql.SQL": [],
+ "psycopg.sql.SQL.format": [],
+ "psycopg.sql.SQL.join": [],
+ "pyrate_limiter": [],
+ "pyrate_limiter._version": [
+  "importlib.metadata.version"
+ ],
+ "pyrate_limiter.abstracts": [],
+ "pyrate_limiter.abstracts.algorithm": [],
+ "pyrate_limiter.abstracts.algorithm.Algorithm.max_weight": [],
+ "pyrate_limiter.abstracts.algorithm.Decision.allowed": [],
+ "pyrate_limiter.abstracts.algorithm.FixedWindow.admit": [
+  "<builtin>.int",
+  "<builtin>.zip"
+ ],
+ "pyrate_limiter.abstracts.algorithm.FixedWindow.retry_after": [
+  "pyrate_limiter.abstracts.algorithm.FixedWindow.window_start"
+ ],
+ "pyrate_limiter.abstracts.algorithm.FixedWindow.window_start": [],
+ "pyrate_limiter.abstracts.algorithm.GCRA._emission_us": [
+  "<builtin>.max",
+  "math.ceil"
+ ],
+ "pyrate_limiter.abstracts.algorithm.GCRA.consumed": [
+  "<builtin>.int",
+  "<builtin>.max",
+  "<builtin>.zip",
+  "math.ceil",
+  "pyrate_limiter.abstracts.algorithm.GCRA._emission_us"
+ ],
+ "pyrate_limiter.abstracts.algorithm.GCRA.decode": [
+  "<builtin>.int",
+  "<builtin>.tuple"
+ ],
+ "pyrate_limiter.abstracts.algorithm.GCRA.initial": [
+  "<builtin>.tuple"
+ ],
+ "pyrate_limiter.abstracts.algorithm.GCRA.max_weight": [],
+ "pyrate_limiter.abstracts.algorithm.GCRA.redis_args": [
+  "pyrate_limiter.abstracts.algorithm.GCRA._emission_us"
+ ],
+ "pyrate_limiter.abstracts.algorithm.GCRA.redis_script": [],
+ "pyrate_limiter.abstracts.algorithm.GCRA.step": [
+  "<builtin>.int",
+  "<builtin>.max",
+  "<builtin>.tuple",
+  "<builtin>.zip",
+  "math.ceil",
+  "pyrate_limiter.abstracts.algorithm.GCRA._emission_us"
+ ],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm": [
+  "abc.abstractmethod"
+ ],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm.admit": [],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm.blocking_offset": [],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm.decide": [
+  "pyrate_limiter.abstracts.algorithm.Algorithm.max_weight",
+  "pyrate_limiter.abstracts.algorithm.GCRA.max_weight",
+  "pyrate_limiter.abstracts.algorithm.LogAlgorithm.admit",
+  "pyrate_limiter.abstracts.algorithm.LogAlgorithm.blocking_offset",
+  "pyrate_limiter.abstracts.algorithm.LogAlgorithm.retry_after",
+  "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.admit",
+  "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.blocking_offset",
+  "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.retry_after"
+ ],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm.leak_bound": [
+  "<builtin>.min",
+  "pyrate_limiter.abstracts.algorithm.LogAlgorithm.window_start",
+  "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.window_start"
+ ],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm.retry_after": [],
+ "pyrate_limiter.abstracts.algorithm.LogAlgorithm.window_start": [],
+ "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.admit": [
+  "<builtin>.int",
+  "<builtin>.zip"
+ ],
+ "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.blocking_offset": [],
+ "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.retry_after": [],
+ "pyrate_limiter.abstracts.algorithm.SlidingWindowLog.window_start": [],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm": [
+  "abc.abstractmethod"
+ ],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm.consumed": [],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm.decode": [
+  "<builtin>.float",
+  "<builtin>.tuple"
+ ],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm.initial": [],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm.redis_args": [],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm.redis_script": [],
+ "pyrate_limiter.abstracts.algorithm.StateAlgorithm.step": [],
+ "pyrate_limiter.abstracts.bucket": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket": [
+  "abc.ABC.__init__",
+  "abc.ABC.setter",
+  "abc.abstractmethod"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.__enter__": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.__exit__": [
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.close",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.close",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.close"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket._decision": [
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._recorded_wait"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket._record": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket._recorded_wait": [
+  "<builtin>.max"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.close": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.count": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.flush": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.leak": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.limiter_lock": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.now": [
+  "pyrate_limiter.clocks.MonotonicClock.now",
+  "pyrate_limiter.clocks.PostgresClock.now"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.peek": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.put": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.put_decision": [
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._decision",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.put",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.put_decision._await_decision",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.put",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.put_decision._await_decision": [
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._decision"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.rates": [
+  "<builtin>.sorted",
+  "pyrate_limiter.utils.enforce_rate_list"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.rates.<lambda1>": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._recorded_wait",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.peek",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting._calc_waiting",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting._calc_waiting_async",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.peek",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.peek",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.peek"
+ ],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting._calc_waiting": [],
+ "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting._calc_waiting_async": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting._calc_waiting"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory": [
+  "abc.abstractmethod"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.__del__": [
+  "<builtin>.type",
+  "logging.getLogger.debug",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.dispose",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.get_buckets"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.__getstate__": [
+  "abc.ABC.__dict__.copy",
+  "abc.ABC.__dict__.copy.pop"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.__setstate__": [
+  "abc.ABC.__dict__.update"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.close": [
+  "<builtin>.type",
+  "logging.getLogger.debug",
+  "logging.getLogger.info",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.owned_buckets",
+  "pyrate_limiter.abstracts.bucket.Leaker.close",
+  "pyrate_limiter.limiter.SingleBucketFactory.owned_buckets"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.create": [
+  "pyrate_limiter.abstracts.bucket.BucketFactory.schedule_leak"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.dispose": [
+  "<builtin>.id",
+  "<builtin>.isinstance",
+  "pyrate_limiter.abstracts.bucket.Leaker.deregister"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.get": [],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.get_buckets": [
+  "collections.defaultdict.items"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.leak_interval": [],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.owned_buckets": [
+  "pyrate_limiter.abstracts.bucket.BucketFactory.get_buckets"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.schedule_leak": [
+  "pyrate_limiter.abstracts.bucket.Leaker.__init__",
+  "pyrate_limiter.abstracts.bucket.Leaker.leak_async",
+  "pyrate_limiter.abstracts.bucket.Leaker.register",
+  "pyrate_limiter.abstracts.bucket.Leaker.start"
+ ],
+ "pyrate_limiter.abstracts.bucket.BucketFactory.wrap_item": [],
+ "pyrate_limiter.abstracts.bucket.Leaker.__init__": [
+  "collections.defaultdict",
+  "threading.Event"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker._leak": [
+  "<builtin>.isinstance",
+  "<builtin>.tuple",
+  "asyncio.sleep",
+  "collections.defaultdict.items",
+  "inspect.isawaitable",
+  "logging.getLogger.debug",
+  "threading.Event.is_set"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker._run": [
+  "asyncio.run",
+  "pyrate_limiter.abstracts.bucket.Leaker._leak"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker.close": [
+  "collections.defaultdict.clear",
+  "threading.Event.set"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker.deregister": [
+  "asyncio.create_task.cancel"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker.is_alive": [
+  "threading.Thread.is_alive"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker.leak_async": [
+  "asyncio.create_task",
+  "pyrate_limiter.abstracts.bucket.Leaker._leak"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker.register": [
+  "<builtin>.id",
+  "abc.ABC.allowed.close",
+  "abc.ABC.allowed.put.close",
+  "abc.ABC.allowed.put.waiting.close",
+  "abc.ABC.allowed.waiting.close",
+  "abc.ABC.get.allowed.close",
+  "abc.ABC.get.allowed.put.close",
+  "abc.ABC.get.allowed.put.waiting.close",
+  "abc.ABC.get.allowed.waiting.close",
+  "abc.ABC.get.close",
+  "abc.ABC.get.put.allowed.close",
+  "abc.ABC.get.put.allowed.waiting.close",
+  "abc.ABC.get.put.close",
+  "abc.ABC.get.put.waiting.allowed.close",
+  "abc.ABC.get.put.waiting.close",
+  "abc.ABC.get.waiting.allowed.close",
+  "abc.ABC.get.waiting.allowed.put.close",
+  "abc.ABC.get.waiting.close",
+  "abc.ABC.leak",
+  "abc.ABC.leak.allowed.close",
+  "abc.ABC.leak.allowed.put.close",
+  "abc.ABC.leak.allowed.put.waiting.close",
+  "abc.ABC.leak.allowed.waiting.close",
+  "abc.ABC.leak.close",
+  "abc.ABC.now.allowed.close",
+  "abc.ABC.now.allowed.put.close",
+  "abc.ABC.now.allowed.put.waiting.close",
+  "abc.ABC.now.allowed.waiting.close",
+  "abc.ABC.put.allowed.close",
+  "abc.ABC.put.allowed.waiting.close",
+  "abc.ABC.put.close",
+  "abc.ABC.put.waiting.allowed.close",
+  "abc.ABC.put.waiting.close",
+  "abc.ABC.store.check.allowed.close",
+  "abc.ABC.store.check.allowed.put.close",
+  "abc.ABC.store.check.allowed.put.waiting.close",
+  "abc.ABC.store.check.allowed.waiting.close",
+  "abc.ABC.store.check.close",
+  "abc.ABC.store.read.allowed.close",
+  "abc.ABC.store.read.allowed.put.close",
+  "abc.ABC.store.read.allowed.put.waiting.close",
+  "abc.ABC.store.read.allowed.waiting.close",
+  "abc.ABC.store.read.close",
+  "abc.ABC.waiting.allowed.close",
+  "abc.ABC.waiting.allowed.put.close",
+  "abc.ABC.waiting.close",
+  "abc.ABC.wrap_item.allowed.close",
+  "abc.ABC.wrap_item.allowed.put.close",
+  "abc.ABC.wrap_item.allowed.put.waiting.close",
+  "abc.ABC.wrap_item.allowed.waiting.close",
+  "abc.ABC.wrap_item.close",
+  "bisect.bisect_left.allowed.close",
+  "bisect.bisect_left.allowed.put.close",
+  "bisect.bisect_left.allowed.put.waiting.close",
+  "bisect.bisect_left.allowed.waiting.close",
+  "bisect.bisect_left.close",
+  "inspect.iscoroutine",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.close",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.close",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.leak",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.leak",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.close",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.close",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.leak",
+  "time.monotonic_ns.allowed.close",
+  "time.monotonic_ns.allowed.put.close",
+  "time.monotonic_ns.allowed.put.waiting.close",
+  "time.monotonic_ns.allowed.waiting.close",
+  "time.time_ns.allowed.close",
+  "time.time_ns.allowed.put.close",
+  "time.time_ns.allowed.put.waiting.close",
+  "time.time_ns.allowed.waiting.close"
+ ],
+ "pyrate_limiter.abstracts.bucket.Leaker.start": [
+  "pyrate_limiter.abstracts.bucket.Leaker.is_alive",
+  "threading.Event.clear",
+  "threading.Thread",
+  "threading.Thread.start"
+ ],
+ "pyrate_limiter.abstracts.rate": [],
+ "pyrate_limiter.abstracts.rate.Duration.__add__": [
+  "<builtin>.int"
+ ],
+ "pyrate_limiter.abstracts.rate.Duration.__eq__": [
+  "<builtin>.int",
+  "<builtin>.isinstance"
+ ],
+ "pyrate_limiter.abstracts.rate.Duration.__int__": [],
+ "pyrate_limiter.abstracts.rate.Duration.__mul__": [
+  "<builtin>.int"
+ ],
+ "pyrate_limiter.abstracts.rate.Duration.__radd__": [
+  "pyrate_limiter.abstracts.rate.Duration.__add__"
+ ],
+ "pyrate_limiter.abstracts.rate.Duration.__rmul__": [
+  "pyrate_limiter.abstracts.rate.Duration.__mul__"
+ ],
+ "pyrate_limiter.abstracts.rate.Duration.readable": [],
+ "pyrate_limiter.abstracts.rate.Rate.__init__": [
+  "<builtin>.int"
+ ],
+ "pyrate_limiter.abstracts.rate.Rate.__repr__": [],
+ "pyrate_limiter.abstracts.rate.Rate.__str__": [
+  "pyrate_limiter.abstracts.rate.Duration.readable"
+ ],
+ "pyrate_limiter.abstracts.rate.RateItem.__init__": [],
+ "pyrate_limiter.abstracts.rate.RateItem.__str__": [],
+ "pyrate_limiter.abstracts.store": [],
+ "pyrate_limiter.abstracts.store.StateStore": [
+  "abc.ABC.__init__",
+  "abc.abstractmethod"
+ ],
+ "pyrate_limiter.abstracts.store.StateStore.check": [],
+ "pyrate_limiter.abstracts.store.StateStore.close": [],
+ "pyrate_limiter.abstracts.store.StateStore.read": [],
+ "pyrate_limiter.abstracts.store.StateStore.reset": [],
+ "pyrate_limiter.abstracts.wrappers": [],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.__init__": [
+  "<builtin>.isinstance"
+ ],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper._algorithm": [],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper._last_wait": [],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.count": [
+  "inspect.isawaitable"
+ ],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.failing_rate": [],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.flush": [
+  "inspect.isawaitable"
+ ],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.leak": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable"
+ ],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.now": [],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.peek": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable"
+ ],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.put": [
+  "inspect.isawaitable"
+ ],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.rates": [],
+ "pyrate_limiter.abstracts.wrappers.BucketAsyncWrapper.waiting": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable"
+ ],
+ "pyrate_limiter.buckets": [],
+ "pyrate_limiter.buckets.in_memory_bucket": [
+  "operator.attrgetter"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.__getstate__": [
+  "abc.ABC.__dict__.copy",
+  "abc.ABC.__dict__.copy.pop"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.__init__": [
+  "<builtin>.super",
+  "threading.RLock"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.__setstate__": [
+  "abc.ABC.__dict__.update",
+  "threading.RLock"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket._deny": [],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.count": [
+  "<builtin>.len"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.flush": [],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.leak": [
+  "<builtin>.len",
+  "bisect.bisect_left"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.peek": [
+  "<builtin>.abs",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.count"
+ ],
+ "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put": [
+  "<builtin>.len",
+  "<builtin>.range",
+  "bisect.bisect_left",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket._deny"
+ ],
+ "pyrate_limiter.buckets.mp_bucket": [],
+ "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.__init__": [
+  "<builtin>.ValueError",
+  "<builtin>.isinstance",
+  "abc.ABC.__init__"
+ ],
+ "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.__setstate__": [
+  "abc.ABC.__dict__.update"
+ ],
+ "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.init": [
+  "multiprocessing.Manager",
+  "multiprocessing.Manager.list",
+  "multiprocessing.RLock",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.__init__"
+ ],
+ "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.leak": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.limiter_lock": [],
+ "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.buckets.postgres": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket": [
+  "contextlib.contextmanager"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.__init__": [
+  "<builtin>.len",
+  "psycopg.sql.Identifier",
+  "psycopg.sql.SQL",
+  "psycopg.sql.SQL.format",
+  "psycopg.sql.SQL.join",
+  "pyrate_limiter.buckets.postgres.PostgresBucket._create_table",
+  "pyrate_limiter.clocks.PostgresClock.__init__"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket._create_table": [
+  "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn",
+  "pyrate_limiter.buckets.postgres.advisory_lock_id"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn": [],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.close": [
+  "logging.getLogger.debug"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.count": [
+  "<builtin>.int",
+  "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.flush": [
+  "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.leak": [
+  "<builtin>.int",
+  "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.peek": [
+  "<builtin>.int",
+  "pyrate_limiter.abstracts.rate.RateItem.__init__",
+  "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.put": [
+  "logging.getLogger.debug",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record",
+  "pyrate_limiter.buckets.postgres.PostgresBucket._get_conn"
+ ],
+ "pyrate_limiter.buckets.postgres.PostgresBucket.put.peek_timestamp": [
+  "<builtin>.int"
+ ],
+ "pyrate_limiter.buckets.postgres.advisory_lock_id": [
+  "zlib.crc32"
+ ],
+ "pyrate_limiter.buckets.redis_bucket": [],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.__init__": [],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert": [
+  "<builtin>.len",
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert._handle_async",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert._handle_sync",
+  "pyrate_limiter.utils.id_generator"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert._handle_async": [
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert._handle_sync"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert._handle_sync": [
+  "<builtin>.int"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.count": [],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.flush": [],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.init": [
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.__init__",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.init._async_init"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.init._async_init": [
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.__init__"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.leak": [],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.now": [
+  "time.time_ns"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek._awaiting",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek._handle_items"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek._awaiting": [
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek._handle_items"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.peek._handle_items": [
+  "<builtin>.str",
+  "pyrate_limiter.abstracts.rate.RateItem.__init__"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.put": [
+  "<builtin>.isinstance",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket._check_and_insert",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.put._handle_async"
+ ],
+ "pyrate_limiter.buckets.redis_bucket.RedisBucket.put._handle_async": [
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record"
+ ],
+ "pyrate_limiter.buckets.redis_state": [],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore": [
+  "abc.ABC.__init__"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.__init__": [],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore._decision": [
+  "<builtin>.int"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore._parse": [
+  "<builtin>.any",
+  "<builtin>.isinstance"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore._script": [
+  "<builtin>.TypeError",
+  "<builtin>.type",
+  "abc.ABC._scripts.get"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore._ttl_for": [
+  "<builtin>.max",
+  "math.ceil"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.check": [
+  "<builtin>.len",
+  "abc.ABC._scripts.get",
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore._decision",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore._script",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore._ttl_for",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore.check._await_decision"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.check._await_decision": [
+  "pyrate_limiter.buckets.redis_state.RedisStateStore._decision"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.read": [
+  "<builtin>.len",
+  "<builtin>.range",
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore._parse",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore.read._await_state"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.read._await_state": [
+  "pyrate_limiter.buckets.redis_state.RedisStateStore._parse"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.reset": [
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.redis_state.RedisStateStore.reset._await_reset"
+ ],
+ "pyrate_limiter.buckets.redis_state.RedisStateStore.reset._await_reset": [],
+ "pyrate_limiter.buckets.sqlite_bucket": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.__init__": [
+  "threading.RLock"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket._build_full_count_query": [
+  "<builtin>.enumerate",
+  "<builtin>.len"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket._peek_timestamp": [
+  "<builtin>.int",
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close",
+  "sqlite3.connect.execute.fetchone"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.close": [
+  "logging.getLogger.debug",
+  "sqlite3.connect.close"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.count": [
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close",
+  "sqlite3.connect.execute.fetchone"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.flush": [
+  "sqlite3.connect.commit",
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.init_from_file": [
+  "<builtin>.ImportError",
+  "<builtin>.ValueError",
+  "<builtin>.str",
+  "contextlib.nullcontext",
+  "filelock.FileLock",
+  "pathlib.Path",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.__init__",
+  "pyrate_limiter.utils.gettempdir",
+  "sqlite3.connect",
+  "sqlite3.connect.commit",
+  "sqlite3.connect.cursor",
+  "sqlite3.connect.cursor.close",
+  "sqlite3.connect.cursor.execute",
+  "tempfile.gettempdir",
+  "time.time"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.leak": [
+  "sqlite3.connect.commit",
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close",
+  "sqlite3.connect.execute.execute",
+  "sqlite3.connect.execute.fetchone"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.limiter_lock": [],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.now": [
+  "time.time_ns"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.peek": [
+  "pyrate_limiter.abstracts.rate.RateItem.__init__",
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close",
+  "sqlite3.connect.execute.fetchone"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.put": [
+  "<builtin>.zip",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket._build_full_count_query",
+  "sqlite3.connect.commit",
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close",
+  "sqlite3.connect.execute.fetchall",
+  "sqlite3.connect.executemany",
+  "sqlite3.connect.executemany.close"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteClock.__init__": [
+  "<builtin>.isinstance"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteClock.default": [
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteClock.__init__",
+  "pyrate_limiter.utils.dedicated_sqlite_clock_connection"
+ ],
+ "pyrate_limiter.buckets.sqlite_bucket.SQLiteClock.now": [
+  "<builtin>.int",
+  "contextlib.nullcontext",
+  "sqlite3.connect.execute",
+  "sqlite3.connect.execute.close",
+  "sqlite3.connect.execute.fetchone"
+ ],
+ "pyrate_limiter.buckets.state_bucket": [],
+ "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.__getstate__": [
+  "abc.ABC.__dict__.copy",
+  "abc.ABC.__dict__.copy.pop"
+ ],
+ "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.__init__": [
+  "threading.RLock"
+ ],
+ "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.__setstate__": [
+  "abc.ABC.__dict__.update",
+  "threading.RLock"
+ ],
+ "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.check": [],
+ "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.read": [],
+ "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.reset": [],
+ "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore.__init__": [],
+ "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore._load": [
+  "<builtin>.len",
+  "<builtin>.tuple"
+ ],
+ "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore.check": [
+  "<builtin>.list",
+  "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore._load"
+ ],
+ "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore.init": [
+  "multiprocessing.Manager",
+  "multiprocessing.Manager.list",
+  "multiprocessing.RLock",
+  "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore.__init__"
+ ],
+ "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore.read": [
+  "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore._load"
+ ],
+ "pyrate_limiter.buckets.state_bucket.MultiprocessStateStore.reset": [],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.__init__": [
+  "abc.ABC.__init__",
+  "pyrate_limiter.buckets.state_bucket.InMemoryStateStore.__init__"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket._replay": [
+  "abc.ABC.algorithm.step"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.close": [
+  "abc.ABC.store.close"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.count": [
+  "abc.ABC.algorithm.consumed",
+  "abc.ABC.store.read",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.now",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.now",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.now",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.count._await_count"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.count._await_count": [
+  "abc.ABC.algorithm.consumed"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.flush": [
+  "abc.ABC.store.reset"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.leak": [],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.peek": [],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.put": [
+  "abc.ABC.store.check",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put._await_decision"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.put._await_decision": [
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._record"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.waiting": [
+  "abc.ABC.algorithm.max_weight",
+  "abc.ABC.store.read",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket._recorded_wait",
+  "pyrate_limiter.buckets.state_bucket.StateBucket._replay",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.waiting._await_wait"
+ ],
+ "pyrate_limiter.buckets.state_bucket.StateBucket.waiting._await_wait": [
+  "pyrate_limiter.buckets.state_bucket.StateBucket._replay"
+ ],
+ "pyrate_limiter.clocks": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.clocks.AbstractClock": [
+  "abc.abstractmethod"
+ ],
+ "pyrate_limiter.clocks.AbstractClock._get_monotonic_ms": [
+  "time.monotonic_ns"
+ ],
+ "pyrate_limiter.clocks.AbstractClock._get_wall_ms": [
+  "time.time_ns"
+ ],
+ "pyrate_limiter.clocks.AbstractClock.now": [],
+ "pyrate_limiter.clocks.MonotonicAsyncClock.now": [
+  "pyrate_limiter.clocks.AbstractClock._get_monotonic_ms"
+ ],
+ "pyrate_limiter.clocks.MonotonicClock.now": [
+  "pyrate_limiter.clocks.AbstractClock._get_monotonic_ms"
+ ],
+ "pyrate_limiter.clocks.PostgresClock.__init__": [],
+ "pyrate_limiter.clocks.PostgresClock.now": [
+  "<builtin>.RuntimeError",
+  "logging.getLogger.exception",
+  "pyrate_limiter.clocks.AbstractClock._get_wall_ms"
+ ],
+ "pyrate_limiter.clocks.WallClock.now": [
+  "pyrate_limiter.clocks.AbstractClock._get_wall_ms"
+ ],
+ "pyrate_limiter.extras": [],
+ "pyrate_limiter.extras.aiohttp_limiter": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.extras.aiohttp_limiter.RateLimitedSession.__aenter__": [],
+ "pyrate_limiter.extras.aiohttp_limiter.RateLimitedSession.__aexit__": [
+  "aiohttp.ClientSession.close"
+ ],
+ "pyrate_limiter.extras.aiohttp_limiter.RateLimitedSession.__init__": [
+  "aiohttp.ClientSession"
+ ],
+ "pyrate_limiter.extras.aiohttp_limiter.RateLimitedSession.close": [
+  "aiohttp.ClientSession.close"
+ ],
+ "pyrate_limiter.extras.aiohttp_limiter.RateLimitedSession.get": [
+  "aiohttp.ClientSession.get"
+ ],
+ "pyrate_limiter.extras.aiohttp_limiter.RateLimitedSession.post": [
+  "aiohttp.ClientSession.post"
+ ],
+ "pyrate_limiter.extras.httpx2_limiter": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.extras.httpx2_limiter.AsyncRateLimiterTransport.__init__": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.extras.httpx2_limiter.AsyncRateLimiterTransport.handle_async_request": [
+  "<builtin>.super",
+  "logging.getLogger.debug"
+ ],
+ "pyrate_limiter.extras.httpx2_limiter.RateLimiterTransport.__init__": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.extras.httpx2_limiter.RateLimiterTransport.handle_request": [
+  "<builtin>.super",
+  "logging.getLogger.debug"
+ ],
+ "pyrate_limiter.extras.httpx_limiter": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.extras.httpx_limiter.AsyncRateLimiterTransport.__init__": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.extras.httpx_limiter.AsyncRateLimiterTransport.handle_async_request": [
+  "<builtin>.super",
+  "logging.getLogger.debug"
+ ],
+ "pyrate_limiter.extras.httpx_limiter.RateLimiterTransport.__init__": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.extras.httpx_limiter.RateLimiterTransport.handle_request": [
+  "<builtin>.super",
+  "logging.getLogger.debug"
+ ],
+ "pyrate_limiter.extras.requests_limiter": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.extras.requests_limiter.RateLimitedRequestsSession.__init__": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.extras.requests_limiter.RateLimitedRequestsSession.close": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.extras.requests_limiter.RateLimitedRequestsSession.request": [
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.limiter": [
+  "<builtin>.object",
+  "contextlib.contextmanager",
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.limiter.Limiter.__enter__": [],
+ "pyrate_limiter.limiter.Limiter.__exit__": [
+  "pyrate_limiter.limiter.Limiter.close"
+ ],
+ "pyrate_limiter.limiter.Limiter.__getstate__": [],
+ "pyrate_limiter.limiter.Limiter.__init__": [
+  "<builtin>.isinstance",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.limiter_lock",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.limiter_lock",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.limiter_lock",
+  "pyrate_limiter.limiter.Limiter._init_bucket_factory",
+  "threading.RLock",
+  "threading.local"
+ ],
+ "pyrate_limiter.limiter.Limiter.__setstate__": [
+  "threading.RLock",
+  "threading.local"
+ ],
+ "pyrate_limiter.limiter.Limiter._acquire_async": [
+  "pyrate_limiter.limiter.Limiter._handle_async_result",
+  "pyrate_limiter.limiter.Limiter._try_acquire"
+ ],
+ "pyrate_limiter.limiter.Limiter._acquire_co": [
+  "<builtin>.isinstance",
+  "abc.ABC.get",
+  "pyrate_limiter.limiter.Limiter._handle_async_result",
+  "pyrate_limiter.limiter.Limiter.handle_bucket_put",
+  "pyrate_limiter.limiter.SingleBucketFactory.get"
+ ],
+ "pyrate_limiter.limiter.Limiter._blocking_retry_sync": [
+  "<builtin>.TimeoutError",
+  "<builtin>.isinstance",
+  "<builtin>.max",
+  "abc.ABC.allowed.put",
+  "abc.ABC.allowed.put.waiting",
+  "abc.ABC.allowed.waiting",
+  "abc.ABC.get.allowed.put",
+  "abc.ABC.get.allowed.put.waiting",
+  "abc.ABC.get.allowed.waiting",
+  "abc.ABC.get.put",
+  "abc.ABC.get.put.allowed.waiting",
+  "abc.ABC.get.put.waiting",
+  "abc.ABC.get.waiting",
+  "abc.ABC.get.waiting.allowed.put",
+  "abc.ABC.leak.allowed.put",
+  "abc.ABC.leak.allowed.put.waiting",
+  "abc.ABC.leak.allowed.waiting",
+  "abc.ABC.now.allowed.put",
+  "abc.ABC.now.allowed.put.waiting",
+  "abc.ABC.now.allowed.waiting",
+  "abc.ABC.put",
+  "abc.ABC.put.allowed.waiting",
+  "abc.ABC.put.waiting",
+  "abc.ABC.store.check.allowed.put",
+  "abc.ABC.store.check.allowed.put.waiting",
+  "abc.ABC.store.check.allowed.waiting",
+  "abc.ABC.store.read.allowed.put",
+  "abc.ABC.store.read.allowed.put.waiting",
+  "abc.ABC.store.read.allowed.waiting",
+  "abc.ABC.waiting",
+  "abc.ABC.waiting.allowed.put",
+  "abc.ABC.wrap_item.allowed.put",
+  "abc.ABC.wrap_item.allowed.put.waiting",
+  "abc.ABC.wrap_item.allowed.waiting",
+  "bisect.bisect_left.allowed.put",
+  "bisect.bisect_left.allowed.put.waiting",
+  "bisect.bisect_left.allowed.waiting",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.waiting",
+  "pyrate_limiter.limiter.Limiter._delay_to_sleep_ms",
+  "pyrate_limiter.limiter.Limiter._handle_async_result",
+  "pyrate_limiter.limiter.Limiter._wait_after_async_put",
+  "pyrate_limiter.limiter._plan_delay_step",
+  "pyrate_limiter.limiter.combined_lock",
+  "time.monotonic",
+  "time.monotonic_ns.allowed.put",
+  "time.monotonic_ns.allowed.put.waiting",
+  "time.monotonic_ns.allowed.waiting",
+  "time.sleep",
+  "time.time_ns.allowed.put",
+  "time.time_ns.allowed.put.waiting",
+  "time.time_ns.allowed.waiting"
+ ],
+ "pyrate_limiter.limiter.Limiter._cleanup_awaitable": [
+  "<builtin>.callable",
+  "<builtin>.getattr",
+  "abc.ABC.allowed.cancel",
+  "abc.ABC.allowed.close",
+  "abc.ABC.allowed.put.cancel",
+  "abc.ABC.allowed.put.close",
+  "abc.ABC.allowed.put.waiting.cancel",
+  "abc.ABC.allowed.put.waiting.close",
+  "abc.ABC.allowed.waiting.cancel",
+  "abc.ABC.allowed.waiting.close",
+  "abc.ABC.cancel",
+  "abc.ABC.get.allowed.cancel",
+  "abc.ABC.get.allowed.close",
+  "abc.ABC.get.allowed.put.cancel",
+  "abc.ABC.get.allowed.put.close",
+  "abc.ABC.get.allowed.put.waiting.cancel",
+  "abc.ABC.get.allowed.put.waiting.close",
+  "abc.ABC.get.allowed.waiting.cancel",
+  "abc.ABC.get.allowed.waiting.close",
+  "abc.ABC.get.cancel",
+  "abc.ABC.get.close",
+  "abc.ABC.get.put.allowed.cancel",
+  "abc.ABC.get.put.allowed.close",
+  "abc.ABC.get.put.allowed.waiting.cancel",
+  "abc.ABC.get.put.allowed.waiting.close",
+  "abc.ABC.get.put.cancel",
+  "abc.ABC.get.put.close",
+  "abc.ABC.get.put.waiting.allowed.cancel",
+  "abc.ABC.get.put.waiting.allowed.close",
+  "abc.ABC.get.put.waiting.cancel",
+  "abc.ABC.get.put.waiting.close",
+  "abc.ABC.get.waiting.allowed.cancel",
+  "abc.ABC.get.waiting.allowed.close",
+  "abc.ABC.get.waiting.allowed.put.cancel",
+  "abc.ABC.get.waiting.allowed.put.close",
+  "abc.ABC.get.waiting.cancel",
+  "abc.ABC.get.waiting.close",
+  "abc.ABC.leak.allowed.cancel",
+  "abc.ABC.leak.allowed.close",
+  "abc.ABC.leak.allowed.put.cancel",
+  "abc.ABC.leak.allowed.put.close",
+  "abc.ABC.leak.allowed.put.waiting.cancel",
+  "abc.ABC.leak.allowed.put.waiting.close",
+  "abc.ABC.leak.allowed.waiting.cancel",
+  "abc.ABC.leak.allowed.waiting.close",
+  "abc.ABC.leak.cancel",
+  "abc.ABC.leak.close",
+  "abc.ABC.now.allowed.cancel",
+  "abc.ABC.now.allowed.close",
+  "abc.ABC.now.allowed.put.cancel",
+  "abc.ABC.now.allowed.put.close",
+  "abc.ABC.now.allowed.put.waiting.cancel",
+  "abc.ABC.now.allowed.put.waiting.close",
+  "abc.ABC.now.allowed.waiting.cancel",
+  "abc.ABC.now.allowed.waiting.close",
+  "abc.ABC.put.allowed.cancel",
+  "abc.ABC.put.allowed.close",
+  "abc.ABC.put.allowed.waiting.cancel",
+  "abc.ABC.put.allowed.waiting.close",
+  "abc.ABC.put.cancel",
+  "abc.ABC.put.close",
+  "abc.ABC.put.waiting.allowed.cancel",
+  "abc.ABC.put.waiting.allowed.close",
+  "abc.ABC.put.waiting.cancel",
+  "abc.ABC.put.waiting.close",
+  "abc.ABC.store.check.allowed.cancel",
+  "abc.ABC.store.check.allowed.close",
+  "abc.ABC.store.check.allowed.put.cancel",
+  "abc.ABC.store.check.allowed.put.close",
+  "abc.ABC.store.check.allowed.put.waiting.cancel",
+  "abc.ABC.store.check.allowed.put.waiting.close",
+  "abc.ABC.store.check.allowed.waiting.cancel",
+  "abc.ABC.store.check.allowed.waiting.close",
+  "abc.ABC.store.check.cancel",
+  "abc.ABC.store.check.close",
+  "abc.ABC.store.read.allowed.cancel",
+  "abc.ABC.store.read.allowed.close",
+  "abc.ABC.store.read.allowed.put.cancel",
+  "abc.ABC.store.read.allowed.put.close",
+  "abc.ABC.store.read.allowed.put.waiting.cancel",
+  "abc.ABC.store.read.allowed.put.waiting.close",
+  "abc.ABC.store.read.allowed.waiting.cancel",
+  "abc.ABC.store.read.allowed.waiting.close",
+  "abc.ABC.store.read.cancel",
+  "abc.ABC.store.read.close",
+  "abc.ABC.waiting.allowed.cancel",
+  "abc.ABC.waiting.allowed.close",
+  "abc.ABC.waiting.allowed.put.cancel",
+  "abc.ABC.waiting.allowed.put.close",
+  "abc.ABC.waiting.cancel",
+  "abc.ABC.waiting.close",
+  "abc.ABC.wrap_item.allowed.cancel",
+  "abc.ABC.wrap_item.allowed.close",
+  "abc.ABC.wrap_item.allowed.put.cancel",
+  "abc.ABC.wrap_item.allowed.put.close",
+  "abc.ABC.wrap_item.allowed.put.waiting.cancel",
+  "abc.ABC.wrap_item.allowed.put.waiting.close",
+  "abc.ABC.wrap_item.allowed.waiting.cancel",
+  "abc.ABC.wrap_item.allowed.waiting.close",
+  "abc.ABC.wrap_item.cancel",
+  "abc.ABC.wrap_item.close",
+  "asyncio.isfuture",
+  "bisect.bisect_left.allowed.cancel",
+  "bisect.bisect_left.allowed.close",
+  "bisect.bisect_left.allowed.put.cancel",
+  "bisect.bisect_left.allowed.put.close",
+  "bisect.bisect_left.allowed.put.waiting.cancel",
+  "bisect.bisect_left.allowed.put.waiting.close",
+  "bisect.bisect_left.allowed.waiting.cancel",
+  "bisect.bisect_left.allowed.waiting.close",
+  "bisect.bisect_left.cancel",
+  "bisect.bisect_left.close",
+  "inspect.iscoroutine",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.close",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.close",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.close",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.close",
+  "time.monotonic_ns.allowed.cancel",
+  "time.monotonic_ns.allowed.close",
+  "time.monotonic_ns.allowed.put.cancel",
+  "time.monotonic_ns.allowed.put.close",
+  "time.monotonic_ns.allowed.put.waiting.cancel",
+  "time.monotonic_ns.allowed.put.waiting.close",
+  "time.monotonic_ns.allowed.waiting.cancel",
+  "time.monotonic_ns.allowed.waiting.close",
+  "time.time_ns.allowed.cancel",
+  "time.time_ns.allowed.close",
+  "time.time_ns.allowed.put.cancel",
+  "time.time_ns.allowed.put.close",
+  "time.time_ns.allowed.put.waiting.cancel",
+  "time.time_ns.allowed.put.waiting.close",
+  "time.time_ns.allowed.waiting.cancel",
+  "time.time_ns.allowed.waiting.close"
+ ],
+ "pyrate_limiter.limiter.Limiter._delay_to_sleep_ms": [],
+ "pyrate_limiter.limiter.Limiter._delay_waiter": [
+  "<builtin>.TimeoutError",
+  "<builtin>.isinstance",
+  "abc.ABC.allowed.put",
+  "abc.ABC.allowed.put.waiting",
+  "abc.ABC.allowed.waiting",
+  "abc.ABC.get.allowed.put",
+  "abc.ABC.get.allowed.put.waiting",
+  "abc.ABC.get.allowed.waiting",
+  "abc.ABC.get.put",
+  "abc.ABC.get.put.allowed.waiting",
+  "abc.ABC.get.put.waiting",
+  "abc.ABC.get.waiting",
+  "abc.ABC.get.waiting.allowed.put",
+  "abc.ABC.leak.allowed.put",
+  "abc.ABC.leak.allowed.put.waiting",
+  "abc.ABC.leak.allowed.waiting",
+  "abc.ABC.now.allowed.put",
+  "abc.ABC.now.allowed.put.waiting",
+  "abc.ABC.now.allowed.waiting",
+  "abc.ABC.put",
+  "abc.ABC.put.allowed.waiting",
+  "abc.ABC.put.waiting",
+  "abc.ABC.store.check.allowed.put",
+  "abc.ABC.store.check.allowed.put.waiting",
+  "abc.ABC.store.check.allowed.waiting",
+  "abc.ABC.store.read.allowed.put",
+  "abc.ABC.store.read.allowed.put.waiting",
+  "abc.ABC.store.read.allowed.waiting",
+  "abc.ABC.waiting",
+  "abc.ABC.waiting.allowed.put",
+  "abc.ABC.wrap_item.allowed.put",
+  "abc.ABC.wrap_item.allowed.put.waiting",
+  "abc.ABC.wrap_item.allowed.waiting",
+  "bisect.bisect_left.allowed.put",
+  "bisect.bisect_left.allowed.put.waiting",
+  "bisect.bisect_left.allowed.waiting",
+  "inspect.isawaitable",
+  "logging.getLogger.debug",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.waiting",
+  "pyrate_limiter.limiter.Limiter._delay_to_sleep_ms",
+  "pyrate_limiter.limiter.Limiter._delay_waiter._resume_async",
+  "pyrate_limiter.limiter.Limiter._delay_waiter._run_async_with_deadline",
+  "pyrate_limiter.limiter._plan_delay_step",
+  "time.monotonic_ns.allowed.put",
+  "time.monotonic_ns.allowed.put.waiting",
+  "time.monotonic_ns.allowed.waiting",
+  "time.sleep",
+  "time.time_ns.allowed.put",
+  "time.time_ns.allowed.put.waiting",
+  "time.time_ns.allowed.waiting"
+ ],
+ "pyrate_limiter.limiter.Limiter._delay_waiter._resume_async": [
+  "pyrate_limiter.limiter.Limiter._delay_waiter",
+  "pyrate_limiter.limiter.Limiter._handle_async_result"
+ ],
+ "pyrate_limiter.limiter.Limiter._delay_waiter._retry_async": [
+  "<builtin>.TimeoutError",
+  "<builtin>.isinstance",
+  "abc.ABC.allowed.put",
+  "abc.ABC.allowed.put.waiting",
+  "abc.ABC.allowed.waiting",
+  "abc.ABC.get.allowed.put",
+  "abc.ABC.get.allowed.put.waiting",
+  "abc.ABC.get.allowed.waiting",
+  "abc.ABC.get.put",
+  "abc.ABC.get.put.allowed.waiting",
+  "abc.ABC.get.put.waiting",
+  "abc.ABC.get.waiting",
+  "abc.ABC.get.waiting.allowed.put",
+  "abc.ABC.leak.allowed.put",
+  "abc.ABC.leak.allowed.put.waiting",
+  "abc.ABC.leak.allowed.waiting",
+  "abc.ABC.now.allowed.put",
+  "abc.ABC.now.allowed.put.waiting",
+  "abc.ABC.now.allowed.waiting",
+  "abc.ABC.put",
+  "abc.ABC.put.allowed.waiting",
+  "abc.ABC.put.waiting",
+  "abc.ABC.store.check.allowed.put",
+  "abc.ABC.store.check.allowed.put.waiting",
+  "abc.ABC.store.check.allowed.waiting",
+  "abc.ABC.store.read.allowed.put",
+  "abc.ABC.store.read.allowed.put.waiting",
+  "abc.ABC.store.read.allowed.waiting",
+  "abc.ABC.waiting",
+  "abc.ABC.waiting.allowed.put",
+  "abc.ABC.wrap_item",
+  "abc.ABC.wrap_item.allowed.put",
+  "abc.ABC.wrap_item.allowed.put.waiting",
+  "abc.ABC.wrap_item.allowed.waiting",
+  "asyncio.sleep",
+  "bisect.bisect_left.allowed.put",
+  "bisect.bisect_left.allowed.put.waiting",
+  "bisect.bisect_left.allowed.waiting",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.waiting",
+  "pyrate_limiter.limiter.Limiter._delay_to_sleep_ms",
+  "pyrate_limiter.limiter.SingleBucketFactory.wrap_item",
+  "pyrate_limiter.limiter._plan_delay_step",
+  "time.monotonic",
+  "time.monotonic_ns.allowed.put",
+  "time.monotonic_ns.allowed.put.waiting",
+  "time.monotonic_ns.allowed.waiting",
+  "time.time_ns.allowed.put",
+  "time.time_ns.allowed.put.waiting",
+  "time.time_ns.allowed.waiting"
+ ],
+ "pyrate_limiter.limiter.Limiter._delay_waiter._run_async_with_deadline": [
+  "pyrate_limiter.limiter.Limiter._delay_waiter._retry_async",
+  "pyrate_limiter.limiter.Limiter._handle_async_result"
+ ],
+ "pyrate_limiter.limiter.Limiter._get_async_lock": [
+  "asyncio.Lock",
+  "asyncio.get_running_loop"
+ ],
+ "pyrate_limiter.limiter.Limiter._handle_async_result": [
+  "<builtin>.TimeoutError",
+  "abc.ABC.allowed.close",
+  "abc.ABC.allowed.put.close",
+  "abc.ABC.allowed.put.waiting.close",
+  "abc.ABC.allowed.waiting.close",
+  "abc.ABC.get.allowed.close",
+  "abc.ABC.get.allowed.put.close",
+  "abc.ABC.get.allowed.put.waiting.close",
+  "abc.ABC.get.allowed.waiting.close",
+  "abc.ABC.get.close",
+  "abc.ABC.get.put.allowed.close",
+  "abc.ABC.get.put.allowed.waiting.close",
+  "abc.ABC.get.put.close",
+  "abc.ABC.get.put.waiting.allowed.close",
+  "abc.ABC.get.put.waiting.close",
+  "abc.ABC.get.waiting.allowed.close",
+  "abc.ABC.get.waiting.allowed.put.close",
+  "abc.ABC.get.waiting.close",
+  "abc.ABC.leak.allowed.close",
+  "abc.ABC.leak.allowed.put.close",
+  "abc.ABC.leak.allowed.put.waiting.close",
+  "abc.ABC.leak.allowed.waiting.close",
+  "abc.ABC.leak.close",
+  "abc.ABC.now.allowed.close",
+  "abc.ABC.now.allowed.put.close",
+  "abc.ABC.now.allowed.put.waiting.close",
+  "abc.ABC.now.allowed.waiting.close",
+  "abc.ABC.put.allowed.close",
+  "abc.ABC.put.allowed.waiting.close",
+  "abc.ABC.put.close",
+  "abc.ABC.put.waiting.allowed.close",
+  "abc.ABC.put.waiting.close",
+  "abc.ABC.store.check.allowed.close",
+  "abc.ABC.store.check.allowed.put.close",
+  "abc.ABC.store.check.allowed.put.waiting.close",
+  "abc.ABC.store.check.allowed.waiting.close",
+  "abc.ABC.store.check.close",
+  "abc.ABC.store.read.allowed.close",
+  "abc.ABC.store.read.allowed.put.close",
+  "abc.ABC.store.read.allowed.put.waiting.close",
+  "abc.ABC.store.read.allowed.waiting.close",
+  "abc.ABC.store.read.close",
+  "abc.ABC.waiting.allowed.close",
+  "abc.ABC.waiting.allowed.put.close",
+  "abc.ABC.waiting.close",
+  "abc.ABC.wrap_item.allowed.close",
+  "abc.ABC.wrap_item.allowed.put.close",
+  "abc.ABC.wrap_item.allowed.put.waiting.close",
+  "abc.ABC.wrap_item.allowed.waiting.close",
+  "abc.ABC.wrap_item.close",
+  "asyncio.wait_for",
+  "bisect.bisect_left.allowed.close",
+  "bisect.bisect_left.allowed.put.close",
+  "bisect.bisect_left.allowed.put.waiting.close",
+  "bisect.bisect_left.allowed.waiting.close",
+  "bisect.bisect_left.close",
+  "inspect.isawaitable",
+  "inspect.iscoroutine",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.close",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.close",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.close",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.close",
+  "pyrate_limiter.limiter.Limiter._handle_async_result._cancel_if_pending",
+  "time.monotonic",
+  "time.monotonic_ns.allowed.close",
+  "time.monotonic_ns.allowed.put.close",
+  "time.monotonic_ns.allowed.put.waiting.close",
+  "time.monotonic_ns.allowed.waiting.close",
+  "time.time_ns.allowed.close",
+  "time.time_ns.allowed.put.close",
+  "time.time_ns.allowed.put.waiting.close",
+  "time.time_ns.allowed.waiting.close"
+ ],
+ "pyrate_limiter.limiter.Limiter._handle_async_result._cancel_if_pending": [
+  "abc.ABC.allowed.cancel",
+  "abc.ABC.allowed.done",
+  "abc.ABC.allowed.put.cancel",
+  "abc.ABC.allowed.put.done",
+  "abc.ABC.allowed.put.waiting.cancel",
+  "abc.ABC.allowed.put.waiting.done",
+  "abc.ABC.allowed.waiting.cancel",
+  "abc.ABC.allowed.waiting.done",
+  "abc.ABC.cancel",
+  "abc.ABC.done",
+  "abc.ABC.get.allowed.cancel",
+  "abc.ABC.get.allowed.done",
+  "abc.ABC.get.allowed.put.cancel",
+  "abc.ABC.get.allowed.put.done",
+  "abc.ABC.get.allowed.put.waiting.cancel",
+  "abc.ABC.get.allowed.put.waiting.done",
+  "abc.ABC.get.allowed.waiting.cancel",
+  "abc.ABC.get.allowed.waiting.done",
+  "abc.ABC.get.cancel",
+  "abc.ABC.get.done",
+  "abc.ABC.get.put.allowed.cancel",
+  "abc.ABC.get.put.allowed.done",
+  "abc.ABC.get.put.allowed.waiting.cancel",
+  "abc.ABC.get.put.allowed.waiting.done",
+  "abc.ABC.get.put.cancel",
+  "abc.ABC.get.put.done",
+  "abc.ABC.get.put.waiting.allowed.cancel",
+  "abc.ABC.get.put.waiting.allowed.done",
+  "abc.ABC.get.put.waiting.cancel",
+  "abc.ABC.get.put.waiting.done",
+  "abc.ABC.get.waiting.allowed.cancel",
+  "abc.ABC.get.waiting.allowed.done",
+  "abc.ABC.get.waiting.allowed.put.cancel",
+  "abc.ABC.get.waiting.allowed.put.done",
+  "abc.ABC.get.waiting.cancel",
+  "abc.ABC.get.waiting.done",
+  "abc.ABC.leak.allowed.cancel",
+  "abc.ABC.leak.allowed.done",
+  "abc.ABC.leak.allowed.put.cancel",
+  "abc.ABC.leak.allowed.put.done",
+  "abc.ABC.leak.allowed.put.waiting.cancel",
+  "abc.ABC.leak.allowed.put.waiting.done",
+  "abc.ABC.leak.allowed.waiting.cancel",
+  "abc.ABC.leak.allowed.waiting.done",
+  "abc.ABC.leak.cancel",
+  "abc.ABC.leak.done",
+  "abc.ABC.now.allowed.cancel",
+  "abc.ABC.now.allowed.done",
+  "abc.ABC.now.allowed.put.cancel",
+  "abc.ABC.now.allowed.put.done",
+  "abc.ABC.now.allowed.put.waiting.cancel",
+  "abc.ABC.now.allowed.put.waiting.done",
+  "abc.ABC.now.allowed.waiting.cancel",
+  "abc.ABC.now.allowed.waiting.done",
+  "abc.ABC.put.allowed.cancel",
+  "abc.ABC.put.allowed.done",
+  "abc.ABC.put.allowed.waiting.cancel",
+  "abc.ABC.put.allowed.waiting.done",
+  "abc.ABC.put.cancel",
+  "abc.ABC.put.done",
+  "abc.ABC.put.waiting.allowed.cancel",
+  "abc.ABC.put.waiting.allowed.done",
+  "abc.ABC.put.waiting.cancel",
+  "abc.ABC.put.waiting.done",
+  "abc.ABC.store.check.allowed.cancel",
+  "abc.ABC.store.check.allowed.done",
+  "abc.ABC.store.check.allowed.put.cancel",
+  "abc.ABC.store.check.allowed.put.done",
+  "abc.ABC.store.check.allowed.put.waiting.cancel",
+  "abc.ABC.store.check.allowed.put.waiting.done",
+  "abc.ABC.store.check.allowed.waiting.cancel",
+  "abc.ABC.store.check.allowed.waiting.done",
+  "abc.ABC.store.check.cancel",
+  "abc.ABC.store.check.done",
+  "abc.ABC.store.read.allowed.cancel",
+  "abc.ABC.store.read.allowed.done",
+  "abc.ABC.store.read.allowed.put.cancel",
+  "abc.ABC.store.read.allowed.put.done",
+  "abc.ABC.store.read.allowed.put.waiting.cancel",
+  "abc.ABC.store.read.allowed.put.waiting.done",
+  "abc.ABC.store.read.allowed.waiting.cancel",
+  "abc.ABC.store.read.allowed.waiting.done",
+  "abc.ABC.store.read.cancel",
+  "abc.ABC.store.read.done",
+  "abc.ABC.waiting.allowed.cancel",
+  "abc.ABC.waiting.allowed.done",
+  "abc.ABC.waiting.allowed.put.cancel",
+  "abc.ABC.waiting.allowed.put.done",
+  "abc.ABC.waiting.cancel",
+  "abc.ABC.waiting.done",
+  "abc.ABC.wrap_item.allowed.cancel",
+  "abc.ABC.wrap_item.allowed.done",
+  "abc.ABC.wrap_item.allowed.put.cancel",
+  "abc.ABC.wrap_item.allowed.put.done",
+  "abc.ABC.wrap_item.allowed.put.waiting.cancel",
+  "abc.ABC.wrap_item.allowed.put.waiting.done",
+  "abc.ABC.wrap_item.allowed.waiting.cancel",
+  "abc.ABC.wrap_item.allowed.waiting.done",
+  "abc.ABC.wrap_item.cancel",
+  "abc.ABC.wrap_item.done",
+  "asyncio.isfuture",
+  "bisect.bisect_left.allowed.cancel",
+  "bisect.bisect_left.allowed.done",
+  "bisect.bisect_left.allowed.put.cancel",
+  "bisect.bisect_left.allowed.put.done",
+  "bisect.bisect_left.allowed.put.waiting.cancel",
+  "bisect.bisect_left.allowed.put.waiting.done",
+  "bisect.bisect_left.allowed.waiting.cancel",
+  "bisect.bisect_left.allowed.waiting.done",
+  "bisect.bisect_left.cancel",
+  "bisect.bisect_left.done",
+  "time.monotonic_ns.allowed.cancel",
+  "time.monotonic_ns.allowed.done",
+  "time.monotonic_ns.allowed.put.cancel",
+  "time.monotonic_ns.allowed.put.done",
+  "time.monotonic_ns.allowed.put.waiting.cancel",
+  "time.monotonic_ns.allowed.put.waiting.done",
+  "time.monotonic_ns.allowed.waiting.cancel",
+  "time.monotonic_ns.allowed.waiting.done",
+  "time.time_ns.allowed.cancel",
+  "time.time_ns.allowed.done",
+  "time.time_ns.allowed.put.cancel",
+  "time.time_ns.allowed.put.done",
+  "time.time_ns.allowed.put.waiting.cancel",
+  "time.time_ns.allowed.put.waiting.done",
+  "time.time_ns.allowed.waiting.cancel",
+  "time.time_ns.allowed.waiting.done"
+ ],
+ "pyrate_limiter.limiter.Limiter._init_bucket_factory": [
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "logging.getLogger.info",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.__init__",
+  "pyrate_limiter.limiter.SingleBucketFactory.__init__"
+ ],
+ "pyrate_limiter.limiter.Limiter._try_acquire": [
+  "<builtin>.RuntimeError",
+  "<builtin>.id",
+  "<builtin>.isinstance",
+  "abc.ABC.allowed.put",
+  "abc.ABC.allowed.put.waiting",
+  "abc.ABC.allowed.waiting",
+  "abc.ABC.get",
+  "abc.ABC.get.allowed.put",
+  "abc.ABC.get.allowed.put.waiting",
+  "abc.ABC.get.allowed.waiting",
+  "abc.ABC.get.put",
+  "abc.ABC.get.put.allowed.waiting",
+  "abc.ABC.get.put.waiting",
+  "abc.ABC.get.waiting",
+  "abc.ABC.get.waiting.allowed.put",
+  "abc.ABC.leak.allowed.put",
+  "abc.ABC.leak.allowed.put.waiting",
+  "abc.ABC.leak.allowed.waiting",
+  "abc.ABC.now.allowed.put",
+  "abc.ABC.now.allowed.put.waiting",
+  "abc.ABC.now.allowed.waiting",
+  "abc.ABC.put",
+  "abc.ABC.put.allowed.waiting",
+  "abc.ABC.put.waiting",
+  "abc.ABC.store.check.allowed.put",
+  "abc.ABC.store.check.allowed.put.waiting",
+  "abc.ABC.store.check.allowed.waiting",
+  "abc.ABC.store.read.allowed.put",
+  "abc.ABC.store.read.allowed.put.waiting",
+  "abc.ABC.store.read.allowed.waiting",
+  "abc.ABC.waiting",
+  "abc.ABC.waiting.allowed.put",
+  "abc.ABC.wrap_item",
+  "abc.ABC.wrap_item.allowed.put",
+  "abc.ABC.wrap_item.allowed.put.waiting",
+  "abc.ABC.wrap_item.allowed.waiting",
+  "bisect.bisect_left.allowed.put",
+  "bisect.bisect_left.allowed.put.waiting",
+  "bisect.bisect_left.allowed.waiting",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.waiting",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.waiting",
+  "pyrate_limiter.limiter.Limiter._acquire_co",
+  "pyrate_limiter.limiter.Limiter._blocking_retry_sync",
+  "pyrate_limiter.limiter.Limiter._cleanup_awaitable",
+  "pyrate_limiter.limiter.Limiter._delay_waiter",
+  "pyrate_limiter.limiter.Limiter._handle_async_result",
+  "pyrate_limiter.limiter.Limiter._wait_after_async_put",
+  "pyrate_limiter.limiter.SingleBucketFactory.get",
+  "pyrate_limiter.limiter.SingleBucketFactory.wrap_item",
+  "pyrate_limiter.limiter.combined_lock",
+  "time.monotonic",
+  "time.monotonic_ns.allowed.put",
+  "time.monotonic_ns.allowed.put.waiting",
+  "time.monotonic_ns.allowed.waiting",
+  "time.time_ns.allowed.put",
+  "time.time_ns.allowed.put.waiting",
+  "time.time_ns.allowed.waiting"
+ ],
+ "pyrate_limiter.limiter.Limiter._wait_after_async_put": [
+  "pyrate_limiter.limiter.Limiter._delay_waiter",
+  "pyrate_limiter.limiter.Limiter._handle_async_result"
+ ],
+ "pyrate_limiter.limiter.Limiter.as_decorator": [],
+ "pyrate_limiter.limiter.Limiter.as_decorator.deco": [
+  "functools.wraps",
+  "inspect.iscoroutinefunction"
+ ],
+ "pyrate_limiter.limiter.Limiter.as_decorator.deco.wrapper": [
+  "<builtin>.RuntimeError",
+  "inspect.isawaitable",
+  "pyrate_limiter.limiter.Limiter._cleanup_awaitable",
+  "pyrate_limiter.limiter.Limiter._try_acquire",
+  "pyrate_limiter.limiter.Limiter.try_acquire_async"
+ ],
+ "pyrate_limiter.limiter.Limiter.buckets": [
+  "abc.ABC.get_buckets",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.get_buckets"
+ ],
+ "pyrate_limiter.limiter.Limiter.close": [
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.close",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.close",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.close",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.close"
+ ],
+ "pyrate_limiter.limiter.Limiter.dispose": [
+  "abc.ABC.dispose",
+  "pyrate_limiter.abstracts.bucket.BucketFactory.dispose"
+ ],
+ "pyrate_limiter.limiter.Limiter.handle_bucket_put": [
+  "abc.ABC.allowed.put",
+  "abc.ABC.get.allowed.put",
+  "abc.ABC.get.put",
+  "abc.ABC.get.waiting.allowed.put",
+  "abc.ABC.leak.allowed.put",
+  "abc.ABC.now.allowed.put",
+  "abc.ABC.put",
+  "abc.ABC.store.check.allowed.put",
+  "abc.ABC.store.read.allowed.put",
+  "abc.ABC.waiting.allowed.put",
+  "abc.ABC.wrap_item.allowed.put",
+  "bisect.bisect_left.allowed.put",
+  "inspect.isawaitable",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.put",
+  "pyrate_limiter.buckets.mp_bucket.MultiprocessBucket.put",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.put",
+  "pyrate_limiter.limiter.Limiter._delay_waiter",
+  "pyrate_limiter.limiter.Limiter._wait_after_async_put",
+  "time.monotonic_ns.allowed.put",
+  "time.time_ns.allowed.put"
+ ],
+ "pyrate_limiter.limiter.Limiter.try_acquire": [
+  "<builtin>.RuntimeError",
+  "<builtin>.ValueError",
+  "inspect.isawaitable",
+  "logging.getLogger.debug",
+  "pyrate_limiter.limiter.Limiter._try_acquire",
+  "pyrate_limiter.limiter.Limiter.try_acquire._resolve_result"
+ ],
+ "pyrate_limiter.limiter.Limiter.try_acquire._resolve_result": [
+  "logging.getLogger.debug",
+  "pyrate_limiter.limiter.Limiter._handle_async_result"
+ ],
+ "pyrate_limiter.limiter.Limiter.try_acquire_async": [
+  "<builtin>.RuntimeError",
+  "<builtin>.ValueError",
+  "asyncio.wait_for",
+  "pyrate_limiter.limiter.Limiter.try_acquire_async.run"
+ ],
+ "pyrate_limiter.limiter.Limiter.try_acquire_async.run": [
+  "pyrate_limiter.limiter.Limiter._acquire_async",
+  "pyrate_limiter.limiter.Limiter._get_async_lock"
+ ],
+ "pyrate_limiter.limiter.LockLike.acquire": [],
+ "pyrate_limiter.limiter.LockLike.release": [],
+ "pyrate_limiter.limiter.SingleBucketFactory.__init__": [
+  "pyrate_limiter.abstracts.bucket.BucketFactory.schedule_leak"
+ ],
+ "pyrate_limiter.limiter.SingleBucketFactory.get": [],
+ "pyrate_limiter.limiter.SingleBucketFactory.owned_buckets": [
+  "<builtin>.all",
+  "<builtin>.super"
+ ],
+ "pyrate_limiter.limiter.SingleBucketFactory.wrap_item": [
+  "abc.ABC.now",
+  "inspect.isawaitable",
+  "pyrate_limiter.abstracts.bucket.AbstractBucket.now",
+  "pyrate_limiter.abstracts.rate.RateItem.__init__",
+  "pyrate_limiter.buckets.redis_bucket.RedisBucket.now",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.now",
+  "pyrate_limiter.limiter.SingleBucketFactory.wrap_item.wrap_async"
+ ],
+ "pyrate_limiter.limiter.SingleBucketFactory.wrap_item.wrap_async": [
+  "pyrate_limiter.abstracts.rate.RateItem.__init__"
+ ],
+ "pyrate_limiter.limiter._plan_delay_step": [
+  "<builtin>.TimeoutError",
+  "time.monotonic"
+ ],
+ "pyrate_limiter.limiter.combined_lock": [
+  "<builtin>.TimeoutError",
+  "<builtin>.isinstance",
+  "<builtin>.max",
+  "<builtin>.reversed",
+  "threading.RLock.acquire",
+  "threading.RLock.release",
+  "time.monotonic"
+ ],
+ "pyrate_limiter.limiter_factory": [
+  "logging.getLogger"
+ ],
+ "pyrate_limiter.limiter_factory.create_inmemory_limiter": [
+  "pyrate_limiter.abstracts.rate.Rate.__init__",
+  "pyrate_limiter.buckets.in_memory_bucket.InMemoryBucket.__init__",
+  "pyrate_limiter.limiter.Limiter.__init__"
+ ],
+ "pyrate_limiter.limiter_factory.create_sqlite_bucket": [
+  "logging.getLogger.info",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.init_from_file"
+ ],
+ "pyrate_limiter.limiter_factory.create_sqlite_limiter": [
+  "pyrate_limiter.abstracts.rate.Rate.__init__",
+  "pyrate_limiter.buckets.sqlite_bucket.SQLiteBucket.init_from_file",
+  "pyrate_limiter.limiter.Limiter.__init__"
+ ],
+ "pyrate_limiter.limiter_factory.create_token_bucket_limiter": [
+  "abc.ABC.__init__",
+  "pyrate_limiter.abstracts.rate.Rate.__init__",
+  "pyrate_limiter.buckets.state_bucket.StateBucket.__init__",
+  "pyrate_limiter.limiter.Limiter.__init__"
+ ],
+ "pyrate_limiter.limiter_factory.init_global_limiter": [
+  "pyrate_limiter.limiter.Limiter.__init__"
+ ],
+ "pyrate_limiter.utils": [],
+ "pyrate_limiter.utils.dedicated_sqlite_clock_connection": [
+  "pathlib.Path",
+  "pyrate_limiter.utils.gettempdir",
+  "sqlite3.connect",
+  "tempfile.gettempdir"
+ ],
+ "pyrate_limiter.utils.enforce_rate_list": [
+  "<builtin>.ValueError",
+  "pyrate_limiter.utils.validate_rate_list"
+ ],
+ "pyrate_limiter.utils.gettempdir": [],
+ "pyrate_limiter.utils.id_generator": [
+  "uuid.uuid4"
+ ],
+ "pyrate_limiter.utils.validate_rate_list": [
+  "<builtin>.enumerate"
+ ],
+ "sqlite3.connect": [],
+ "sqlite3.connect.close": [],
+ "sqlite3.connect.commit": [],
+ "sqlite3.connect.cursor": [],
+ "sqlite3.connect.cursor.close": [],
+ "sqlite3.connect.cursor.execute": [],
+ "sqlite3.connect.execute": [],
+ "sqlite3.connect.execute.close": [],
+ "sqlite3.connect.execute.execute": [],
+ "sqlite3.connect.execute.fetchall": [],
+ "sqlite3.connect.execute.fetchone": [],
+ "sqlite3.connect.executemany": [],
+ "sqlite3.connect.executemany.close": [],
+ "tempfile.gettempdir": [],
+ "threading.Event": [],
+ "threading.Event.clear": [],
+ "threading.Event.is_set": [],
+ "threading.Event.set": [],
+ "threading.RLock": [],
+ "threading.RLock.acquire": [],
+ "threading.RLock.release": [],
+ "threading.Thread": [],
+ "threading.Thread.is_alive": [],
+ "threading.Thread.start": [],
+ "threading.local": [],
+ "time.monotonic": [],
+ "time.monotonic_ns": [],
+ "time.monotonic_ns.allowed.cancel": [],
+ "time.monotonic_ns.allowed.close": [],
+ "time.monotonic_ns.allowed.done": [],
+ "time.monotonic_ns.allowed.put": [],
+ "time.monotonic_ns.allowed.put.cancel": [],
+ "time.monotonic_ns.allowed.put.close": [],
+ "time.monotonic_ns.allowed.put.done": [],
+ "time.monotonic_ns.allowed.put.waiting": [],
+ "time.monotonic_ns.allowed.put.waiting.cancel": [],
+ "time.monotonic_ns.allowed.put.waiting.close": [],
+ "time.monotonic_ns.allowed.put.waiting.done": [],
+ "time.monotonic_ns.allowed.waiting": [],
+ "time.monotonic_ns.allowed.waiting.cancel": [],
+ "time.monotonic_ns.allowed.waiting.close": [],
+ "time.monotonic_ns.allowed.waiting.done": [],
+ "time.sleep": [],
+ "time.time": [],
+ "time.time_ns": [],
+ "time.time_ns.allowed.cancel": [],
+ "time.time_ns.allowed.close": [],
+ "time.time_ns.allowed.done": [],
+ "time.time_ns.allowed.put": [],
+ "time.time_ns.allowed.put.cancel": [],
+ "time.time_ns.allowed.put.close": [],
+ "time.time_ns.allowed.put.done": [],
+ "time.time_ns.allowed.put.waiting": [],
+ "time.time_ns.allowed.put.waiting.cancel": [],
+ "time.time_ns.allowed.put.waiting.close": [],
+ "time.time_ns.allowed.put.waiting.done": [],
+ "time.time_ns.allowed.waiting": [],
+ "time.time_ns.allowed.waiting.cancel": [],
+ "time.time_ns.allowed.waiting.close": [],
+ "time.time_ns.allowed.waiting.done": [],
+ "uuid.uuid4": [],
+ "zlib.crc32": []
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "functions/function_attribute", "answers": {"s1": ["main.qb025_0"]}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "qb025_1.handler()", "resolved": [], "candidates": ["main.qb025_0"], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

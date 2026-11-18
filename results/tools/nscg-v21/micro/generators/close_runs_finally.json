@@ -1,0 +1,12 @@
+{
+ "main": [
+  "<builtin>.generator.close",
+  "<builtin>.next",
+  "main.cleanup",
+  "main.gen"
+ ],
+ "main.cleanup": [],
+ "main.gen": [
+  "main.cleanup"
+ ]
+}

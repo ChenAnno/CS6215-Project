@@ -1,0 +1,15 @@
+{
+ "<builtin>.sum": [],
+ "main": [
+  "main.qeb76_0.__init__"
+ ],
+ "main.qeb76_0.__init__": [],
+ "main.qeb76_0.qeb76_1": [
+  "<builtin>.sum"
+ ],
+ "main.qeb76_0.qeb76_2": [],
+ "main.qeb76_0.qeb76_3": [
+  "main.qeb76_0.qeb76_1",
+  "main.qeb76_0.qeb76_2"
+ ]
+}

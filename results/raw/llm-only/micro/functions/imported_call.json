@@ -1,0 +1,1 @@
+{"units": [{"unit": "functions/imported_call", "answers": {"main": ["to_import.func"], "to_import": [], "to_import.func": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 1, "kind": "call", "text": "a()", "resolved": ["to_import.func"], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

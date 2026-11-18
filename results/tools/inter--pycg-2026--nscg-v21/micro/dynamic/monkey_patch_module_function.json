@@ -1,0 +1,12 @@
+{
+ "main": [
+  "mailer.notify"
+ ],
+ "mailer.notify": [
+  "mailer.send",
+  "main.fake_send"
+ ],
+ "main.fake_send": [],
+ "mailer": [],
+ "mailer.send": []
+}

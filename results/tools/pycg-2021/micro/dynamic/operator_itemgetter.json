@@ -1,0 +1,8 @@
+{
+ "main": [
+  "operator.itemgetter"
+ ],
+ "main.load": [],
+ "main.save": [],
+ "operator.itemgetter": []
+}

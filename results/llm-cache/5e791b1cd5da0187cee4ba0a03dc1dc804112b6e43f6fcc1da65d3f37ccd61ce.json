@@ -1,0 +1,352 @@
+{
+ "key": "5e791b1cd5da0187cee4ba0a03dc1dc804112b6e43f6fcc1da65d3f37ccd61ce",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Definitions of the package (symbolic outline)\nmodule funcy\nmodule funcy._inspect\n  imports: __future__.absolute_import, collections.namedtuple, funcy.decorators.unwrap, inspect.CO_VARARGS, inspect.CO_VARKEYWORDS, inspect.signature\n  def funcy._inspect.get_spec(func, _cache)\n  def funcy._inspect._code_to_spec(func)\n  def funcy._inspect._sig_to_spec(sig)\nmodule funcy.calc\n  imports: bisect.bisect, collections.deque, datetime.timedelta, funcy.decorators.wraps\n  def funcy.calc.memoize(_func, key_func)\n  def funcy.calc.cache(timeout, key_func)\n  def funcy.calc._memory_decorator(memory, key_func)\n  def funcy.calc._memory_decorator.decorator(func)\n  def funcy.calc._memory_decorator.decorator.wrapper() @wraps(func)\n  def funcy.calc._memory_decorator.decorator.invalidate()\n  def funcy.calc._memory_decorator.decorator.invalidate_all()\n  def funcy.calc._make_lookuper(silent)\n  def funcy.calc._make_lookuper.make_lookuper(func)\n  def funcy.calc._make_lookuper.make_lookuper.wrapper(arg)\n  def funcy.calc.has_arg_types(func)\n  class funcy.calc.SkipMemory(<builtin>.Exception)\n  class funcy.calc.CacheMemory(<builtin>.dict)\n    methods: __init__(self, timeout); __setitem__(self, key, value); __getitem__(self, key); expire(self); clear(self)\nmodule funcy.colls\n  imports: _all=builtins.all, _any=builtins.any, collections.abc.Iterable, collections.abc.Iterator, collections.abc.Mapping, collections.abc.Set, collections.defaultdict, copy.copy, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.funcs.compose, funcy.funcs.partial, funcy.primitives.EMPTY, funcy.seqs.take, itertools.chain, itertools.tee, operator.attrgetter, operator.itemgetter, operator.methodcaller, xfilter=funcy.seqs.filter, xmap=funcy.seqs.map\n  def funcy.colls._factory(coll, mapper)\n  def funcy.colls.empty(coll)\n  def funcy.colls.iteritems(coll)\n  def funcy.colls.itervalues(coll)\n  def funcy.colls.join(colls)\n  def funcy.colls.merge()\n  def funcy.colls.join_with(f, dicts, strict)\n  def funcy.colls.merge_with(f)\n  def funcy.colls.walk(f, coll)\n  def funcy.colls.walk_keys(f, coll)\n  def funcy.colls.walk_keys.pair_f(pair)\n  def funcy.colls.walk_values(f, coll)\n  def funcy.colls.walk_values.pair_f(pair)\n  def funcy.colls.select(pred, coll)\n  def funcy.colls.select_keys(pred, coll)\n  def funcy.colls.select_values(pred, coll)\n  def funcy.colls.split_keys(pred, coll)\n  def funcy.colls.compact(coll)\n  def funcy.colls.is_distinct(coll, key)\n  def funcy.colls.all(pred, seq)\n  def funcy.colls.any(pred, seq)\n  def funcy.colls.none(pred, seq)\n  def funcy.colls.one(pred, seq)\n  def funcy.colls.some(pred, seq)\n  def funcy.colls.zipdict(keys, vals)\n  def funcy.colls.flip(mapping)\n  def funcy.colls.flip.flip_pair(pair)\n  def funcy.colls.project(mapping, keys)\n  def funcy.colls.omit(mapping, keys)\n  def funcy.colls.zip_values()\n  def funcy.colls.zip_dicts()\n  def funcy.colls.get_in(coll, path, default)\n  def funcy.colls.get_lax(coll, path, default)\n  def funcy.colls.set_in(coll, path, value)\n  def funcy.colls.update_in(coll, path, update, default)\n  def funcy.colls.del_in(coll, path)\n  def funcy.colls.has_path(coll, path)\n  def funcy.colls.lwhere(mappings)\n  def funcy.colls.lpluck(key, mappings)\n  def funcy.colls.lpluck_attr(attr, objects)\n  def funcy.colls.linvoke(objects, name)\n  def funcy.colls.where(mappings)\n  def funcy.colls.pluck(key, mappings)\n  def funcy.colls.pluck_attr(attr, objects)\n  def funcy.colls.invoke(objects, name)\nmodule funcy.debug\n  imports: functools.partial, funcy.decorators.Call, funcy.decorators.decorator, funcy.decorators.wraps, itertools.chain, timer=timeit.default_timer\n  def funcy.debug.tap(x, label)\n  def funcy.debug.log_calls(call, print_func, errors, stack, repr_len) @decorator\n  def funcy.debug.print_calls(errors, stack, repr_len)\n  def funcy.debug.log_enters(call, print_func, repr_len) @decorator\n  def funcy.debug.print_enters(repr_len)\n  def funcy.debug.log_exits(call, print_func, errors, stack, repr_len) @decorator\n  def funcy.debug.print_exits(errors, stack, repr_len)\n  def funcy.debug.LabeledContextDecorator.decorator.inner() @wraps(func)\n  def funcy.debug.format_time(sec)\n  def funcy.debug.<lambda1>(sec)\n  def funcy.debug.<lambda2>(sec)\n  def funcy.debug.<lambda3>(sec)\n  def funcy.debug.<lambda4>(sec)\n  def funcy.debug.log_iter_durations(seq, print_func, label, unit)\n  def funcy.debug.print_iter_durations(seq, label, unit)\n  def funcy.debug._format_error(label, e, stack)\n  def funcy.debug.signature_repr(call, repr_len)\n  def funcy.debug.smart_repr(value, max_len)\n  class funcy.debug.LabeledContextDecorator(<builtin>.object)\n    methods: __init__(self, print_func, label, repr_len); __call__(self, label); decorator(self, func)\n  class funcy.debug.log_errors(funcy.debug.LabeledContextDecorator) mro: funcy.debug.LabeledContextDecorator > <builtin>.object\n    methods: __init__(self, print_func, label, stack, repr_len); __enter__(self); __exit__(self, exc_type, exc_value, tb)\n  class funcy.debug.log_durations(funcy.debug.LabeledContextDecorator) mro: funcy.debug.LabeledContextDecorator > <builtin>.object\n    methods: __init__(self, print_func, label, unit, threshold, repr_len); __enter__(self); __exit__(self)\nmodule funcy.decorators\n  imports: contextlib.ContextDecorator, contextlib.contextmanager, funcy.colls.omit, inspect.unwrap\n  def funcy.decorators.decorator(deco)\n  def funcy.decorators.decorator.decorator_fab()\n  def funcy.decorators.make_decorator(deco, dargs, dkwargs)\n  def funcy.decorators.make_decorator._decorator(func) @wraps(deco)\n  def funcy.decorators.make_decorator._decorator.wrapper()\n  def funcy.decorators.has_single_arg(func)\n  def funcy.decorators.has_1pos_and_kwonly(func)\n  def funcy.decorators.get_argnames(func)\n  def funcy.decorators.arggetter(func, _cache)\n  def funcy.decorators.arggetter.get_arg(name, args, kwargs)\n  def funcy.decorators.update_wrapper(wrapper, wrapped, assigned, updated)\n  def funcy.decorators.wraps(wrapped, assigned, updated)\n  class funcy.decorators.Call(<builtin>.object)\n    methods: __init__(self, func, args, kwargs); __call__(self); __getattr__(self, name); __str__(self); __repr__(self)\nmodule funcy.flow\n  imports: contextlib.nullcontext, contextlib.suppress, datetime.datetime, datetime.timedelta, funcy.decorators.arggetter, funcy.decorators.contextmanager, funcy.decorators.decorator, funcy.decorators.get_argnames, funcy.decorators.wraps\n  def funcy.flow.raiser(exception_or_class)\n  def funcy.flow.raiser._raiser()\n  def funcy.flow.ignore(errors, default)\n  def funcy.flow.ignore.decorator(func)\n  def funcy.flow.ignore.decorator.wrapper() @wraps(func)\n  def funcy.flow.silent(func)\n  def funcy.flow.reraise(errors, into) @contextmanager\n  def funcy.flow.retry(call, tries, errors, timeout, filter_errors) @decorator\n  def funcy.flow.fallback()\n  def funcy.flow._ensure_exceptable(errors)\n  def funcy.flow._is_exception_type(value)\n  def funcy.flow.limit_error_rate(fails, timeout, exception)\n  def funcy.flow.limit_error_rate.decorator(func)\n  def funcy.flow.limit_error_rate.decorator.wrapper() @wraps(func)\n  def funcy.flow.throttle(period)\n  def funcy.flow.throttle.decorator(func)\n  def funcy.flow.throttle.decorator.wrapper() @wraps(func)\n  def funcy.flow.post_processing(call, func) @decorator\n  def funcy.flow.joining(call, sep) @decorator\n  def funcy.flow.once_per()\n  def funcy.flow.once_per.once(func)\n  def funcy.flow.once_per.once.wrapper() @wraps(func)\n  def funcy.flow.once_per_args(func)\n  def funcy.flow.wrap_with(call, ctx) @decorator\n  class funcy.flow.nullcontext(<builtin>.object)\n    methods: __init__(self, enter_result); __enter__(self); __exit__(self)\n  class funcy.flow.ErrorRateExceeded(<builtin>.Exception)\nmodule funcy.funcmakers\n  imports: collections.abc.Mapping, collections.abc.Set, funcy.strings._re_type, funcy.strings.re_finder, funcy.strings.re_tester, operator.itemgetter\n  def funcy.funcmakers.make_func(f, test)\n  def funcy.funcmakers.make_pred(pred)\nmodule funcy.funcolls\n  imports: funcy.colls.none, funcy.colls.one, funcy.colls.some, funcy.funcs.compose, funcy.funcs.juxt\n  def funcy.funcolls.all_fn()\n  def funcy.funcolls.any_fn()\n  def funcy.funcolls.none_fn()\n  def funcy.funcolls.one_fn()\n  def funcy.funcolls.some_fn()\nmodule funcy.funcs\n  imports: functools.partial, functools.reduce, functools.wraps, funcy._inspect.Spec, funcy._inspect.get_spec, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.primitives.EMPTY, operator.__not__\n  def funcy.funcs.identity(x)\n  def funcy.funcs.constantly(x)\n  def funcy.funcs.caller()\n  def funcy.funcs.func_partial(func)\n  def funcy.funcs.rpartial(func)\n  def funcy.funcs.curry(func, n)\n  def funcy.funcs.rcurry(func, n)\n  def funcy.funcs.autocurry(func, n, _spec, _args, _kwargs)\n  def funcy.funcs.autocurry.autocurried() @wraps(func)\n  def funcy.funcs.iffy(pred, action, default)\n  def funcy.funcs.compose()\n  def funcy.funcs.rcompose()\n  def funcy.funcs.complement(pred)\n  def funcy.funcs.ljuxt()\n  def funcy.funcs.juxt()\nmodule funcy.objects\n  imports: funcy.strings.cut_prefix, inspect.isclass, inspect.ismodule\n  def funcy.objects.wrap_prop(ctx)\n  def funcy.objects.wrap_prop.decorator(prop)\n  def funcy.objects.monkey(cls, name)\n  def funcy.objects.monkey.decorator(value)\n  class funcy.objects.cached_property(<builtin>.object)\n    methods: __init__(self, fget); __get__(self, instance, type)\n    class attrs: fset=None, fdel=None\n  class funcy.objects.cached_readonly(funcy.objects.cached_property) mro: funcy.objects.cached_property > <builtin>.object\n    methods: __set__(self, instance, value)\n  class funcy.objects.wrap_prop.decorator.WrapperProp(<builtin>.object)\n    methods: __repr__(self); __get__(self, instance, type); __set__(self, name, value); __del__(self, name)\n  class funcy.objects.LazyObject(<builtin>.object)\n    methods: __init__(self, init); _setup(self); __getattr__(self, name); __setattr__(self, name, value)\nmodule funcy.primitives\n  def funcy.primitives.isnone(x)\n  def funcy.primitives.notnone(x)\n  def funcy.primitives.inc(x)\n  def funcy.primitives.dec(x)\n  def funcy.primitives.even(x)\n  def funcy.primitives.odd(x)\n  class funcy.primitives.EmptyType()\n    methods: __repr__(self)\nmodule funcy.seqs\n  imports: _dropwhile=itertools.dropwhile, _takewhile=itertools.takewhile, collections.abc.Sequence, collections.defaultdict, collections.deque, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.primitives.EMPTY, funcy.types.is_seqcont, itertools.accumulate, itertools.chain, itertools.count, itertools.cycle, itertools.filterfalse, itertools.groupby, itertools.islice, itertools.repeat, itertools.tee\n  def funcy.seqs._lmap(f)\n  def funcy.seqs._lfilter(f, seq)\n  def funcy.seqs.repeatedly(f, n)\n  def funcy.seqs.iterate(f, x)\n  def funcy.seqs.take(n, seq)\n  def funcy.seqs.drop(n, seq)\n  def funcy.seqs.first(seq)\n  def funcy.seqs.second(seq)\n  def funcy.seqs.nth(n, seq)\n  def funcy.seqs.last(seq)\n  def funcy.seqs.rest(seq)\n  def funcy.seqs.butlast(seq)\n  def funcy.seqs.ilen(seq)\n  def funcy.seqs.lmap(f)\n  def funcy.seqs.lfilter(pred, seq)\n  def funcy.seqs.map(f)\n  def funcy.seqs.filter(pred, seq)\n  def funcy.seqs.lremove(pred, seq)\n  def funcy.seqs.remove(pred, seq)\n  def funcy.seqs.lkeep(f, seq)\n  def funcy.seqs.keep(f, seq)\n  def funcy.seqs.without(seq)\n  def funcy.seqs.lwithout(seq)\n  def funcy.seqs.lconcat()\n  def funcy.seqs.lcat(seqs)\n  def funcy.seqs.flatten(seq, follow)\n  def funcy.seqs.lflatten(seq, follow)\n  def funcy.seqs.lmapcat(f)\n  def funcy.seqs.mapcat(f)\n  def funcy.seqs.interleave()\n  def funcy.seqs.interpose(sep, seq)\n  def funcy.seqs.takewhile(pred, seq)\n  def funcy.seqs.dropwhile(pred, seq)\n  def funcy.seqs.ldistinct(seq, key)\n  def funcy.seqs.distinct(seq, key)\n  def funcy.seqs.split(pred, seq)\n  def funcy.seqs.split._split(q)\n  def funcy.seqs.lsplit(pred, seq)\n  def funcy.seqs.split_at(n, seq)\n  def funcy.seqs.lsplit_at(n, seq)\n  def funcy.seqs.split_by(pred, seq)\n  def funcy.seqs.lsplit_by(pred, seq)\n  def funcy.seqs.group_by(f, seq)\n  def funcy.seqs.group_by_keys(get_keys, seq)\n  def funcy.seqs.group_values(seq)\n  def funcy.seqs.count_by(f, seq)\n  def funcy.seqs.count_reps(seq)\n  def funcy.seqs._cut_seq(drop_tail, n, step, seq)\n  def funcy.seqs._cut_iter(drop_tail, n, step, seq)\n  def funcy.seqs._cut(drop_tail, n, step, seq)\n  def funcy.seqs.partition(n, step, seq)\n  def funcy.seqs.lpartition(n, step, seq)\n  def funcy.seqs.chunks(n, step, seq)\n  def funcy.seqs.lchunks(n, step, seq)\n  def funcy.seqs.partition_by(f, seq)\n  def funcy.seqs.lpartition_by(f, seq)\n  def funcy.seqs.with_prev(seq, fill)\n  def funcy.seqs.with_next(seq, fill)\n  def funcy.seqs.pairwise(seq)\n  def funcy.seqs.lzip(strict)\n  def funcy.seqs._zip_strict()\n  def funcy.seqs._zip_strict_iters()\n  def funcy.seqs._zip_strict_error(short_i, long_i)\n  def funcy.seqs._reductions(f, seq, acc)\n  def funcy.seqs.reductions(f, seq, acc)\n  def funcy.seqs.lreductions(f, seq, acc)\n  def funcy.seqs.sums(seq, acc)\n  def funcy.seqs.lsums(seq, acc)\nmodule funcy.strings\n  imports: funcy.primitives.EMPTY, operator.methodcaller\n  def funcy.strings._make_getter(regex)\n  def funcy.strings._prepare(regex, flags)\n  def funcy.strings.re_iter(regex, s, flags)\n  def funcy.strings.re_all(regex, s, flags)\n  def funcy.strings.re_find(regex, s, flags)\n  def funcy.strings.re_test(regex, s, flags)\n  def funcy.strings.re_finder(regex, flags)\n  def funcy.strings.re_tester(regex, flags)\n  def funcy.strings.str_join(sep, seq)\n  def funcy.strings.cut_prefix(s, prefix)\n  def funcy.strings.cut_suffix(s, suffix)\nmodule funcy.tree\n  imports: collections.deque, funcy.types.is_seqcont\n  def funcy.tree.tree_leaves(root, follow, children)\n  def funcy.tree.ltree_leaves(root, follow, children)\n  def funcy.tree.tree_nodes(root, follow, children)\n  def funcy.tree.ltree_nodes(root, follow, children)\nmodule funcy.types\n  imports: collections.abc.Iterable, collections.abc.Iterator, collections.abc.Mapping, collections.abc.Sequence, collections.abc.Set\n  def funcy.types.isa()\n\n## A static analyzer (PyCG) reports these callees for the callers of the sites below\nTreat them as evidence, not as truth: the analyzer can miss callees and can report spurious ones.\nfuncy.seqs._lfilter: [<builtin>.list, funcy.seqs.filter]\nfuncy.seqs._lmap: [<builtin>.list, funcy.seqs.map]\nfuncy.seqs.butlast: [<builtin>.iter, <builtin>.next]\nfuncy.seqs.drop: [itertools.islice]\nfuncy.seqs.filter: [<builtin>.filter, funcy.calc.CacheMemory.__getitem__, funcy.colls.select_keys.<lambda1>, funcy.colls.select_values.<lambda1>, funcy.funcmakers.make_func.<lambda1>, funcy.funcmakers.make_pred, funcy.strings.re_finder.<lambda2>, funcy.strings.re_tester.<lambda1>]\nfuncy.seqs.first: [<builtin>.iter, <builtin>.next]\nfuncy.seqs.ilen: [<builtin>.next, <builtin>.zip, collections.deque, itertools.count]\nfuncy.seqs.iterate: []\nfuncy.seqs.keep: [<builtin>.filter, funcy.seqs.map]\nfuncy.seqs.last: []\nfuncy.seqs.lfilter: [funcy.funcmakers.make_pred, funcy.seqs._lfilter]\nfuncy.seqs.lkeep: [<builtin>.list, funcy.seqs.keep]\nfuncy.seqs.lmap: [funcy.funcmakers.make_func, funcy.seqs._lmap]\nfuncy.seqs.lremove: [<builtin>.list, funcy.seqs.remove]\nfuncy.seqs.map: [<builtin>.map, funcy.calc.CacheMemory.__getitem__, funcy.colls.flip.flip_pair, funcy.colls.walk_keys.pair_f, funcy.colls.walk_values.pair_f, funcy.funcmakers.make_func, funcy.funcmakers.make_func.<lambda1>, funcy.strings.re_finder.<lambda2>, funcy.strings.re_tester.<lambda1>]\nfuncy.seqs.nth: [<builtin>.next, itertools.islice]\nfuncy.seqs.remove: [funcy.funcmakers.make_pred, itertools.filterfalse]\nfuncy.seqs.repeatedly: [itertools.repeat]\nfuncy.seqs.rest: [funcy.seqs.drop]\nfuncy.seqs.second: [funcy.seqs.first, funcy.seqs.rest]\nfuncy.seqs.take: [<builtin>.list, itertools.islice]\n\n## Source (module `funcy.seqs` of package `funcy`, part 1/5), with line numbers\n  1| import sys\n  2| from itertools import islice, chain, tee, groupby, filterfalse, accumulate, \\\n  3|                       takewhile as _takewhile, dropwhile as _dropwhile\n  4| from collections.abc import Sequence\n  5| from collections import defaultdict, deque\n  6| import operator\n  7| \n  8| from .primitives import EMPTY\n  9| from .types import is_seqcont\n 10| from .funcmakers import make_func, make_pred\n 11| \n 12| \n 13| __all__ = [\n 14|     'count', 'cycle', 'repeat', 'repeatedly', 'iterate',\n 15|     'take', 'drop', 'first', 'second', 'nth', 'last', 'rest', 'butlast', 'ilen',\n 16|     'map', 'filter', 'lmap', 'lfilter', 'remove', 'lremove', 'keep', 'lkeep', 'without', 'lwithout',\n 17|     'concat', 'lconcat', 'chain', 'cat', 'lcat', 'flatten', 'lflatten', 'mapcat', 'lmapcat',\n 18|     'interleave', 'interpose', 'distinct', 'ldistinct',\n 19|     'dropwhile', 'takewhile', 'split', 'lsplit', 'split_at', 'lsplit_at', 'split_by', 'lsplit_by',\n 20|     'group_by', 'group_by_keys', 'group_values', 'count_by', 'count_reps',\n 21|     'partition', 'lpartition', 'chunks', 'lchunks', 'partition_by', 'lpartition_by',\n 22|     'with_prev', 'with_next', 'pairwise', 'lzip',\n 23|     'reductions', 'lreductions', 'sums', 'lsums', 'accumulate',\n 24| ]\n 25| \n 26| _map, _filter = map, filter\n 27| \n 28| def _lmap(f, *seqs):\n 29|     return list(map(f, *seqs))\n 30| \n 31| def _lfilter(f, seq):\n 32|     return list(filter(f, seq))\n 33| \n 34| \n 35| # Re-export\n 36| from itertools import count, cycle, repeat\n 37| \n 38| def repeatedly(f, n=EMPTY):\n 39|     \"\"\"Takes a function of no args, presumably with side effects,\n 40|        and returns an infinite (or length n) iterator of calls to it.\"\"\"\n 41|     _repeat = repeat(None) if n is EMPTY else repeat(None, n)\n 42|     return (f() for _ in _repeat)\n 43| \n 44| def iterate(f, x):\n 45|     \"\"\"Returns an infinite iterator of `x, f(x), f(f(x)), ...`\"\"\"\n 46|     while True:\n 47|         yield x\n 48|         x = f(x)\n 49| \n 50| \n 51| def take(n, seq):\n 52|     \"\"\"Returns a list of first n items in the sequence,\n 53|        or all items if there are fewer than n.\"\"\"\n 54|     return list(islice(seq, n))\n 55| \n 56| def drop(n, seq):\n 57|     \"\"\"Skips first n items in the sequence, yields the rest.\"\"\"\n 58|     return islice(seq, n, None)\n 59| \n 60| def first(seq):\n 61|     \"\"\"Returns the first item in the sequence.\n 62|        Returns None if the sequence is empty.\"\"\"\n 63|     return next(iter(seq), None)\n 64| \n 65| def second(seq):\n 66|     \"\"\"Returns second item in the sequence.\n 67|        Returns None if there are less than two items in it.\"\"\"\n 68|     return first(rest(seq))\n 69| \n 70| def nth(n, seq):\n 71|     \"\"\"Returns nth item in the sequence or None if no such item exists.\"\"\"\n 72|     try:\n 73|         return seq[n]\n 74|     except IndexError:\n 75|         return None\n 76|     except TypeError:\n 77|         return next(islice(seq, n, None), None)\n 78| \n 79| def last(seq):\n 80|     \"\"\"Returns the last item in the sequence or iterator.\n 81|        Returns None if the sequence is empty.\"\"\"\n 82|     try:\n 83|         return seq[-1]\n 84|     except IndexError:\n 85|         return None\n 86|     except TypeError:\n 87|         item = None\n 88|         for item in seq:\n 89|             pass\n 90|         return item\n 91| \n 92| def rest(seq):\n 93|     \"\"\"Skips first item in the sequence, yields the rest.\"\"\"\n 94|     return drop(1, seq)\n 95| \n 96| def butlast(seq):\n 97|     \"\"\"Iterates over all elements of the sequence but last.\"\"\"\n 98|     it = iter(seq)\n 99|     try:\n100|         prev = next(it)\n101|     except StopIteration:\n102|         pass\n103|     else:\n104|         for item in it:\n105|             yield prev\n106|             prev = item\n107| \n108| def ilen(seq):\n109|     \"\"\"Consumes an iterable not reading it into memory\n110|        and returns the number of items.\"\"\"\n111|     # NOTE: implementation borrowed from https://stackoverflow.com/a/15112059/753382\n112|     counter = count()\n113|     deque(zip(seq, counter), maxlen=0)  # (consume at C speed)\n114|     return next(counter)\n115| \n116| \n117| # TODO: tree-seq equivalent\n118| \n119| def lmap(f, *seqs):\n120|     \"\"\"An extended version of builtin map() returning a list.\n121|        Derives a mapper from string, int, slice, dict or set.\"\"\"\n122|     return _lmap(make_func(f), *seqs)\n123| \n124| def lfilter(pred, seq):\n125|     \"\"\"An extended version of builtin filter() returning a list.\n126|        Derives a predicate from string, int, slice, dict or set.\"\"\"\n127|     return _lfilter(make_pred(pred), seq)\n128| \n129| def map(f, *seqs):\n130|     \"\"\"An extended version of builtin map().\n131|        Derives a mapper from string, int, slice, dict or set.\"\"\"\n132|     return _map(make_func(f), *seqs)\n133| \n134| def filter(pred, seq):\n135|     \"\"\"An extended version of builtin filter().\n136|        Derives a predicate from string, int, slice, dict or set.\"\"\"\n137|     return _filter(make_pred(pred), seq)\n138| \n139| def lremove(pred, seq):\n140|     \"\"\"Creates a list if items passing given predicate.\"\"\"\n141|     return list(remove(pred, seq))\n142| \n143| def remove(pred, seq):\n144|     \"\"\"Iterates items passing given predicate.\"\"\"\n145|     return filterfalse(make_pred(pred), seq)\n146| \n147| def lkeep(f, seq=EMPTY):\n148|     \"\"\"Maps seq with f and keeps only truthy results.\n149|        Simply lists truthy values in one argument version.\"\"\"\n150|     return list(keep(f, seq))\n151| \n152| def keep(f, seq=EMPTY):\n153|     \"\"\"Maps seq with f and iterates truthy results.\n154|        Simply iterates truthy values in one argument version.\"\"\"\n155|     if seq is EMPTY:\n156|         return _filter(bool, f)\n157|     else:\n158|         return _filter(bool, map(f, seq))\n159| \n160| def without(seq, *items):\n161|     \"\"\"Iterates over sequence skipping items.\"\"\"\n162|     for value in seq:\n163|         if value not in items:\n164|             yield value\n165| \n166| def lwithout(seq, *items):\n167|     \"\"\"Removes items from sequence, preserves order.\"\"\"\n168|     return list(without(seq, *items))\n169| \n170| \n171| def lconcat(*seqs):\n172|     \"\"\"Concatenates several sequences.\"\"\"\n173|     return list(chain(*seqs))\n174| concat = chain\n175| \n176| def lcat(seqs):\n177|     \"\"\"Concatenates the sequence of sequences.\"\"\"\n178|     return list(cat(seqs))\n179| cat = chain.from_iterable\n180| \n181| def flatten(seq, follow=is_seqcont):\n182|     \"\"\"Flattens arbitrary nested sequence.\n183|        Unpacks an item if follow(item) is truthy.\"\"\"\n184|     for item in seq:\n185|         if follow(item):\n186|             yield from flatten(item, follow)\n187|         else:\n188|             yield item\n189| \n190| def lflatten(seq, follow=is_seqcont):\n191|     \"\"\"Iterates over arbitrary nested sequence.\n192|        Dives into when follow(item) is truthy.\"\"\"\n193|     return list(flatten(seq, follow))\n194| \n195| def lmapcat(f, *seqs):\n196|     \"\"\"Maps given sequence(s) and concatenates the results.\"\"\"\n197|     return lcat(map(f, *seqs))\n198| \n199| def mapcat(f, *seqs):\n200|     \"\"\"Maps given sequence(s) and chains the results.\"\"\"\n201|     return cat(map(f, *seqs))\n202| \n203| def interleave(*seqs):\n204|     \"\"\"Yields first item of each sequence, then second one and so on.\"\"\"\n205|     return cat(zip(*seqs))\n206| \n207| def interpose(sep, seq):\n208|     \"\"\"Yields items of the sequence alternating with sep.\"\"\"\n209|     return drop(1, interleave(repeat(sep), seq))\n210| \n211| def takewhile(pred, seq=EMPTY):\n212|     \"\"\"Yields sequence items until first predicate fail.\n213|        Stops on first falsy value in one argument version.\"\"\"\n214|     if seq is EMPTY:\n215|         pred, seq = bool, pred\n216|     else:\n217|         pred = make_pred(pred)\n218|     return _takewhile(pred, seq)\n219| \n220| def dropwhile(pred, seq=EMPTY):\n221|     \"\"\"Skips the start of the sequence passing pred (or just truthy),\n222|        then iterates over the rest.\"\"\"\n223|     if seq is EMPTY:\n224|         pred, seq = bool, pred\n225|     else:\n226|         pred = make_pred(pred)\n227|     return _dropwhile(pred, seq)\n228| \n229| \n230| def ldistinct(seq, key=EMPTY):\n231|     \"\"\"Removes duplicates from sequences, preserves order.\"\"\"\n232|     return list(distinct(seq, key))\n233| \n234| def distinct(seq, key=EMPTY):\n235|     \"\"\"Iterates over sequence skipping duplicates\"\"\"\n236|     seen = set()\n237|     # check if key is supplied out of loop for efficiency\n238|     if key is EMPTY:\n239|         for item in seq:\n240|             if item not in seen:\n241|                 seen.add(item)\n242|                 yield item\n243|     else:\n244|         key = make_func(key)\n245|         for item in seq:\n246|             k = key(item)\n247|             if k not in seen:\n248|                 seen.add(k)\n249|                 yield item\n250| \n251| \n252| def split(pred, seq):\n253|     \"\"\"Lazily splits items which pass the predicate from the ones that don't.\n254|        Returns a pair (passed, failed) of respective iterators.\"\"\"\n255|     pred = make_pred(pred)\n256|     yes, no = deque(), deque()\n257|     splitter = (yes.append(item) if pred(item) else no.append(item) for item in seq)\n258| \n259|     def _split(q):\n260|         while True:\n261|             while q:\n262|                 yield q.popleft()\n263|             try:\n264|                 next(splitter)\n265|             except StopIteration:\n266|                 return\n267| \n268|     return _split(yes), _split(no)\n269| \n270| def lsplit(pred, seq):\n271|     \"\"\"Splits items which pass the predicate from the ones that don't.\n272|        Returns a pair (passed, failed) of respective lists.\"\"\"\n273|     pred = make_pred(pred)\n274|     yes, no = [], []\n275|     for item in seq:\n276|         if pred(item):\n277|             yes.append(item)\n278|         else:\n279|             no.append(item)\n280|     return yes, no\n281| \n282| \n283| def split_at(n, seq):\n284|     \"\"\"Lazily splits the sequence at given position,\n285|        returning a pair of iterators over its start and tail.\"\"\"\n286|     a, b = tee(seq)\n287|     return islice(a, n), islice(b, n, None)\n288| \n289| def lsplit_at(n, seq):\n290|     \"\"\"Splits the sequence at given position,\n291|        returning a tuple of its start and tail.\"\"\"\n292|     a, b = split_at(n, seq)\n293|     return list(a), list(b)\n294| \n295| def split_by(pred, seq):\n296|     \"\"\"Lazily splits the start of the sequence,\n297|        consisting of items passing pred, from the rest of it.\"\"\"\n298|     a, b = tee(seq)\n299|     return takewhile(pred, a), dropwhile(pred, b)\n300| \n301| def lsplit_by(pred, seq):\n302|     \"\"\"Splits the start of the sequence,\n303|        consisting of items passing pred, from the rest of it.\"\"\"\n304|     a, b = split_by(pred, seq)\n305|     return list(a), list(b)\n306| \n307| \n308| def group_by(f, seq):\n309|     \"\"\"Groups given sequence items into a mapping f(item) -> [item, ...].\"\"\"\n310|     f = make_func(f)\n311|     result = defaultdict(list)\n312|     for item in seq:\n313|         result[f(item)].append(item)\n314|     return result\n315| \n316| \n317| def group_by_keys(get_keys, seq):\n318|     \"\"\"Groups items having multiple keys into a mapping key -> [item, ...].\n319|        Item might be repeated under several keys.\"\"\"\n320|     get_keys = make_func(get_keys)\n321|     result = defaultdict(list)\n322|     for item in seq:\n323|         for k in get_keys(item):\n324|             result[k].append(item)\n325|     return result\n326| \n327| \n328| def group_values(seq):\n329|     \"\"\"Takes a sequence of (key, value) pairs and groups values by keys.\"\"\"\n330|     result = defaultdict(list)\n331|     for key, value in seq:\n332|         result[key].append(value)\n333|     return result\n334| \n335| \n336| def count_by(f, seq):\n337|     \"\"\"Counts numbers of occurrences of values of f()\n338|        on elements of given sequence.\"\"\"\n339|     f = make_func(f)\n340|     result = defaultdict(int)\n341|     for item in seq:\n342|         result[f(item)] += 1\n343|     return result\n344| \n345| \n346| def count_reps(seq):\n347|     \"\"\"Counts number occurrences of each value in the sequence.\"\"\"\n348|     result = defaultdict(int)\n349|     for item in seq:\n350|         result[item] += 1\n351|     return result\n352| \n353| \n354| # For efficiency we use separate implementation for cutting sequences (those capable of slicing)\n355| def _cut_seq(drop_tail, n, step, seq):\n356|     limit = len(seq)-n+1 if drop_tail else len(seq)\n357|     return (seq[i:i+n] for i in range(0, limit, step))\n358| \n359| def _cut_iter(drop_tail, n, step, seq):\n360|     it = iter(seq)\n361|     pool = take(n, it)\n362|     if step < n:\n363|         while len(pool) == n:\n364|             yield pool\n365|             pool = pool[step:]\n366|             pool.extend(islice(it, step))\n367|     elif step == n:\n368|         while len(pool) == n:\n369|             yield pool\n370|             pool = take(n, it)\n371|     else:\n372|         gap = step - n\n373|         while len(pool) == n:\n374|             yield pool\n375|             take(gap, it)\n376|             pool = take(n, it)\n377|     if not drop_tail:\n378|         yield from _cut_seq(drop_tail, n, step, pool)\n379| \n380| def _cut(drop_tail, n, step, seq=EMPTY):\n381|     if seq is EMPTY:\n382|         step, seq = n, step\n383|     if isinstance(seq, Sequence):\n384|         return _cut_seq(drop_tail, n, step, seq)\n385|     else:\n386|         return _cut_iter(drop_tail, n, step, seq)\n387| \n388| def partition(n, step, seq=EMPTY):\n389|     \"\"\"Lazily partitions seq into parts of length n.\n390|        Skips step items between parts if passed. Non-fitting tail is ignored.\"\"\"\n391|     return _cut(True, n, step, seq)\n392| \n393| def lpartition(n, step, seq=EMPTY):\n394|     \"\"\"Partitions seq into parts of length n.\n395|        Skips step items between parts if passed. Non-fitting tail is ignored.\"\"\"\n396|     return list(partition(n, step, seq))\n397| \n398| def chunks(n, step, seq=EMPTY):\n399|     \"\"\"Lazily chunks seq into parts of length n or less.\n400|        Skips step items between parts if passed.\"\"\"\n401|     return _cut(False, n, step, seq)\n402| \n403| def lchunks(n, step, seq=EMPTY):\n404|     \"\"\"Chunks seq into parts of length n or less.\n405|        Skips step items between parts if passed.\"\"\"\n406|     return list(chunks(n, step, seq))\n407| \n408| def partition_by(f, seq):\n409|     \"\"\"Lazily partition seq into continuous chunks with constant value of f.\"\"\"\n410|     f = make_func(f)\n411|     for _, items in groupby(seq, f):\n412|         yield items\n413| \n414| def lpartition_by(f, seq):\n415|     \"\"\"Partition seq into continuous chunks with constant value of f.\"\"\"\n416|     return _lmap(list, partition_by(f, seq))\n417| \n418| \n419| def with_prev(seq, fill=None):\n420|     \"\"\"Yields each item paired with its preceding: (item, prev).\"\"\"\n421|     a, b = tee(seq)\n422|     return zip(a, chain([fill], b))\n423| \n424| def with_next(seq, fill=None):\n425|     \"\"\"Yields each item paired with its following: (item, next).\"\"\"\n426|     a, b = tee(seq)\n427|     next(b, None)\n428|     return zip(a, chain(b, [fill]))\n429| \n430| # An itertools recipe\n431| # NOTE: this is the same as ipartition(2, 1, seq) only faster and with distinct name\n432| def pairwise(seq):\n433|     \"\"\"Yields all pairs of neighboring items in seq.\"\"\"\n434|     a, b = tee(seq)\n435|     next(b, None)\n436|     return zip(a, b)\n437| \n438| if sys.version_info >= (3, 10):\n439|     def lzip(*seqs, strict=False):\n440|         \"\"\"List zip() version.\"\"\"\n441|         return list(zip(*seqs, strict=strict))\n442| else:\n443|     def lzip(*seqs, strict=False):\n444|         \"\"\"List zip() version.\"\"\"\n445|         if strict and len(seqs) > 1:\n446|             return list(_zip_strict(*seqs))\n447|         return list(zip(*seqs))\n448| \n449|     def _zip_strict(*seqs):\n450|         try:\n451|             # Try compare lens if they are available and use a fast zip() builtin\n452|             len_1 = len(seqs[0])\n453|             for i, s in enumerate(seqs, start=1):\n454|                 len_i = len(s)\n455|                 if len_i != len_1:\n456|                     short_i, long_i = (1, i) if len_1 < len_i else (i, 1)\n457|                     raise _zip_strict_error(short_i, long_i)\n458|         except TypeError:\n459|             return _zip_strict_iters(*seqs)\n460|         else:\n461|             return zip(*seqs)\n462| \n463|     def _zip_strict_iters(*seqs):\n464|         iters = [iter(s) for s in seqs]\n465|         while True:\n466|             values, stop_i, val_i = [], 0, 0\n467|             for i, it in enumerate(iters, start=1):\n468|                 try:\n469|                     values.append(next(it))\n470|                     if not val_i:\n471|                         val_i = i\n472|                 except StopIteration:\n473|                     if not stop_i:\n474|                         stop_i = i\n475| \n476|             if stop_i:\n477|                 if val_i:\n478|                     raise _zip_strict_error(stop_i, val_i)\n479|                 break\n480|             yield tuple(values)\n481| \n482|     def _zip_strict_error(short_i, long_i):\n483|         if short_i == 1:\n484|             return ValueError(\"zip() argument %d is longer than argument 1\" % long_i)\n485|         else:\n486|             start = \"argument 1\" if short_i == 2 else \"argument 1-%d\" % (short_i - 1)\n487|             return ValueError(\"zip() argument %d is shorter than %s\" % (short_i, start))\n488| \n489| \n490| def _reductions(f, seq, acc):\n491|     last = acc\n492|     for x in seq:\n493|         last = f(last, x)\n494|         yield last\n495| \n496| def reductions(f, seq, acc=EMPTY):\n497|     \"\"\"Yields intermediate reductions of seq by f.\"\"\"\n498|     if acc is EMPTY:\n499|         return accumulate(seq) if f is operator.add else accumulate(seq, f)\n500|     return _reductions(f, seq, acc)\n501| \n502| def lreductions(f, seq, acc=EMPTY):\n503|     \"\"\"Lists intermediate reductions of seq by f.\"\"\"\n504|     return list(reductions(f, seq, acc))\n505| \n506| def sums(seq, acc=EMPTY):\n507|     \"\"\"Yields partial sums of seq.\"\"\"\n508|     return reductions(operator.add, seq, acc)\n509| \n510| def lsums(seq, acc=EMPTY):\n511|     \"\"\"Lists partial sums of seq.\"\"\"\n512|     return lreductions(operator.add, seq, acc)\n\n## Call sites to decide\ns714 | caller funcy.seqs._lmap | line 29 col 12 | call | `list(map(f, *seqs))`\n    symbolic resolution: [<builtin>.list] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns715 | caller funcy.seqs._lmap | line 29 col 17 | call | `map(f, *seqs)`\n    symbolic resolution: [funcy.seqs.map] (certain)\ns716 | caller funcy.seqs._lfilter | line 32 col 12 | call | `list(filter(f, seq))`\n    symbolic resolution: [<builtin>.list] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns717 | caller funcy.seqs._lfilter | line 32 col 17 | call | `filter(f, seq)`\n    symbolic resolution: [funcy.seqs.filter] (certain)\ns718 | caller funcy.seqs.repeatedly | line 41 col 15 | call | `repeat(None)`\n    symbolic resolution: [itertools.repeat] (certain)\ns719 | caller funcy.seqs.repeatedly | line 41 col 47 | call | `repeat(None, n)`\n    symbolic resolution: [itertools.repeat] (certain)\ns720 | caller funcy.seqs.repeatedly | line 42 col 13 | call | `f()`\n    no symbolic information\ns721 | caller funcy.seqs.repeatedly | line 42 col 26 | iter | `_repeat`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __iter__, __next__, __getitem__\ns722 | caller funcy.seqs.iterate | line 48 col 13 | call | `f(x)`\n    no symbolic information\ns723 | caller funcy.seqs.take | line 54 col 12 | call | `list(islice(seq, n))`\n    symbolic resolution: [<builtin>.list] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns724 | caller funcy.seqs.take | line 54 col 17 | call | `islice(seq, n)`\n    symbolic resolution: [itertools.islice] (certain)\ns725 | caller funcy.seqs.drop | line 58 col 12 | call | `islice(seq, n, None)`\n    symbolic resolution: [itertools.islice] (certain)\ns726 | caller funcy.seqs.first | line 63 col 12 | call | `next(iter(seq), None)`\n    symbolic resolution: [<builtin>.next] (certain)\n    this builtin may call special methods: __next__\ns727 | caller funcy.seqs.first | line 63 col 17 | call | `iter(seq)`\n    symbolic resolution: [<builtin>.iter] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __getitem__\ns728 | caller funcy.seqs.second | line 68 col 12 | call | `first(rest(seq))`\n    symbolic resolution: [funcy.seqs.first] (certain)\ns729 | caller funcy.seqs.second | line 68 col 18 | call | `rest(seq)`\n    symbolic resolution: [funcy.seqs.rest] (certain)\ns730 | caller funcy.seqs.nth | line 73 col 16 | getitem | `seq[n]`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __getitem__, __missing__, __class_getitem__\ns731 | caller funcy.seqs.nth | line 77 col 16 | call | `next(islice(seq, n, None), None)`\n    symbolic resolution: [<builtin>.next] (certain)\n    this builtin may call special methods: __next__\ns732 | caller funcy.seqs.nth | line 77 col 21 | call | `islice(seq, n, None)`\n    symbolic resolution: [itertools.islice] (certain)\ns733 | caller funcy.seqs.last | line 83 col 16 | getitem | `seq[-1]`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __getitem__, __missing__, __class_getitem__\ns734 | caller funcy.seqs.last | line 88 col 21 | iter | `seq`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __iter__, __next__, __getitem__\ns735 | caller funcy.seqs.rest | line 94 col 12 | call | `drop(1, seq)`\n    symbolic resolution: [funcy.seqs.drop] (certain)\ns736 | caller funcy.seqs.butlast | line 98 col 10 | call | `iter(seq)`\n    symbolic resolution: [<builtin>.iter] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __getitem__\ns737 | caller funcy.seqs.butlast | line 100 col 16 | call | `next(it)`\n    symbolic resolution: [<builtin>.next] (certain)\n    this builtin may call special methods: __next__\ns738 | caller funcy.seqs.butlast | line 104 col 21 | iter | `it`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __iter__, __next__, __getitem__\ns739 | caller funcy.seqs.ilen | line 112 col 15 | call | `count()`\n    symbolic resolution: [itertools.count] (certain)\ns740 | caller funcy.seqs.ilen | line 113 col 5 | call | `deque(zip(seq, counter), maxlen=0)`\n    symbolic resolution: [collections.deque] (certain)\ns741 | caller funcy.seqs.ilen | line 113 col 11 | call | `zip(seq, counter)`\n    symbolic resolution: [<builtin>.zip] (certain)\n    this builtin may call special methods: __iter__\ns742 | caller funcy.seqs.ilen | line 114 col 12 | call | `next(counter)`\n    symbolic resolution: [<builtin>.next] (certain)\n    this builtin may call special methods: __next__\ns743 | caller funcy.seqs.lmap | line 122 col 12 | call | `_lmap(make_func(f), *seqs)`\n    symbolic resolution: [funcy.seqs._lmap] (certain)\n    package functions passed as arguments: [funcy.funcmakers.make_func.<lambda1>]\ns744 | caller funcy.seqs.lmap | line 122 col 18 | call | `make_func(f)`\n    symbolic resolution: [funcy.funcmakers.make_func] (certain)\ns745 | caller funcy.seqs.lfilter | line 127 col 12 | call | `_lfilter(make_pred(pred), seq)`\n    symbolic resolution: [funcy.seqs._lfilter] (certain)\ns746 | caller funcy.seqs.lfilter | line 127 col 21 | call | `make_pred(pred)`\n    symbolic resolution: [funcy.funcmakers.make_pred] (certain)\ns747 | caller funcy.seqs.map | line 132 col 12 | call | `_map(make_func(f), *seqs)`\n    symbolic resolution: [funcy.seqs.map]\n    package functions passed as arguments: [funcy.funcmakers.make_func.<lambda1>]\ns748 | caller funcy.seqs.map | line 132 col 17 | call | `make_func(f)`\n    symbolic resolution: [funcy.funcmakers.make_func] (certain)\ns749 | caller funcy.seqs.filter | line 137 col 12 | call | `_filter(make_pred(pred), seq)`\n    symbolic resolution: [funcy.seqs.filter]\ns750 | caller funcy.seqs.filter | line 137 col 20 | call | `make_pred(pred)`\n    symbolic resolution: [funcy.funcmakers.make_pred] (certain)\ns751 | caller funcy.seqs.lremove | line 141 col 12 | call | `list(remove(pred, seq))`\n    symbolic resolution: [<builtin>.list] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns752 | caller funcy.seqs.lremove | line 141 col 17 | call | `remove(pred, seq)`\n    symbolic resolution: [funcy.seqs.remove] (certain)\ns753 | caller funcy.seqs.remove | line 145 col 12 | call | `filterfalse(make_pred(pred), seq)`\n    symbolic resolution: [itertools.filterfalse] (certain)\ns754 | caller funcy.seqs.remove | line 145 col 24 | call | `make_pred(pred)`\n    symbolic resolution: [funcy.funcmakers.make_pred] (certain)\ns755 | caller funcy.seqs.lkeep | line 150 col 12 | call | `list(keep(f, seq))`\n    symbolic resolution: [<builtin>.list] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns756 | caller funcy.seqs.lkeep | line 150 col 17 | call | `keep(f, seq)`\n    symbolic resolution: [funcy.seqs.keep] (certain)\ns757 | caller funcy.seqs.keep | line 156 col 16 | call | `_filter(bool, f)`\n    symbolic resolution: [funcy.seqs.filter]\ns758 | caller funcy.seqs.keep | line 158 col 16 | call | `_filter(bool, map(f, seq))`\n    symbolic resolution: [funcy.seqs.filter]\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s714",
+    "callees": [
+     "<builtin>.list",
+     "funcy.funcmakers.make_func.<lambda1>"
+    ]
+   },
+   {
+    "id": "s715",
+    "callees": [
+     "funcy.seqs.map"
+    ]
+   },
+   {
+    "id": "s716",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s717",
+    "callees": [
+     "funcy.seqs.filter"
+    ]
+   },
+   {
+    "id": "s718",
+    "callees": [
+     "itertools.repeat"
+    ]
+   },
+   {
+    "id": "s719",
+    "callees": [
+     "itertools.repeat"
+    ]
+   },
+   {
+    "id": "s720",
+    "callees": []
+   },
+   {
+    "id": "s721",
+    "callees": []
+   },
+   {
+    "id": "s722",
+    "callees": []
+   },
+   {
+    "id": "s723",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s724",
+    "callees": [
+     "itertools.islice"
+    ]
+   },
+   {
+    "id": "s725",
+    "callees": [
+     "itertools.islice"
+    ]
+   },
+   {
+    "id": "s726",
+    "callees": [
+     "<builtin>.next"
+    ]
+   },
+   {
+    "id": "s727",
+    "callees": [
+     "<builtin>.iter"
+    ]
+   },
+   {
+    "id": "s728",
+    "callees": [
+     "funcy.seqs.first"
+    ]
+   },
+   {
+    "id": "s729",
+    "callees": [
+     "funcy.seqs.rest"
+    ]
+   },
+   {
+    "id": "s730",
+    "callees": []
+   },
+   {
+    "id": "s731",
+    "callees": [
+     "<builtin>.next"
+    ]
+   },
+   {
+    "id": "s732",
+    "callees": [
+     "itertools.islice"
+    ]
+   },
+   {
+    "id": "s733",
+    "callees": []
+   },
+   {
+    "id": "s734",
+    "callees": []
+   },
+   {
+    "id": "s735",
+    "callees": [
+     "funcy.seqs.drop"
+    ]
+   },
+   {
+    "id": "s736",
+    "callees": [
+     "<builtin>.iter"
+    ]
+   },
+   {
+    "id": "s737",
+    "callees": [
+     "<builtin>.next"
+    ]
+   },
+   {
+    "id": "s738",
+    "callees": []
+   },
+   {
+    "id": "s739",
+    "callees": [
+     "itertools.count"
+    ]
+   },
+   {
+    "id": "s740",
+    "callees": [
+     "collections.deque"
+    ]
+   },
+   {
+    "id": "s741",
+    "callees": [
+     "<builtin>.zip"
+    ]
+   },
+   {
+    "id": "s742",
+    "callees": [
+     "<builtin>.next"
+    ]
+   },
+   {
+    "id": "s743",
+    "callees": [
+     "funcy.seqs._lmap"
+    ]
+   },
+   {
+    "id": "s744",
+    "callees": [
+     "funcy.funcmakers.make_func"
+    ]
+   },
+   {
+    "id": "s745",
+    "callees": [
+     "funcy.seqs._lfilter"
+    ]
+   },
+   {
+    "id": "s746",
+    "callees": [
+     "funcy.funcmakers.make_pred"
+    ]
+   },
+   {
+    "id": "s747",
+    "callees": [
+     "<builtin>.map"
+    ]
+   },
+   {
+    "id": "s748",
+    "callees": [
+     "funcy.funcmakers.make_func"
+    ]
+   },
+   {
+    "id": "s749",
+    "callees": [
+     "<builtin>.filter"
+    ]
+   },
+   {
+    "id": "s750",
+    "callees": [
+     "funcy.funcmakers.make_pred"
+    ]
+   },
+   {
+    "id": "s751",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s752",
+    "callees": [
+     "funcy.seqs.remove"
+    ]
+   },
+   {
+    "id": "s753",
+    "callees": [
+     "itertools.filterfalse"
+    ]
+   },
+   {
+    "id": "s754",
+    "callees": [
+     "funcy.funcmakers.make_pred"
+    ]
+   },
+   {
+    "id": "s755",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s756",
+    "callees": [
+     "funcy.seqs.keep"
+    ]
+   },
+   {
+    "id": "s757",
+    "callees": [
+     "<builtin>.filter"
+    ]
+   },
+   {
+    "id": "s758",
+    "callees": [
+     "<builtin>.filter"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 21309,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 8266,
+  "output_tokens_details": {
+   "thinking_tokens": 7195
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 21309,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 8266,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 21309,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 21309
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.010574980000000001,
+ "seconds": 35.08,
+ "attempt": 1,
+ "time": "2026-11-18T18:21:44+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 21640,
+   "outputTokens": 8287,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 21309,
+   "webSearchRequests": 0,
+   "costUSD": 0.010574980000000001,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 7195,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 21309,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

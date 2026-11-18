@@ -1,0 +1,11 @@
+{
+ "main.Color._generate_next_value_": [
+  "<builtin>.str.lower"
+ ],
+ "main": [
+  "<builtin>.staticmethod",
+  "enum.auto"
+ ],
+ "<builtin>.staticmethod": [],
+ "enum.auto": []
+}

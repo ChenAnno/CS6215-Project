@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/import_from", "answers": {"s1": ["from_module.q907b_0"]}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "q907b_0()", "resolved": ["from_module.q907b_0"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

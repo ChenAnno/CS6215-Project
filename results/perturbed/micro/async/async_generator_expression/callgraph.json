@@ -1,0 +1,17 @@
+{
+    "main": [
+        "asyncio.run",
+        "main.q6fe8_1"
+    ],
+    "main.q6fe8_1": [
+        "main.q6fe8_0",
+        "main.q6fe8_2",
+        "types.AsyncGeneratorType.__aiter__",
+        "types.AsyncGeneratorType.aclose"
+    ],
+    "main.q6fe8_0": [],
+    "main.q6fe8_2": [],
+    "asyncio.run": [],
+    "types.AsyncGeneratorType.__aiter__": [],
+    "types.AsyncGeneratorType.aclose": []
+}

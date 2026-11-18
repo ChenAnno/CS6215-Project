@@ -1,0 +1,10 @@
+{
+ "<builtin>.super": [],
+ "main": [],
+ "main.Meta.__init__": [
+  "<builtin>.super"
+ ],
+ "main.Meta.__new__": [
+  "<builtin>.super"
+ ]
+}

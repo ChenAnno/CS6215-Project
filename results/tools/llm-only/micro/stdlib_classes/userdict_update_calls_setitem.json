@@ -1,0 +1,15 @@
+{
+ "main": [
+  "collections.UserDict.__init__",
+  "main.bulk"
+ ],
+ "main.Tracked.__setitem__": [
+  "collections.UserDict.__setitem__",
+  "main.record"
+ ],
+ "main.bulk": [
+  "collections.abc.MutableMapping.update",
+  "main.Tracked.__setitem__"
+ ],
+ "main.record": []
+}

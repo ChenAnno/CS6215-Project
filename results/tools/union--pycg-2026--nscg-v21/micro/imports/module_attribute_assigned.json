@@ -1,0 +1,9 @@
+{
+ "main": [
+  "hooks.notify",
+  "main.custom"
+ ],
+ "hooks": [],
+ "main.custom": [],
+ "hooks.notify": []
+}

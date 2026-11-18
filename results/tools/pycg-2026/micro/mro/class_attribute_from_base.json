@@ -1,0 +1,9 @@
+{
+ "<builtin>.staticmethod": [],
+ "main": [
+  "<builtin>.staticmethod",
+  "main.default_handler"
+ ],
+ "main.custom_handler": [],
+ "main.default_handler": []
+}

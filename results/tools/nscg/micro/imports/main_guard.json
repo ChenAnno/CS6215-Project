@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.run"
+ ],
+ "main.run": [
+  "tool.work"
+ ],
+ "tool": [
+  "tool.selftest"
+ ],
+ "tool.selftest": [],
+ "tool.work": []
+}

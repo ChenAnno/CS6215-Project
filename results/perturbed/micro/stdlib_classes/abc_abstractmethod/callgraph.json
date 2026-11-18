@@ -1,0 +1,12 @@
+{
+    "main": [
+        "abc.abstractmethod",
+        "main.qddcf_0.qddcf_3"
+    ],
+    "main.qddcf_0.qddcf_2": [],
+    "main.qddcf_0.qddcf_3": [
+        "main.qddcf_1.qddcf_2"
+    ],
+    "main.qddcf_1.qddcf_2": [],
+    "abc.abstractmethod": []
+}

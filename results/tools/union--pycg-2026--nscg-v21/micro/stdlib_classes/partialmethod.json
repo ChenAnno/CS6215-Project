@@ -1,0 +1,8 @@
+{
+ "main": [
+  "functools.partialmethod",
+  "main.Cell.set_state"
+ ],
+ "functools.partialmethod": [],
+ "main.Cell.set_state": []
+}

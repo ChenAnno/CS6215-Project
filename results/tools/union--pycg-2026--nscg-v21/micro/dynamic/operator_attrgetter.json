@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.Task.run",
+  "operator.attrgetter",
+  "operator.attrgetter.__call__"
+ ],
+ "operator.attrgetter.__call__": [],
+ "operator.attrgetter": [],
+ "main.Task.run": [],
+ "main.Task.skip": []
+}

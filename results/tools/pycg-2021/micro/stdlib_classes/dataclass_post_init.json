@@ -1,0 +1,12 @@
+{
+ "dataclasses.field": [],
+ "main": [],
+ "main.Item": [
+  "dataclasses.field"
+ ],
+ "main.Item.__post_init__": [
+  "main.normalize"
+ ],
+ "main.empty_tags": [],
+ "main.normalize": []
+}

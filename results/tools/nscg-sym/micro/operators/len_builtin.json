@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.len",
+  "main.Playlist.__init__"
+ ],
+ "main.Playlist.__init__": [],
+ "main.Playlist.__len__": [
+  "<builtin>.len"
+ ]
+}

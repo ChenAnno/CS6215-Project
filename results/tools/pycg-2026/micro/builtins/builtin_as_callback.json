@@ -1,0 +1,10 @@
+{
+ "<builtin>.list": [],
+ "<builtin>.map": [],
+ "<builtin>.sorted": [],
+ "main": [
+  "<builtin>.list",
+  "<builtin>.map",
+  "<builtin>.sorted"
+ ]
+}

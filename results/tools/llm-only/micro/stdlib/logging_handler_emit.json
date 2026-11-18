@@ -1,0 +1,13 @@
+{
+ "main": [
+  "logging.Handler.__init__",
+  "logging.Logger.addHandler",
+  "logging.Logger.warning",
+  "logging.getLogger",
+  "main.ListHandler",
+  "main.ListHandler.emit"
+ ],
+ "main.ListHandler.emit": [
+  "logging.LogRecord.getMessage"
+ ]
+}

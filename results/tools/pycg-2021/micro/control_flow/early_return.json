@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.run"
+ ],
+ "main.func1": [],
+ "main.run": [
+  "main.func1"
+ ]
+}

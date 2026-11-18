@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/merge_operator", "answers": {"s1": ["main.func2"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "(defaults | overrides)['run']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

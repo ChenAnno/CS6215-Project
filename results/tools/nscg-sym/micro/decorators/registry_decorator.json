@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.dispatch",
+  "main.handles"
+ ],
+ "main.dispatch": [],
+ "main.handles": [],
+ "main.handles.register": [],
+ "main.on_close": [],
+ "main.on_open": []
+}

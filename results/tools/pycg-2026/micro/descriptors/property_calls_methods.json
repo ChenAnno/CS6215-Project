@@ -1,0 +1,18 @@
+{
+ "<builtin>.property": [],
+ "<builtin>.sum": [],
+ "main": [
+  "<builtin>.property",
+  "main.Order.__init__",
+  "main.Order.total"
+ ],
+ "main.Order.__init__": [],
+ "main.Order.subtotal": [
+  "<builtin>.sum"
+ ],
+ "main.Order.tax": [],
+ "main.Order.total": [
+  "main.Order.subtotal",
+  "main.Order.tax"
+ ]
+}

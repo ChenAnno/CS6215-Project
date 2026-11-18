@@ -1,0 +1,10 @@
+{
+ "main": [
+  "collections.namedtuple",
+  "main.Point.qf9d7_0",
+  "namedtuple('Point', 'x y').__init__"
+ ],
+ "main.Point.qf9d7_0": [
+  "<builtin>.abs"
+ ]
+}

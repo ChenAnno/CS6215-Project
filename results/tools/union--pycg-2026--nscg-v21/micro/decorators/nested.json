@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.func"
+ ],
+ "main.func.inner": [],
+ "main.func": [
+  "main.func.dec"
+ ],
+ "main.func.dec": [],
+ "main.dec": []
+}

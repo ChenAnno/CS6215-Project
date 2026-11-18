@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.Dog.describe"
+ ],
+ "main.Animal.describe": [],
+ "main.Dog.describe": [
+  "main.Animal.describe"
+ ]
+}

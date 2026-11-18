@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.gen"
+ ],
+ "main.gen": [
+  "main.recover"
+ ],
+ "main.recover": []
+}

@@ -1,0 +1,27 @@
+% NOTE TO THE STUDENT: this statement must describe what really happened. Review it, and
+% replace the bracketed parts with your own decisions and interventions before submitting.
+
+\textbf{AI as part of the method.} \nscg calls Claude Haiku~5.5 (and Sonnet~5.5
+in RQ2) through headless Claude Code as its neural component; this use is the
+subject of the study and is fully described in Section~\ref{sec:approach}.
+
+\textbf{AI assistance in carrying out the project.} The project was carried out
+with extensive help of an AI coding agent, Claude Code with the model Claude
+Opus~5.5, working in my environment under my direction. The agent read the
+course requirements, surveyed candidate topics and baselines, and proposed the
+topic, the baselines and the benchmark; it set up the environment, ran the
+baselines, and wrote the code of \nscg (front-end, prompts, validator, runner),
+the evaluation and analysis scripts, the figures and tables, the repository
+documentation, and a first draft of this report. It also performed the error
+analyses that led to the design iterations (V2.1, the renaming probe, the
+ablations).
+
+\textbf{My decisions and interventions.} I chose the topic (Python call graphs
+with PyCG as the baseline) among the alternatives the agent proposed (Android
+taint analysis with FlowDroid, Java analyses with Tai-e); chose the LLM service
+(headless Claude Code with Haiku, because SoCLaaS was not reachable from the
+machine and no local model was available); decided the handling of the public
+repository; and set the working constraints (autonomous execution, time frame).
+[TO BE COMPLETED BY THE STUDENT: describe your own review of the design and of
+the code, the changes you made to the method, the experiments or the text, which
+results you checked by hand, and what you would do differently.]

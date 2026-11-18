@@ -1,0 +1,12 @@
+{
+ "main": [
+  "nested.to_import.qb304_0"
+ ],
+ "nested": [],
+ "nested.relative": [],
+ "nested.relative.qb304_1": [],
+ "nested.to_import": [],
+ "nested.to_import.qb304_0": [
+  "nested.relative.qb304_1"
+ ]
+}

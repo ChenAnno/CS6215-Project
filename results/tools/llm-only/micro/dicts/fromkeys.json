@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.dict.fromkeys",
+  "main.func1"
+ ],
+ "main.func1": []
+}

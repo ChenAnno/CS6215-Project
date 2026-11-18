@@ -1,0 +1,13 @@
+{
+    "main": [
+        "<builtin>.next",
+        "main.q53c2_1",
+        "types.GeneratorType.close"
+    ],
+    "main.q53c2_1": [
+        "main.q53c2_0"
+    ],
+    "main.q53c2_0": [],
+    "<builtin>.next": [],
+    "types.GeneratorType.close": []
+}

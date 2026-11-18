@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.make"
+ ],
+ "main.Named.__init__": [],
+ "main.Plain.__init__": [],
+ "main.make": []
+}

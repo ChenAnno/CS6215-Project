@@ -1,0 +1,10 @@
+{
+ "functools.cached_property": [],
+ "main": [
+  "functools.cached_property"
+ ],
+ "main.Report.data": [
+  "main.load"
+ ],
+ "main.load": []
+}

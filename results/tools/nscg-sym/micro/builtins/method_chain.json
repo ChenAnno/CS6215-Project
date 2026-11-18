@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.str.join",
+  "<builtin>.str.join.upper",
+  "<builtin>.str.strip",
+  "<builtin>.str.strip.split"
+ ]
+}

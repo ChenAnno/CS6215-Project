@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.exec",
+  "main.generated"
+ ],
+ "main.helper": []
+}

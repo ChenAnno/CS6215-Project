@@ -1,0 +1,13 @@
+{
+ "main": [],
+ "main.<dict1>.<lambda1>": [],
+ "main.<dict1>.<lambda2>": [],
+ "main.<lambda1>": [
+  "main.func1"
+ ],
+ "main.<lambda2>": [
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

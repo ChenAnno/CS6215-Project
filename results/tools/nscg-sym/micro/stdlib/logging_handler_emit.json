@@ -1,0 +1,9 @@
+{
+ "main": [
+  "logging.Handler.__init__",
+  "logging.getLogger",
+  "logging.getLogger.addHandler",
+  "logging.getLogger.warning"
+ ],
+ "main.ListHandler.emit": []
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "comprehensions/variable_scope", "answers": {"main": ["main.qded8_0"], "main.qded8_0": [], "main.qded8_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "f()", "resolved": ["main.qded8_0"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

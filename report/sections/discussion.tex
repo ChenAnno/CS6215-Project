@@ -1,0 +1,49 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\textbf{What the comparison reveals.} The symbolic baseline and the
+neuro-symbolic analyzer fail in different ways. PyCG-2026 is \emph{exact}
+where the semantics is fully specified and it has a model --- argument binding,
+MRO, typeshed-typed outside values, \texttt{match} --- and it degrades where a
+value depends on information it does not interpret: string-valued dispatch,
+\texttt{eval}, documented roles, library callbacks. \nscg reads code the way a
+developer does and handles string-built dispatch and dynamic features well, but
+it over-approximates with the hints it is given, misnames outside callees, and,
+crucially, it does not \emph{discover} callees that no symbolic component
+proposed. The symbolic stages are therefore not just a guard rail: they define
+the search space of the neural stage. The most effective place to invest is the
+candidate generator (for example, reading the library code that is called back,
+or the package documentation), not the prompt.
+
+\textbf{Negative results.} (i) The symbolic validator was almost neutral: the
+model rarely invents package names once it sees an outline, and the alias
+expansion of V2 even harmed outside names until V2.1 fixed it. (ii) The
+symbolic floor was slightly harmful on the micro-benchmark: it changed 13
+graphs and made 6 of them inexact; in 5 of the 13 it re-introduced calls in
+code that cannot run (a constant-false branch, code after \texttt{return}, an
+exception handler that cannot be reached) that the model had correctly left
+out, which shows that the model reasons about control flow that the
+flow-insensitive front-end ignores. (iii) Library hooks only paid off with
+the stronger model (Fabric recall \R{fabric-in-r-nscg-v21} with Haiku,
+\R{fabric-in-r-nscg-v21@sonnet} with Sonnet). (iv) A stronger model alone is not
+better: Sonnet as LLM-only scores \R{macro-ins-f1-llm-only@sonnet} on the
+packages, below Haiku's V0, mostly through lower recall.
+
+\textbf{Threats to validity.}
+\label{sec:threats}
+\emph{Construct}: the benchmark's semantics (e.g.\ documented roles, the callback
+rule, access-path names of outside values) is specific; a tool tuned to it
+looks better. PyCG-2026 was developed against these benchmarks by its authors,
+and our skill text restates their conventions, which favours both. Outside names
+are only meaningful relative to the benchmark's naming rules, which is why the
+headline is inside edges. \emph{Internal}: LLM sampling is not deterministic; we
+report three runs for the main configuration, but single runs for the other
+variants, so differences below about 0.02 $F_1$ are within noise. V2.1 was
+designed after inspecting V2's errors on the same four packages, so its gains
+over V2 are optimistic; its micro results, where it changed nothing, confirm
+that the changes are small. Our scripts could contain bugs; all scoring is done by
+the official scorer, and the reproduction of PyCG-2026's published numbers checks
+the pipeline. \emph{External}: four packages and one benchmark family are a
+small sample of Python; the packages are public, so memorisation cannot be ruled
+out for the macro-benchmark (the renaming probe covers only the micro cases), and
+results for other models may differ.

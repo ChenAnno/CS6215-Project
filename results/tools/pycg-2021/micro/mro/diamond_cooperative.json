@@ -1,0 +1,16 @@
+{
+ "<builtin>.super": [],
+ "main": [
+  "main.Both.setup"
+ ],
+ "main.Both.setup": [
+  "<builtin>.super"
+ ],
+ "main.Left.setup": [
+  "<builtin>.super"
+ ],
+ "main.Right.setup": [
+  "<builtin>.super"
+ ],
+ "main.Root.setup": []
+}

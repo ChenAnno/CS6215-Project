@@ -1,0 +1,1 @@
+{"units": [{"unit": "exceptions/raise_attr", "answers": {"main": ["main.A.B.__init__"], "main.A.B.__init__": []}, "sites": [{"id": "s1", "caller": "main", "line": 7, "col": 11, "kind": "raise", "text": "raise A.B", "resolved": ["main.A.B.__init__"], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,13 @@
+{
+ "<builtin>.float": [],
+ "<builtin>.int": [],
+ "<builtin>.range": [],
+ "main": [
+  "<builtin>.float",
+  "<builtin>.int",
+  "<builtin>.range"
+ ],
+ "main.Amount.__float__": [],
+ "main.Amount.__int__": [],
+ "main.Position.__index__": []
+}

@@ -1,0 +1,11 @@
+{
+    "main": [
+        "ext.connect.send",
+        "main.q92be_0"
+    ],
+    "main.q92be_0": [
+        "ext.connect"
+    ],
+    "ext.connect.send": [],
+    "ext.connect": []
+}

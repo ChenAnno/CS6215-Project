@@ -1,0 +1,1 @@
+{"units": [{"unit": "builtins/map_not_consumed", "answers": {"main": ["<builtin>.map"], "main.double": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 11, "kind": "call", "text": "map(double, [1, 2])", "resolved": ["<builtin>.map"], "candidates": [], "callbacks": ["main.double"], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

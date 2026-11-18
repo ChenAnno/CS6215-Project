@@ -1,0 +1,9 @@
+{
+ "fast": [],
+ "fast.compute": [],
+ "main": [
+  "slow.compute"
+ ],
+ "slow": [],
+ "slow.compute": []
+}

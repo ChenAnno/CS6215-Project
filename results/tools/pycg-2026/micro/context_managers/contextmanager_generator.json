@@ -1,0 +1,15 @@
+{
+ "contextlib.contextmanager": [],
+ "contextlib.contextmanager.helper": [],
+ "main": [
+  "contextlib.contextmanager",
+  "contextlib.contextmanager.helper",
+  "main.managed"
+ ],
+ "main.acquire": [],
+ "main.managed": [
+  "main.acquire",
+  "main.release"
+ ],
+ "main.release": []
+}

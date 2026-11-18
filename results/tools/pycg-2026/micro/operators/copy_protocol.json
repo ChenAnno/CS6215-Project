@@ -1,0 +1,10 @@
+{
+ "copy.copy": [],
+ "copy.deepcopy": [],
+ "main": [
+  "copy.copy",
+  "copy.deepcopy"
+ ],
+ "main.Config.__copy__": [],
+ "main.Config.__deepcopy__": []
+}

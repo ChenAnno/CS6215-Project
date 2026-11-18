@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.compose",
+  "main.compose.composed"
+ ],
+ "main.compose": [],
+ "main.compose.composed": [],
+ "main.double": [],
+ "main.increment": []
+}

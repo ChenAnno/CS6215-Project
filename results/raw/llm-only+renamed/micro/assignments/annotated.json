@@ -1,0 +1,1 @@
+{"units": [{"unit": "assignments/annotated", "answers": {"main": ["main.q1b2e_0"], "main.q1b2e_0": [], "main.q1b2e_1": []}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "handler()", "resolved": ["main.q1b2e_0"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

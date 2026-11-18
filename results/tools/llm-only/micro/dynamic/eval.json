@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.eval",
+  "main.func"
+ ],
+ "main.func": []
+}

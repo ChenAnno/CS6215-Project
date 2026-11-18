@@ -1,0 +1,1 @@
+{"units": [{"unit": "assignments/augmented_list_in_place", "answers": {"s1": ["main.q96fb_0", "main.q96fb_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 1, "kind": "call", "text": "handlers[1]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

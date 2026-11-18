@@ -1,0 +1,1 @@
+{"units": [{"unit": "functions/call", "answers": {"main": ["main.func"], "main.func": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 1, "kind": "call", "text": "func()", "resolved": ["main.func"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

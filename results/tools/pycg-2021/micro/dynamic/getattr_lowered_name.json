@@ -1,0 +1,15 @@
+{
+ "<builtin>.getattr": [],
+ "<builtin>.type": [],
+ "main": [
+  "main.Visitor.visit"
+ ],
+ "main.Visitor.generic_visit": [],
+ "main.Visitor.visit": [
+  "<builtin>.getattr",
+  "<builtin>.type"
+ ],
+ "main.Visitor.visit_Field": [],
+ "main.Visitor.visit_field": [],
+ "main.Visitor.visit_index": []
+}

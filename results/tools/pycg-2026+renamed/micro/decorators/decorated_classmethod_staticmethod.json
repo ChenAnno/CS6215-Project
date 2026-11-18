@@ -1,0 +1,17 @@
+{
+ "<builtin>.classmethod": [],
+ "<builtin>.staticmethod": [],
+ "main": [
+  "<builtin>.classmethod",
+  "<builtin>.staticmethod",
+  "main.q8b51_3",
+  "main.q8b51_3.q8b51_4"
+ ],
+ "main.q8b51_0.q8b51_1": [],
+ "main.q8b51_0.q8b51_2": [],
+ "main.q8b51_3": [],
+ "main.q8b51_3.q8b51_4": [
+  "main.q8b51_0.q8b51_1",
+  "main.q8b51_0.q8b51_2"
+ ]
+}

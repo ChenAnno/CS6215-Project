@@ -1,0 +1,199 @@
+{
+ "key": "16c42e786bf3768d5f4854aed51a23d72fbe4eab871d515713d9292e0b69439e",
+ "model": "sonnet",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "edges": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "caller": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "caller",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "edges"
+  ]
+ },
+ "prompt": "# Task\nBuild the static call graph of the Python code below.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Definitions of the whole package (for naming callees in other modules)\nmodule funcy\nmodule funcy._inspect\n  imports: __future__.absolute_import, collections.namedtuple, funcy.decorators.unwrap, inspect.CO_VARARGS, inspect.CO_VARKEYWORDS, inspect.signature\n  def funcy._inspect.get_spec(func, _cache)\n  def funcy._inspect._code_to_spec(func)\n  def funcy._inspect._sig_to_spec(sig)\nmodule funcy.calc\n  imports: bisect.bisect, collections.deque, datetime.timedelta, funcy.decorators.wraps\n  def funcy.calc.memoize(_func, key_func)\n  def funcy.calc.cache(timeout, key_func)\n  def funcy.calc._memory_decorator(memory, key_func)\n  def funcy.calc._memory_decorator.decorator(func)\n  def funcy.calc._memory_decorator.decorator.wrapper() @wraps(func)\n  def funcy.calc._memory_decorator.decorator.invalidate()\n  def funcy.calc._memory_decorator.decorator.invalidate_all()\n  def funcy.calc._make_lookuper(silent)\n  def funcy.calc._make_lookuper.make_lookuper(func)\n  def funcy.calc._make_lookuper.make_lookuper.wrapper(arg)\n  def funcy.calc.has_arg_types(func)\n  class funcy.calc.SkipMemory(<builtin>.Exception)\n  class funcy.calc.CacheMemory(<builtin>.dict)\n    methods: __init__(self, timeout); __setitem__(self, key, value); __getitem__(self, key); expire(self); clear(self)\nmodule funcy.colls\n  imports: _all=builtins.all, _any=builtins.any, collections.abc.Iterable, collections.abc.Iterator, collections.abc.Mapping, collections.abc.Set, collections.defaultdict, copy.copy, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.funcs.compose, funcy.funcs.partial, funcy.primitives.EMPTY, funcy.seqs.take, itertools.chain, itertools.tee, operator.attrgetter, operator.itemgetter, operator.methodcaller, xfilter=funcy.seqs.filter, xmap=funcy.seqs.map\n  def funcy.colls._factory(coll, mapper)\n  def funcy.colls.empty(coll)\n  def funcy.colls.iteritems(coll)\n  def funcy.colls.itervalues(coll)\n  def funcy.colls.join(colls)\n  def funcy.colls.merge()\n  def funcy.colls.join_with(f, dicts, strict)\n  def funcy.colls.merge_with(f)\n  def funcy.colls.walk(f, coll)\n  def funcy.colls.walk_keys(f, coll)\n  def funcy.colls.walk_keys.pair_f(pair)\n  def funcy.colls.walk_values(f, coll)\n  def funcy.colls.walk_values.pair_f(pair)\n  def funcy.colls.select(pred, coll)\n  def funcy.colls.select_keys(pred, coll)\n  def funcy.colls.select_values(pred, coll)\n  def funcy.colls.split_keys(pred, coll)\n  def funcy.colls.compact(coll)\n  def funcy.colls.is_distinct(coll, key)\n  def funcy.colls.all(pred, seq)\n  def funcy.colls.any(pred, seq)\n  def funcy.colls.none(pred, seq)\n  def funcy.colls.one(pred, seq)\n  def funcy.colls.some(pred, seq)\n  def funcy.colls.zipdict(keys, vals)\n  def funcy.colls.flip(mapping)\n  def funcy.colls.flip.flip_pair(pair)\n  def funcy.colls.project(mapping, keys)\n  def funcy.colls.omit(mapping, keys)\n  def funcy.colls.zip_values()\n  def funcy.colls.zip_dicts()\n  def funcy.colls.get_in(coll, path, default)\n  def funcy.colls.get_lax(coll, path, default)\n  def funcy.colls.set_in(coll, path, value)\n  def funcy.colls.update_in(coll, path, update, default)\n  def funcy.colls.del_in(coll, path)\n  def funcy.colls.has_path(coll, path)\n  def funcy.colls.lwhere(mappings)\n  def funcy.colls.lpluck(key, mappings)\n  def funcy.colls.lpluck_attr(attr, objects)\n  def funcy.colls.linvoke(objects, name)\n  def funcy.colls.where(mappings)\n  def funcy.colls.pluck(key, mappings)\n  def funcy.colls.pluck_attr(attr, objects)\n  def funcy.colls.invoke(objects, name)\nmodule funcy.debug\n  imports: functools.partial, funcy.decorators.Call, funcy.decorators.decorator, funcy.decorators.wraps, itertools.chain, timer=timeit.default_timer\n  def funcy.debug.tap(x, label)\n  def funcy.debug.log_calls(call, print_func, errors, stack, repr_len) @decorator\n  def funcy.debug.print_calls(errors, stack, repr_len)\n  def funcy.debug.log_enters(call, print_func, repr_len) @decorator\n  def funcy.debug.print_enters(repr_len)\n  def funcy.debug.log_exits(call, print_func, errors, stack, repr_len) @decorator\n  def funcy.debug.print_exits(errors, stack, repr_len)\n  def funcy.debug.LabeledContextDecorator.decorator.inner() @wraps(func)\n  def funcy.debug.format_time(sec)\n  def funcy.debug.<lambda1>(sec)\n  def funcy.debug.<lambda2>(sec)\n  def funcy.debug.<lambda3>(sec)\n  def funcy.debug.<lambda4>(sec)\n  def funcy.debug.log_iter_durations(seq, print_func, label, unit)\n  def funcy.debug.print_iter_durations(seq, label, unit)\n  def funcy.debug._format_error(label, e, stack)\n  def funcy.debug.signature_repr(call, repr_len)\n  def funcy.debug.smart_repr(value, max_len)\n  class funcy.debug.LabeledContextDecorator(<builtin>.object)\n    methods: __init__(self, print_func, label, repr_len); __call__(self, label); decorator(self, func)\n  class funcy.debug.log_errors(funcy.debug.LabeledContextDecorator) mro: funcy.debug.LabeledContextDecorator > <builtin>.object\n    methods: __init__(self, print_func, label, stack, repr_len); __enter__(self); __exit__(self, exc_type, exc_value, tb)\n  class funcy.debug.log_durations(funcy.debug.LabeledContextDecorator) mro: funcy.debug.LabeledContextDecorator > <builtin>.object\n    methods: __init__(self, print_func, label, unit, threshold, repr_len); __enter__(self); __exit__(self)\nmodule funcy.decorators\n  imports: contextlib.ContextDecorator, contextlib.contextmanager, funcy.colls.omit, inspect.unwrap\n  def funcy.decorators.decorator(deco)\n  def funcy.decorators.decorator.decorator_fab()\n  def funcy.decorators.make_decorator(deco, dargs, dkwargs)\n  def funcy.decorators.make_decorator._decorator(func) @wraps(deco)\n  def funcy.decorators.make_decorator._decorator.wrapper()\n  def funcy.decorators.has_single_arg(func)\n  def funcy.decorators.has_1pos_and_kwonly(func)\n  def funcy.decorators.get_argnames(func)\n  def funcy.decorators.arggetter(func, _cache)\n  def funcy.decorators.arggetter.get_arg(name, args, kwargs)\n  def funcy.decorators.update_wrapper(wrapper, wrapped, assigned, updated)\n  def funcy.decorators.wraps(wrapped, assigned, updated)\n  class funcy.decorators.Call(<builtin>.object)\n    methods: __init__(self, func, args, kwargs); __call__(self); __getattr__(self, name); __str__(self); __repr__(self)\nmodule funcy.flow\n  imports: contextlib.nullcontext, contextlib.suppress, datetime.datetime, datetime.timedelta, funcy.decorators.arggetter, funcy.decorators.contextmanager, funcy.decorators.decorator, funcy.decorators.get_argnames, funcy.decorators.wraps\n  def funcy.flow.raiser(exception_or_class)\n  def funcy.flow.raiser._raiser()\n  def funcy.flow.ignore(errors, default)\n  def funcy.flow.ignore.decorator(func)\n  def funcy.flow.ignore.decorator.wrapper() @wraps(func)\n  def funcy.flow.silent(func)\n  def funcy.flow.reraise(errors, into) @contextmanager\n  def funcy.flow.retry(call, tries, errors, timeout, filter_errors) @decorator\n  def funcy.flow.fallback()\n  def funcy.flow._ensure_exceptable(errors)\n  def funcy.flow._is_exception_type(value)\n  def funcy.flow.limit_error_rate(fails, timeout, exception)\n  def funcy.flow.limit_error_rate.decorator(func)\n  def funcy.flow.limit_error_rate.decorator.wrapper() @wraps(func)\n  def funcy.flow.throttle(period)\n  def funcy.flow.throttle.decorator(func)\n  def funcy.flow.throttle.decorator.wrapper() @wraps(func)\n  def funcy.flow.post_processing(call, func) @decorator\n  def funcy.flow.joining(call, sep) @decorator\n  def funcy.flow.once_per()\n  def funcy.flow.once_per.once(func)\n  def funcy.flow.once_per.once.wrapper() @wraps(func)\n  def funcy.flow.once_per_args(func)\n  def funcy.flow.wrap_with(call, ctx) @decorator\n  class funcy.flow.nullcontext(<builtin>.object)\n    methods: __init__(self, enter_result); __enter__(self); __exit__(self)\n  class funcy.flow.ErrorRateExceeded(<builtin>.Exception)\nmodule funcy.funcmakers\n  imports: collections.abc.Mapping, collections.abc.Set, funcy.strings._re_type, funcy.strings.re_finder, funcy.strings.re_tester, operator.itemgetter\n  def funcy.funcmakers.make_func(f, test)\n  def funcy.funcmakers.make_pred(pred)\nmodule funcy.funcolls\n  imports: funcy.colls.none, funcy.colls.one, funcy.colls.some, funcy.funcs.compose, funcy.funcs.juxt\n  def funcy.funcolls.all_fn()\n  def funcy.funcolls.any_fn()\n  def funcy.funcolls.none_fn()\n  def funcy.funcolls.one_fn()\n  def funcy.funcolls.some_fn()\nmodule funcy.funcs\n  imports: functools.partial, functools.reduce, functools.wraps, funcy._inspect.Spec, funcy._inspect.get_spec, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.primitives.EMPTY, operator.__not__\n  def funcy.funcs.identity(x)\n  def funcy.funcs.constantly(x)\n  def funcy.funcs.caller()\n  def funcy.funcs.func_partial(func)\n  def funcy.funcs.rpartial(func)\n  def funcy.funcs.curry(func, n)\n  def funcy.funcs.rcurry(func, n)\n  def funcy.funcs.autocurry(func, n, _spec, _args, _kwargs)\n  def funcy.funcs.autocurry.autocurried() @wraps(func)\n  def funcy.funcs.iffy(pred, action, default)\n  def funcy.funcs.compose()\n  def funcy.funcs.rcompose()\n  def funcy.funcs.complement(pred)\n  def funcy.funcs.ljuxt()\n  def funcy.funcs.juxt()\nmodule funcy.objects\n  imports: funcy.strings.cut_prefix, inspect.isclass, inspect.ismodule\n  def funcy.objects.wrap_prop(ctx)\n  def funcy.objects.wrap_prop.decorator(prop)\n  def funcy.objects.monkey(cls, name)\n  def funcy.objects.monkey.decorator(value)\n  class funcy.objects.cached_property(<builtin>.object)\n    methods: __init__(self, fget); __get__(self, instance, type)\n    class attrs: fset=None, fdel=None\n  class funcy.objects.cached_readonly(funcy.objects.cached_property) mro: funcy.objects.cached_property > <builtin>.object\n    methods: __set__(self, instance, value)\n  class funcy.objects.wrap_prop.decorator.WrapperProp(<builtin>.object)\n    methods: __repr__(self); __get__(self, instance, type); __set__(self, name, value); __del__(self, name)\n  class funcy.objects.LazyObject(<builtin>.object)\n    methods: __init__(self, init); _setup(self); __getattr__(self, name); __setattr__(self, name, value)\nmodule funcy.primitives\n  def funcy.primitives.isnone(x)\n  def funcy.primitives.notnone(x)\n  def funcy.primitives.inc(x)\n  def funcy.primitives.dec(x)\n  def funcy.primitives.even(x)\n  def funcy.primitives.odd(x)\n  class funcy.primitives.EmptyType()\n    methods: __repr__(self)\nmodule funcy.seqs\n  imports: _dropwhile=itertools.dropwhile, _takewhile=itertools.takewhile, collections.abc.Sequence, collections.defaultdict, collections.deque, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.primitives.EMPTY, funcy.types.is_seqcont, itertools.accumulate, itertools.chain, itertools.count, itertools.cycle, itertools.filterfalse, itertools.groupby, itertools.islice, itertools.repeat, itertools.tee\n  def funcy.seqs._lmap(f)\n  def funcy.seqs._lfilter(f, seq)\n  def funcy.seqs.repeatedly(f, n)\n  def funcy.seqs.iterate(f, x)\n  def funcy.seqs.take(n, seq)\n  def funcy.seqs.drop(n, seq)\n  def funcy.seqs.first(seq)\n  def funcy.seqs.second(seq)\n  def funcy.seqs.nth(n, seq)\n  def funcy.seqs.last(seq)\n  def funcy.seqs.rest(seq)\n  def funcy.seqs.butlast(seq)\n  def funcy.seqs.ilen(seq)\n  def funcy.seqs.lmap(f)\n  def funcy.seqs.lfilter(pred, seq)\n  def funcy.seqs.map(f)\n  def funcy.seqs.filter(pred, seq)\n  def funcy.seqs.lremove(pred, seq)\n  def funcy.seqs.remove(pred, seq)\n  def funcy.seqs.lkeep(f, seq)\n  def funcy.seqs.keep(f, seq)\n  def funcy.seqs.without(seq)\n  def funcy.seqs.lwithout(seq)\n  def funcy.seqs.lconcat()\n  def funcy.seqs.lcat(seqs)\n  def funcy.seqs.flatten(seq, follow)\n  def funcy.seqs.lflatten(seq, follow)\n  def funcy.seqs.lmapcat(f)\n  def funcy.seqs.mapcat(f)\n  def funcy.seqs.interleave()\n  def funcy.seqs.interpose(sep, seq)\n  def funcy.seqs.takewhile(pred, seq)\n  def funcy.seqs.dropwhile(pred, seq)\n  def funcy.seqs.ldistinct(seq, key)\n  def funcy.seqs.distinct(seq, key)\n  def funcy.seqs.split(pred, seq)\n  def funcy.seqs.split._split(q)\n  def funcy.seqs.lsplit(pred, seq)\n  def funcy.seqs.split_at(n, seq)\n  def funcy.seqs.lsplit_at(n, seq)\n  def funcy.seqs.split_by(pred, seq)\n  def funcy.seqs.lsplit_by(pred, seq)\n  def funcy.seqs.group_by(f, seq)\n  def funcy.seqs.group_by_keys(get_keys, seq)\n  def funcy.seqs.group_values(seq)\n  def funcy.seqs.count_by(f, seq)\n  def funcy.seqs.count_reps(seq)\n  def funcy.seqs._cut_seq(drop_tail, n, step, seq)\n  def funcy.seqs._cut_iter(drop_tail, n, step, seq)\n  def funcy.seqs._cut(drop_tail, n, step, seq)\n  def funcy.seqs.partition(n, step, seq)\n  def funcy.seqs.lpartition(n, step, seq)\n  def funcy.seqs.chunks(n, step, seq)\n  def funcy.seqs.lchunks(n, step, seq)\n  def funcy.seqs.partition_by(f, seq)\n  def funcy.seqs.lpartition_by(f, seq)\n  def funcy.seqs.with_prev(seq, fill)\n  def funcy.seqs.with_next(seq, fill)\n  def funcy.seqs.pairwise(seq)\n  def funcy.seqs.lzip(strict)\n  def funcy.seqs._zip_strict()\n  def funcy.seqs._zip_strict_iters()\n  def funcy.seqs._zip_strict_error(short_i, long_i)\n  def funcy.seqs._reductions(f, seq, acc)\n  def funcy.seqs.reductions(f, seq, acc)\n  def funcy.seqs.lreductions(f, seq, acc)\n  def funcy.seqs.sums(seq, acc)\n  def funcy.seqs.lsums(seq, acc)\nmodule funcy.strings\n  imports: funcy.primitives.EMPTY, operator.methodcaller\n  def funcy.strings._make_getter(regex)\n  def funcy.strings._prepare(regex, flags)\n  def funcy.strings.re_iter(regex, s, flags)\n  def funcy.strings.re_all(regex, s, flags)\n  def funcy.strings.re_find(regex, s, flags)\n  def funcy.strings.re_test(regex, s, flags)\n  def funcy.strings.re_finder(regex, flags)\n  def funcy.strings.re_tester(regex, flags)\n  def funcy.strings.str_join(sep, seq)\n  def funcy.strings.cut_prefix(s, prefix)\n  def funcy.strings.cut_suffix(s, suffix)\nmodule funcy.tree\n  imports: collections.deque, funcy.types.is_seqcont\n  def funcy.tree.tree_leaves(root, follow, children)\n  def funcy.tree.ltree_leaves(root, follow, children)\n  def funcy.tree.tree_nodes(root, follow, children)\n  def funcy.tree.ltree_nodes(root, follow, children)\nmodule funcy.types\n  imports: collections.abc.Iterable, collections.abc.Iterator, collections.abc.Mapping, collections.abc.Sequence, collections.abc.Set\n  def funcy.types.isa()\n\n## Source (module `funcy.objects` of package `funcy`)\n  1| from inspect import isclass, ismodule\n  2| \n  3| from .strings import cut_prefix\n  4| \n  5| \n  6| __all__ = ['cached_property', 'cached_readonly', 'wrap_prop', 'monkey', 'LazyObject']\n  7| \n  8| \n  9| class cached_property(object):\n 10|     \"\"\"\n 11|     Decorator that converts a method with a single self argument into\n 12|     a property cached on the instance.\n 13|     \"\"\"\n 14|     # NOTE: implementation borrowed from Django.\n 15|     # NOTE: we use fget, fset and fdel attributes to mimic @property.\n 16|     fset = fdel = None\n 17| \n 18|     def __init__(self, fget):\n 19|         self.fget = fget\n 20|         self.__doc__ = getattr(fget, '__doc__')\n 21| \n 22|     def __get__(self, instance, type=None):\n 23|         if instance is None:\n 24|             return self\n 25|         res = instance.__dict__[self.fget.__name__] = self.fget(instance)\n 26|         return res\n 27| \n 28| \n 29| class cached_readonly(cached_property):\n 30|     \"\"\"Same as @cached_property, but protected against rewrites.\"\"\"\n 31|     def __set__(self, instance, value):\n 32|         raise AttributeError(\"property is read-only\")\n 33| \n 34| \n 35| def wrap_prop(ctx):\n 36|     \"\"\"Wrap a property accessors with a context manager\"\"\"\n 37|     def decorator(prop):\n 38|         class WrapperProp(object):\n 39|             def __repr__(self):\n 40|                 return repr(prop)\n 41| \n 42|             def __get__(self, instance, type=None):\n 43|                 if instance is None:\n 44|                     return self\n 45| \n 46|                 with ctx:\n 47|                     return prop.__get__(instance, type)\n 48| \n 49|             if hasattr(prop, '__set__'):\n 50|                 def __set__(self, name, value):\n 51|                     with ctx:\n 52|                         return prop.__set__(name, value)\n 53| \n 54|             if hasattr(prop, '__del__'):\n 55|                 def __del__(self, name):\n 56|                     with ctx:\n 57|                         return prop.__del__(name)\n 58| \n 59|         return WrapperProp()\n 60|     return decorator\n 61| \n 62| \n 63| def monkey(cls, name=None):\n 64|     \"\"\"\n 65|     Monkey patches class or module by adding to it decorated function.\n 66| \n 67|     Anything overwritten could be accessed via .original attribute of decorated object.\n 68|     \"\"\"\n 69|     assert isclass(cls) or ismodule(cls), \"Attempting to monkey patch non-class and non-module\"\n 70| \n 71|     def decorator(value):\n 72|         func = getattr(value, 'fget', value) # Support properties\n 73|         func_name = name or cut_prefix(func.__name__, '%s__' % cls.__name__)\n 74| \n 75|         func.__name__ = func_name\n 76|         func.original = getattr(cls, func_name, None)\n 77| \n 78|         setattr(cls, func_name, value)\n 79|         return value\n 80|     return decorator\n 81| \n 82| \n 83| # TODO: monkey_mix()?\n 84| \n 85| \n 86| class LazyObject(object):\n 87|     \"\"\"\n 88|     A simplistic lazy init object.\n 89|     Rewrites itself when any attribute is accessed.\n 90|     \"\"\"\n 91|     # NOTE: we can add lots of magic methods here to intercept on more events,\n 92|     #       this is postponed. As well as metaclass to support isinstance() check.\n 93|     def __init__(self, init):\n 94|         self.__dict__['_init'] = init\n 95| \n 96|     def _setup(self):\n 97|         obj = self._init()\n 98|         object.__setattr__(self, '__class__', obj.__class__)\n 99|         object.__setattr__(self, '__dict__', obj.__dict__)\n100| \n101|     def __getattr__(self, name):\n102|         self._setup()\n103|         return getattr(self, name)\n104| \n105|     def __setattr__(self, name, value):\n106|         self._setup()\n107|         return setattr(self, name, value)\n\n## Output\nReturn {\"edges\": [{\"caller\": <node>, \"callees\": [<callee>, ...]}, ...]} with one entry for every caller node below (use an empty list when it calls nothing):\nfuncy.objects\nfuncy.objects.LazyObject.__getattr__\nfuncy.objects.LazyObject.__init__\nfuncy.objects.LazyObject.__setattr__\nfuncy.objects.LazyObject._setup\nfuncy.objects.cached_property.__get__\nfuncy.objects.cached_property.__init__\nfuncy.objects.cached_readonly.__set__\nfuncy.objects.monkey\nfuncy.objects.monkey.decorator\nfuncy.objects.wrap_prop\nfuncy.objects.wrap_prop.decorator\nfuncy.objects.wrap_prop.decorator.WrapperProp.__del__\nfuncy.objects.wrap_prop.decorator.WrapperProp.__get__\nfuncy.objects.wrap_prop.decorator.WrapperProp.__repr__\nfuncy.objects.wrap_prop.decorator.WrapperProp.__set__",
+ "output": {
+  "edges": [
+   {
+    "caller": "funcy.objects",
+    "callees": []
+   },
+   {
+    "caller": "funcy.objects.LazyObject.__getattr__",
+    "callees": [
+     "funcy.objects.LazyObject._setup",
+     "<builtin>.getattr"
+    ]
+   },
+   {
+    "caller": "funcy.objects.LazyObject.__init__",
+    "callees": []
+   },
+   {
+    "caller": "funcy.objects.LazyObject.__setattr__",
+    "callees": [
+     "funcy.objects.LazyObject._setup",
+     "<builtin>.setattr"
+    ]
+   },
+   {
+    "caller": "funcy.objects.LazyObject._setup",
+    "callees": [
+     "<builtin>.object.__setattr__"
+    ]
+   },
+   {
+    "caller": "funcy.objects.cached_property.__get__",
+    "callees": []
+   },
+   {
+    "caller": "funcy.objects.cached_property.__init__",
+    "callees": [
+     "<builtin>.getattr"
+    ]
+   },
+   {
+    "caller": "funcy.objects.cached_readonly.__set__",
+    "callees": [
+     "<builtin>.AttributeError"
+    ]
+   },
+   {
+    "caller": "funcy.objects.monkey",
+    "callees": [
+     "inspect.isclass",
+     "inspect.ismodule"
+    ]
+   },
+   {
+    "caller": "funcy.objects.monkey.decorator",
+    "callees": [
+     "<builtin>.getattr",
+     "funcy.strings.cut_prefix",
+     "<builtin>.setattr"
+    ]
+   },
+   {
+    "caller": "funcy.objects.wrap_prop",
+    "callees": []
+   },
+   {
+    "caller": "funcy.objects.wrap_prop.decorator",
+    "callees": [
+     "funcy.objects.wrap_prop.decorator.WrapperProp.__set__",
+     "<builtin>.hasattr"
+    ]
+   },
+   {
+    "caller": "funcy.objects.wrap_prop.decorator.WrapperProp.__del__",
+    "callees": []
+   },
+   {
+    "caller": "funcy.objects.wrap_prop.decorator.WrapperProp.__get__",
+    "callees": []
+   },
+   {
+    "caller": "funcy.objects.wrap_prop.decorator.WrapperProp.__repr__",
+    "callees": [
+     "<builtin>.repr"
+    ]
+   },
+   {
+    "caller": "funcy.objects.wrap_prop.decorator.WrapperProp.__set__",
+    "callees": []
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 10869,
+  "cache_read_input_tokens": 570,
+  "output_tokens": 736,
+  "output_tokens_details": {
+   "thinking_tokens": 0
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 10869,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 736,
+    "cache_read_input_tokens": 570,
+    "cache_creation_input_tokens": 10869,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 10869
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.0521275,
+ "seconds": 6.38,
+ "attempt": 1,
+ "time": "2026-11-18T18:31:07+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 11220,
+   "outputTokens": 217,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 0,
+   "webSearchRequests": 0,
+   "costUSD": 0.0012305000000000003,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 197,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 0,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  },
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 736,
+   "cacheReadInputTokens": 570,
+   "cacheCreationInputTokens": 10869,
+   "webSearchRequests": 0,
+   "costUSD": 0.050897,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 10869,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

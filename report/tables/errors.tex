@@ -1,0 +1,14 @@
+\begin{tabular}{l rrrr rrrr}
+\toprule
+& \multicolumn{4}{c}{false negatives} & \multicolumn{4}{c}{false positives}\\
+\cmidrule(lr){2-5}\cmidrule(lr){6-9}
+& \multicolumn{2}{c}{inside} & \multicolumn{2}{c}{outside} & \multicolumn{2}{c}{inside} & \multicolumn{2}{c}{outside}\\
+Tool & no hint & dropped & misnamed & omitted & from hint & added & misnamed & spurious\\
+\midrule
+S1 only & 389 & 41 & 56 & 215 & 20 & 0 & 63 & 20 \\
+V0 & 276 & 25 & 24 & 199 & 16 & 13 & 10 & 16 \\
+V2 & 255 & 3 & 64 & 82 & 57 & 10 & 61 & 48 \\
+V2.1 & 253 & 3 & 53 & 80 & 57 & 10 & 43 & 48 \\
+V3 (V2.1) & 253 & 6 & 53 & 66 & 53 & 5 & 41 & 34 \\
+\bottomrule
+\end{tabular}

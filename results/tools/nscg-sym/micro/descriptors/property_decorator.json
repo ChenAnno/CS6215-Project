@@ -1,0 +1,18 @@
+{
+ "main": [
+  "<builtin>.property",
+  "main.Account.__init__",
+  "main.Account.balance"
+ ],
+ "main.Account.__init__": [
+  "main.Account.balance"
+ ],
+ "main.Account.balance": [
+  "main.clear",
+  "main.read",
+  "main.write"
+ ],
+ "main.clear": [],
+ "main.read": [],
+ "main.write": []
+}

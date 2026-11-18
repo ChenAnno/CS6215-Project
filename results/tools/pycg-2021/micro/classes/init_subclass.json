@@ -1,0 +1,7 @@
+{
+ "<builtin>.super": [],
+ "main": [],
+ "main.Plugin.__init_subclass__": [
+  "<builtin>.super"
+ ]
+}

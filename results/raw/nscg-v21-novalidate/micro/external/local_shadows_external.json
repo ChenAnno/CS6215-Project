@@ -1,0 +1,1 @@
+{"units": [{"unit": "external/local_shadows_external", "answers": {"s1": ["main.process"]}, "sites": [{"id": "s1", "caller": "main", "line": 6, "col": 1, "kind": "call", "text": "process()", "resolved": ["ext.process", "main.process"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

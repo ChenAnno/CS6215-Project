@@ -1,0 +1,8 @@
+{
+ "functools.cache": [],
+ "main": [
+  "functools.cache",
+  "main.square"
+ ],
+ "main.square": []
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "strings/fstring_format_spec_call", "answers": {"main": ["main.q22f9_0"], "main.q22f9_0": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 18, "kind": "call", "text": "q22f9_0()", "resolved": ["main.q22f9_0"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

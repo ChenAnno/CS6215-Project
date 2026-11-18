@@ -1,0 +1,12 @@
+{
+ "functools.reduce": [],
+ "main": [
+  "functools.reduce",
+  "operator.add",
+  "operator.getitem"
+ ],
+ "main.qc895_0.__add__": [],
+ "main.qc895_0.__getitem__": [],
+ "operator.add": [],
+ "operator.getitem": []
+}

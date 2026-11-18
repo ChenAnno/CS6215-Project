@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.wrap",
+  "main.wrap.wrapper"
+ ],
+ "main.func1": [],
+ "main.wrap": [],
+ "main.wrap.wrapper": []
+}

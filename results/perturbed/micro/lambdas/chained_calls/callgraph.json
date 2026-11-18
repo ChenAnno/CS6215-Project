@@ -1,0 +1,19 @@
+{
+    "main": [
+        "main.q8a07_0"
+    ],
+    "main.q8a07_0": [
+        "main.<lambda1>",
+        "main.q8a07_1"
+    ],
+    "main.q8a07_1": [
+        "main.<lambda2>",
+        "main.q8a07_2"
+    ],
+    "main.q8a07_2": [
+        "main.<lambda3>"
+    ],
+    "main.<lambda1>": [],
+    "main.<lambda2>": [],
+    "main.<lambda3>": []
+}

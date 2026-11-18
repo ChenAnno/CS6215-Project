@@ -1,0 +1,13 @@
+{
+ "<builtin>.next": [],
+ "main": [
+  "<builtin>.next",
+  "main.gen",
+  "types.GeneratorType.throw"
+ ],
+ "main.gen": [
+  "main.recover"
+ ],
+ "main.recover": [],
+ "types.GeneratorType.throw": []
+}

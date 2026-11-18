@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/nested", "answers": {"s1": ["main.func2"]}, "sites": [{"id": "s1", "caller": "main", "line": 15, "col": 1, "kind": "call", "text": "d['a']['b']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

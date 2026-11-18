@@ -1,0 +1,565 @@
+{
+ "fabric.connection.Connection.close": [
+  "fabric.connection.Connection.is_connected",
+  "paramiko.agent.AgentRequestHandler.close"
+ ],
+ "os.path.basename": [],
+ "os.path.exists": [],
+ "<builtin>.IOError": [],
+ "paramiko.SSHClient.close": [],
+ "fabric.connection.opens": [
+  "fabric.connection.Connection.create_session",
+  "fabric.connection.Connection.forward_local",
+  "fabric.connection.Connection.forward_remote",
+  "fabric.connection.Connection.run",
+  "fabric.connection.Connection.sftp",
+  "fabric.connection.Connection.sudo"
+ ],
+ "socket.socket.close": [],
+ "paramiko.SSHClient.get_transport": [],
+ "fabric.util.get_local_user": [
+  "getpass.getuser",
+  "win32api.GetUserName"
+ ],
+ "<builtin>.str.split": [],
+ "<builtin>.isinstance": [],
+ "fabric.executor.ConnectionCall.make_context": [
+  "fabric.connection.Connection.__init__"
+ ],
+ "<builtin>.reversed": [],
+ "time.sleep": [],
+ "fabric.connection.Connection.__lt__": [
+  "fabric.connection.Connection._identity"
+ ],
+ "fabric.connection.Connection.sudo": [
+  "invoke.Context._sudo"
+ ],
+ "logging.getLogger": [],
+ "fabric.connection.Connection.sftp": [],
+ "fabric.group.ThreadingGroup.run": [
+  "<builtin>.dict",
+  "<builtin>.list.append",
+  "fabric.exceptions.GroupException.__init__",
+  "fabric.group.GroupResult.__init__",
+  "invoke.util.ExceptionHandlingThread",
+  "invoke.vendor.six.moves.queue.Queue",
+  "six.moves.queue.Queue"
+ ],
+ "socket.socket.listen": [],
+ "fabric.group.GroupResult.__init__": [
+  "<builtin>.super"
+ ],
+ "invoke.Program.print_version": [],
+ "six.StringIO": [],
+ "fabric.runners.Remote.process_is_finished": [
+  "invoke.Runner.channel.exit_status_ready"
+ ],
+ "contextlib.contextmanager": [],
+ "fabric.main.Fab.print_version": [
+  "<builtin>.print",
+  "<builtin>.str.format",
+  "<builtin>.super",
+  "invoke.Program.print_version"
+ ],
+ "socket.socket.sendall": [],
+ "fabric.main": [
+  "<builtin>.property",
+  "fabric.main.make_program"
+ ],
+ "paramiko.Transport.open_session": [],
+ "posixpath.join": [],
+ "invoke.Program.config.load_base_conf_files": [],
+ "os.path.expanduser": [],
+ "invoke.Program.core_args": [],
+ "posixpath.basename": [],
+ "fabric.tunnels.TunnelManager._run": [
+  "<builtin>.list.append",
+  "fabric.tunnels.Tunnel.__init__",
+  "invoke.exceptions.ThreadException",
+  "invoke.util.ExceptionHandlingThread.exception",
+  "invoke.util.ExceptionHandlingThread.join",
+  "invoke.util.ExceptionHandlingThread.start",
+  "socket.socket",
+  "socket.socket.accept",
+  "socket.socket.bind",
+  "socket.socket.close",
+  "socket.socket.listen",
+  "socket.socket.setblocking",
+  "socket.socket.setsockopt",
+  "threading.Event",
+  "threading.Event.is_set",
+  "threading.Event.set",
+  "time.sleep"
+ ],
+ "invoke.Runner.channel.recv_exit_status": [],
+ "invoke.vendor.six.StringIO": [],
+ "fabric.executor.FabExecutor.dedupe": [],
+ "paramiko.Channel.close": [],
+ "invoke.Program.config_class": [],
+ "invoke.Collection": [],
+ "invoke.Context.run": [],
+ "getpass.getpass": [],
+ "invoke.util.ExceptionHandlingThread.transport.open_channel": [],
+ "fabric.group.Group.from_connections": [
+  "<builtin>.list.extend",
+  "fabric.group.Group.__init__"
+ ],
+ "fabric.group.GroupResult.succeeded": [
+  "fabric.group.GroupResult._bifurcate"
+ ],
+ "fabric.group.Group.__init__": [
+  "<builtin>.list.extend",
+  "<builtin>.map",
+  "fabric.connection.Connection.__init__"
+ ],
+ "fabric.tunnels.Tunnel._run": [
+  "fabric.tunnels.Tunnel.read_and_write",
+  "select.select",
+  "socket.socket.close",
+  "threading.Event.is_set"
+ ],
+ "fabric.config.Config._clone_init_kwargs": [
+  "<builtin>.dict",
+  "<builtin>.super",
+  "copy.deepcopy",
+  "invoke.config.Config._clone_init_kwargs",
+  "paramiko.config.SSHConfig"
+ ],
+ "paramiko.SSHClient.open_sftp": [],
+ "<builtin>.int": [],
+ "invoke.config.merge_dicts": [],
+ "socket.socket.setblocking": [],
+ "<builtin>.setattr": [],
+ "fabric.group.SerialGroup.run": [
+  "fabric.exceptions.GroupException.__init__",
+  "fabric.group.GroupResult.__init__"
+ ],
+ "fabric.tunnels": [],
+ "paramiko.Transport.request_port_forward": [],
+ "invoke.Context.config.clone": [],
+ "fabric.runners.Remote.returncode": [
+  "invoke.Runner.channel.recv_exit_status"
+ ],
+ "invoke.pty_size": [],
+ "fabric.connection.Connection.resolve_connect_kwargs": [],
+ "decorator.decorator": [],
+ "os.stat": [],
+ "fabric.runners": [
+  "<builtin>.property"
+ ],
+ "fabric._version": [
+  "<builtin>.map",
+  "<builtin>.str.join"
+ ],
+ "fabric.connection.Connection.__exit__": [
+  "fabric.connection.Connection.close"
+ ],
+ "invoke.Program.load_collection": [],
+ "fabric.config": [
+  "<builtin>.staticmethod"
+ ],
+ "paramiko.proxy.ProxyCommand": [],
+ "fabric.connection.Connection.put": [
+  "fabric.transfer.Transfer.__init__",
+  "fabric.transfer.Transfer.put"
+ ],
+ "<builtin>.property": [],
+ "invoke.util.ExceptionHandlingThread.channel.recv": [],
+ "invoke.Program.config.load_ssh_config": [],
+ "invoke.Runner.channel.get_pty": [],
+ "<builtin>.map": [],
+ "fabric.tunnels.Tunnel.__init__": [
+  "<builtin>.super",
+  "invoke.util.ExceptionHandlingThread.__init__"
+ ],
+ "paramiko.agent.AgentRequestHandler.close": [],
+ "fabric.tunnels.TunnelManager.__init__": [
+  "<builtin>.super",
+  "invoke.util.ExceptionHandlingThread.__init__"
+ ],
+ "fabric.connection.Connection.__hash__": [
+  "<builtin>.hash",
+  "fabric.connection.Connection._identity"
+ ],
+ "fabric.transfer.Transfer.get": [
+  "<builtin>.ValueError",
+  "<builtin>.callable",
+  "<builtin>.hasattr",
+  "fabric.transfer.Result.__init__",
+  "fabric.transfer.Transfer.sftp",
+  "os.chmod",
+  "os.path.abspath",
+  "posixpath.basename",
+  "posixpath.join",
+  "stat.S_IMODE"
+ ],
+ "invoke.Program.no_tasks_given": [],
+ "threading.Event.is_set": [],
+ "invoke.Runner.channel.recv_stderr": [],
+ "socket.socket": [],
+ "paramiko.SFTPClient.getcwd": [],
+ "queue.Queue.empty": [],
+ "<builtin>.open": [],
+ "getpass.getuser": [],
+ "invoke.util.ExceptionHandlingThread.sock.close": [],
+ "fabric.connection.Connection.create_session": [
+  "paramiko.agent.AgentRequestHandler"
+ ],
+ "paramiko.Channel.sendall": [],
+ "invoke.util.ExceptionHandlingThread.start": [],
+ "fabric.runners.Remote.read_proc_stderr": [
+  "invoke.Runner.channel.recv_stderr"
+ ],
+ "fabric.connection.Connection.open_gateway": [
+  "<builtin>.int",
+  "<builtin>.isinstance",
+  "<builtin>.str.format",
+  "fabric.connection.Connection.open",
+  "invoke.vendor.six.StringIO",
+  "paramiko.config.SSHConfig",
+  "paramiko.proxy.ProxyCommand",
+  "six.StringIO"
+ ],
+ "fabric.connection.Connection._identity": [],
+ "six.moves.queue.Queue": [],
+ "invoke.Program.update_config": [],
+ "invoke.util.ExceptionHandlingThread.finished.is_set": [],
+ "paramiko.SSHClient.connect": [],
+ "paramiko.SFTPClient.normalize": [],
+ "fabric.connection.Connection.__repr__": [
+  "<builtin>.isinstance",
+  "<builtin>.list.append",
+  "<builtin>.str.format",
+  "<builtin>.str.join"
+ ],
+ "fabric.group": [
+  "<builtin>.classmethod",
+  "<builtin>.property"
+ ],
+ "fabric.group.Group.get": [],
+ "fabric.runners.Remote.stop": [
+  "<builtin>.hasattr",
+  "invoke.Runner.channel.close"
+ ],
+ "invoke.Context._sudo": [],
+ "invoke.Program.config.set_runtime_ssh_path": [],
+ "paramiko.SSHConfig.lookup": [],
+ "fabric.group.GroupResult._bifurcate": [
+  "<builtin>.dict.items",
+  "<builtin>.isinstance"
+ ],
+ "paramiko.Transport.cancel_port_forward": [],
+ "<builtin>.ValueError": [],
+ "fabric.config.Config._load_ssh_files": [
+  "<builtin>.IOError",
+  "<builtin>.str.format",
+  "fabric.config.Config._load_ssh_file",
+  "os.path.exists",
+  "os.path.expanduser"
+ ],
+ "invoke.Runner.channel.exec_command": [],
+ "threading.Event": [],
+ "<builtin>.dict.items": [],
+ "<builtin>.hasattr": [],
+ "fabric.main.Fab.update_config": [
+  "<builtin>.super",
+  "getpass.getpass",
+  "invoke.Program.update_config"
+ ],
+ "invoke.Program.__init__": [],
+ "fabric.connection.Connection.forward_remote.callback": [
+  "<builtin>.list.append",
+  "fabric.tunnels.Tunnel.__init__",
+  "invoke.util.ExceptionHandlingThread.start",
+  "socket.socket",
+  "socket.socket.connect",
+  "threading.Event"
+ ],
+ "fabric.config.Config.set_runtime_ssh_path": [
+  "invoke.config.Config._set"
+ ],
+ "paramiko.SSHConfig.parse": [],
+ "fabric.main.Fab.no_tasks_given": [
+  "<builtin>.super",
+  "fabric.main.Fab._remainder_only",
+  "invoke.Program.no_tasks_given"
+ ],
+ "fabric.main.Fab.create_config": [],
+ "os.path.abspath": [],
+ "invoke.Task": [],
+ "invoke.util.ExceptionHandlingThread.sock.sendall": [],
+ "fabric.config.Config.global_defaults": [
+  "fabric.util.get_local_user",
+  "invoke.config.Config.global_defaults",
+  "invoke.config.merge_dicts"
+ ],
+ "invoke.Call.host.rsplit": [],
+ "fabric.connection.Connection.is_connected": [],
+ "fabric.connection.Connection.__init__": [
+  "<builtin>.ValueError",
+  "<builtin>.int",
+  "<builtin>.isinstance",
+  "<builtin>.str.format",
+  "<builtin>.super",
+  "fabric.config.Config.__init__",
+  "fabric.connection.Connection.derive_shorthand",
+  "fabric.connection.Connection.get_gateway",
+  "fabric.connection.Connection.resolve_connect_kwargs",
+  "invoke.Context.__init__",
+  "invoke.Context._set",
+  "paramiko.client.AutoAddPolicy",
+  "paramiko.client.SSHClient"
+ ],
+ "fabric.tunnels.Tunnel.read_and_write": [
+  "<builtin>.len",
+  "socket.socket.recv",
+  "socket.socket.sendall"
+ ],
+ "socket.socket.accept": [],
+ "<builtin>.super": [],
+ "fabric.runners.Remote.send_interrupt": [
+  "invoke.Runner.channel.send"
+ ],
+ "fabric.connection.Connection.open": [
+  "<builtin>.ValueError",
+  "<builtin>.dict",
+  "<builtin>.str.format",
+  "<builtin>.str.split",
+  "fabric.connection.Connection.is_connected",
+  "fabric.connection.Connection.open_gateway"
+ ],
+ "fabric.transfer": [
+  "<builtin>.property"
+ ],
+ "fabric.transfer.Transfer.is_remote_dir": [
+  "fabric.transfer.Transfer.sftp",
+  "stat.S_ISDIR"
+ ],
+ "fabric.connection.Connection.local": [
+  "<builtin>.super",
+  "invoke.Context.run"
+ ],
+ "fabric.main.Fab.core_args": [
+  "<builtin>.super",
+  "invoke.Argument",
+  "invoke.Program.core_args"
+ ],
+ "paramiko.SFTPClient.stat": [],
+ "<builtin>.staticmethod": [],
+ "fabric.main.Fab._remainder_only": [],
+ "socket.socket.recv": [],
+ "socket.socket.setsockopt": [],
+ "invoke.util.ExceptionHandlingThread.__init__": [],
+ "fabric.runners.Remote._write_proc_stdin": [
+  "invoke.Runner.channel.sendall"
+ ],
+ "invoke.Call": [],
+ "fabric.group.GroupResult.failed": [
+  "fabric.group.GroupResult._bifurcate"
+ ],
+ "fabric.config.Config.clone": [
+  "<builtin>.getattr",
+  "<builtin>.setattr",
+  "<builtin>.super",
+  "fabric.config.Config.load_ssh_config",
+  "invoke.config.Config.clone"
+ ],
+ "paramiko.agent.AgentRequestHandler": [],
+ "invoke.config.Config.__init__": [],
+ "paramiko.SFTPClient.getfo": [],
+ "<builtin>.str.join": [],
+ "invoke.config.Config.clone": [],
+ "select.select": [],
+ "<builtin>.list.append": [],
+ "<builtin>.globals": [],
+ "socket.socket.connect": [],
+ "invoke.util.ExceptionHandlingThread.channel.close": [],
+ "fabric.connection.Connection.get": [
+  "fabric.transfer.Transfer.__init__",
+  "fabric.transfer.Transfer.get"
+ ],
+ "fabric.connection.Connection.run": [
+  "invoke.Context._run"
+ ],
+ "invoke.util.ExceptionHandlingThread": [],
+ "<builtin>.getattr": [],
+ "<builtin>.len": [],
+ "fabric.group.thread_worker": [],
+ "os.path.isfile": [],
+ "fabric.transfer.Result.__init__": [],
+ "invoke.Runner.channel.update_environment": [],
+ "paramiko.SFTPClient.get": [],
+ "fabric.executor.FabExecutor.expand_calls": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.isinstance",
+  "<builtin>.list.append",
+  "<builtin>.list.extend",
+  "fabric.executor.FabExecutor.expand_calls",
+  "fabric.executor.FabExecutor.parameterize",
+  "invoke.Call",
+  "invoke.Task"
+ ],
+ "fabric.main.Fab.load_collection": [
+  "<builtin>.super",
+  "fabric.main.Fab._remainder_only",
+  "invoke.Collection",
+  "invoke.Program.load_collection"
+ ],
+ "invoke.config.Config._set": [],
+ "<builtin>.dict": [],
+ "invoke.Runner.channel.exit_status_ready": [],
+ "fabric.config.Config.load_ssh_config": [
+  "fabric.config.Config._load_ssh_files"
+ ],
+ "fabric.executor.FabExecutor.parameterize": [
+  "<builtin>.str.format"
+ ],
+ "queue.Queue.get": [],
+ "fabric.connection.Connection.derive_shorthand": [
+  "<builtin>.int"
+ ],
+ "<builtin>.callable": [],
+ "invoke.vendor.six.moves.queue.Queue": [],
+ "fabric.runners.Result.__init__": [
+  "<builtin>.dict.pop",
+  "<builtin>.super",
+  "invoke.Result.__init__"
+ ],
+ "<builtin>.Exception.__init__": [],
+ "fabric.connection.Connection.__enter__": [],
+ "invoke.Runner.context.create_session": [],
+ "fabric.connection.Connection.get_gateway": [
+  "<builtin>.dict",
+  "<builtin>.reversed",
+  "fabric.connection.Connection.__init__",
+  "fabric.connection.Connection.derive_shorthand"
+ ],
+ "fabric.exceptions.GroupException.__init__": [],
+ "invoke.util.ExceptionHandlingThread.channel.sendall": [],
+ "fabric.config.Config.__init__": [
+  "<builtin>.dict.get",
+  "<builtin>.dict.pop",
+  "<builtin>.super",
+  "fabric.config.Config.load_ssh_config",
+  "fabric.config.Config.set_runtime_ssh_path",
+  "invoke.config.Config.__init__",
+  "invoke.config.Config._set",
+  "paramiko.config.SSHConfig"
+ ],
+ "fabric.connection.Connection.__eq__": [
+  "<builtin>.isinstance",
+  "fabric.connection.Connection._identity"
+ ],
+ "paramiko.Channel.recv": [],
+ "fabric.connection": [
+  "<builtin>.property",
+  "contextlib.contextmanager",
+  "decorator.decorator",
+  "fabric.connection.opens",
+  "invoke.vendor.decorator.decorator"
+ ],
+ "invoke.Context.__init__": [],
+ "invoke.Runner.channel.send": [],
+ "fabric.connection.Connection.forward_local": [
+  "fabric.tunnels.TunnelManager.__init__",
+  "invoke.exceptions.ThreadException",
+  "invoke.util.ExceptionHandlingThread.exception",
+  "invoke.util.ExceptionHandlingThread.join",
+  "invoke.util.ExceptionHandlingThread.start",
+  "threading.Event",
+  "threading.Event.set"
+ ],
+ "fabric.runners.Remote.read_proc_stdout": [
+  "invoke.Runner.channel.recv"
+ ],
+ "invoke.exceptions.ThreadException": [],
+ "paramiko.config.SSHConfig": [],
+ "invoke.Argument": [],
+ "invoke.util.ExceptionHandlingThread.exception": [],
+ "fabric.executor.FabExecutor.expand_calls.anonymous": [],
+ "<builtin>.dict.get": [],
+ "fabric.executor": [],
+ "paramiko.client.SSHClient": [],
+ "fabric.connection.Connection.forward_remote": [
+  "invoke.util.ExceptionHandlingThread.join",
+  "threading.Event.set"
+ ],
+ "<builtin>.print": [],
+ "fabric.transfer.Transfer.__init__": [],
+ "fabric.runners.Remote.generate_result": [
+  "fabric.runners.Result.__init__"
+ ],
+ "<builtin>.hash": [],
+ "fabric.exceptions": [],
+ "fabric.transfer.Transfer.sftp": [
+  "fabric.connection.Connection.sftp"
+ ],
+ "invoke.Runner.channel.recv": [],
+ "invoke.vendor.decorator.decorator": [],
+ "stat.S_IMODE": [],
+ "invoke.Runner.channel.sendall": [],
+ "fabric.config.Config._load_ssh_file": [
+  "<builtin>.len",
+  "<builtin>.open",
+  "<builtin>.str.format",
+  "os.path.isfile"
+ ],
+ "fabric": [],
+ "fabric.group.Group.run": [],
+ "copy.deepcopy": [],
+ "invoke.Result.__init__": [],
+ "paramiko.SFTPClient.chmod": [],
+ "invoke.Program.config.merge": [],
+ "paramiko.SSHClient.set_missing_host_key_policy": [],
+ "invoke.Context._set": [],
+ "fabric.main.make_program": [
+  "invoke.Program.__init__"
+ ],
+ "invoke.util.ExceptionHandlingThread.sock.recv": [],
+ "paramiko.client.AutoAddPolicy": [],
+ "invoke.Context._run": [],
+ "invoke.util.ExceptionHandlingThread.join": [],
+ "invoke.config.Config._clone_init_kwargs": [],
+ "fabric.util": [
+  "<builtin>.getattr",
+  "<builtin>.globals",
+  "logging.getLogger"
+ ],
+ "<builtin>.str.format": [],
+ "socket.socket.bind": [],
+ "fabric.transfer.Transfer.put": [
+  "<builtin>.ValueError",
+  "<builtin>.callable",
+  "<builtin>.getattr",
+  "<builtin>.hasattr",
+  "<builtin>.str.format",
+  "fabric.transfer.Result.__init__",
+  "fabric.transfer.Transfer.is_remote_dir",
+  "fabric.transfer.Transfer.sftp",
+  "os.path.abspath",
+  "os.path.basename",
+  "os.stat",
+  "posixpath.join",
+  "stat.S_IMODE"
+ ],
+ "win32api.GetUserName": [],
+ "paramiko.SFTPClient.put": [],
+ "invoke.config.Config.global_defaults": [],
+ "stat.S_ISDIR": [],
+ "paramiko.Transport.open_channel": [],
+ "os.chmod": [],
+ "invoke.config.Config.base_ssh_config.parse": [],
+ "paramiko.SFTPClient.putfo": [],
+ "<builtin>.list.extend": [],
+ "invoke.Runner.channel.close": [],
+ "invoke.util.ExceptionHandlingThread.finished.set": [],
+ "fabric.runners.Remote.start": [
+  "invoke.Runner.channel.exec_command",
+  "invoke.Runner.channel.get_pty",
+  "invoke.Runner.channel.update_environment",
+  "invoke.pty_size"
+ ],
+ "<builtin>.classmethod": [],
+ "<builtin>.dict.pop": [],
+ "threading.Event.set": []
+}

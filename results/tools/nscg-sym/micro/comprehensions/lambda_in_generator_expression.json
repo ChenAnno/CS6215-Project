@@ -1,0 +1,15 @@
+{
+ "main": [
+  "<builtin>.next",
+  "<builtin>.range",
+  "main.<lambda1>"
+ ],
+ "main.<lambda1>": [
+  "main.func1"
+ ],
+ "main.<lambda2>": [
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.Child.create"
+ ],
+ "main.Base.create": [
+  "main.Child.__init__"
+ ],
+ "main.Child.__init__": [],
+ "main.Child.create": [
+  "main.Base.create"
+ ]
+}

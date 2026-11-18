@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.pick"
+ ],
+ "main.pick": [
+  "<builtin>.super",
+  "main.Base.run"
+ ],
+ "main.Base.run": [],
+ "main.Middle.run": [],
+ "<builtin>.super": [],
+ "main.Other.run": []
+}

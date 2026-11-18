@@ -1,0 +1,11 @@
+{
+    "main": [
+        "collections.namedtuple",
+        "main.Point.qf9d7_0"
+    ],
+    "main.Point.qf9d7_0": [
+        "<builtin>.abs"
+    ],
+    "collections.namedtuple": [],
+    "<builtin>.abs": []
+}

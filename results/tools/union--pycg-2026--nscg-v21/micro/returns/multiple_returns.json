@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.func1",
+  "main.func2",
+  "main.pick"
+ ],
+ "main.pick": [],
+ "main.func1": [],
+ "main.func2": []
+}

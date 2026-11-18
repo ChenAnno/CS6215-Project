@@ -1,0 +1,11 @@
+{
+ "chained_import": [],
+ "chained_import.qc4a5_0": [],
+ "from_import": [],
+ "from_import.qc4a5_1": [
+  "chained_import.qc4a5_0"
+ ],
+ "main": [
+  "from_import.qc4a5_1"
+ ]
+}

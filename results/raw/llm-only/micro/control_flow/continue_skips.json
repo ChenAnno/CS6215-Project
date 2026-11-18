@@ -1,0 +1,1 @@
+{"units": [{"unit": "control_flow/continue_skips", "answers": {"main": ["main.func1", "main.func3"], "main.func1": [], "main.func2": [], "main.func3": []}, "sites": [{"id": "s1", "caller": "main", "line": 13, "col": 5, "kind": "call", "text": "f()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,7 @@
+{
+ "main": [
+  "to_import.MyClass.func"
+ ],
+ "to_import": [],
+ "to_import.MyClass.func": []
+}

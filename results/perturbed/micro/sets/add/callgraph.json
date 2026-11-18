@@ -1,0 +1,10 @@
+{
+    "main": [
+        "<builtin>.set",
+        "<builtin>.set.add",
+        "main.q6179_0"
+    ],
+    "main.q6179_0": [],
+    "<builtin>.set": [],
+    "<builtin>.set.add": []
+}

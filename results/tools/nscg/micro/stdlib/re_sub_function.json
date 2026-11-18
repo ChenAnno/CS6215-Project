@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.shout",
+  "re.sub"
+ ],
+ "main.shout": [
+  "<builtin>.str.upper",
+  "re.Match.group"
+ ]
+}

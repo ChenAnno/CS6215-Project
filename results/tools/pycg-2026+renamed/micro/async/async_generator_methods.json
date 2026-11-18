@@ -1,0 +1,22 @@
+{
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.q9973_2"
+ ],
+ "main.q9973_0": [],
+ "main.q9973_1": [],
+ "main.q9973_2": [
+  "main.q9973_1",
+  "main.q9973_3",
+  "types.AsyncGeneratorType.__aiter__",
+  "types.AsyncGeneratorType.__anext__",
+  "types.AsyncGeneratorType.aclose"
+ ],
+ "main.q9973_3": [
+  "main.q9973_0"
+ ],
+ "types.AsyncGeneratorType.__aiter__": [],
+ "types.AsyncGeneratorType.__anext__": [],
+ "types.AsyncGeneratorType.aclose": []
+}

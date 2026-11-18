@@ -1,0 +1,1 @@
+{"units": [{"unit": "match/as_pattern", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 9, "kind": "call", "text": "pair[0]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

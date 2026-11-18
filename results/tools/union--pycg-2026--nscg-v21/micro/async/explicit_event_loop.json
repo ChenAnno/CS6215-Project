@@ -1,0 +1,10 @@
+{
+ "main": [
+  "asyncio.AbstractEventLoop.close",
+  "asyncio.AbstractEventLoop.run_until_complete",
+  "asyncio.new_event_loop",
+  "main.start"
+ ],
+ "main.start": [],
+ "asyncio.new_event_loop": []
+}

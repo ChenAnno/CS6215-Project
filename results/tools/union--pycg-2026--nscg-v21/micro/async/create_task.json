@@ -1,0 +1,16 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "asyncio.create_task": [],
+ "main.helper": [],
+ "main.work": [
+  "main.helper"
+ ],
+ "asyncio.run": [],
+ "main.start": [
+  "asyncio.create_task",
+  "main.work"
+ ]
+}

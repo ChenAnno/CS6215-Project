@@ -1,0 +1,15 @@
+{
+ "main.Config.__iter__": [
+  "<builtin>.iter"
+ ],
+ "main": [
+  "collections.abc.Mapping.__init__",
+  "main.Config.__getitem__",
+  "main.Config.__len__",
+  "main.func1"
+ ],
+ "main.Config.__getitem__": [],
+ "main.Config.__len__": [],
+ "main.func1": [],
+ "<builtin>.iter": []
+}

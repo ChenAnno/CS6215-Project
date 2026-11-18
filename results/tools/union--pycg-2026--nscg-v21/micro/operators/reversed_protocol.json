@@ -1,0 +1,18 @@
+{
+ "main": [
+  "<builtin>.list",
+  "<builtin>.reversed",
+  "main.Deck.__reversed__",
+  "main.Row.__getitem__",
+  "main.Row.__len__"
+ ],
+ "main.Row.__len__": [],
+ "main.Row.__getitem__": [],
+ "<builtin>.reversed": [],
+ "<builtin>.iter": [],
+ "main.Deck.__len__": [],
+ "<builtin>.list": [],
+ "main.Deck.__reversed__": [
+  "<builtin>.iter"
+ ]
+}

@@ -1,0 +1,11 @@
+{
+ "main": [
+  "functools.singledispatch",
+  "functools.singledispatch.register",
+  "main.describe",
+  "main.describe_int"
+ ],
+ "main.describe": [],
+ "main.describe_int": [],
+ "main.describe_str": []
+}

@@ -1,0 +1,291 @@
+\section{Evaluation}
+\label{sec:eval}
+
+\input{sections/setup}
+
+\begin{table*}[t]
+  \caption{Accuracy of every tool (official scorer, raw names). Inside: edges
+  whose callee is in the analysed package (the headline); outside: edges to
+  builtins, the standard library and other packages; exact: micro cases whose
+  graph equals the ground truth. Bold: best single tool in a column. All \nscg
+  variants use Haiku~5.5; Sonnet rows are discussed in RQ2. PyCG-2021 timed out
+  on funcy (all its edges count as missed).}
+  \label{tab:main}
+  \small
+  \setlength{\tabcolsep}{3.6pt}
+  \input{tables/main}
+\end{table*}
+
+\subsection{RQ1: accuracy against the symbolic baselines}
+\label{sec:rq1}
+
+Table~\ref{tab:main} and Figure~\ref{fig:pr} give the aggregate results, and
+Table~\ref{tab:projects} the results per package.
+
+\textbf{Four packages.} The final design V2.1 reaches inside
+P\,\R{macro-ins-p-nscg-v21} / R\,\R{macro-ins-r-nscg-v21} /
+$F_1$\,\R{macro-ins-f1-nscg-v21}, against \R{macro-ins-p-pycg-2026} /
+\R{macro-ins-r-pycg-2026} / \R{macro-ins-f1-pycg-2026} for PyCG-2026: slightly
+higher precision and recall in aggregate, but not uniformly, and the
+aggregate gap ($+$0.019 $F_1$) is only about twice the run-to-run standard deviation of
+\nscg (RQ4), so we read it as parity. \nscg is better on autojump
+(PyCG-2026 reports four lambdas that the functions only hand to lazy
+\texttt{map}/\texttt{filter} objects returned to the caller, which the
+callback rule attributes to the caller; \nscg gets all 35 edges right) and on
+funcy, slightly better on jmespath, and on fabric it trades precision
+(\R{fabric-in-p-nscg-v21} vs.\ \R{fabric-in-p-pycg-2026}) for recall
+(\R{fabric-in-r-nscg-v21} vs.\ \R{fabric-in-r-pycg-2026}). PyCG-2021 is far
+behind (inside $F_1$ \R{macro-ins-f1-pycg-2021}): it misses most edges through
+library values and timed out on funcy (even without funcy its recall on the other
+three packages is clearly lower, Table~\ref{tab:projects}). On outside edges \nscg also leads
+($F_1$ \R{macro-out-f1-nscg-v21} vs.\ \R{macro-out-f1-pycg-2026}).
+
+\textbf{Micro-benchmark.} The picture is different. Every LLM-based variant has
+a much higher inside recall than PyCG-2026 (V2.1 \R{micro-ins-r-nscg-v21}, V0
+\R{micro-ins-r-llm-only} vs.\ \R{micro-ins-r-pycg-2026}) but a lower precision
+(\R{micro-ins-p-nscg-v21} vs.\ \R{micro-ins-p-pycg-2026}), so the inside $F_1$
+values are close, while PyCG-2026 is clearly better on outside names
+(P\,\R{micro-out-p-pycg-2026} vs.\ \R{micro-out-p-nscg-v21}) and produces the
+exact graph for \R{micro-exact-pycg-2026} of 622 cases against
+\R{micro-exact-nscg-v21} for V2.1. The LLM variants are \emph{less exact but
+more complete}: they rarely miss a call, but they add plausible edges that the
+precise semantics excludes and spell outside callees differently.
+Figure~\ref{fig:categories} shows where the tools differ most. The LLM-based
+variants win on \emph{dynamic} features (\texttt{eval} of a constructed string,
+\texttt{getattr}/\texttt{operator.methodcaller}, \texttt{sys.modules}, monkey
+patching), on the standard library, on context managers and on missing external
+modules --- cases where reading the code as a developer does beats an
+abstraction; PyCG-2026 wins on exactly specified semantics: tuples, strings,
+\texttt{match}, argument binding, async code and class hierarchies.
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/pr.pdf}
+  \caption{Precision and recall of inside edges; grey lines are $F_1$
+  iso-curves. Left: micro-benchmark (PyCG-2021 is off-scale at
+  R\,\R{micro-ins-r-pycg-2021}); right: the four packages.}
+  \label{fig:pr}
+\end{figure}
+
+\begin{table*}[t]
+  \caption{Inside edges per package (P / R / $F_1$). PyCG-2021 timed out on funcy.}
+  \label{tab:projects}
+  \small
+  \setlength{\tabcolsep}{3.4pt}
+  \input{tables/projects}
+\end{table*}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.95\columnwidth]{figures/categories.pdf}
+  \caption{All-edge $F_1$ per micro category (number of cases in parentheses)
+  for the 14 categories where PyCG-2026, V0 and V2.1 differ most.}
+  \label{fig:categories}
+\end{figure}
+
+\subsection{RQ2: what each component contributes}
+\label{sec:rq2}
+
+\textbf{The symbolic front-end alone} (S1 only) is precise but incomplete:
+inside P\,\R{macro-ins-p-nscg-sym} but R\,\R{macro-ins-r-nscg-sym} on the
+packages, recall \R{micro-ins-r-nscg-sym} on micro. Its resolver is deliberately
+cheap; it is not meant to be an analysis of its own, yet it already matches
+PyCG-2021's micro accuracy (all-edge $F_1$ \R{micro-all-f1-nscg-sym} vs.\
+\R{micro-all-f1-pycg-2021}).
+
+\textbf{The LLM alone} (V0) is a strong baseline --- one of the main surprises
+of the study. On the packages it has higher precision than V2.1
+(\R{macro-ins-p-llm-only}) but lower recall (\R{macro-ins-r-llm-only}); on
+micro it has the best inside recall of all single tools. Its weaknesses are
+systematic rather than random: it omits calls that are easy to overlook in a
+whole-program answer (V0 loses most of its micro \emph{mro} points by omitting the
+\texttt{<builtin>.super} edge that every \texttt{super()} call creates, which
+\nscg's site enumeration never misses), it names outside callees less
+consistently, and it cannot be checked.
+
+\textbf{Per-site hints} (V1$\rightarrow$V2) are a double-edged sword. With the
+same sites but no symbolic information, V1 is the most \emph{precise}
+LLM variant on the packages (P\,\R{macro-ins-p-nscg-nohints}, R\,\R{macro-ins-r-nscg-nohints});
+adding resolutions, name candidates, callbacks and facts raises recall to
+\R{macro-ins-r-nscg} but lowers precision to \R{macro-ins-p-nscg}, so $F_1$ is
+unchanged (\R{macro-ins-f1-nscg-nohints} vs.\ \R{macro-ins-f1-nscg}). The model
+tends to \emph{accept} plausible candidates: 57 of V2's inside false
+positives were proposed by the front-end (Table~\ref{tab:errors}), most of them
+name matches in funcy (e.g.\ every \texttt{\_\_getitem\_\_} of the package at a
+subscript of an unknown mapping).
+
+\textbf{The validator} turned out to be nearly neutral (a negative result).
+Given the outline and the candidates, the model rarely invents package names:
+on the packages it added only \R{err-fp-llm-added-nscg-v21} wrong package
+callees that no component proposed, and the validator rejected a single unknown
+package name in V2.1 (Table~\ref{tab:validation}). Without any validation (raw
+names), V2.1 scores inside $F_1$ \R{macro-ins-f1-nscg-v21-novalidate} and
+outside $F_1$ \R{macro-out-f1-nscg-v21-novalidate}, i.e.\ the same as with it.
+V2's alias expansion was in fact \emph{harmful} (outside $F_1$
+\R{macro-out-f1-nscg}); the three fixes of V2.1 only removed that harm. The
+symbolic floor is slightly harmful on micro (exact cases
+\R{micro-exact-nscg-v21} with it, \R{micro-exact-nscg-v21-nofloor} without;
+Section~\ref{sec:discussion}).
+
+\textbf{Library hooks and the model.} With Haiku, the library hooks of V2.1
+recovered only two Fabric edges: at \texttt{self.\_run(runner, command)} in
+\texttt{Connection.run}, the prompt listed the methods of Fabric's
+\texttt{Remote} runner that Invoke's \texttt{Runner.run} calls back, but Haiku
+kept only \texttt{invoke.Context.\_run}. With Sonnet~5.5 and the same prompt,
+the model used its knowledge of Invoke and recovered 18 of these callbacks
+(\texttt{Connection.run}/\texttt{sudo} $\rightarrow$ \texttt{Remote.start},
+\texttt{read\_proc\_stdout}, \texttt{send\_interrupt}, \dots), raising Fabric's
+recall from \R{fabric-in-r-nscg-v21} to \R{fabric-in-r-nscg-v21@sonnet}. Overall,
+Sonnet improves V2.1 moderately (inside $F_1$ \R{macro-ins-f1-nscg-v21@sonnet}
+on the packages, \R{micro-ins-f1-nscg-v21@sonnet} on micro) at about ten times
+the cost. As an LLM-only analyzer, however, Sonnet is \emph{worse} than Haiku
+(\R{macro-ins-f1-llm-only@sonnet} vs.\ \R{macro-ins-f1-llm-only}), mainly through
+lower recall (jmespath \R{jmespath-in-r-llm-only@sonnet}): the structure that
+\nscg imposes matters more than the model.
+
+\input{tables/validation_float}
+
+\subsection{RQ3: successes and failures}
+\label{sec:rq3}
+
+Table~\ref{tab:errors} labels every false negative and false positive on the
+four packages. The labels use what the front-end proposed at the sites of the
+caller.
+
+\begin{table*}[t]
+  \caption{Error taxonomy on the four packages. FN inside: \emph{no hint} -- no
+  site of the caller proposed the callee; \emph{dropped} -- proposed but
+  dropped by the LLM. FN outside: \emph{misnamed} -- the tool has an outside
+  callee of the same caller with the same last name component. FP inside:
+  \emph{from hint} -- proposed by the front-end and kept; \emph{added} -- added
+  by the LLM. FP outside: \emph{misnamed} -- the ground truth has a callee with
+  the same last component.}
+  \label{tab:errors}
+  \small
+  \input{tables/errors}
+\end{table*}
+
+\textbf{The LLM filters; it rarely discovers.} \R{err-fn-no-evidence-nscg-v21}
+of V2.1's \R{macro-ins-fn-nscg-v21} missed inside edges had no hint at any site
+of the caller, and only \R{err-fp-llm-added-nscg-v21} inside false positives
+were added by the model without a hint. The hints decide what \nscg can find;
+the three repetitions of RQ4 have \emph{identical} inside recall. Where the hint
+is there, the model is good at keeping the right callees: only
+\R{err-fn-rejected-nscg-v21} proposed true edges were dropped.
+
+\textbf{A hard core that no tool finds.} Of V2.1's
+\R{macro-ins-fn-nscg-v21} missed inside edges, 243 are also missed by
+PyCG-2026 (which misses only 32 inside edges that V2.1 finds). They come from
+two mechanisms. (1) \emph{Library callbacks}: Fabric's \texttt{Connection.run}
+hands a \texttt{Remote} runner to Invoke, whose \texttt{Runner.run} calls back
+\texttt{start}, \texttt{read\_proc\_stdout}, \texttt{send\_start\_message} and
+others; the ground truth reads Invoke's code to find them, PyCG-2026 does not
+model outside code that calls back, and \nscg's model did not supply the
+knowledge. (2) \emph{Documented roles}: funcy's ground truth gives a parameter
+such as \texttt{pred} of \texttt{\_lfilter} every package function that the
+documentation or the tests pass in that role (\texttt{isnone}, \texttt{even},
+the lambdas made by \texttt{re\_tester}, \dots); no tool reads the
+documentation, so most of funcy's \R{funcy-in-fn-nscg-v21} missed edges are
+of this kind.
+
+\textbf{Where reading beats abstracting.} In jmespath, the metaclass
+\texttt{FunctionRegistry} registers only the methods whose name starts with
+\texttt{\_func\_}, and \texttt{call\_function} calls the registered function.
+PyCG-2026 cannot evaluate the string filter and reports every method of the
+class (7 false positives such as \texttt{\_type\_check}); \nscg calls only the
+\texttt{\_func\_} methods. In the micro-benchmark, \nscg resolves
+\texttt{eval(measure + "()")} with \texttt{measure = "area"} to
+\texttt{main.area}, and similar string-built dispatches, which PyCG treats as
+unknowable by design.
+
+\textbf{Where abstracting beats reading.} PyCG-2026's 466 exact micro graphs
+come from strictly applied conventions: it never adds an edge that the
+semantics excludes, names every outside callee through typeshed, and handles
+argument binding and \texttt{match} precisely. \nscg's micro false positives
+are mostly over-approximations accepted from the flow-insensitive hints (a dict
+entry overwritten before the call; a lazily built \texttt{map} that is never
+consumed) and \emph{misnamed outside callees} (\texttt{<builtin>.iter.\_\_next\_\_}
+for \texttt{builtins.list\_iterator.\_\_next\_\_},
+\texttt{paramiko.transport.Transport.open\_session} for the benchmark's access
+path \texttt{paramiko.client.SSHClient.get\_transport.open\_session}). Of
+V2.1's 224 outside errors on the packages, 96 (43\%) are such near misses with
+the right last name component (Table~\ref{tab:errors}).
+
+\textbf{Unexpected behaviours.} (i) Evidence can \emph{hurt}: in the hybrid
+V3, the model dropped four lambda callbacks of \texttt{autojump} (three in
+\texttt{autojump\_data.load}) that both PyCG-2026 and V2 had found and that
+PyCG's evidence listed. (ii) The validator itself had bugs that only
+the error analysis exposed (the three alias expansions of V2.1). (iii) V0 is
+more precise than V2 on the packages, the opposite of what we designed for.
+
+\subsection{RQ4: memorisation and stability}
+\label{sec:rq4}
+
+\textbf{Renaming probe.} Both benchmarks are public on GitHub, so the LLM may
+have seen the programs, and even the micro-benchmark's ground-truth files. To
+test whether its accuracy depends on familiar names, we consistently renamed
+every package-defined function and class of the micro cases (to names like
+\texttt{q3f1\_0}) where this is syntactically safe, rewrote the ground truth,
+and kept the 580 cases whose renamed ground truth the benchmark's own dynamic
+validator still accepts. Table~\ref{tab:probe} compares the same 580 cases
+before and after renaming.
+
+\begin{table}[t]
+  \caption{Renaming probe on 580 micro cases (inside edges; all-edge $F_1$;
+  exact cases). Symbolic tools are name-invariant by construction.}
+  \label{tab:probe}
+  \small
+  \setlength{\tabcolsep}{2.4pt}
+  \input{tables/probe}
+\end{table}
+
+\input{sections/probe_text}
+
+\textbf{Stability.} Three independent runs of V2.1 on the packages
+(Table~\ref{tab:repeats}) have a standard deviation of \R{repeat-sd-f1} in
+inside $F_1$; \R{repeat-agree} edges reported by any run are reported by all
+three (\R{repeat-agree-pct}\%). All variation is in precision
+(\R{repeat-min-p}--\R{repeat-max-p}, mostly funcy's name-matched
+\texttt{\_\_getitem\_\_} candidates); recall is the same in every run. The differences between the variants in RQ2 that
+are smaller than about two standard deviations should therefore not be read
+as real effects.
+
+\begin{table}[t]
+  \caption{Three runs of V2.1 (Haiku) on the four packages.}
+  \label{tab:repeats}
+  \small
+  \input{tables/repeats}
+\end{table}
+
+\subsection{RQ5: hybrids}
+\label{sec:rq5}
+
+The two kinds of analyzers make different false positives (of V2.1's 67 and
+PyCG-2026's 81 inside false positives on the packages only 16 are shared) but
+largely the same false negatives, so combinations raise precision more easily
+than recall. The edge \emph{union} has the highest inside recall on the packages
+(\R{macro-ins-r-union--pycg-2026--nscg-v21}) and nearly the highest on micro
+(\R{micro-ins-r-union--pycg-2026--nscg-v21}) at a loss of precision; the \emph{intersection} is the most precise configuration
+(\R{macro-ins-p-inter--pycg-2026--nscg-v21} / \R{micro-ins-p-inter--pycg-2026--nscg-v21})
+and has the best micro inside precision of all. Giving PyCG's callees to the LLM
+(V3) yields the best outside $F_1$ (\R{macro-out-f1-nscg-hybrid-v21}) and a
+small inside gain (\R{macro-ins-f1-nscg-hybrid-v21}): the model uses PyCG's
+typeshed-based outside names, but it does not simply copy PyCG, and the inside
+edges that both miss stay missed. A client that needs recall (e.g.\ a
+vulnerability reachability check) should use the union; one that needs
+precision (e.g.\ refactoring) the intersection.
+
+\subsection{Cost}
+
+Table~\ref{tab:cost} lists every run. A full V2.1 run of the four packages costs
+about US\$0.2--0.4 with Haiku and runs in about a minute with 16 parallel
+requests; the micro-benchmark costs about US\$0.7. Sonnet costs about ten times
+more. PyCG-2026 analyses each package in under a second, at no cost.
+
+\begin{table}[t]
+  \caption{LLM usage per run (new requests only; replayed answers are free).}
+  \label{tab:cost}
+  \small
+  \setlength{\tabcolsep}{3pt}
+  \input{tables/cost}
+\end{table}

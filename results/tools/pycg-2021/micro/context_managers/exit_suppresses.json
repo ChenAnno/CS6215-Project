@@ -1,0 +1,16 @@
+{
+ "<builtin>.ValueError": [],
+ "main": [
+  "main.fail",
+  "main.never"
+ ],
+ "main.Suppress.__enter__": [],
+ "main.Suppress.__exit__": [
+  "main.log_error"
+ ],
+ "main.fail": [
+  "<builtin>.ValueError"
+ ],
+ "main.log_error": [],
+ "main.never": []
+}

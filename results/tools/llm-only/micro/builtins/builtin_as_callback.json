@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.list",
+  "<builtin>.map",
+  "<builtin>.sorted"
+ ]
+}

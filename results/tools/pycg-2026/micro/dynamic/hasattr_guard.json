@@ -1,0 +1,12 @@
+{
+ "<builtin>.hasattr": [],
+ "main": [
+  "main.speak"
+ ],
+ "main.Duck.quack": [],
+ "main.Robot.beep": [],
+ "main.speak": [
+  "<builtin>.hasattr",
+  "main.Duck.quack"
+ ]
+}

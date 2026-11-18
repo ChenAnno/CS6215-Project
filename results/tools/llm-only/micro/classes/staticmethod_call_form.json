@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.Formatter.clean",
+  "main.Formatter.run"
+ ],
+ "main.Formatter.clean": [
+  "<builtin>.str.strip"
+ ],
+ "main.Formatter.run": [
+  "main.Formatter.clean"
+ ]
+}

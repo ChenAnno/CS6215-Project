@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.Meta.create",
+  "main.Model.__init__",
+  "main.Model.describe"
+ ],
+ "main.Model.describe": [],
+ "main.Meta.describe": [],
+ "main.Meta.create": [
+  "<builtin>.type.__call__",
+  "main.Model.__init__"
+ ],
+ "main.Model.__init__": []
+}

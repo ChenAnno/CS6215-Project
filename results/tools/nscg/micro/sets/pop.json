@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.set.pop",
+  "main.func1"
+ ],
+ "main.func1": []
+}

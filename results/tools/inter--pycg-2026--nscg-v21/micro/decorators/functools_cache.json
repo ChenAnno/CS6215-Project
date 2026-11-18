@@ -1,0 +1,9 @@
+{
+ "main": [
+  "functools.cache",
+  "main.square"
+ ],
+ "main.square": [],
+ "functools._lru_cache_wrapper.__call__": [],
+ "functools.cache": []
+}

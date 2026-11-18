@@ -1,0 +1,8 @@
+{
+ "ext.connect": [],
+ "ext.connect.close": [],
+ "main": [
+  "ext.connect",
+  "ext.connect.close"
+ ]
+}

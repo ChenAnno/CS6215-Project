@@ -1,0 +1,13 @@
+{
+    "main": [
+        "<builtin>.staticmethod",
+        "enum.auto",
+        "main.q5496_0.q5496_1"
+    ],
+    "main.q5496_0.q5496_1": [
+        "<builtin>.str.lower"
+    ],
+    "<builtin>.staticmethod": [],
+    "enum.auto": [],
+    "<builtin>.str.lower": []
+}

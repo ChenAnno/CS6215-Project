@@ -1,0 +1,9 @@
+{
+ "main": [
+  "<builtin>.sorted",
+  "functools.cmp_to_key"
+ ],
+ "<builtin>.sorted": [],
+ "main.compare": [],
+ "functools.cmp_to_key": []
+}

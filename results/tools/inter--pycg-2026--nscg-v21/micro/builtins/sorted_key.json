@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.sorted",
+  "main.by_length"
+ ],
+ "<builtin>.sorted": [],
+ "<builtin>.len": [],
+ "main.by_length": [
+  "<builtin>.len"
+ ]
+}

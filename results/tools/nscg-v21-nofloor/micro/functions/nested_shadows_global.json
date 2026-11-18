@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.helper",
+  "main.outer"
+ ],
+ "main.helper": [],
+ "main.outer": [
+  "main.outer.helper"
+ ],
+ "main.outer.helper": []
+}

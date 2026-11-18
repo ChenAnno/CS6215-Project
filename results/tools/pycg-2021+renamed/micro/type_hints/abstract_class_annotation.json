@@ -1,0 +1,19 @@
+{
+ "<builtin>.len": [],
+ "collections.abc.Sequence.__init__": [],
+ "main": [
+  "collections.abc.Sequence.__init__",
+  "main.q7e9f_2",
+  "pickle.dumps",
+  "pickle.loads"
+ ],
+ "main.q7e9f_0.__getitem__": [],
+ "main.q7e9f_0.__len__": [],
+ "main.q7e9f_1.__getitem__": [],
+ "main.q7e9f_1.__len__": [],
+ "main.q7e9f_2": [
+  "<builtin>.len"
+ ],
+ "pickle.dumps": [],
+ "pickle.loads": []
+}

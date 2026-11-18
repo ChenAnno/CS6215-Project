@@ -1,0 +1,10 @@
+{
+ "functools._lru_cache_wrapper.__call__": [],
+ "functools.cache": [],
+ "main": [
+  "functools._lru_cache_wrapper.__call__",
+  "functools.cache",
+  "main.q71e1_0"
+ ],
+ "main.q71e1_0": []
+}

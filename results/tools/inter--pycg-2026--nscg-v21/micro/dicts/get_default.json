@@ -1,0 +1,9 @@
+{
+ "main": [
+  "<builtin>.dict.get",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "<builtin>.dict.get": [],
+ "main.func2": []
+}

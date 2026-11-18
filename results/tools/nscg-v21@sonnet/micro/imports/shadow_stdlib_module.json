@@ -1,0 +1,13 @@
+{
+ "colorsys": [],
+ "colorsys.average": [
+  "<builtin>.len",
+  "<builtin>.sum"
+ ],
+ "colorsys.to_gray": [
+  "colorsys.average"
+ ],
+ "main": [
+  "colorsys.to_gray"
+ ]
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/from_import_as", "answers": {"s1": ["formatting.render"]}, "sites": [{"id": "s1", "caller": "main", "line": 6, "col": 1, "kind": "call", "text": "show()", "resolved": ["formatting.render"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

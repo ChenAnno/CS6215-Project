@@ -1,0 +1,10 @@
+{
+ "<builtin>.dict.items": [],
+ "main": [
+  "<builtin>.dict.items",
+  "main.func1",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "main.func2": []
+}

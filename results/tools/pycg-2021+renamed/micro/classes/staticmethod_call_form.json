@@ -1,0 +1,14 @@
+{
+ "<builtin>.staticmethod": [],
+ "main": [
+  "main.q89a7_0.q89a7_1",
+  "main.q89a7_0.q89a7_2"
+ ],
+ "main.q89a7_0": [
+  "<builtin>.staticmethod"
+ ],
+ "main.q89a7_0.q89a7_1": [],
+ "main.q89a7_0.q89a7_2": [
+  "main.q89a7_0.q89a7_1"
+ ]
+}

@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.Child.load"
+ ],
+ "main.Base.load": [],
+ "main.Child.load.<lambda1>": [
+  "<builtin>.super",
+  "main.Base.load"
+ ],
+ "<builtin>.super": [],
+ "main.Child.load": [
+  "main.Child.load.<lambda1>"
+ ]
+}

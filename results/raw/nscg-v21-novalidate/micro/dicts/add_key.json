@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/add_key", "answers": {"s1": ["main.func"]}, "sites": [{"id": "s1", "caller": "main", "line": 7, "col": 1, "kind": "call", "text": "d['b']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

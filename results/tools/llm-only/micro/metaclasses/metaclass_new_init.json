@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.Meta.__init__",
+  "main.Meta.__new__"
+ ],
+ "main.Meta.__init__": [
+  "<builtin>.type.__init__"
+ ],
+ "main.Meta.__new__": [
+  "<builtin>.type.__new__"
+ ]
+}

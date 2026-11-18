@@ -1,0 +1,1 @@
+{"units": [{"unit": "comprehensions/in_class_body", "answers": {"s1": ["main.func1", "main.func2"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 16, "kind": "call", "text": "h()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

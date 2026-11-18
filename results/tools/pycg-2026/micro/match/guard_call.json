@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.choose",
+  "main.fallback",
+  "main.func1"
+ ],
+ "main.accepts": [],
+ "main.choose": [
+  "main.accepts"
+ ],
+ "main.fallback": [],
+ "main.func1": []
+}

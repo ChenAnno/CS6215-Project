@@ -1,0 +1,14 @@
+{
+ "<builtin>.sorted": [],
+ "dataclasses.dataclass": [],
+ "dataclasses.dataclass.wrap": [],
+ "main": [
+  "<builtin>.sorted",
+  "dataclasses.dataclass",
+  "dataclasses.dataclass.wrap",
+  "main.Part.__init__"
+ ],
+ "main.Part.__eq__": [],
+ "main.Part.__init__": [],
+ "main.Part.__lt__": []
+}

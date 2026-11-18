@@ -1,0 +1,8 @@
+{
+ "hooks": [],
+ "hooks.notify": [],
+ "main": [
+  "main.custom"
+ ],
+ "main.custom": []
+}

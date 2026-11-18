@@ -1,0 +1,72 @@
+\section{Introduction}
+\label{sec:intro}
+
+A call graph tells which functions a call site may invoke. Almost every
+interprocedural analysis --- data-flow and taint analysis, dead-code detection,
+vulnerability reachability, regression test selection, program comprehension
+--- starts from one, and its errors propagate: a missing edge hides a flow, a
+spurious edge creates false alarms. For dynamic languages such as Python,
+constructing a static call graph is notoriously hard. Functions, classes and
+bound methods are values that travel through variables, attributes, containers,
+parameters and return values; methods are resolved through the C3 MRO at run
+time; many calls are implicit (constructors, iterators, operators, properties,
+decorators); and libraries call package code back. A symbolic analysis must
+abstract all of this, and every abstraction trades precision against recall.
+
+The state of the art is PyCG~\cite{salis2021pycg}, a whole-program,
+flow-insensitive value-flow analysis that was published at ICSE 2021 and
+redesigned in 2026. Large language models (LLMs) offer a different trade-off:
+they read code roughly the way a developer does, use identifiers,
+documentation and knowledge of popular libraries, and need no hand-written
+model of the language --- but they are not sound, they hallucinate, they name
+things inconsistently, and their accuracy on public code may partly be
+memorisation. This raises the question that this project studies:
+
+\begin{quote}
+\emph{How does a neuro-symbolic call-graph analyzer, which lets an LLM decide
+what a symbolic front-end cannot, compare with a state-of-the-art symbolic
+analyzer, and what do their successes and failures reveal about both?}
+\end{quote}
+
+We answer it with a controlled comparison. As symbolic baselines we run both
+versions of PyCG unmodified (Section~\ref{sec:prelim}). As the neuro-symbolic
+solution we design and implement \nscg (Section~\ref{sec:approach}): a symbolic
+front-end names the nodes exactly as the ground truth does, enumerates 13 kinds
+of call sites including implicit ones, pre-resolves callees with a cheap
+resolver and proposes candidates by name, callbacks, argument flows and
+library hooks; one LLM request per chunk of sites decides the callees; and a
+symbolic validator checks the answers against the definitions, maps classes to
+constructors through the MRO, repairs wrong paths and rejects hallucinated
+names. Several variants isolate the contribution of each component, including
+an LLM-only analyzer (V0) and a hybrid that gives PyCG's answer to the LLM (V3).
+We evaluate all tools with the official scorer of the PyCG evaluation on its
+micro-benchmark (622 programs, one per language feature) and on four real
+packages whose ground truths were written by hand and audited four times
+(Section~\ref{sec:setup}).
+
+\textbf{Findings.} (1) On the four packages, \nscg (\R{macro-ins-f1-nscg-v21}
+$F_1$ inside the package) is on par with PyCG-2026
+(\R{macro-ins-f1-pycg-2026}) and far ahead of PyCG-2021
+(\R{macro-ins-f1-pycg-2021}); the tools make different false positives, so
+their intersection is the most precise and their union the most complete
+configuration on the packages.
+(2) On the micro-benchmark, the LLM-based analyzers have the highest recall but
+lower precision and about half as many exactly correct programs as PyCG-2026,
+because they over-approximate value flow and misname outside callees. (3) The
+LLM alone (V0) is a strong baseline, and a renaming probe
+(Section~\ref{sec:rq4}) shows that its micro accuracy does not depend on the
+original identifiers; but V0 cannot be checked, and with a stronger model it
+gets \emph{worse}, while \nscg gets better. (4) The error taxonomy
+shows that the LLM essentially \emph{filters}: nearly all of \nscg's missed
+package edges were never proposed by the front-end, and most of its spurious ones
+were proposed by name and wrongly accepted. (5) All tools miss the same hard
+core of edges: callbacks from library code (Fabric on top of Invoke) and
+functions that the documentation assigns to a parameter's role (funcy).
+
+\textbf{Contributions.} (i) \nscg, an original neuro-symbolic call-graph
+analyzer with a symbolic front-end and validator around a constrained LLM step;
+(ii) a fair comparison with two versions of PyCG on audited real-world ground
+truths, with ablations of every component, repetitions, a second model, and a
+memorisation probe; (iii) an error taxonomy that explains the strengths and
+limits of both approaches; and (iv) a reproducible artifact in which every LLM
+answer is cached, available at \repo.

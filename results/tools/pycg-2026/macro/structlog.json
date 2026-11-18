@@ -1,0 +1,1459 @@
+{
+ "<builtin>.AttributeError": [],
+ "<builtin>.BaseException.__init__": [],
+ "<builtin>.Exception.__init__": [],
+ "<builtin>.ModuleNotFoundError": [],
+ "<builtin>.SystemError": [],
+ "<builtin>.TypeError": [],
+ "<builtin>.ValueError": [],
+ "<builtin>.any": [],
+ "<builtin>.bytes.decode": [],
+ "<builtin>.classmethod": [],
+ "<builtin>.dict": [],
+ "<builtin>.dict.clear": [],
+ "<builtin>.dict.copy": [],
+ "<builtin>.dict.get": [],
+ "<builtin>.dict.items": [],
+ "<builtin>.dict.keys": [],
+ "<builtin>.dict.pop": [],
+ "<builtin>.dict.setdefault": [],
+ "<builtin>.dict.update": [],
+ "<builtin>.getattr": [],
+ "<builtin>.hasattr": [],
+ "<builtin>.id": [],
+ "<builtin>.isinstance": [],
+ "<builtin>.issubclass": [],
+ "<builtin>.len": [],
+ "<builtin>.list.append": [],
+ "<builtin>.list.clear": [],
+ "<builtin>.list.copy": [],
+ "<builtin>.list.extend": [],
+ "<builtin>.max": [],
+ "<builtin>.object": [],
+ "<builtin>.print": [],
+ "<builtin>.property": [],
+ "<builtin>.property.setter": [],
+ "<builtin>.range": [],
+ "<builtin>.repr": [],
+ "<builtin>.set": [],
+ "<builtin>.set.add": [],
+ "<builtin>.setattr": [],
+ "<builtin>.sorted": [],
+ "<builtin>.staticmethod": [],
+ "<builtin>.str": [],
+ "<builtin>.str.capitalize": [],
+ "<builtin>.str.encode": [],
+ "<builtin>.str.format": [],
+ "<builtin>.str.join": [],
+ "<builtin>.str.lower": [],
+ "<builtin>.str.replace": [],
+ "<builtin>.str.rstrip": [],
+ "<builtin>.str.split": [],
+ "<builtin>.str.startswith": [],
+ "<builtin>.str.upper": [],
+ "<builtin>.super": [],
+ "<builtin>.tuple": [],
+ "<builtin>.type": [],
+ "asyncio.get_running_loop": [],
+ "better_exceptions.format_exception": [],
+ "colorama.deinit": [],
+ "colorama.init": [],
+ "contextlib.contextmanager": [],
+ "contextlib.suppress": [],
+ "contextvars.Context.run": [],
+ "contextvars.ContextVar": [],
+ "contextvars.ContextVar.get": [],
+ "contextvars.ContextVar.reset": [],
+ "contextvars.ContextVar.set": [],
+ "contextvars.copy_context": [],
+ "copy.error": [],
+ "dataclasses.asdict": [],
+ "dataclasses.dataclass": [],
+ "dataclasses.dataclass.wrap": [],
+ "dataclasses.field": [],
+ "datetime.datetime.astimezone": [],
+ "datetime.datetime.isoformat": [],
+ "datetime.datetime.now": [],
+ "datetime.datetime.strftime": [],
+ "functools.partial": [],
+ "functools.partial.__call__": [],
+ "greenlet.getcurrent": [],
+ "importlib.metadata.metadata": [],
+ "importlib.metadata.version": [],
+ "io.StringIO": [],
+ "io.StringIO.close": [],
+ "io.StringIO.getvalue": [],
+ "io.StringIO.write": [],
+ "io.TextIOWrapper.flush": [],
+ "io.TextIOWrapper.isatty": [],
+ "io.TextIOWrapper.write": [],
+ "json.dumps": [],
+ "logging.Formatter.__init__": [],
+ "logging.Formatter.format": [],
+ "logging.LogRecord": [],
+ "logging.LogRecord.getMessage": [],
+ "logging.Logger.addHandler": [],
+ "logging.Logger.callHandlers": [],
+ "logging.Logger.findCaller": [],
+ "logging.Logger.getChild": [],
+ "logging.Logger.getEffectiveLevel": [],
+ "logging.Logger.handle": [],
+ "logging.Logger.hasHandlers": [],
+ "logging.Logger.isEnabledFor": [],
+ "logging.Logger.makeRecord": [],
+ "logging.Logger.removeHandler": [],
+ "logging.Logger.setLevel": [],
+ "logging.basicConfig": [],
+ "logging.getLogger": [],
+ "logging.makeLogRecord": [],
+ "logging.setLoggerClass": [],
+ "operator.methodcaller": [],
+ "operator.methodcaller.__call__": [],
+ "os._Environ.get": [],
+ "os.getpid": [],
+ "os.path.abspath": [],
+ "os.path.basename": [],
+ "os.path.dirname": [],
+ "os.path.normpath": [],
+ "os.path.splitext": [],
+ "pickle.PicklingError": [],
+ "rich.console.Console": [],
+ "rich.pretty.traverse": [],
+ "rich.traceback.Traceback.from_exception": [],
+ "structlog": [],
+ "structlog.__getattr__": [
+  "<builtin>.AttributeError",
+  "<builtin>.str.rstrip",
+  "<builtin>.str.split",
+  "importlib.metadata.metadata",
+  "importlib.metadata.version",
+  "warnings.warn"
+ ],
+ "structlog._base": [],
+ "structlog._base.BoundLoggerBase.__eq__": [
+  "structlog._generic.BoundLogger.__getattr__"
+ ],
+ "structlog._base.BoundLoggerBase.__init__": [],
+ "structlog._base.BoundLoggerBase.__ne__": [
+  "structlog._base.BoundLoggerBase.__eq__"
+ ],
+ "structlog._base.BoundLoggerBase.__repr__": [
+  "structlog._generic.BoundLogger.__getattr__"
+ ],
+ "structlog._base.BoundLoggerBase._process_event": [
+  "<builtin>.ValueError",
+  "<builtin>.dict.copy",
+  "<builtin>.dict.update",
+  "<builtin>.isinstance",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog._log_levels.add_log_level",
+  "structlog.contextvars.merge_contextvars",
+  "structlog.dev.ConsoleRenderer.__call__",
+  "structlog.dev.set_exc_info",
+  "structlog.processors.StackInfoRenderer.__call__",
+  "structlog.processors.TimeStamper.__call__",
+  "structlog.stdlib.PositionalArgumentsFormatter.__call__",
+  "structlog.stdlib.add_logger_name",
+  "structlog.testing.LogCapture.__call__"
+ ],
+ "structlog._base.BoundLoggerBase._proxy_to_logger": [
+  "<builtin>.getattr",
+  "structlog._base.BoundLoggerBase._process_event",
+  "structlog._generic.BoundLogger.__getattr__"
+ ],
+ "structlog._base.BoundLoggerBase.bind": [
+  "<builtin>.dict",
+  "functools.partial",
+  "structlog._base.BoundLoggerBase.__init__",
+  "structlog._generic.BoundLogger.__getattr__"
+ ],
+ "structlog._base.BoundLoggerBase.new": [
+  "<builtin>.dict.clear",
+  "structlog._base.BoundLoggerBase.bind",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.BoundLogger.bind"
+ ],
+ "structlog._base.BoundLoggerBase.try_unbind": [
+  "<builtin>.dict.pop",
+  "structlog._base.BoundLoggerBase.bind",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.BoundLogger.bind"
+ ],
+ "structlog._base.BoundLoggerBase.unbind": [
+  "structlog._base.BoundLoggerBase.bind",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.BoundLogger.bind"
+ ],
+ "structlog._base.get_context": [],
+ "structlog._config": [
+  "<builtin>.hasattr",
+  "<builtin>.property",
+  "io.TextIOWrapper.isatty",
+  "os._Environ.get",
+  "structlog._native.make_filtering_bound_logger",
+  "structlog._output.PrintLoggerFactory.__init__",
+  "structlog.dev.ConsoleRenderer.__init__",
+  "structlog.processors.StackInfoRenderer.__init__",
+  "structlog.processors.TimeStamper.__init__",
+  "typing.cast"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.__getattr__": [
+  "<builtin>.getattr",
+  "structlog._config.BoundLoggerLazyProxy.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.__getstate__": [],
+ "structlog._config.BoundLoggerLazyProxy.__init__": [],
+ "structlog._config.BoundLoggerLazyProxy.__repr__": [
+  "structlog._config.BoundLoggerLazyProxy.__getattr__"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.__setstate__": [
+  "<builtin>.dict.items",
+  "<builtin>.setattr"
+ ],
+ "structlog._config.BoundLoggerLazyProxy._context": [
+  "structlog._config.BoundLoggerLazyProxy.__getattr__"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.bind": [
+  "<builtin>.dict",
+  "structlog._base.BoundLoggerBase.__init__",
+  "structlog._config.BoundLoggerLazyProxy.__getattr__",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind",
+  "structlog._output.PrintLoggerFactory.__call__",
+  "structlog.stdlib.LoggerFactory.__call__"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind": [
+  "structlog.stdlib.BoundLogger.bind"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.new": [
+  "<builtin>.dict",
+  "<builtin>.dict.clear",
+  "structlog._config.BoundLoggerLazyProxy.__getattr__",
+  "structlog._config.BoundLoggerLazyProxy.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.try_unbind": [
+  "structlog._base.BoundLoggerBase.try_unbind",
+  "structlog._config.BoundLoggerLazyProxy.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind",
+  "structlog.stdlib.BoundLogger.try_unbind"
+ ],
+ "structlog._config.BoundLoggerLazyProxy.unbind": [
+  "structlog._base.BoundLoggerBase.unbind",
+  "structlog._config.BoundLoggerLazyProxy.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind",
+  "structlog.stdlib.BoundLogger.unbind"
+ ],
+ "structlog._config.configure": [],
+ "structlog._config.configure_once": [
+  "structlog._config.configure",
+  "warnings.warn"
+ ],
+ "structlog._config.get_config": [],
+ "structlog._config.get_logger": [
+  "structlog._config.wrap_logger"
+ ],
+ "structlog._config.is_configured": [],
+ "structlog._config.reset_defaults": [],
+ "structlog._config.wrap_logger": [
+  "structlog._config.BoundLoggerLazyProxy.__init__"
+ ],
+ "structlog._frames": [],
+ "structlog._frames._find_first_app_frame_and_name": [
+  "<builtin>.dict.get",
+  "<builtin>.range",
+  "<builtin>.str.startswith",
+  "<builtin>.tuple",
+  "contextvars.ContextVar.get",
+  "sys._getframe"
+ ],
+ "structlog._frames._format_exception": [
+  "io.StringIO",
+  "io.StringIO.close",
+  "io.StringIO.getvalue",
+  "traceback.print_exception"
+ ],
+ "structlog._frames._format_stack": [
+  "io.StringIO",
+  "io.StringIO.close",
+  "io.StringIO.getvalue",
+  "io.StringIO.write",
+  "traceback.print_stack"
+ ],
+ "structlog._generic": [],
+ "structlog._generic.BoundLogger.__getattr__": [
+  "<builtin>.setattr",
+  "functools.partial"
+ ],
+ "structlog._generic.BoundLogger.__getstate__": [],
+ "structlog._generic.BoundLogger.__setstate__": [
+  "<builtin>.dict.items",
+  "<builtin>.setattr"
+ ],
+ "structlog._greenlets": [],
+ "structlog._greenlets.GreenThreadLocal.__delattr__": [
+  "<builtin>.AttributeError",
+  "greenlet.getcurrent",
+  "structlog._greenlets.GreenThreadLocal.__getattr__"
+ ],
+ "structlog._greenlets.GreenThreadLocal.__getattr__": [
+  "<builtin>.AttributeError",
+  "greenlet.getcurrent",
+  "structlog._greenlets.GreenThreadLocal.__getattr__"
+ ],
+ "structlog._greenlets.GreenThreadLocal.__init__": [
+  "weakref.WeakKeyDictionary"
+ ],
+ "structlog._greenlets.GreenThreadLocal.__setattr__": [
+  "greenlet.getcurrent",
+  "structlog._greenlets.GreenThreadLocal.__getattr__"
+ ],
+ "structlog._log_levels": [
+  "<builtin>.dict.items"
+ ],
+ "structlog._log_levels.add_log_level": [
+  "structlog._log_levels.map_method_name"
+ ],
+ "structlog._log_levels.map_method_name": [],
+ "structlog._native": [
+  "structlog._native._make_filtering_bound_logger"
+ ],
+ "structlog._native._anop": [],
+ "structlog._native._make_filtering_bound_logger": [
+  "<builtin>.dict.get",
+  "<builtin>.dict.items",
+  "<builtin>.str.capitalize",
+  "<builtin>.type",
+  "structlog._native._make_filtering_bound_logger.make_method"
+ ],
+ "structlog._native._make_filtering_bound_logger.<lambda1>": [],
+ "structlog._native._make_filtering_bound_logger.<lambda2>": [],
+ "structlog._native._make_filtering_bound_logger.alog": [
+  "asyncio.get_running_loop",
+  "contextvars.ContextVar.reset",
+  "contextvars.ContextVar.set",
+  "contextvars.copy_context",
+  "structlog._native._maybe_interpolate",
+  "sys._getframe",
+  "threading.current_thread",
+  "threading.get_ident"
+ ],
+ "structlog._native._make_filtering_bound_logger.alog.<lambda1>": [
+  "contextvars.Context.run"
+ ],
+ "structlog._native._make_filtering_bound_logger.alog.<lambda1>.<lambda1>": [],
+ "structlog._native._make_filtering_bound_logger.log": [
+  "structlog._native._maybe_interpolate"
+ ],
+ "structlog._native._make_filtering_bound_logger.make_method": [],
+ "structlog._native._make_filtering_bound_logger.make_method.ameth": [
+  "asyncio.get_running_loop",
+  "contextvars.ContextVar.reset",
+  "contextvars.ContextVar.set",
+  "contextvars.copy_context",
+  "structlog._native._maybe_interpolate",
+  "sys._getframe",
+  "threading.current_thread",
+  "threading.get_ident"
+ ],
+ "structlog._native._make_filtering_bound_logger.make_method.ameth.<lambda1>": [
+  "contextvars.Context.run"
+ ],
+ "structlog._native._make_filtering_bound_logger.make_method.ameth.<lambda1>.<lambda1>": [],
+ "structlog._native._make_filtering_bound_logger.make_method.meth": [
+  "structlog._native._maybe_interpolate"
+ ],
+ "structlog._native._maybe_interpolate": [
+  "<builtin>.isinstance",
+  "<builtin>.len"
+ ],
+ "structlog._native._nop": [],
+ "structlog._native.aexception": [
+  "<builtin>.dict.get",
+  "asyncio.get_running_loop",
+  "contextvars.ContextVar.reset",
+  "contextvars.ContextVar.set",
+  "contextvars.copy_context",
+  "sys._getframe",
+  "sys.exc_info",
+  "threading.current_thread",
+  "threading.get_ident"
+ ],
+ "structlog._native.aexception.<lambda1>": [
+  "contextvars.Context.run"
+ ],
+ "structlog._native.aexception.<lambda1>.<lambda1>": [],
+ "structlog._native.exception": [
+  "<builtin>.dict.setdefault"
+ ],
+ "structlog._native.make_filtering_bound_logger": [
+  "<builtin>.isinstance",
+  "<builtin>.str.lower"
+ ],
+ "structlog._output": [
+  "weakref.WeakKeyDictionary"
+ ],
+ "structlog._output.BytesLogger.__deepcopy__": [
+  "copy.error",
+  "structlog._output.BytesLogger.__init__",
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.BytesLogger.__getstate__": [
+  "pickle.PicklingError"
+ ],
+ "structlog._output.BytesLogger.__init__": [
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.BytesLogger.__repr__": [],
+ "structlog._output.BytesLogger.__setstate__": [
+  "<builtin>.isinstance",
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.BytesLogger.msg": [],
+ "structlog._output.BytesLoggerFactory.__call__": [
+  "structlog._output.BytesLogger.__init__"
+ ],
+ "structlog._output.BytesLoggerFactory.__init__": [],
+ "structlog._output.PrintLogger.__deepcopy__": [
+  "copy.error",
+  "structlog._output.PrintLogger.__init__",
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.PrintLogger.__getstate__": [
+  "pickle.PicklingError"
+ ],
+ "structlog._output.PrintLogger.__init__": [
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.PrintLogger.__repr__": [],
+ "structlog._output.PrintLogger.__setstate__": [
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.PrintLogger.msg": [
+  "<builtin>.print"
+ ],
+ "structlog._output.PrintLoggerFactory.__call__": [
+  "structlog._output.PrintLogger.__init__"
+ ],
+ "structlog._output.PrintLoggerFactory.__init__": [],
+ "structlog._output.WriteLogger.__deepcopy__": [
+  "copy.error",
+  "structlog._output.WriteLogger.__init__",
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.WriteLogger.__getstate__": [
+  "pickle.PicklingError"
+ ],
+ "structlog._output.WriteLogger.__init__": [
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.WriteLogger.__repr__": [],
+ "structlog._output.WriteLogger.__setstate__": [
+  "structlog._output._get_lock_for_file"
+ ],
+ "structlog._output.WriteLogger.msg": [
+  "io.TextIOWrapper.flush",
+  "io.TextIOWrapper.write"
+ ],
+ "structlog._output.WriteLoggerFactory.__call__": [
+  "structlog._output.WriteLogger.__init__"
+ ],
+ "structlog._output.WriteLoggerFactory.__init__": [],
+ "structlog._output._get_lock_for_file": [
+  "threading.Lock",
+  "weakref.WeakKeyDictionary.get"
+ ],
+ "structlog._utils": [],
+ "structlog._utils.get_processname": [
+  "<builtin>.dict.get",
+  "contextlib.suppress"
+ ],
+ "structlog.contextvars": [
+  "<builtin>.len",
+  "contextlib.contextmanager",
+  "contextvars.ContextVar"
+ ],
+ "structlog.contextvars.bind_contextvars": [
+  "<builtin>.dict.items",
+  "contextvars.ContextVar",
+  "contextvars.ContextVar.set"
+ ],
+ "structlog.contextvars.bound_contextvars": [
+  "<builtin>.dict.keys",
+  "structlog.contextvars.bind_contextvars",
+  "structlog.contextvars.get_contextvars",
+  "structlog.contextvars.unbind_contextvars"
+ ],
+ "structlog.contextvars.clear_contextvars": [
+  "<builtin>.str.startswith",
+  "contextvars.ContextVar.set",
+  "contextvars.copy_context"
+ ],
+ "structlog.contextvars.get_contextvars": [
+  "<builtin>.str.startswith",
+  "contextvars.copy_context"
+ ],
+ "structlog.contextvars.get_merged_contextvars": [
+  "<builtin>.dict.update",
+  "structlog._base.get_context",
+  "structlog.contextvars.get_contextvars"
+ ],
+ "structlog.contextvars.merge_contextvars": [
+  "<builtin>.dict.setdefault",
+  "<builtin>.str.startswith",
+  "contextvars.copy_context"
+ ],
+ "structlog.contextvars.reset_contextvars": [
+  "<builtin>.dict.items",
+  "contextvars.ContextVar.reset"
+ ],
+ "structlog.contextvars.unbind_contextvars": [
+  "contextvars.ContextVar.set"
+ ],
+ "structlog.dev": [
+  "<builtin>.classmethod",
+  "<builtin>.object",
+  "<builtin>.property",
+  "<builtin>.property.setter",
+  "<builtin>.staticmethod",
+  "dataclasses.dataclass",
+  "dataclasses.dataclass.wrap",
+  "warnings.warn"
+ ],
+ "structlog.dev.ColumnFormatter.__call__": [],
+ "structlog.dev.ConsoleRenderer.__call__": [
+  "<builtin>.dict.pop",
+  "<builtin>.sorted",
+  "<builtin>.str.join",
+  "<builtin>.str.rstrip",
+  "io.StringIO",
+  "io.StringIO.getvalue",
+  "io.StringIO.write",
+  "structlog.dev.ConsoleRenderer.columns",
+  "structlog.dev.KeyValueColumnFormatter.__call__",
+  "structlog.dev.RichTracebackFormatter.__call__",
+  "structlog.dev.better_traceback",
+  "structlog.dev.plain_traceback",
+  "structlog.dev.rich_traceback",
+  "structlog.processors._figure_out_exc_info"
+ ],
+ "structlog.dev.ConsoleRenderer.__init__": [
+  "<builtin>.ValueError",
+  "structlog.dev.ConsoleRenderer.__init__.add_meaningless_arg",
+  "structlog.dev.ConsoleRenderer._configure_columns",
+  "structlog.dev.ConsoleRenderer.columns",
+  "structlog.dev.ConsoleRenderer.exception_formatter",
+  "structlog.dev.ConsoleRenderer.get_default_column_styles",
+  "structlog.dev.ConsoleRenderer.get_default_level_styles",
+  "warnings.warn"
+ ],
+ "structlog.dev.ConsoleRenderer.__init__.add_meaningless_arg": [
+  "<builtin>.list.append"
+ ],
+ "structlog.dev.ConsoleRenderer._configure_columns": [
+  "<builtin>.dict.copy",
+  "<builtin>.dict.keys",
+  "<builtin>.len",
+  "<builtin>.max",
+  "structlog.dev.LogLevelColumnFormatter.__init__"
+ ],
+ "structlog.dev.ConsoleRenderer._repr": [
+  "<builtin>.isinstance",
+  "<builtin>.repr",
+  "<builtin>.set"
+ ],
+ "structlog.dev.ConsoleRenderer.colors": [
+  "structlog.dev.ConsoleRenderer._configure_columns",
+  "structlog.dev.ConsoleRenderer.exception_formatter",
+  "structlog.dev.ConsoleRenderer.get_default_column_styles",
+  "structlog.dev.ConsoleRenderer.get_default_level_styles"
+ ],
+ "structlog.dev.ConsoleRenderer.columns": [
+  "<builtin>.ValueError",
+  "<builtin>.len"
+ ],
+ "structlog.dev.ConsoleRenderer.event_key": [
+  "structlog.dev.ConsoleRenderer._configure_columns"
+ ],
+ "structlog.dev.ConsoleRenderer.exception_formatter": [],
+ "structlog.dev.ConsoleRenderer.force_colors": [
+  "structlog.dev.ConsoleRenderer._configure_columns",
+  "structlog.dev.ConsoleRenderer.get_default_column_styles",
+  "structlog.dev.ConsoleRenderer.get_default_level_styles"
+ ],
+ "structlog.dev.ConsoleRenderer.get_active": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.isinstance",
+  "structlog._config.get_config"
+ ],
+ "structlog.dev.ConsoleRenderer.get_default_column_styles": [
+  "structlog.dev._init_terminal"
+ ],
+ "structlog.dev.ConsoleRenderer.get_default_level_styles": [],
+ "structlog.dev.ConsoleRenderer.level_styles": [
+  "structlog.dev.ConsoleRenderer._configure_columns",
+  "structlog.dev.ConsoleRenderer.get_default_level_styles"
+ ],
+ "structlog.dev.ConsoleRenderer.pad_event_to": [
+  "structlog.dev.ConsoleRenderer._configure_columns"
+ ],
+ "structlog.dev.ConsoleRenderer.pad_level": [
+  "structlog.dev.ConsoleRenderer._configure_columns"
+ ],
+ "structlog.dev.ConsoleRenderer.repr_native_str": [],
+ "structlog.dev.ConsoleRenderer.sort_keys": [],
+ "structlog.dev.ConsoleRenderer.timestamp_key": [
+  "structlog.dev.ConsoleRenderer._configure_columns"
+ ],
+ "structlog.dev.KeyValueColumnFormatter.__call__": [
+  "io.StringIO",
+  "io.StringIO.getvalue",
+  "io.StringIO.write",
+  "structlog.dev._pad"
+ ],
+ "structlog.dev.LogLevelColumnFormatter.__call__": [
+  "<builtin>.dict.get",
+  "structlog.dev._pad",
+  "typing.cast"
+ ],
+ "structlog.dev.LogLevelColumnFormatter.__init__": [
+  "<builtin>.dict.keys",
+  "<builtin>.len",
+  "<builtin>.max"
+ ],
+ "structlog.dev.RichTracebackFormatter.__call__": [
+  "<builtin>.hasattr",
+  "io.StringIO.write",
+  "rich.console.Console",
+  "rich.traceback.Traceback.from_exception",
+  "warnings.warn"
+ ],
+ "structlog.dev._init_terminal": [
+  "<builtin>.SystemError",
+  "<builtin>.str.format",
+  "colorama.deinit",
+  "colorama.init"
+ ],
+ "structlog.dev._pad": [
+  "<builtin>.len",
+  "<builtin>.max"
+ ],
+ "structlog.dev.better_traceback": [
+  "<builtin>.str.join",
+  "better_exceptions.format_exception",
+  "io.StringIO.write",
+  "warnings.warn"
+ ],
+ "structlog.dev.plain_traceback": [
+  "io.StringIO.write",
+  "structlog._frames._format_exception"
+ ],
+ "structlog.dev.rich_traceback": [
+  "<builtin>.ModuleNotFoundError"
+ ],
+ "structlog.dev.set_exc_info": [
+  "<builtin>.dict.get"
+ ],
+ "structlog.exceptions": [],
+ "structlog.processors": [
+  "<builtin>.set",
+  "structlog.processors.ExceptionRenderer.__init__",
+  "structlog.tracebacks.ExceptionDictTransformer.__init__"
+ ],
+ "structlog.processors.CallsiteParameterAdder.__call__": [
+  "<builtin>.dict.get",
+  "structlog._frames._find_first_app_frame_and_name",
+  "structlog.processors._get_callsite_filename",
+  "structlog.processors._get_callsite_func_name",
+  "structlog.processors._get_callsite_lineno",
+  "structlog.processors._get_callsite_module",
+  "structlog.processors._get_callsite_pathname",
+  "structlog.processors._get_callsite_process",
+  "structlog.processors._get_callsite_process_name",
+  "structlog.processors._get_callsite_qual_module",
+  "structlog.processors._get_callsite_qual_name",
+  "structlog.processors._get_callsite_thread",
+  "structlog.processors._get_callsite_thread_name"
+ ],
+ "structlog.processors.CallsiteParameterAdder.__init__": [
+  "<builtin>.dict.get",
+  "<builtin>.list.append"
+ ],
+ "structlog.processors.EventRenamer.__call__": [
+  "<builtin>.dict.pop"
+ ],
+ "structlog.processors.EventRenamer.__init__": [],
+ "structlog.processors.ExceptionPrettyPrinter.__call__": [
+  "<builtin>.dict.pop",
+  "<builtin>.print",
+  "structlog._frames._format_exception",
+  "structlog.processors._figure_out_exc_info"
+ ],
+ "structlog.processors.ExceptionPrettyPrinter.__init__": [],
+ "structlog.processors.ExceptionRenderer.__call__": [
+  "<builtin>.dict.pop",
+  "structlog._frames._format_exception",
+  "structlog.processors._figure_out_exc_info",
+  "structlog.tracebacks.ExceptionDictTransformer.__call__"
+ ],
+ "structlog.processors.ExceptionRenderer.__init__": [],
+ "structlog.processors.JSONRenderer.__call__": [
+  "json.dumps"
+ ],
+ "structlog.processors.JSONRenderer.__init__": [
+  "<builtin>.dict.setdefault"
+ ],
+ "structlog.processors.KeyValueRenderer.__call__": [
+  "<builtin>.repr",
+  "<builtin>.str.join",
+  "operator.methodcaller.__call__",
+  "structlog.processors.KeyValueRenderer.__init__._repr",
+  "structlog.processors._items_sorter.ordered_items"
+ ],
+ "structlog.processors.KeyValueRenderer.__init__": [
+  "structlog.processors._items_sorter"
+ ],
+ "structlog.processors.KeyValueRenderer.__init__._repr": [
+  "<builtin>.isinstance",
+  "<builtin>.repr"
+ ],
+ "structlog.processors.LogfmtRenderer.__call__": [
+  "<builtin>.ValueError",
+  "<builtin>.any",
+  "<builtin>.isinstance",
+  "<builtin>.list.append",
+  "<builtin>.str",
+  "<builtin>.str.join",
+  "<builtin>.str.replace",
+  "operator.methodcaller.__call__",
+  "structlog.processors._items_sorter.ordered_items"
+ ],
+ "structlog.processors.LogfmtRenderer.__init__": [
+  "structlog.processors._items_sorter"
+ ],
+ "structlog.processors.MaybeTimeStamper.__call__": [
+  "structlog.processors.TimeStamper.__call__"
+ ],
+ "structlog.processors.MaybeTimeStamper.__init__": [
+  "structlog.processors.TimeStamper.__init__"
+ ],
+ "structlog.processors.StackInfoRenderer.__call__": [
+  "<builtin>.dict.pop",
+  "structlog._frames._find_first_app_frame_and_name",
+  "structlog._frames._format_stack"
+ ],
+ "structlog.processors.StackInfoRenderer.__init__": [],
+ "structlog.processors.TimeStamper.__call__": [
+  "structlog.processors._make_stamper.stamper_fmt_local",
+  "structlog.processors._make_stamper.stamper_fmt_utc",
+  "structlog.processors._make_stamper.stamper_iso_local",
+  "structlog.processors._make_stamper.stamper_iso_utc",
+  "structlog.processors._make_stamper.stamper_unix"
+ ],
+ "structlog.processors.TimeStamper.__getstate__": [],
+ "structlog.processors.TimeStamper.__init__": [
+  "structlog.processors._make_stamper"
+ ],
+ "structlog.processors.TimeStamper.__setstate__": [
+  "structlog.processors._make_stamper"
+ ],
+ "structlog.processors.UnicodeDecoder.__call__": [
+  "<builtin>.bytes.decode",
+  "<builtin>.dict.items",
+  "<builtin>.isinstance"
+ ],
+ "structlog.processors.UnicodeDecoder.__init__": [],
+ "structlog.processors.UnicodeEncoder.__call__": [
+  "<builtin>.dict.items",
+  "<builtin>.isinstance",
+  "<builtin>.str.encode"
+ ],
+ "structlog.processors.UnicodeEncoder.__init__": [],
+ "structlog.processors._figure_out_exc_info": [
+  "<builtin>.isinstance",
+  "<builtin>.issubclass",
+  "<builtin>.len",
+  "sys.exc_info",
+  "typing.cast"
+ ],
+ "structlog.processors._get_callsite_filename": [
+  "os.path.basename"
+ ],
+ "structlog.processors._get_callsite_func_name": [],
+ "structlog.processors._get_callsite_lineno": [],
+ "structlog.processors._get_callsite_module": [
+  "os.path.basename",
+  "os.path.splitext"
+ ],
+ "structlog.processors._get_callsite_pathname": [],
+ "structlog.processors._get_callsite_process": [
+  "os.getpid"
+ ],
+ "structlog.processors._get_callsite_process_name": [
+  "structlog._utils.get_processname"
+ ],
+ "structlog.processors._get_callsite_qual_module": [],
+ "structlog.processors._get_callsite_qual_name": [],
+ "structlog.processors._get_callsite_thread": [
+  "contextvars.ContextVar.get",
+  "threading.get_ident"
+ ],
+ "structlog.processors._get_callsite_thread_name": [
+  "contextvars.ContextVar.get",
+  "threading.current_thread"
+ ],
+ "structlog.processors._items_sorter": [
+  "operator.methodcaller"
+ ],
+ "structlog.processors._items_sorter.ordered_items": [
+  "<builtin>.dict.items",
+  "<builtin>.dict.pop",
+  "<builtin>.list.append",
+  "<builtin>.sorted"
+ ],
+ "structlog.processors._json_fallback_handler": [
+  "<builtin>.isinstance",
+  "<builtin>.repr",
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.processors._make_stamper": [
+  "<builtin>.ValueError",
+  "<builtin>.str.upper"
+ ],
+ "structlog.processors._make_stamper.now": [
+  "datetime.datetime.now"
+ ],
+ "structlog.processors._make_stamper.stamper_fmt_local": [
+  "datetime.datetime.astimezone",
+  "datetime.datetime.strftime",
+  "structlog.processors._make_stamper.now"
+ ],
+ "structlog.processors._make_stamper.stamper_fmt_utc": [
+  "datetime.datetime.strftime",
+  "structlog.processors._make_stamper.now"
+ ],
+ "structlog.processors._make_stamper.stamper_iso_local": [
+  "datetime.datetime.isoformat",
+  "structlog.processors._make_stamper.now"
+ ],
+ "structlog.processors._make_stamper.stamper_iso_utc": [
+  "<builtin>.str.replace",
+  "datetime.datetime.isoformat",
+  "structlog.processors._make_stamper.now"
+ ],
+ "structlog.processors._make_stamper.stamper_unix": [
+  "time.time"
+ ],
+ "structlog.stdlib": [
+  "<builtin>.classmethod",
+  "<builtin>.dict.keys",
+  "<builtin>.object",
+  "<builtin>.property",
+  "<builtin>.staticmethod",
+  "logging.LogRecord"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.__init__": [
+  "asyncio.get_running_loop",
+  "structlog._base.BoundLoggerBase.__init__"
+ ],
+ "structlog.stdlib.AsyncBoundLogger._context": [
+  "structlog._generic.BoundLogger.__getattr__"
+ ],
+ "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync": [
+  "asyncio.get_running_loop",
+  "contextvars.ContextVar.reset",
+  "contextvars.ContextVar.set",
+  "contextvars.copy_context",
+  "sys._getframe",
+  "threading.current_thread",
+  "threading.get_ident"
+ ],
+ "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync.<lambda1>": [
+  "contextvars.Context.run"
+ ],
+ "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync.<lambda1>.<lambda1>": [
+  "functools.partial.__call__",
+  "structlog.stdlib.BoundLogger.critical",
+  "structlog.stdlib.BoundLogger.debug",
+  "structlog.stdlib.BoundLogger.error",
+  "structlog.stdlib.BoundLogger.exception",
+  "structlog.stdlib.BoundLogger.info",
+  "structlog.stdlib.BoundLogger.warning"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.bind": [
+  "structlog._base.BoundLoggerBase.bind",
+  "structlog.stdlib.AsyncBoundLogger.__init__",
+  "structlog.stdlib.BoundLogger.bind"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.critical": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.debug": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.error": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.exception": [
+  "<builtin>.dict.get",
+  "<builtin>.dict.pop",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync",
+  "sys.exc_info"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.fatal": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.info": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.log": [
+  "functools.partial",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.new": [
+  "structlog._base.BoundLoggerBase.new",
+  "structlog.stdlib.AsyncBoundLogger.__init__",
+  "structlog.stdlib.BoundLogger.new"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.try_unbind": [
+  "structlog._base.BoundLoggerBase.try_unbind",
+  "structlog.stdlib.AsyncBoundLogger.__init__",
+  "structlog.stdlib.BoundLogger.try_unbind"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.unbind": [
+  "structlog._base.BoundLoggerBase.unbind",
+  "structlog.stdlib.AsyncBoundLogger.__init__",
+  "structlog.stdlib.BoundLogger.unbind"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.warn": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.AsyncBoundLogger.warning": [
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.AsyncBoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger._dispatch_to_sync": [
+  "asyncio.get_running_loop",
+  "contextvars.ContextVar.reset",
+  "contextvars.ContextVar.set",
+  "contextvars.copy_context",
+  "sys._getframe",
+  "threading.current_thread",
+  "threading.get_ident"
+ ],
+ "structlog.stdlib.BoundLogger._dispatch_to_sync.<lambda1>": [
+  "contextvars.Context.run"
+ ],
+ "structlog.stdlib.BoundLogger._dispatch_to_sync.<lambda1>.<lambda1>": [
+  "functools.partial.__call__",
+  "structlog.stdlib.BoundLogger.critical",
+  "structlog.stdlib.BoundLogger.debug",
+  "structlog.stdlib.BoundLogger.error",
+  "structlog.stdlib.BoundLogger.exception",
+  "structlog.stdlib.BoundLogger.info",
+  "structlog.stdlib.BoundLogger.warning"
+ ],
+ "structlog.stdlib.BoundLogger._proxy_to_logger": [
+  "<builtin>.super",
+  "structlog._base.BoundLoggerBase._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.acritical": [
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.addHandler": [
+  "logging.Logger.addHandler"
+ ],
+ "structlog.stdlib.BoundLogger.adebug": [
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.aerror": [
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.aexception": [
+  "<builtin>.dict.get",
+  "structlog.stdlib.BoundLogger._dispatch_to_sync",
+  "sys.exc_info"
+ ],
+ "structlog.stdlib.BoundLogger.afatal": [
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.ainfo": [
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.alog": [
+  "functools.partial",
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.awarning": [
+  "structlog.stdlib.BoundLogger._dispatch_to_sync"
+ ],
+ "structlog.stdlib.BoundLogger.bind": [
+  "<builtin>.super",
+  "structlog._base.BoundLoggerBase.bind"
+ ],
+ "structlog.stdlib.BoundLogger.callHandlers": [
+  "logging.Logger.callHandlers"
+ ],
+ "structlog.stdlib.BoundLogger.critical": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.debug": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.disabled": [],
+ "structlog.stdlib.BoundLogger.error": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.exception": [
+  "<builtin>.dict.setdefault",
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.fatal": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.findCaller": [
+  "logging.Logger.findCaller"
+ ],
+ "structlog.stdlib.BoundLogger.getChild": [
+  "logging.Logger.getChild"
+ ],
+ "structlog.stdlib.BoundLogger.getEffectiveLevel": [
+  "logging.Logger.getEffectiveLevel"
+ ],
+ "structlog.stdlib.BoundLogger.get_effective_level": [
+  "logging.Logger.getEffectiveLevel"
+ ],
+ "structlog.stdlib.BoundLogger.handle": [
+  "logging.Logger.handle"
+ ],
+ "structlog.stdlib.BoundLogger.handlers": [],
+ "structlog.stdlib.BoundLogger.hasHandlers": [
+  "logging.Logger.hasHandlers"
+ ],
+ "structlog.stdlib.BoundLogger.info": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.isEnabledFor": [
+  "logging.Logger.isEnabledFor"
+ ],
+ "structlog.stdlib.BoundLogger.is_enabled_for": [
+  "logging.Logger.isEnabledFor"
+ ],
+ "structlog.stdlib.BoundLogger.level": [],
+ "structlog.stdlib.BoundLogger.log": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.BoundLogger.makeRecord": [
+  "logging.Logger.makeRecord"
+ ],
+ "structlog.stdlib.BoundLogger.name": [],
+ "structlog.stdlib.BoundLogger.new": [
+  "<builtin>.super",
+  "structlog._base.BoundLoggerBase.new"
+ ],
+ "structlog.stdlib.BoundLogger.parent": [],
+ "structlog.stdlib.BoundLogger.propagate": [],
+ "structlog.stdlib.BoundLogger.removeHandler": [
+  "logging.Logger.removeHandler"
+ ],
+ "structlog.stdlib.BoundLogger.setLevel": [
+  "logging.Logger.setLevel"
+ ],
+ "structlog.stdlib.BoundLogger.try_unbind": [
+  "<builtin>.super",
+  "structlog._base.BoundLoggerBase.try_unbind"
+ ],
+ "structlog.stdlib.BoundLogger.unbind": [
+  "<builtin>.super",
+  "structlog._base.BoundLoggerBase.unbind"
+ ],
+ "structlog.stdlib.BoundLogger.warning": [
+  "structlog.stdlib.BoundLogger._proxy_to_logger"
+ ],
+ "structlog.stdlib.ExtraAdder.__call__": [
+  "<builtin>.dict.get",
+  "functools.partial.__call__",
+  "structlog.stdlib.ExtraAdder._copy_all"
+ ],
+ "structlog.stdlib.ExtraAdder.__init__": [
+  "functools.partial"
+ ],
+ "structlog.stdlib.ExtraAdder._copy_all": [
+  "<builtin>.dict.items"
+ ],
+ "structlog.stdlib.ExtraAdder._copy_allowed": [],
+ "structlog.stdlib.LoggerFactory.__call__": [
+  "logging.getLogger",
+  "structlog._frames._find_first_app_frame_and_name"
+ ],
+ "structlog.stdlib.LoggerFactory.__init__": [
+  "logging.setLoggerClass"
+ ],
+ "structlog.stdlib.PositionalArgumentsFormatter.__call__": [
+  "<builtin>.dict.get",
+  "<builtin>.isinstance",
+  "<builtin>.len"
+ ],
+ "structlog.stdlib.PositionalArgumentsFormatter.__init__": [],
+ "structlog.stdlib.ProcessorFormatter.__init__": [
+  "<builtin>.TypeError",
+  "<builtin>.dict.pop",
+  "<builtin>.super",
+  "logging.Formatter.__init__"
+ ],
+ "structlog.stdlib.ProcessorFormatter.format": [
+  "<builtin>.getattr",
+  "<builtin>.isinstance",
+  "<builtin>.str",
+  "<builtin>.str.lower",
+  "<builtin>.super",
+  "<builtin>.type",
+  "logging.Formatter.format",
+  "logging.LogRecord.getMessage",
+  "logging.makeLogRecord",
+  "structlog.stdlib.ProcessorFormatter.remove_processors_meta",
+  "typing.cast",
+  "warnings.warn"
+ ],
+ "structlog.stdlib.ProcessorFormatter.remove_processors_meta": [],
+ "structlog.stdlib.ProcessorFormatter.wrap_for_formatter": [],
+ "structlog.stdlib._FixedFindCallerLogger.findCaller": [
+  "<builtin>.max",
+  "structlog._frames._find_first_app_frame_and_name",
+  "structlog._frames._format_stack"
+ ],
+ "structlog.stdlib.add_log_level_number": [],
+ "structlog.stdlib.add_logger_name": [
+  "<builtin>.dict.get"
+ ],
+ "structlog.stdlib.filter_by_level": [
+  "<builtin>.BaseException.__init__",
+  "logging.Logger.getEffectiveLevel"
+ ],
+ "structlog.stdlib.get_logger": [
+  "structlog._config.get_logger"
+ ],
+ "structlog.stdlib.recreate_defaults": [
+  "logging.basicConfig",
+  "structlog._config.configure",
+  "structlog._config.reset_defaults",
+  "structlog.processors.StackInfoRenderer.__init__",
+  "structlog.stdlib.LoggerFactory.__init__",
+  "structlog.stdlib.PositionalArgumentsFormatter.__init__"
+ ],
+ "structlog.stdlib.render_to_log_args_and_kwargs": [
+  "<builtin>.dict.pop"
+ ],
+ "structlog.stdlib.render_to_log_kwargs": [
+  "<builtin>.dict.pop"
+ ],
+ "structlog.testing": [
+  "contextlib.contextmanager"
+ ],
+ "structlog.testing.CapturingLogger.__getattr__": [],
+ "structlog.testing.CapturingLogger.__getattr__.log": [
+  "<builtin>.list.append",
+  "structlog.testing.CapturingLogger.__getattr__"
+ ],
+ "structlog.testing.CapturingLogger.__init__": [],
+ "structlog.testing.CapturingLogger.__repr__": [
+  "<builtin>.len",
+  "structlog.testing.CapturingLogger.__getattr__"
+ ],
+ "structlog.testing.CapturingLoggerFactory.__call__": [],
+ "structlog.testing.CapturingLoggerFactory.__init__": [
+  "structlog.testing.CapturingLogger.__init__"
+ ],
+ "structlog.testing.LogCapture.__call__": [
+  "<builtin>.BaseException.__init__",
+  "<builtin>.list.append",
+  "structlog._log_levels.map_method_name"
+ ],
+ "structlog.testing.LogCapture.__init__": [],
+ "structlog.testing.ReturnLogger.msg": [
+  "<builtin>.len"
+ ],
+ "structlog.testing.ReturnLoggerFactory.__call__": [],
+ "structlog.testing.ReturnLoggerFactory.__init__": [],
+ "structlog.testing.capture_logs": [
+  "<builtin>.list.append",
+  "<builtin>.list.clear",
+  "<builtin>.list.copy",
+  "<builtin>.list.extend",
+  "structlog._config.configure",
+  "structlog._config.get_config",
+  "structlog.testing.LogCapture.__init__"
+ ],
+ "structlog.threadlocal": [
+  "<builtin>.property",
+  "contextlib.contextmanager",
+  "structlog.threadlocal._determine_threadlocal",
+  "threading.local",
+  "typing.TypeVar"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__delitem__": [
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__eq__": [],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__getattr__": [
+  "<builtin>.getattr",
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__init__": [
+  "<builtin>.isinstance",
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__iter__": [
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__len__": [
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__ne__": [
+  "structlog.threadlocal._ThreadLocalDictWrapper.__eq__"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__repr__": [
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper.__setitem__": [
+  "structlog.threadlocal._ThreadLocalDictWrapper._dict"
+ ],
+ "structlog.threadlocal._ThreadLocalDictWrapper._dict": [],
+ "structlog.threadlocal._deprecated": [
+  "contextlib.suppress",
+  "sys._getframe",
+  "warnings.warn"
+ ],
+ "structlog.threadlocal._determine_threadlocal": [],
+ "structlog.threadlocal._get_context": [],
+ "structlog.threadlocal.as_immutable": [
+  "<builtin>.isinstance",
+  "structlog._base.BoundLoggerBase.__init__",
+  "structlog._config.BoundLoggerLazyProxy.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.threadlocal._deprecated"
+ ],
+ "structlog.threadlocal.bind_threadlocal": [
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal._get_context"
+ ],
+ "structlog.threadlocal.bound_threadlocal": [
+  "<builtin>.dict.keys",
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal.bind_threadlocal",
+  "structlog.threadlocal.get_threadlocal",
+  "structlog.threadlocal.unbind_threadlocal"
+ ],
+ "structlog.threadlocal.clear_threadlocal": [
+  "structlog.threadlocal._deprecated"
+ ],
+ "structlog.threadlocal.get_merged_threadlocal": [
+  "structlog._base.get_context",
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal._get_context"
+ ],
+ "structlog.threadlocal.get_threadlocal": [
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal._get_context"
+ ],
+ "structlog.threadlocal.merge_threadlocal": [
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal._get_context"
+ ],
+ "structlog.threadlocal.tmp_bind": [
+  "<builtin>.dict.clear",
+  "<builtin>.dict.update",
+  "<builtin>.isinstance",
+  "structlog._base.BoundLoggerBase.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind",
+  "structlog._config.BoundLoggerLazyProxy.bind.finalized_bind",
+  "structlog._generic.BoundLogger.__getattr__",
+  "structlog.stdlib.BoundLogger.bind",
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal.as_immutable"
+ ],
+ "structlog.threadlocal.unbind_threadlocal": [
+  "structlog.threadlocal._deprecated",
+  "structlog.threadlocal._get_context"
+ ],
+ "structlog.threadlocal.wrap_dict": [
+  "<builtin>.str",
+  "<builtin>.type",
+  "structlog._greenlets.GreenThreadLocal.__init__",
+  "structlog.threadlocal._deprecated",
+  "threading.local",
+  "uuid.uuid4"
+ ],
+ "structlog.tracebacks": [
+  "dataclasses.dataclass",
+  "dataclasses.field"
+ ],
+ "structlog.tracebacks.ExceptionDictTransformer.__call__": [
+  "<builtin>.len",
+  "structlog.tracebacks.ExceptionDictTransformer._as_dict",
+  "structlog.tracebacks.extract"
+ ],
+ "structlog.tracebacks.ExceptionDictTransformer.__init__": [
+  "<builtin>.ValueError",
+  "<builtin>.isinstance",
+  "<builtin>.list.append",
+  "os.path.abspath",
+  "os.path.dirname",
+  "os.path.normpath"
+ ],
+ "structlog.tracebacks.ExceptionDictTransformer._as_dict": [
+  "<builtin>.any",
+  "<builtin>.list.append",
+  "dataclasses.asdict",
+  "structlog.tracebacks.ExceptionDictTransformer._as_dict"
+ ],
+ "structlog.tracebacks.extract": [
+  "<builtin>.dict.items",
+  "<builtin>.getattr",
+  "<builtin>.id",
+  "<builtin>.isinstance",
+  "<builtin>.list.append",
+  "<builtin>.set",
+  "<builtin>.set.add",
+  "<builtin>.str.startswith",
+  "<builtin>.type",
+  "os.path.abspath",
+  "structlog.tracebacks.extract",
+  "structlog.tracebacks.extract.get_locals",
+  "structlog.tracebacks.safe_str",
+  "structlog.tracebacks.to_repr",
+  "traceback.walk_tb",
+  "types.FrameLocalsProxyType.items"
+ ],
+ "structlog.tracebacks.extract.get_locals": [
+  "<builtin>.str.startswith"
+ ],
+ "structlog.tracebacks.safe_str": [
+  "<builtin>.str"
+ ],
+ "structlog.tracebacks.to_repr": [
+  "<builtin>.isinstance",
+  "<builtin>.len",
+  "<builtin>.repr",
+  "<builtin>.str",
+  "rich.pretty.traverse"
+ ],
+ "structlog.twisted": [
+  "zope.interface.implementer"
+ ],
+ "structlog.twisted.BoundLogger.err": [
+  "structlog._base.BoundLoggerBase._proxy_to_logger"
+ ],
+ "structlog.twisted.BoundLogger.msg": [
+  "structlog._base.BoundLoggerBase._proxy_to_logger"
+ ],
+ "structlog.twisted.EventAdapter.__call__": [
+  "structlog.dev.ConsoleRenderer.__call__",
+  "structlog.twisted._extractStuffAndWhy"
+ ],
+ "structlog.twisted.EventAdapter.__init__": [],
+ "structlog.twisted.JSONLogObserverWrapper.__call__": [
+  "<builtin>.dict.get",
+  "json.dumps",
+  "structlog.twisted.PlainFileLogObserver.__call__",
+  "twisted.python.log.textFromEventDict"
+ ],
+ "structlog.twisted.JSONLogObserverWrapper.__init__": [],
+ "structlog.twisted.JSONRenderer.__call__": [
+  "<builtin>.isinstance",
+  "structlog.processors.JSONRenderer.__call__",
+  "structlog.twisted.ReprWrapper.__init__",
+  "structlog.twisted._extractStuffAndWhy"
+ ],
+ "structlog.twisted.LoggerFactory.__call__": [],
+ "structlog.twisted.PlainFileLogObserver.__call__": [
+  "io.TextIOWrapper.flush",
+  "io.TextIOWrapper.write",
+  "twisted.python.log.textFromEventDict"
+ ],
+ "structlog.twisted.PlainFileLogObserver.__init__": [],
+ "structlog.twisted.ReprWrapper.__eq__": [
+  "<builtin>.isinstance"
+ ],
+ "structlog.twisted.ReprWrapper.__init__": [],
+ "structlog.twisted.ReprWrapper.__repr__": [],
+ "structlog.twisted._extractStuffAndWhy": [
+  "<builtin>.ValueError",
+  "<builtin>.dict.pop",
+  "<builtin>.isinstance",
+  "sys.exc_info",
+  "twisted.python.failure.Failure"
+ ],
+ "structlog.twisted.plainJSONStdOutLogger": [
+  "structlog.twisted.JSONLogObserverWrapper.__init__",
+  "structlog.twisted.PlainFileLogObserver.__init__"
+ ],
+ "structlog.types": [],
+ "structlog.typing": [
+  "<builtin>.property",
+  "typing.runtime_checkable"
+ ],
+ "structlog.typing.BindableLogger._context": [],
+ "structlog.typing.BindableLogger.bind": [],
+ "structlog.typing.BindableLogger.new": [],
+ "structlog.typing.BindableLogger.try_unbind": [],
+ "structlog.typing.BindableLogger.unbind": [],
+ "structlog.typing.ExceptionTransformer.__call__": [],
+ "structlog.typing.FilteringBoundLogger.acritical": [],
+ "structlog.typing.FilteringBoundLogger.adebug": [],
+ "structlog.typing.FilteringBoundLogger.aerror": [],
+ "structlog.typing.FilteringBoundLogger.aexception": [],
+ "structlog.typing.FilteringBoundLogger.afatal": [],
+ "structlog.typing.FilteringBoundLogger.ainfo": [],
+ "structlog.typing.FilteringBoundLogger.alog": [],
+ "structlog.typing.FilteringBoundLogger.amsg": [],
+ "structlog.typing.FilteringBoundLogger.awarn": [],
+ "structlog.typing.FilteringBoundLogger.awarning": [],
+ "structlog.typing.FilteringBoundLogger.bind": [],
+ "structlog.typing.FilteringBoundLogger.critical": [],
+ "structlog.typing.FilteringBoundLogger.debug": [],
+ "structlog.typing.FilteringBoundLogger.err": [],
+ "structlog.typing.FilteringBoundLogger.error": [],
+ "structlog.typing.FilteringBoundLogger.exception": [],
+ "structlog.typing.FilteringBoundLogger.fatal": [],
+ "structlog.typing.FilteringBoundLogger.get_effective_level": [],
+ "structlog.typing.FilteringBoundLogger.info": [],
+ "structlog.typing.FilteringBoundLogger.is_enabled_for": [],
+ "structlog.typing.FilteringBoundLogger.log": [],
+ "structlog.typing.FilteringBoundLogger.msg": [],
+ "structlog.typing.FilteringBoundLogger.new": [],
+ "structlog.typing.FilteringBoundLogger.try_unbind": [],
+ "structlog.typing.FilteringBoundLogger.unbind": [],
+ "structlog.typing.FilteringBoundLogger.warn": [],
+ "structlog.typing.FilteringBoundLogger.warning": [],
+ "sys._getframe": [],
+ "sys.exc_info": [],
+ "threading.Lock": [],
+ "threading.current_thread": [],
+ "threading.get_ident": [],
+ "threading.local": [],
+ "time.time": [],
+ "traceback.print_exception": [],
+ "traceback.print_stack": [],
+ "traceback.walk_tb": [],
+ "twisted.python.failure.Failure": [],
+ "twisted.python.log.textFromEventDict": [],
+ "types.FrameLocalsProxyType.items": [],
+ "typing.TypeVar": [],
+ "typing.cast": [],
+ "typing.runtime_checkable": [],
+ "uuid.uuid4": [],
+ "warnings.warn": [],
+ "weakref.WeakKeyDictionary": [],
+ "weakref.WeakKeyDictionary.get": [],
+ "zope.interface.implementer": []
+}

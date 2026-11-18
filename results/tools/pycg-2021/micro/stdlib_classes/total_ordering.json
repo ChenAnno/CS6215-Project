@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.Version.__init__"
+ ],
+ "main.Version.__eq__": [],
+ "main.Version.__init__": [],
+ "main.Version.__lt__": []
+}

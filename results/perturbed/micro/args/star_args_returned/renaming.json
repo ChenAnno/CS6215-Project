@@ -1,0 +1,11 @@
+{
+ "Base": "qdab1_0",
+ "Hook": "qdab1_1",
+ "Left": "qdab1_2",
+ "Plugin": "qdab1_3",
+ "Right": "qdab1_4",
+ "first": "qdab1_5",
+ "func1": "qdab1_6",
+ "func2": "qdab1_7",
+ "run": "qdab1_8"
+}

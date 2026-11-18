@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.read",
+  "main.write"
+ ],
+ "main.StorageError.__init__": [],
+ "main.read": [
+  "main.StorageError.__init__"
+ ],
+ "main.write": [
+  "main.StorageError.__init__"
+ ]
+}

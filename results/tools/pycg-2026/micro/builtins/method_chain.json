@@ -1,0 +1,12 @@
+{
+ "<builtin>.str.join": [],
+ "<builtin>.str.split": [],
+ "<builtin>.str.strip": [],
+ "<builtin>.str.upper": [],
+ "main": [
+  "<builtin>.str.join",
+  "<builtin>.str.split",
+  "<builtin>.str.strip",
+  "<builtin>.str.upper"
+ ]
+}

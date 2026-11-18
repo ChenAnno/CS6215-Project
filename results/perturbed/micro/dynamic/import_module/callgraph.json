@@ -1,0 +1,10 @@
+{
+    "main": [
+        "importlib.import_module",
+        "plugins.alpha.q0c74_0"
+    ],
+    "plugins": [],
+    "plugins.alpha": [],
+    "plugins.alpha.q0c74_0": [],
+    "importlib.import_module": []
+}

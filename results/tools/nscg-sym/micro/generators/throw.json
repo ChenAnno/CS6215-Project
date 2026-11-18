@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.next",
+  "main.gen"
+ ],
+ "main.gen": [
+  "main.recover"
+ ],
+ "main.recover": []
+}

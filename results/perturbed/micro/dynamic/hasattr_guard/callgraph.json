@@ -1,0 +1,12 @@
+{
+    "main": [
+        "main.q88fa_3"
+    ],
+    "main.q88fa_3": [
+        "<builtin>.hasattr",
+        "main.q88fa_0.quack"
+    ],
+    "main.q88fa_0.quack": [],
+    "main.q88fa_1.q88fa_2": [],
+    "<builtin>.hasattr": []
+}

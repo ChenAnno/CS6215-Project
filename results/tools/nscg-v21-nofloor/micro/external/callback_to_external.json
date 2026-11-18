@@ -1,0 +1,7 @@
+{
+ "main": [
+  "ext.subscribe",
+  "main.on_event"
+ ],
+ "main.on_event": []
+}

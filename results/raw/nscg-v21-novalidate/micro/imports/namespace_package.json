@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/namespace_package", "answers": {"s1": ["plugins.alpha.load"]}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "alpha.load()", "resolved": ["plugins.alpha.load"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

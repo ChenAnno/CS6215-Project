@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.build"
+ ],
+ "main.Settings": [
+  "main.compute"
+ ],
+ "main.build": [],
+ "main.build.Local": [
+  "main.compute"
+ ],
+ "main.compute": []
+}

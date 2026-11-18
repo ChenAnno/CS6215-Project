@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.build",
+  "main.compute"
+ ],
+ "main.compute": [],
+ "main.build": [
+  "main.compute"
+ ]
+}

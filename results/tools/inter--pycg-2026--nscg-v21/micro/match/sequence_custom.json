@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.func1",
+  "main.func2"
+ ],
+ "main.Pair.__getitem__": [],
+ "main.func1": [],
+ "main.Pair.__len__": [],
+ "main.func2": []
+}

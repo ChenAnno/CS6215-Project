@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.dict.__init__",
+  "<builtin>.dict.get",
+  "typing.TypedDict.__init__"
+ ]
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "classes/imported_attr_access", "answers": {"main": ["to_import.func"], "to_import": [], "to_import.func": []}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "to_import.func()", "resolved": ["to_import.func"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

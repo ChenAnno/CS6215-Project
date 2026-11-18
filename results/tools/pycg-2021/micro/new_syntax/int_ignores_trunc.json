@@ -1,0 +1,9 @@
+{
+ "<builtin>.int": [],
+ "main": [
+  "<builtin>.int",
+  "math.trunc"
+ ],
+ "main.Measure.__trunc__": [],
+ "math.trunc": []
+}

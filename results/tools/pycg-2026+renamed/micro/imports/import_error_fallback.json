@@ -1,0 +1,10 @@
+{
+ "accel": [],
+ "accel.native.qc85e_0": [],
+ "accel.pure": [],
+ "accel.pure.qc85e_0": [],
+ "main": [
+  "accel.native.qc85e_0",
+  "accel.pure.qc85e_0"
+ ]
+}

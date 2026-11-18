@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.len"
+ ],
+ "main.qa2f9_1.__iter__": [
+  "<builtin>.iter"
+ ],
+ "main.qa2f9_1.__len__": [
+  "<builtin>.len"
+ ]
+}

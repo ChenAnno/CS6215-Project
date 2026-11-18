@@ -1,0 +1,13 @@
+{
+ "<builtin>.object.__new__": [],
+ "<builtin>.super": [],
+ "main": [
+  "main.q079f_0.__init__",
+  "main.q079f_0.__new__"
+ ],
+ "main.q079f_0.__init__": [],
+ "main.q079f_0.__new__": [
+  "<builtin>.object.__new__",
+  "<builtin>.super"
+ ]
+}

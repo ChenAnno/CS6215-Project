@@ -1,0 +1,8 @@
+{
+ "main": [
+  "bisect.bisect",
+  "heapq.nsmallest",
+  "main.q6471_0"
+ ],
+ "main.q6471_0": []
+}

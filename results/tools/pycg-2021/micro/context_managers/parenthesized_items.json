@@ -1,0 +1,9 @@
+{
+ "main": [],
+ "main.Reader.__enter__": [],
+ "main.Reader.__exit__": [],
+ "main.Reader.read": [],
+ "main.Writer.__enter__": [],
+ "main.Writer.__exit__": [],
+ "main.Writer.write": []
+}

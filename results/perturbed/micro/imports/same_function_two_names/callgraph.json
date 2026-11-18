@@ -1,0 +1,14 @@
+{
+    "main": [
+        "main.qe16c_0",
+        "main.qe16c_2"
+    ],
+    "main.qe16c_0": [
+        "tasks.qe16c_1"
+    ],
+    "main.qe16c_2": [
+        "tasks.qe16c_1"
+    ],
+    "tasks": [],
+    "tasks.qe16c_1": []
+}

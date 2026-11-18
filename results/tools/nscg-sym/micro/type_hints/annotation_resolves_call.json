@@ -1,0 +1,8 @@
+{
+ "main": [
+  "copy.copy",
+  "main.process"
+ ],
+ "main.Handler.handle": [],
+ "main.process": []
+}

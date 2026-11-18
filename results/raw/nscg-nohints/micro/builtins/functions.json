@@ -1,0 +1,1 @@
+{"units": [{"unit": "builtins/functions", "answers": {"s1": ["<builtin>.len"]}, "sites": [{"id": "s1", "caller": "main", "line": 2, "col": 1, "kind": "call", "text": "len(array)", "resolved": ["<builtin>.len"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {"kept-external": 1}, "missing_answers": 0, "rejected": []}

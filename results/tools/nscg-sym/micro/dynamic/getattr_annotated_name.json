@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.run"
+ ],
+ "main.Service.start": [],
+ "main.Service.stop": [],
+ "main.run": [
+  "<builtin>.getattr"
+ ]
+}

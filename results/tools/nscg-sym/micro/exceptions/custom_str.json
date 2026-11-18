@@ -1,0 +1,9 @@
+{
+ "main": [
+  "<builtin>.str"
+ ],
+ "main.ParseError.__str__": [
+  "main.describe"
+ ],
+ "main.describe": []
+}

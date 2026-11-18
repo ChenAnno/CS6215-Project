@@ -1,0 +1,16 @@
+{
+ "<builtin>.list.append": [],
+ "main": [
+  "main.qad5f_0",
+  "main.qad5f_0.<lambda1>"
+ ],
+ "main.qad5f_0": [
+  "<builtin>.list.append"
+ ],
+ "main.qad5f_0.<lambda1>": [
+  "main.qad5f_1",
+  "main.qad5f_2"
+ ],
+ "main.qad5f_1": [],
+ "main.qad5f_2": []
+}

@@ -1,0 +1,15 @@
+{
+ "<builtin>.getattr": [],
+ "<builtin>.type": [],
+ "main": [
+  "main.q8bff_3.visit"
+ ],
+ "main.q8bff_3.q8bff_4": [],
+ "main.q8bff_3.q8bff_5": [],
+ "main.q8bff_3.q8bff_6": [],
+ "main.q8bff_3.q8bff_7": [],
+ "main.q8bff_3.visit": [
+  "<builtin>.getattr",
+  "<builtin>.type"
+ ]
+}

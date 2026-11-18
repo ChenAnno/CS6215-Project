@@ -1,0 +1,1 @@
+{"units": [{"unit": "assignments/del_then_rebind", "answers": {"s1": ["main.q1d2a_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 1, "kind": "call", "text": "handler()", "resolved": ["main.q1d2a_0", "main.q1d2a_1"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

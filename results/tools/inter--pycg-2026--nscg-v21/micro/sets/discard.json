@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.set.discard",
+  "main.func1",
+  "main.func2"
+ ],
+ "main.func1": [],
+ "<builtin>.set.discard": [],
+ "main.func2": []
+}

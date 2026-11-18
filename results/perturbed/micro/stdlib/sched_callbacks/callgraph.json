@@ -1,0 +1,16 @@
+{
+    "main": [
+        "main.q7025_0",
+        "main.q7025_1",
+        "main.q7025_2",
+        "sched.scheduler",
+        "sched.scheduler.enter",
+        "sched.scheduler.run"
+    ],
+    "main.q7025_1": [],
+    "main.q7025_2": [],
+    "main.q7025_0": [],
+    "sched.scheduler": [],
+    "sched.scheduler.enter": [],
+    "sched.scheduler.run": []
+}

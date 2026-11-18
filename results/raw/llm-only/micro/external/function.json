@@ -1,0 +1,1 @@
+{"units": [{"unit": "external/function", "answers": {"main": ["ext.function"]}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "function()", "resolved": ["ext.function"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

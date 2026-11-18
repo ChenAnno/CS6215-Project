@@ -1,0 +1,8 @@
+{
+ "commands": [],
+ "commands.build": [],
+ "commands.q5475_0": [],
+ "main": [
+  "<builtin>.getattr"
+ ]
+}

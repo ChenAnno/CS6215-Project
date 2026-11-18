@@ -1,0 +1,12 @@
+{
+ "main": [
+  "collections.deque",
+  "collections.deque.append",
+  "collections.deque.appendleft",
+  "collections.deque.popleft",
+  "main.qa2ec_0",
+  "main.qa2ec_1"
+ ],
+ "main.qa2ec_0": [],
+ "main.qa2ec_1": []
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/iterate", "answers": {"s1": ["main.func1", "main.func2"]}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 5, "kind": "call", "text": "f()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

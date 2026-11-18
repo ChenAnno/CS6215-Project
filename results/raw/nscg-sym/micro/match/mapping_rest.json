@@ -1,0 +1,1 @@
+{"units": [{"unit": "match/mapping_rest", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 9, "kind": "call", "text": "rest['on_stop']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "match/as_pattern", "answers": {"s1": ["main.qbac1_0", "main.qbac1_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 9, "kind": "call", "text": "pair[0]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

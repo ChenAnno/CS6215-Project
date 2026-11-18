@@ -1,0 +1,367 @@
+{
+ "key": "61b34e6261a6562de1db993d13d9fbd168e73bbe65c7253b9ab5d5a8c6ccbd00",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Definitions of the package (symbolic outline)\nmodule jmespath\n  imports: jmespath.parser, jmespath.visitor.Options\n  def jmespath.compile(expression)\n  def jmespath.search(expression, data, options)\nmodule jmespath.ast\n  def jmespath.ast.comparator(name, first, second)\n  def jmespath.ast.current_node()\n  def jmespath.ast.expref(expression)\n  def jmespath.ast.function_expression(name, args)\n  def jmespath.ast.field(name)\n  def jmespath.ast.filter_projection(left, right, comparator)\n  def jmespath.ast.flatten(node)\n  def jmespath.ast.identity()\n  def jmespath.ast.index(index)\n  def jmespath.ast.index_expression(children)\n  def jmespath.ast.key_val_pair(key_name, node)\n  def jmespath.ast.literal(literal_value)\n  def jmespath.ast.multi_select_dict(nodes)\n  def jmespath.ast.multi_select_list(nodes)\n  def jmespath.ast.or_expression(left, right)\n  def jmespath.ast.and_expression(left, right)\n  def jmespath.ast.not_expression(expr)\n  def jmespath.ast.pipe(left, right)\n  def jmespath.ast.projection(left, right)\n  def jmespath.ast.subexpression(children)\n  def jmespath.ast.slice(start, end, step)\n  def jmespath.ast.value_projection(left, right)\nmodule jmespath.compat\n  imports: itertools.zip_longest\n  def jmespath.compat.with_str_method(cls)\n  def jmespath.compat.with_repr_method(cls)\n  def jmespath.compat.get_methods(cls)\nmodule jmespath.exceptions\n  imports: jmespath.compat.with_str_method\n  class jmespath.exceptions.JMESPathError(<builtin>.ValueError)\n  class jmespath.exceptions.ParseError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lex_position, token_value, token_type, msg); __str__(self)\n    class attrs: _ERROR_MESSAGE='Invalid jmespath expression'\n  class jmespath.exceptions.IncompleteExpressionError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: set_expression(self, expression); __str__(self)\n  class jmespath.exceptions.LexerError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lexer_position, lexer_value, message, expression); __str__(self)\n  class jmespath.exceptions.ArityError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, expected, actual, name); __str__(self); _pluralize(self, word, count)\n  class jmespath.exceptions.VariadictArityError(jmespath.exceptions.ArityError) mro: jmespath.exceptions.ArityError > jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __str__(self)\n  class jmespath.exceptions.JMESPathTypeError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, function_name, current_value, actual_type, expected_types); __str__(self)\n  class jmespath.exceptions.EmptyExpressionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self)\n  class jmespath.exceptions.UnknownFunctionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\nmodule jmespath.functions\n  imports: STRING_TYPE=jmespath.compat.string_type, jmespath.compat.get_methods, jmespath.exceptions\n  def jmespath.functions.signature()\n  def jmespath.functions.signature._record_signature(func)\n  def jmespath.functions.Functions._create_key_func.keyfunc(x)\n  class jmespath.functions.FunctionRegistry(<builtin>.type)\n    methods: __init__(cls, name, bases, attrs); _populate_function_table(cls)\n  class jmespath.functions.Functions()\n    methods: call_function(self, function_name, resolved_args); _validate_arguments(self, args, signature, function_name); _type_check(self, actual, signature, function_name); _type_check_single(self, current, types, function_name); _get_allowed_pytypes(self, types); _subtype_check(self, current, allowed_subtypes, types, function_name); @signature({'types': ['number']}) _func_abs(self, arg); @signature({'types': ['array-number']}) _func_avg(self, arg); @signature({'types': [], 'variadic': True}) _func_not_null(self); @signature({'types': []}) _func_to_array(self, arg); @signature({'types': []}) _func_to_string(self, arg); @signature({'types': []}) _func_to_number(self, arg); @signature({'types': ['array', 'string']}, {'types': []}) _func_contains(self, subject, search); @signature({'types': ['string', 'array', 'object']}) _func_length(self, arg); @signature({'types': ['string']}, {'types': ['string']}) _func_ends_with(self, search, suffix); @signature({'types': ['string']}, {'types': ['string']}) _func_starts_with(self, search, suffix); @signature({'types': ['array', 'string']}) _func_reverse(self, arg); @signature({'types': ['number']}) _func_ceil(self, arg); @signature({'types': ['number']}) _func_floor(self, arg); @signature({'types': ['string']}, {'types': ['array-string... _func_join(self, separator, array); @signature({'types': ['expref']}, {'types': ['array']}) _func_map(self, expref, arg); @signature({'types': ['array-number', 'array-string']}) _func_max(self, arg); @signature({'types': ['object'], 'variadic': True}) _func_merge(self); @signature({'types': ['array-number', 'array-string']}) _func_min(self, arg); @signature({'types': ['array-string', 'array-number']}) _func_sort(self, arg); @signature({'types': ['array-number']}) _func_sum(self, arg); @signature({'types': ['object']}) _func_keys(self, arg); @signature({'types': ['object']}) _func_values(self, arg); @signature({'types': []}) _func_type(self, arg); @signature({'types': ['array']}, {'types': ['expref']}) _func_sort_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_min_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_max_by(self, array, expref); _create_key_func(self, expref, allowed_types, function_name); _convert_to_jmespath_type(self, pyobject)\n    class attrs: FUNCTION_TABLE={}\nmodule jmespath.lexer\n  imports: jmespath.exceptions.EmptyExpressionError, jmespath.exceptions.LexerError, json.loads\n  class jmespath.lexer.Lexer(<builtin>.object)\n    methods: tokenize(self, expression); _consume_number(self); _initialize_for_expression(self, expression); _next(self); _consume_until(self, delimiter); _consume_literal(self); _consume_quoted_identifier(self); _consume_raw_string_literal(self); _match_or_else(self, expected, match_type, else_type)\n    class attrs: START_IDENTIFIER=set(string.ascii_letters + '_'), VALID_IDENTIFIER=set(string.ascii_letters + string.dig..., VALID_NUMBER=set(string.digits), WHITESPACE=set(' \\t\\n\\r'), SIMPLE_TOKENS={'.': 'dot', '*': 'star', ']': 'rbrac...\nmodule jmespath.parser\n  imports: jmespath.ast, jmespath.compat.with_repr_method, jmespath.exceptions, jmespath.lexer, jmespath.visitor\n  class jmespath.parser.Parser(<builtin>.object)\n    methods: __init__(self, lookahead); parse(self, expression); _do_parse(self, expression); _parse(self, expression); _expression(self, binding_power); _token_nud_literal(self, token); _token_nud_unquoted_identifier(self, token); _token_nud_quoted_identifier(self, token); _token_nud_star(self, token); _token_nud_filter(self, token); _token_nud_lbrace(self, token); _token_nud_lparen(self, token); _token_nud_flatten(self, token); _token_nud_not(self, token); _token_nud_lbracket(self, token); _parse_index_expression(self); _parse_slice_expression(self); _token_nud_current(self, token); _token_nud_expref(self, token); _token_led_dot(self, left); _token_led_pipe(self, left); _token_led_or(self, left); _token_led_and(self, left); _token_led_lparen(self, left); _token_led_filter(self, left); _token_led_eq(self, left); _token_led_ne(self, left); _token_led_gt(self, left); _token_led_gte(self, left); _token_led_lt(self, left); _token_led_lte(self, left); _token_led_flatten(self, left); _token_led_lbracket(self, left); _project_if_slice(self, left, right); _parse_comparator(self, left, comparator); _parse_multi_select_list(self); _parse_multi_select_hash(self); _parse_projection_rhs(self, binding_power); _parse_dot_rhs(self, binding_power); _error_nud_token(self, token); _error_led_token(self, token); _match(self, token_type); _match_multiple_tokens(self, token_types); _advance(self); _current_token(self); _lookahead(self, number); _lookahead_token(self, number); _raise_parse_error_for_token(self, token, reason); _raise_parse_error_maybe_eof(self, expected_type, token); @classmethod purge(cls)\n    class attrs: BINDING_POWER={'eof': 0, 'unquoted_identifier': 0, ..., _PROJECTION_STOP=10, _CACHE={}, _MAX_SIZE=512\n  class jmespath.parser.ParsedResult(<builtin>.object)\n    methods: __init__(self, expression, parsed); search(self, value, options); _render_dot_file(self); __repr__(self)\nmodule jmespath.visitor\n  imports: jmespath.compat.string_type, jmespath.functions, numbers.Number\n  def jmespath.visitor._equals(x, y)\n  def jmespath.visitor._is_special_number_case(x, y)\n  def jmespath.visitor._is_comparable(x)\n  def jmespath.visitor._is_actual_number(x)\n  class jmespath.visitor.Options(<builtin>.object)\n    methods: __init__(self, dict_cls, custom_functions)\n  class jmespath.visitor._Expression(<builtin>.object)\n    methods: __init__(self, expression, interpreter); visit(self, node)\n  class jmespath.visitor.Visitor(<builtin>.object)\n    methods: __init__(self); visit(self, node); default_visit(self, node)\n  class jmespath.visitor.TreeInterpreter(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self, options); default_visit(self, node); visit_subexpression(self, node, value); visit_field(self, node, value); visit_comparator(self, node, value); visit_current(self, node, value); visit_expref(self, node, value); visit_function_expression(self, node, value); visit_filter_projection(self, node, value); visit_flatten(self, node, value); visit_identity(self, node, value); visit_index(self, node, value); visit_index_expression(self, node, value); visit_slice(self, node, value); visit_key_val_pair(self, node, value); visit_literal(self, node, value); visit_multi_select_dict(self, node, value); visit_multi_select_list(self, node, value); visit_or_expression(self, node, value); visit_and_expression(self, node, value); visit_not_expression(self, node, value); visit_pipe(self, node, value); visit_projection(self, node, value); visit_value_projection(self, node, value); _is_false(self, value); _is_true(self, value)\n    class attrs: COMPARATOR_FUNC={'eq': _equals, 'ne': lambda x, y: no..., _EQUALITY_OPS=['eq', 'ne'], MAP_TYPE=dict\n  class jmespath.visitor.GraphvizVisitor(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self); visit(self, node); _visit(self, node, current)\n\n## Attribute assignments in the package that matter for these sites (symbolic facts)\n  self._expression = expression   (in jmespath.lexer.Lexer._initialize_for_expression)\n\n## A static analyzer (PyCG) reports these callees for the callers of the sites below\nTreat them as evidence, not as truth: the analyzer can miss callees and can report spurious ones.\njmespath.parser.Parser._parse_index_expression: [jmespath.ast.index, jmespath.parser.Parser._advance, jmespath.parser.Parser._lookahead, jmespath.parser.Parser._lookahead_token, jmespath.parser.Parser._match, jmespath.parser.Parser._parse_slice_expression]\njmespath.parser.Parser._parse_slice_expression: [jmespath.ast.slice, jmespath.parser.Parser._advance, jmespath.parser.Parser._current_token, jmespath.parser.Parser._lookahead_token, jmespath.parser.Parser._match, jmespath.parser.Parser._raise_parse_error_for_token]\njmespath.parser.Parser._token_led_dot: [<builtin>.list.append, jmespath.ast.subexpression, jmespath.ast.value_projection, jmespath.parser.Parser._advance, jmespath.parser.Parser._current_token, jmespath.parser.Parser._parse_dot_rhs, jmespath.parser.Parser._parse_projection_rhs]\njmespath.parser.Parser._token_led_or: [jmespath.ast.or_expression, jmespath.parser.Parser._expression]\njmespath.parser.Parser._token_led_pipe: [jmespath.ast.pipe, jmespath.parser.Parser._expression]\njmespath.parser.Parser._token_nud_current: [jmespath.ast.current_node]\njmespath.parser.Parser._token_nud_expref: [jmespath.ast.expref, jmespath.parser.Parser._expression]\njmespath.parser.Parser._token_nud_lbracket: [jmespath.ast.identity, jmespath.ast.projection, jmespath.parser.Parser._advance, jmespath.parser.Parser._current_token, jmespath.parser.Parser._lookahead, jmespath.parser.Parser._parse_index_expression, jmespath.parser.Parser._parse_multi_select_list, jmespath.parser.Parser._parse_projection_rhs, jmespath.parser.Parser._project_if_slice]\njmespath.parser.Parser._token_nud_not: [jmespath.ast.not_expression, jmespath.parser.Parser._expression]\n\n## Source (module `jmespath.parser` of package `jmespath`, part 2/5), with line numbers\n  1| \"\"\"Top down operator precedence parser.\n  2| \n  3| This is an implementation of Vaughan R. Pratt's\n  4| \"Top Down Operator Precedence\" parser.\n  5| (http://dl.acm.org/citation.cfm?doid=512927.512931).\n  6| \n  7| These are some additional resources that help explain the\n  8| general idea behind a Pratt parser:\n  9| \n 10| * http://effbot.org/zone/simple-top-down-parsing.htm\n 11| * http://javascript.crockford.com/tdop/tdop.html\n 12| \n 13| A few notes on the implementation.\n 14| \n 15| * All the nud/led tokens are on the Parser class itself, and are dispatched\n 16|   using getattr().  This keeps all the parsing logic contained to a single\n 17|   class.\n 18| * We use two passes through the data.  One to create a list of token,\n 19|   then one pass through the tokens to create the AST.  While the lexer actually\n 20|   yields tokens, we convert it to a list so we can easily implement two tokens\n 21|   of lookahead.  A previous implementation used a fixed circular buffer, but it\n 22|   was significantly slower.  Also, the average jmespath expression typically\n 23|   does not have a large amount of token so this is not an issue.  And\n 24|   interestingly enough, creating a token list first is actually faster than\n 25|   consuming from the token iterator one token at a time.\n 26| \n 27| \"\"\"\n 28| from jmespath import lexer\n 29| from jmespath.compat import with_repr_method\n 30| from jmespath import ast\n 31| from jmespath import exceptions\n 32| from jmespath import visitor\n 33| \n 34| \n 35| class Parser(object):\n 36|     BINDING_POWER = {\n 37|         'eof': 0,\n 38|         'unquoted_identifier': 0,\n 39|         'quoted_identifier': 0,\n 40|         'literal': 0,\n 41|         'rbracket': 0,\n 42|         'rparen': 0,\n 43|         'comma': 0,\n 44|         'rbrace': 0,\n 45|         'number': 0,\n 46|         'current': 0,\n 47|         'expref': 0,\n 48|         'colon': 0,\n 49|         'pipe': 1,\n 50|         'or': 2,\n 51|         'and': 3,\n 52|         'eq': 5,\n 53|         'gt': 5,\n 54|         'lt': 5,\n 55|         'gte': 5,\n 56|         'lte': 5,\n 57|         'ne': 5,\n 58|         'flatten': 9,\n 59|         # Everything above stops a projection.\n 60|         'star': 20,\n 61|         'filter': 21,\n 62|         'dot': 40,\n 63|         'not': 45,\n 64|         'lbrace': 50,\n 65|         'lbracket': 55,\n 66|         'lparen': 60,\n 67|     }\n 68|     # The maximum binding power for a token that can stop\n 69|     # a projection.\n 70|     _PROJECTION_STOP = 10\n 71|     # The _MAX_SIZE most recent expressions are cached in\n 72|     # _CACHE dict.\n 73|     _CACHE = {}\n 74|     _MAX_SIZE = 512\n 75| \n 76|     def __init__(self, lookahead=2):\n 77|         self.tokenizer = None\n 78|         self._tokens = [None] * lookahead\n 79|         self._buffer_size = lookahead\n 80|         self._index = 0\n 81| \n 82|     def parse(self, expression):\n 83|         try:\n 84|             return self._CACHE[expression]\n 85|         except KeyError:\n 86|             pass\n 87|         parsed_result = self._do_parse(expression)\n 88|         if len(self._CACHE) >= self._MAX_SIZE:\n 89|             try:\n 90|                 del self._CACHE[next(iter(self._CACHE))]\n 91|             except (KeyError, StopIteration, RuntimeError):\n 92|                 # KeyError - Another thread else already deleted the key.\n 93|                 # RuntimeError - Another modified the cache.\n 94|                 # StopIteration - (Unlikely) Cache is empty.\n 95|                 #\n 96|                 # If we encounter an error we should NOT be adding to the\n 97|                 # cache.  To ensure we do not exceed self._MAX_SIZE, we\n 98|                 # can only add to the cache if we successfully removed\n 99|                 # an element from the cache, otherwise this can grow\n100|                 # unbounded.\n101|                 return parsed_result\n102|         self._CACHE[expression] = parsed_result\n103|         return parsed_result\n104| \n105|     def _do_parse(self, expression):\n106|         try:\n107|             return self._parse(expression)\n108|         except exceptions.LexerError as e:\n109|             e.expression = expression\n110|             raise\n111|         except exceptions.IncompleteExpressionError as e:\n112|             e.set_expression(expression)\n113|             raise\n114|         except exceptions.ParseError as e:\n115|             e.expression = expression\n116|             raise\n117| \n118|     def _parse(self, expression):\n119|         self.tokenizer = lexer.Lexer().tokenize(expression)\n120|         self._tokens = list(self.tokenizer)\n121|         self._index = 0\n122|         parsed = self._expression(binding_power=0)\n123|         if not self._current_token() == 'eof':\n124|             t = self._lookahead_token(0)\n125|             raise exceptions.ParseError(t['start'], t['value'], t['type'],\n126|                                         \"Unexpected token: %s\" % t['value'])\n127|         return ParsedResult(expression, parsed)\n128| \n129|     def _expression(self, binding_power=0):\n130|         left_token = self._lookahead_token(0)\n131|         self._advance()\n132|         nud_function = getattr(\n133|             self, '_token_nud_%s' % left_token['type'],\n134|             self._error_nud_token)\n135|         left = nud_function(left_token)\n136|         current_token = self._current_token()\n137|         while binding_power < self.BINDING_POWER[current_token]:\n138|             led = getattr(self, '_token_led_%s' % current_token, None)\n139|             if led is None:\n140|                 error_token = self._lookahead_token(0)\n141|                 self._error_led_token(error_token)\n142|             else:\n143|                 self._advance()\n144|                 left = led(left)\n145|                 current_token = self._current_token()\n146|         return left\n147| \n148|     def _token_nud_literal(self, token):\n149|         return ast.literal(token['value'])\n150| \n151|     def _token_nud_unquoted_identifier(self, token):\n152|         return ast.field(token['value'])\n153| \n154|     def _token_nud_quoted_identifier(self, token):\n155|         field = ast.field(token['value'])\n156|         # You can't have a quoted identifier as a function\n157|         # name.\n158|         if self._current_token() == 'lparen':\n159|             t = self._lookahead_token(0)\n160|             raise exceptions.ParseError(\n161|                 0, t['value'], t['type'],\n162|                 'Quoted identifier not allowed for function names.')\n163|         return field\n164| \n165|     def _token_nud_star(self, token):\n166|         left = ast.identity()\n167|         if self._current_token() == 'rbracket':\n168|             right = ast.identity()\n169|         else:\n170|             right = self._parse_projection_rhs(self.BINDING_POWER['star'])\n171|         return ast.value_projection(left, right)\n172| \n173|     def _token_nud_filter(self, token):\n174|         return self._token_led_filter(ast.identity())\n175| \n176|     def _token_nud_lbrace(self, token):\n177|         return self._parse_multi_select_hash()\n178| \n179|     def _token_nud_lparen(self, token):\n180|         expression = self._expression()\n181|         self._match('rparen')\n182|         return expression\n183| \n184|     def _token_nud_flatten(self, token):\n185|         left = ast.flatten(ast.identity())\n186|         right = self._parse_projection_rhs(\n187|             self.BINDING_POWER['flatten'])\n188|         return ast.projection(left, right)\n189| \n190|     def _token_nud_not(self, token):\n191|         expr = self._expression(self.BINDING_POWER['not'])\n192|         return ast.not_expression(expr)\n193| \n194|     def _token_nud_lbracket(self, token):\n195|         if self._current_token() in ['number', 'colon']:\n196|             right = self._parse_index_expression()\n197|             # We could optimize this and remove the identity() node.\n198|             # We don't really need an index_expression node, we can\n199|             # just use emit an index node here if we're not dealing\n200|             # with a slice.\n201|             return self._project_if_slice(ast.identity(), right)\n202|         elif self._current_token() == 'star' and \\\n203|                 self._lookahead(1) == 'rbracket':\n204|             self._advance()\n205|             self._advance()\n206|             right = self._parse_projection_rhs(self.BINDING_POWER['star'])\n207|             return ast.projection(ast.identity(), right)\n208|         else:\n209|             return self._parse_multi_select_list()\n210| \n211|     def _parse_index_expression(self):\n212|         # We're here:\n213|         # [<current>\n214|         #  ^\n215|         #  | current token\n216|         if (self._lookahead(0) == 'colon' or\n217|                 self._lookahead(1) == 'colon'):\n218|             return self._parse_slice_expression()\n219|         else:\n220|             # Parse the syntax [number]\n221|             node = ast.index(self._lookahead_token(0)['value'])\n222|             self._advance()\n223|             self._match('rbracket')\n224|             return node\n225| \n226|     def _parse_slice_expression(self):\n227|         # [start:end:step]\n228|         # Where start, end, and step are optional.\n229|         # The last colon is optional as well.\n230|         parts = [None, None, None]\n231|         index = 0\n232|         current_token = self._current_token()\n233|         while not current_token == 'rbracket' and index < 3:\n234|             if current_token == 'colon':\n235|                 index += 1\n236|                 if index == 3:\n237|                     self._raise_parse_error_for_token(\n238|                         self._lookahead_token(0), 'syntax error')\n239|                 self._advance()\n240|             elif current_token == 'number':\n241|                 parts[index] = self._lookahead_token(0)['value']\n242|                 self._advance()\n243|             else:\n244|                 self._raise_parse_error_for_token(\n245|                     self._lookahead_token(0), 'syntax error')\n246|             current_token = self._current_token()\n247|         self._match('rbracket')\n248|         return ast.slice(*parts)\n249| \n250|     def _token_nud_current(self, token):\n251|         return ast.current_node()\n252| \n253|     def _token_nud_expref(self, token):\n254|         expression = self._expression(self.BINDING_POWER['expref'])\n255|         return ast.expref(expression)\n256| \n257|     def _token_led_dot(self, left):\n258|         if not self._current_token() == 'star':\n259|             right = self._parse_dot_rhs(self.BINDING_POWER['dot'])\n260|             if left['type'] == 'subexpression':\n261|                 left['children'].append(right)\n262|                 return left\n263|             else:\n264|                 return ast.subexpression([left, right])\n265|         else:\n266|             # We're creating a projection.\n267|             self._advance()\n268|             right = self._parse_projection_rhs(\n269|                 self.BINDING_POWER['dot'])\n270|             return ast.value_projection(left, right)\n271| \n272|     def _token_led_pipe(self, left):\n273|         right = self._expression(self.BINDING_POWER['pipe'])\n274|         return ast.pipe(left, right)\n275| \n276|     def _token_led_or(self, left):\n277|         right = self._expression(self.BINDING_POWER['or'])\n278|         return ast.or_expression(left, right)\n279| \n280|     def _token_led_and(self, left):\n281|         right = self._expression(self.BINDING_POWER['and'])\n282|         return ast.and_expression(left, right)\n283| \n284|     def _token_led_lparen(self, left):\n285|         if left['type'] != 'field':\n286|             #  0 - first func arg or closing paren.\n287|             # -1 - '(' token\n288|             # -2 - invalid function \"name\".\n289|             prev_t = self._lookahead_token(-2)\n290|             raise exceptions.ParseError(\n291|                 prev_t['start'], prev_t['value'], prev_t['type'],\n292|                 \"Invalid function name '%s'\" % prev_t['value'])\n293|         name = left['value']\n294|         args = []\n295|         while not self._current_token() == 'rparen':\n296|             expression = self._expression()\n297|             if self._current_token() == 'comma':\n298|                 self._match('comma')\n299|             args.append(expression)\n300|         self._match('rparen')\n301|         function_node = ast.function_expression(name, args)\n302|         return function_node\n303| \n304|     def _token_led_filter(self, left):\n305|         # Filters are projections.\n306|         condition = self._expression(0)\n307|         self._match('rbracket')\n308|         if self._current_token() == 'flatten':\n309|             right = ast.identity()\n310|         else:\n311|             right = self._parse_projection_rhs(self.BINDING_POWER['filter'])\n312|         return ast.filter_projection(left, right, condition)\n313| \n314|     def _token_led_eq(self, left):\n315|         return self._parse_comparator(left, 'eq')\n316| \n317|     def _token_led_ne(self, left):\n318|         return self._parse_comparator(left, 'ne')\n319| \n320|     def _token_led_gt(self, left):\n321|         return self._parse_comparator(left, 'gt')\n322| \n323|     def _token_led_gte(self, left):\n324|         return self._parse_comparator(left, 'gte')\n325| \n326|     def _token_led_lt(self, left):\n327|         return self._parse_comparator(left, 'lt')\n328| \n329|     def _token_led_lte(self, left):\n330|         return self._parse_comparator(left, 'lte')\n331| \n332|     def _token_led_flatten(self, left):\n333|         left = ast.flatten(left)\n334|         right = self._parse_projection_rhs(\n335|             self.BINDING_POWER['flatten'])\n336|         return ast.projection(left, right)\n337| \n338|     def _token_led_lbracket(self, left):\n339|         token = self._lookahead_token(0)\n340|         if token['type'] in ['number', 'colon']:\n341|             right = self._parse_index_expression()\n342|             if left['type'] == 'index_expression':\n343|                 # Optimization: if the left node is an index expr,\n344|                 # we can avoid creating another node and instead just add\n345|                 # the right node as a child of the left.\n346|                 left['children'].append(right)\n347|                 return left\n348|             else:\n349|                 return self._project_if_slice(left, right)\n350|         else:\n351|             # We have a projection\n352|             self._match('star')\n353|             self._match('rbracket')\n354|             right = self._parse_projection_rhs(self.BINDING_POWER['star'])\n355|             return ast.projection(left, right)\n356| \n357|     def _project_if_slice(self, left, right):\n358|         index_expr = ast.index_expression([left, right])\n359|         if right['type'] == 'slice':\n360|             return ast.projection(\n361|                 index_expr,\n362|                 self._parse_projection_rhs(self.BINDING_POWER['star']))\n363|         else:\n364|             return index_expr\n365| \n366|     def _parse_comparator(self, left, comparator):\n367|         right = self._expression(self.BINDING_POWER[comparator])\n368|         return ast.comparator(comparator, left, right)\n369| \n370|     def _parse_multi_select_list(self):\n371|         expressions = []\n372|         while True:\n373|             expression = self._expression()\n374|             expressions.append(expression)\n375|             if self._current_token() == 'rbracket':\n376|                 break\n377|             else:\n378|                 self._match('comma')\n379|         self._match('rbracket')\n380|         return ast.multi_select_list(expressions)\n381| \n382|     def _parse_multi_select_hash(self):\n383|         pairs = []\n384|         while True:\n385|             key_token = self._lookahead_token(0)\n386|             # Before getting the token value, verify it's\n387|             # an identifier.\n388|             self._match_multiple_tokens(\n389|                 token_types=['quoted_identifier', 'unquoted_identifier'])\n390|             key_name = key_token['value']\n391|             self._match('colon')\n392|             value = self._expression(0)\n393|             node = ast.key_val_pair(key_name=key_name, node=value)\n394|             pairs.append(node)\n395|             if self._current_token() == 'comma':\n396|                 self._match('comma')\n397|             elif self._current_token() == 'rbrace':\n398|                 self._match('rbrace')\n399|                 break\n400|         return ast.multi_select_dict(nodes=pairs)\n401| \n402|     def _parse_projection_rhs(self, binding_power):\n403|         # Parse the right hand side of the projection.\n404|         if self.BINDING_POWER[self._current_token()] < self._PROJECTION_STOP:\n405|             # BP of 10 are all the tokens that stop a projection.\n406|             right = ast.identity()\n407|         elif self._current_token() == 'lbracket':\n408|             right = self._expression(binding_power)\n409|         elif self._current_token() == 'filter':\n410|             right = self._expression(binding_power)\n411|         elif self._current_token() == 'dot':\n412|             self._match('dot')\n413|             right = self._parse_dot_rhs(binding_power)\n414|         else:\n415|             self._raise_parse_error_for_token(self._lookahead_token(0),\n416|                                               'syntax error')\n417|         return right\n418| \n419|     def _parse_dot_rhs(self, binding_power):\n420|         # From the grammar:\n421|         # expression '.' ( identifier /\n422|         #                  multi-select-list /\n423|         #                  multi-select-hash /\n424|         #                  function-expression /\n425|         #                  *\n426|         # In terms of tokens that means that after a '.',\n427|         # you can have:\n428|         lookahead = self._current_token()\n429|         # Common case \"foo.bar\", so first check for an identifier.\n430|         if lookahead in ['quoted_identifier', 'unquoted_identifier', 'star']:\n431|             return self._expression(binding_power)\n432|         elif lookahead == 'lbracket':\n433|             self._match('lbracket')\n434|             return self._parse_multi_select_list()\n435|         elif lookahead == 'lbrace':\n436|             self._match('lbrace')\n437|             return self._parse_multi_select_hash()\n438|         else:\n439|             t = self._lookahead_token(0)\n440|             allowed = ['quoted_identifier', 'unquoted_identifier',\n441|                        'lbracket', 'lbrace']\n442|             msg = (\n443|                 \"Expecting: %s, got: %s\" % (allowed, t['type'])\n444|             )\n445|             self._raise_parse_error_for_token(t, msg)\n446| \n447|     def _error_nud_token(self, token):\n448|         if token['type'] == 'eof':\n449|             raise exceptions.IncompleteExpressionError(\n450|                 token['start'], token['value'], token['type'])\n451|         self._raise_parse_error_for_token(token, 'invalid token')\n452| \n453|     def _error_led_token(self, token):\n454|         self._raise_parse_error_for_token(token, 'invalid token')\n455| \n456|     def _match(self, token_type=None):\n457|         # inline'd self._current_token()\n458|         if self._current_token() == token_type:\n459|             # inline'd self._advance()\n460|             self._advance()\n461|         else:\n462|             self._raise_parse_error_maybe_eof(\n463|                 token_type, self._lookahead_token(0))\n464| \n465|     def _match_multiple_tokens(self, token_types):\n466|         if self._current_token() not in token_types:\n467|             self._raise_parse_error_maybe_eof(\n468|                 token_types, self._lookahead_token(0))\n469|         self._advance()\n470| \n471|     def _advance(self):\n472|         self._index += 1\n473| \n474|     def _current_token(self):\n475|         return self._tokens[self._index]['type']\n476| \n477|     def _lookahead(self, number):\n478|         return self._tokens[self._index + number]['type']\n479| \n480|     def _lookahead_token(self, number):\n481|         return self._tokens[self._index + number]\n482| \n483|     def _raise_parse_error_for_token(self, token, reason):\n484|         lex_position = token['start']\n485|         actual_value = token['value']\n486|         actual_type = token['type']\n487|         raise exceptions.ParseError(lex_position, actual_value,\n488|                                     actual_type, reason)\n489| \n490|     def _raise_parse_error_maybe_eof(self, expected_type, token):\n491|         lex_position = token['start']\n492|         actual_value = token['value']\n493|         actual_type = token['type']\n494|         if actual_type == 'eof':\n495|             raise exceptions.IncompleteExpressionError(\n496|                 lex_position, actual_value, actual_type)\n497|         message = 'Expecting: %s, got: %s' % (expected_type,\n498|                                               actual_type)\n499|         raise exceptions.ParseError(\n500|             lex_position, actual_value, actual_type, message)\n501| \n502|     @classmethod\n503|     def purge(cls):\n504|         \"\"\"Clear the expression compilation cache.\"\"\"\n505|         cls._CACHE.clear()\n506| \n507| \n508| @with_repr_method\n509| class ParsedResult(object):\n510|     def __init__(self, expression, parsed):\n511|         self.expression = expression\n512|         self.parsed = parsed\n513| \n514|     def search(self, value, options=None):\n515|         interpreter = visitor.TreeInterpreter(options)\n516|         result = interpreter.visit(self.parsed, value)\n517|         return result\n518| \n519|     def _render_dot_file(self):\n520|         \"\"\"Render the parsed AST as a dot file.\n521| \n522|         Note that this is marked as an internal method because\n523|         the AST is an implementation detail and is subject\n524|         to change.  This method can be used to help troubleshoot\n525|         or for development purposes, but is not considered part\n526|         of the public supported API.  Use at your own risk.\n527| \n528|         \"\"\"\n529|         renderer = visitor.GraphvizVisitor()\n530|         contents = renderer.visit(self.parsed)\n531|         return contents\n532| \n533|     def __repr__(self):\n534|         return repr(self.parsed)\n\n## Call sites to decide\ns245 | caller jmespath.parser.Parser._token_nud_not | line 191 col 16 | call | `self._expression(self.BINDING_POWER['not'])`\n    symbolic resolution: [jmespath.parser.Parser._expression]\ns246 | caller jmespath.parser.Parser._token_nud_not | line 192 col 16 | call | `ast.not_expression(expr)`\n    symbolic resolution: [jmespath.ast.not_expression] (certain)\ns247 | caller jmespath.parser.Parser._token_nud_lbracket | line 195 col 12 | call | `self._current_token()`\n    symbolic resolution: [jmespath.parser.Parser._current_token]\ns248 | caller jmespath.parser.Parser._token_nud_lbracket | line 196 col 21 | call | `self._parse_index_expression()`\n    symbolic resolution: [jmespath.parser.Parser._parse_index_expression]\ns249 | caller jmespath.parser.Parser._token_nud_lbracket | line 201 col 20 | call | `self._project_if_slice(ast.identity(), right)`\n    symbolic resolution: [jmespath.parser.Parser._project_if_slice]\ns250 | caller jmespath.parser.Parser._token_nud_lbracket | line 201 col 43 | call | `ast.identity()`\n    symbolic resolution: [jmespath.ast.identity] (certain)\ns251 | caller jmespath.parser.Parser._token_nud_lbracket | line 202 col 14 | call | `self._current_token()`\n    symbolic resolution: [jmespath.parser.Parser._current_token]\ns252 | caller jmespath.parser.Parser._token_nud_lbracket | line 203 col 17 | call | `self._lookahead(1)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead]\ns253 | caller jmespath.parser.Parser._token_nud_lbracket | line 204 col 13 | call | `self._advance()`\n    symbolic resolution: [jmespath.parser.Parser._advance]\ns254 | caller jmespath.parser.Parser._token_nud_lbracket | line 205 col 13 | call | `self._advance()`\n    symbolic resolution: [jmespath.parser.Parser._advance]\ns255 | caller jmespath.parser.Parser._token_nud_lbracket | line 206 col 21 | call | `self._parse_projection_rhs(self.BINDING_POWER['star'])`\n    symbolic resolution: [jmespath.parser.Parser._parse_projection_rhs]\ns256 | caller jmespath.parser.Parser._token_nud_lbracket | line 207 col 20 | call | `ast.projection(ast.identity(), right)`\n    symbolic resolution: [jmespath.ast.projection] (certain)\ns257 | caller jmespath.parser.Parser._token_nud_lbracket | line 207 col 35 | call | `ast.identity()`\n    symbolic resolution: [jmespath.ast.identity] (certain)\ns258 | caller jmespath.parser.Parser._token_nud_lbracket | line 209 col 20 | call | `self._parse_multi_select_list()`\n    symbolic resolution: [jmespath.parser.Parser._parse_multi_select_list]\ns259 | caller jmespath.parser.Parser._parse_index_expression | line 216 col 13 | call | `self._lookahead(0)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead]\ns260 | caller jmespath.parser.Parser._parse_index_expression | line 217 col 17 | call | `self._lookahead(1)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead]\ns261 | caller jmespath.parser.Parser._parse_index_expression | line 218 col 20 | call | `self._parse_slice_expression()`\n    symbolic resolution: [jmespath.parser.Parser._parse_slice_expression]\ns262 | caller jmespath.parser.Parser._parse_index_expression | line 221 col 20 | call | `ast.index(self._lookahead_token(0)['value'])`\n    symbolic resolution: [jmespath.ast.index] (certain)\ns263 | caller jmespath.parser.Parser._parse_index_expression | line 221 col 30 | call | `self._lookahead_token(0)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead_token]\ns264 | caller jmespath.parser.Parser._parse_index_expression | line 222 col 13 | call | `self._advance()`\n    symbolic resolution: [jmespath.parser.Parser._advance]\ns265 | caller jmespath.parser.Parser._parse_index_expression | line 223 col 13 | call | `self._match('rbracket')`\n    symbolic resolution: [jmespath.parser.Parser._match]\ns266 | caller jmespath.parser.Parser._parse_slice_expression | line 232 col 25 | call | `self._current_token()`\n    symbolic resolution: [jmespath.parser.Parser._current_token]\ns267 | caller jmespath.parser.Parser._parse_slice_expression | line 237 col 21 | call | `self._raise_parse_error_for_token(self._lookahead_token(0), 'syntax error')`\n    symbolic resolution: [jmespath.parser.Parser._raise_parse_error_for_token]\ns268 | caller jmespath.parser.Parser._parse_slice_expression | line 238 col 25 | call | `self._lookahead_token(0)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead_token]\ns269 | caller jmespath.parser.Parser._parse_slice_expression | line 239 col 17 | call | `self._advance()`\n    symbolic resolution: [jmespath.parser.Parser._advance]\ns270 | caller jmespath.parser.Parser._parse_slice_expression | line 241 col 32 | call | `self._lookahead_token(0)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead_token]\ns271 | caller jmespath.parser.Parser._parse_slice_expression | line 242 col 17 | call | `self._advance()`\n    symbolic resolution: [jmespath.parser.Parser._advance]\ns272 | caller jmespath.parser.Parser._parse_slice_expression | line 244 col 17 | call | `self._raise_parse_error_for_token(self._lookahead_token(0), 'syntax error')`\n    symbolic resolution: [jmespath.parser.Parser._raise_parse_error_for_token]\ns273 | caller jmespath.parser.Parser._parse_slice_expression | line 245 col 21 | call | `self._lookahead_token(0)`\n    symbolic resolution: [jmespath.parser.Parser._lookahead_token]\ns274 | caller jmespath.parser.Parser._parse_slice_expression | line 246 col 29 | call | `self._current_token()`\n    symbolic resolution: [jmespath.parser.Parser._current_token]\ns275 | caller jmespath.parser.Parser._parse_slice_expression | line 247 col 9 | call | `self._match('rbracket')`\n    symbolic resolution: [jmespath.parser.Parser._match]\ns276 | caller jmespath.parser.Parser._parse_slice_expression | line 248 col 16 | call | `ast.slice(*parts)`\n    symbolic resolution: [jmespath.ast.slice] (certain)\ns277 | caller jmespath.parser.Parser._token_nud_current | line 251 col 16 | call | `ast.current_node()`\n    symbolic resolution: [jmespath.ast.current_node] (certain)\ns278 | caller jmespath.parser.Parser._token_nud_expref | line 254 col 22 | call | `self._expression(self.BINDING_POWER['expref'])`\n    symbolic resolution: [jmespath.parser.Parser._expression]\ns279 | caller jmespath.parser.Parser._token_nud_expref | line 255 col 16 | call | `ast.expref(expression)`\n    symbolic resolution: [jmespath.ast.expref] (certain)\ns280 | caller jmespath.parser.Parser._token_led_dot | line 258 col 16 | call | `self._current_token()`\n    symbolic resolution: [jmespath.parser.Parser._current_token]\ns281 | caller jmespath.parser.Parser._token_led_dot | line 259 col 21 | call | `self._parse_dot_rhs(self.BINDING_POWER['dot'])`\n    symbolic resolution: [jmespath.parser.Parser._parse_dot_rhs]\ns282 | caller jmespath.parser.Parser._token_led_dot | line 261 col 17 | call | `left['children'].append(right)`\n    no symbolic information\ns283 | caller jmespath.parser.Parser._token_led_dot | line 264 col 24 | call | `ast.subexpression([left, right])`\n    symbolic resolution: [jmespath.ast.subexpression] (certain)\ns284 | caller jmespath.parser.Parser._token_led_dot | line 267 col 13 | call | `self._advance()`\n    symbolic resolution: [jmespath.parser.Parser._advance]\ns285 | caller jmespath.parser.Parser._token_led_dot | line 268 col 21 | call | `self._parse_projection_rhs(self.BINDING_POWER['dot'])`\n    symbolic resolution: [jmespath.parser.Parser._parse_projection_rhs]\ns286 | caller jmespath.parser.Parser._token_led_dot | line 270 col 20 | call | `ast.value_projection(left, right)`\n    symbolic resolution: [jmespath.ast.value_projection] (certain)\ns287 | caller jmespath.parser.Parser._token_led_pipe | line 273 col 17 | call | `self._expression(self.BINDING_POWER['pipe'])`\n    symbolic resolution: [jmespath.parser.Parser._expression]\ns288 | caller jmespath.parser.Parser._token_led_pipe | line 274 col 16 | call | `ast.pipe(left, right)`\n    symbolic resolution: [jmespath.ast.pipe] (certain)\ns289 | caller jmespath.parser.Parser._token_led_or | line 277 col 17 | call | `self._expression(self.BINDING_POWER['or'])`\n    symbolic resolution: [jmespath.parser.Parser._expression]\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s245",
+    "callees": [
+     "jmespath.parser.Parser._expression"
+    ]
+   },
+   {
+    "id": "s246",
+    "callees": [
+     "jmespath.ast.not_expression"
+    ]
+   },
+   {
+    "id": "s247",
+    "callees": [
+     "jmespath.parser.Parser._current_token"
+    ]
+   },
+   {
+    "id": "s248",
+    "callees": [
+     "jmespath.parser.Parser._parse_index_expression"
+    ]
+   },
+   {
+    "id": "s249",
+    "callees": [
+     "jmespath.parser.Parser._project_if_slice"
+    ]
+   },
+   {
+    "id": "s250",
+    "callees": [
+     "jmespath.ast.identity"
+    ]
+   },
+   {
+    "id": "s251",
+    "callees": [
+     "jmespath.parser.Parser._current_token"
+    ]
+   },
+   {
+    "id": "s252",
+    "callees": [
+     "jmespath.parser.Parser._lookahead"
+    ]
+   },
+   {
+    "id": "s253",
+    "callees": [
+     "jmespath.parser.Parser._advance"
+    ]
+   },
+   {
+    "id": "s254",
+    "callees": [
+     "jmespath.parser.Parser._advance"
+    ]
+   },
+   {
+    "id": "s255",
+    "callees": [
+     "jmespath.parser.Parser._parse_projection_rhs"
+    ]
+   },
+   {
+    "id": "s256",
+    "callees": [
+     "jmespath.ast.projection"
+    ]
+   },
+   {
+    "id": "s257",
+    "callees": [
+     "jmespath.ast.identity"
+    ]
+   },
+   {
+    "id": "s258",
+    "callees": [
+     "jmespath.parser.Parser._parse_multi_select_list"
+    ]
+   },
+   {
+    "id": "s259",
+    "callees": [
+     "jmespath.parser.Parser._lookahead"
+    ]
+   },
+   {
+    "id": "s260",
+    "callees": [
+     "jmespath.parser.Parser._lookahead"
+    ]
+   },
+   {
+    "id": "s261",
+    "callees": [
+     "jmespath.parser.Parser._parse_slice_expression"
+    ]
+   },
+   {
+    "id": "s262",
+    "callees": [
+     "jmespath.ast.index"
+    ]
+   },
+   {
+    "id": "s263",
+    "callees": [
+     "jmespath.parser.Parser._lookahead_token"
+    ]
+   },
+   {
+    "id": "s264",
+    "callees": [
+     "jmespath.parser.Parser._advance"
+    ]
+   },
+   {
+    "id": "s265",
+    "callees": [
+     "jmespath.parser.Parser._match"
+    ]
+   },
+   {
+    "id": "s266",
+    "callees": [
+     "jmespath.parser.Parser._current_token"
+    ]
+   },
+   {
+    "id": "s267",
+    "callees": [
+     "jmespath.parser.Parser._raise_parse_error_for_token",
+     "jmespath.parser.Parser._lookahead_token"
+    ]
+   },
+   {
+    "id": "s268",
+    "callees": [
+     "jmespath.parser.Parser._lookahead_token"
+    ]
+   },
+   {
+    "id": "s269",
+    "callees": [
+     "jmespath.parser.Parser._advance"
+    ]
+   },
+   {
+    "id": "s270",
+    "callees": [
+     "jmespath.parser.Parser._lookahead_token"
+    ]
+   },
+   {
+    "id": "s271",
+    "callees": [
+     "jmespath.parser.Parser._advance"
+    ]
+   },
+   {
+    "id": "s272",
+    "callees": [
+     "jmespath.parser.Parser._raise_parse_error_for_token",
+     "jmespath.parser.Parser._lookahead_token"
+    ]
+   },
+   {
+    "id": "s273",
+    "callees": [
+     "jmespath.parser.Parser._lookahead_token"
+    ]
+   },
+   {
+    "id": "s274",
+    "callees": [
+     "jmespath.parser.Parser._current_token"
+    ]
+   },
+   {
+    "id": "s275",
+    "callees": [
+     "jmespath.parser.Parser._match"
+    ]
+   },
+   {
+    "id": "s276",
+    "callees": [
+     "jmespath.ast.slice"
+    ]
+   },
+   {
+    "id": "s277",
+    "callees": [
+     "jmespath.ast.current_node"
+    ]
+   },
+   {
+    "id": "s278",
+    "callees": [
+     "jmespath.parser.Parser._expression"
+    ]
+   },
+   {
+    "id": "s279",
+    "callees": [
+     "jmespath.ast.expref"
+    ]
+   },
+   {
+    "id": "s280",
+    "callees": [
+     "jmespath.parser.Parser._current_token"
+    ]
+   },
+   {
+    "id": "s281",
+    "callees": [
+     "jmespath.parser.Parser._parse_dot_rhs"
+    ]
+   },
+   {
+    "id": "s282",
+    "callees": [
+     "<builtin>.list.append"
+    ]
+   },
+   {
+    "id": "s283",
+    "callees": [
+     "jmespath.ast.subexpression"
+    ]
+   },
+   {
+    "id": "s284",
+    "callees": [
+     "jmespath.parser.Parser._advance"
+    ]
+   },
+   {
+    "id": "s285",
+    "callees": [
+     "jmespath.parser.Parser._parse_projection_rhs"
+    ]
+   },
+   {
+    "id": "s286",
+    "callees": [
+     "jmespath.ast.value_projection"
+    ]
+   },
+   {
+    "id": "s287",
+    "callees": [
+     "jmespath.parser.Parser._expression"
+    ]
+   },
+   {
+    "id": "s288",
+    "callees": [
+     "jmespath.ast.pipe"
+    ]
+   },
+   {
+    "id": "s289",
+    "callees": [
+     "jmespath.parser.Parser._expression"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 19551,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 2532,
+  "output_tokens_details": {
+   "thinking_tokens": 1091
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 19551,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2532,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 19551,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 19551
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.0071836800000000004,
+ "seconds": 10.18,
+ "attempt": 1,
+ "time": "2026-11-18T18:20:50+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 19888,
+   "outputTokens": 2558,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 19551,
+   "webSearchRequests": 0,
+   "costUSD": 0.0071836800000000004,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1091,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 19551,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

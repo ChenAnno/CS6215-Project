@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.Task.run",
+  "operator.methodcaller",
+  "operator.methodcaller.__call__"
+ ],
+ "main.Task.run": [],
+ "main.Task.skip": []
+}

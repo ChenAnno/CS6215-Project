@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.report"
+ ],
+ "main.Circle.area": [],
+ "main.Shape.area": [],
+ "main.Square.area": [],
+ "main.report": [
+  "main.Circle.area",
+  "main.Shape.area",
+  "main.Square.area"
+ ]
+}

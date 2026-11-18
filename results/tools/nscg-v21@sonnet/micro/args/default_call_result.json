@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.make",
+  "main.run"
+ ],
+ "main.func1": [],
+ "main.make": [],
+ "main.run": [
+  "main.func1"
+ ]
+}

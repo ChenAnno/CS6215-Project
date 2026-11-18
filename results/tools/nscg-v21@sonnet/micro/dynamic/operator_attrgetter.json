@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.Task.run",
+  "operator.attrgetter"
+ ],
+ "main.Task.run": [],
+ "main.Task.skip": []
+}

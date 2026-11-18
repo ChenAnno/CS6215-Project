@@ -1,0 +1,7 @@
+{
+ "main": [
+  "main.install"
+ ],
+ "main.install": [],
+ "main.install.handler": []
+}

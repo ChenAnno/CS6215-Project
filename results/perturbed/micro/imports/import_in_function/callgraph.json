@@ -1,0 +1,15 @@
+{
+    "main": [
+        "main.q0b2b_2",
+        "main.q0b2b_3"
+    ],
+    "main.q0b2b_2": [
+        "plugin.q0b2b_0"
+    ],
+    "main.q0b2b_3": [
+        "plugin.q0b2b_1"
+    ],
+    "plugin": [],
+    "plugin.q0b2b_0": [],
+    "plugin.q0b2b_1": []
+}

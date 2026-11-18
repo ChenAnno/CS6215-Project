@@ -1,0 +1,6 @@
+{
+ "main": [
+  "re.compile",
+  "re.compile.match"
+ ]
+}

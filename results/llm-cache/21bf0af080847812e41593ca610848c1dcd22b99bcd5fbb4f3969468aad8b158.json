@@ -1,0 +1,293 @@
+{
+ "key": "21bf0af080847812e41593ca610848c1dcd22b99bcd5fbb4f3969468aad8b158",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Definitions of the package (symbolic outline)\nmodule fabric\n  imports: fabric._version.__version__, fabric._version.__version_info__, fabric.connection.Config, fabric.connection.Connection, fabric.group.Group, fabric.group.GroupResult, fabric.group.SerialGroup, fabric.group.ThreadingGroup, fabric.runners.Remote, fabric.runners.Result\nmodule fabric._version\nmodule fabric.config\n  imports: InvokeConfig=invoke.config.Config, fabric.runners.Remote, fabric.util.debug, fabric.util.get_local_user, invoke.config.merge_dicts, paramiko.config.SSHConfig\n  class fabric.config.Config(invoke.config.Config)\n    methods: __init__(self); set_runtime_ssh_path(self, path); load_ssh_config(self); clone(self); _clone_init_kwargs(self); _load_ssh_files(self); _load_ssh_file(self, path); @staticmethod global_defaults()\n    class attrs: prefix='fabric'\nmodule fabric.connection\n  imports: contextlib.contextmanager, decorator.decorator, fabric.config.Config, fabric.transfer.Transfer, fabric.tunnels.Tunnel, fabric.tunnels.TunnelManager, invoke.Context, invoke.exceptions.ThreadException, invoke.vendor.decorator.decorator, invoke.vendor.six.StringIO, invoke.vendor.six.string_types, paramiko.agent.AgentRequestHandler, paramiko.client.AutoAddPolicy, paramiko.client.SSHClient, paramiko.config.SSHConfig, paramiko.proxy.ProxyCommand, six.StringIO, six.string_types, threading.Event\n  def fabric.connection.opens(method, self) @decorator\n  def fabric.connection.Connection.forward_remote.callback(channel, src_addr_tup, dst_addr_tup)\n  class fabric.connection.Connection(invoke.Context)\n    methods: __init__(self, host, user, port, config, gateway, forward_agent, connect_timeout, connect_kwargs); resolve_connect_kwargs(self, connect_kwargs); get_gateway(self); __repr__(self); _identity(self); __eq__(self, other); __lt__(self, other); __hash__(self); derive_shorthand(self, host_string); @property is_connected(self); open(self); open_gateway(self); close(self); __enter__(self); __exit__(self); @opens create_session(self); @opens run(self, command); @opens sudo(self, command); local(self); @opens sftp(self); get(self); put(self); @contextmanager,opens forward_local(self, local_port, remote_port, remote_host, local_host); @contextmanager,opens forward_remote(self, remote_port, local_port, remote_host, local_host)\n    properties: is_connected\n    class attrs: host=None, original_host=None, user=None, port=None, ssh_config=None, gateway=None, forward_agent=None, connect_timeout=None, connect_kwargs=None, client=None, transport=None, _sftp=None\nmodule fabric.exceptions\n  class fabric.exceptions.NothingToDo(<builtin>.Exception)\n  class fabric.exceptions.GroupException(<builtin>.Exception)\n    methods: __init__(self, result)\nmodule fabric.executor\n  imports: fabric.Connection, fabric.exceptions.NothingToDo, fabric.util.debug, invoke.Call, invoke.Executor, invoke.Task\n  def fabric.executor.FabExecutor.expand_calls.anonymous(c)\n  class fabric.executor.FabExecutor(invoke.Executor)\n    methods: expand_calls(self, calls, apply_hosts); parameterize(self, call, host); dedupe(self, tasks)\n  class fabric.executor.ConnectionCall(invoke.Call)\n    methods: make_context(self, config)\nmodule fabric.group\n  imports: fabric.connection.Connection, fabric.exceptions.GroupException, invoke.util.ExceptionHandlingThread, invoke.vendor.six.moves.queue.Queue, six.moves.queue.Queue\n  def fabric.group.thread_worker(cxn, queue, args, kwargs)\n  class fabric.group.Group(<builtin>.list)\n    methods: __init__(self); @classmethod from_connections(cls, connections); run(self); get(self)\n  class fabric.group.SerialGroup(fabric.group.Group) mro: fabric.group.Group > <builtin>.list\n    methods: run(self)\n  class fabric.group.ThreadingGroup(fabric.group.Group) mro: fabric.group.Group > <builtin>.list\n    methods: run(self)\n  class fabric.group.GroupResult(<builtin>.dict)\n    methods: __init__(self); _bifurcate(self); @property succeeded(self); @property failed(self)\n    properties: failed, succeeded\nmodule fabric.main\n  imports: fabric.Config, fabric.executor.FabExecutor, fabric=fabric.__version__, invoke.Argument, invoke.Collection, invoke.Program, invoke=invoke.__version__, paramiko=paramiko.__version__\n  def fabric.main.make_program()\n  class fabric.main.Fab(invoke.Program)\n    methods: print_version(self); core_args(self); @property _remainder_only(self); load_collection(self); no_tasks_given(self); create_config(self); update_config(self)\n    properties: _remainder_only\nmodule fabric.runners\n  imports: InvokeResult=invoke.Result, invoke.Runner, invoke.pty_size\n  class fabric.runners.Remote(invoke.Runner)\n    methods: start(self, command, shell, env); read_proc_stdout(self, num_bytes); read_proc_stderr(self, num_bytes); _write_proc_stdin(self, data); @property process_is_finished(self); send_interrupt(self, interrupt); returncode(self); generate_result(self); stop(self)\n    properties: process_is_finished\n  class fabric.runners.Result(invoke.Result)\n    methods: __init__(self)\nmodule fabric.transfer\n  imports: fabric.util.debug\n  class fabric.transfer.Transfer(<builtin>.object)\n    methods: __init__(self, connection); @property sftp(self); is_remote_dir(self, path); get(self, remote, local, preserve_mode); put(self, local, remote, preserve_mode)\n    properties: sftp\n  class fabric.transfer.Result(<builtin>.object)\n    methods: __init__(self, local, orig_local, remote, orig_remote, connection)\nmodule fabric.tunnels\n  imports: invoke.exceptions.ThreadException, invoke.util.ExceptionHandlingThread, threading.Event\n  class fabric.tunnels.TunnelManager(invoke.util.ExceptionHandlingThread)\n    methods: __init__(self, local_host, local_port, remote_host, remote_port, transport, finished); _run(self)\n  class fabric.tunnels.Tunnel(invoke.util.ExceptionHandlingThread)\n    methods: __init__(self, channel, sock, finished); _run(self); read_and_write(self, reader, writer, chunk_size)\nmodule fabric.util\n  def fabric.util.get_local_user()\n\n## Source (module `fabric.main` of package `fabric`), with line numbers\n  1| \"\"\"\n  2| CLI entrypoint & parser configuration.\n  3| \n  4| Builds on top of Invoke's core functionality for same.\n  5| \"\"\"\n  6| \n  7| import getpass\n  8| \n  9| from invoke import Argument, Collection, Program\n 10| from invoke import __version__ as invoke\n 11| from paramiko import __version__ as paramiko\n 12| \n 13| from . import __version__ as fabric\n 14| from . import Config\n 15| from .executor import FabExecutor\n 16| \n 17| \n 18| class Fab(Program):\n 19|     def print_version(self):\n 20|         super(Fab, self).print_version()\n 21|         print(\"Paramiko {}\".format(paramiko))\n 22|         print(\"Invoke {}\".format(invoke))\n 23| \n 24|     def core_args(self):\n 25|         core_args = super(Fab, self).core_args()\n 26|         my_args = [\n 27|             Argument(\n 28|                 names=(\"S\", \"ssh-config\"),\n 29|                 help=\"Path to runtime SSH config file.\",\n 30|             ),\n 31|             Argument(\n 32|                 names=(\"H\", \"hosts\"),\n 33|                 help=\"Comma-separated host name(s) to execute tasks against.\",\n 34|             ),\n 35|             Argument(\n 36|                 names=(\"i\", \"identity\"),\n 37|                 kind=list,  # Same as OpenSSH, can give >1 key\n 38|                 # TODO: automatically add hint about iterable-ness to Invoke\n 39|                 # help display machinery?\n 40|                 help=\"Path to runtime SSH identity (key) file. May be given multiple times.\",  # noqa\n 41|             ),\n 42|             # TODO: worth having short flags for these prompt args?\n 43|             Argument(\n 44|                 names=(\"prompt-for-login-password\",),\n 45|                 kind=bool,\n 46|                 help=\"Request an upfront SSH-auth password prompt.\",\n 47|             ),\n 48|             Argument(\n 49|                 names=(\"prompt-for-passphrase\",),\n 50|                 kind=bool,\n 51|                 help=\"Request an upfront SSH key passphrase prompt.\",\n 52|             ),\n 53|         ]\n 54|         return core_args + my_args\n 55| \n 56|     @property\n 57|     def _remainder_only(self):\n 58|         # No 'unparsed' (i.e. tokens intended for task contexts), and remainder\n 59|         # (text after a double-dash) implies a contextless/taskless remainder\n 60|         # execution of the style 'fab -H host -- command'.\n 61|         # NOTE: must ALSO check to ensure the double dash isn't being used for\n 62|         # tab completion machinery...\n 63|         return (\n 64|             not self.core.unparsed\n 65|             and self.core.remainder\n 66|             and not self.args.complete.value\n 67|         )\n 68| \n 69|     def load_collection(self):\n 70|         # Stick in a dummy Collection if it looks like we were invoked w/o any\n 71|         # tasks, and with a remainder.\n 72|         # This isn't super ideal, but Invoke proper has no obvious \"just run my\n 73|         # remainder\" use case, so having it be capable of running w/o any task\n 74|         # module, makes no sense. But we want that capability for testing &\n 75|         # things like 'fab -H x,y,z -- mycommand'.\n 76|         if self._remainder_only:\n 77|             # TODO: hm we're probably not honoring project-specific configs in\n 78|             # this branch; is it worth having it assume CWD==project, since\n 79|             # that's often what users expect? Even tho no task collection to\n 80|             # honor the real \"lives by task coll\"?\n 81|             self.collection = Collection()\n 82|         else:\n 83|             super(Fab, self).load_collection()\n 84| \n 85|     def no_tasks_given(self):\n 86|         # As above, neuter the usual \"hey you didn't give me any tasks, let me\n 87|         # print help for you\" behavior, if necessary.\n 88|         if not self._remainder_only:\n 89|             super(Fab, self).no_tasks_given()\n 90| \n 91|     def create_config(self):\n 92|         # Create config, as parent does, but with lazy=True to avoid our own\n 93|         # SSH config autoload. (Otherwise, we can't correctly load _just_ the\n 94|         # runtime file if one's being given later.)\n 95|         self.config = self.config_class(lazy=True)\n 96|         # However, we don't really want the parent class' lazy behavior (which\n 97|         # skips loading system/global invoke-type conf files) so we manually do\n 98|         # that here to match upstream behavior.\n 99|         self.config.load_base_conf_files()\n100|         # And merge again so that data is available.\n101|         # TODO: really need to either A) stop giving fucks about calling\n102|         # merge() \"too many times\", or B) make merge() itself determine whether\n103|         # it needs to run and/or just merge stuff that's changed, so log spam\n104|         # isn't as bad.\n105|         self.config.merge()\n106| \n107|     def update_config(self):\n108|         # Note runtime SSH path, if given, and load SSH configurations.\n109|         # NOTE: must do parent before our work, in case users want to disable\n110|         # SSH config loading within a runtime-level conf file/flag.\n111|         super(Fab, self).update_config(merge=False)\n112|         self.config.set_runtime_ssh_path(self.args[\"ssh-config\"].value)\n113|         self.config.load_ssh_config()\n114|         # Load -i identity file, if given, into connect_kwargs, at overrides\n115|         # level.\n116|         # TODO: this feels a little gross, but since the parent has already\n117|         # called load_overrides, this is best we can do for now w/o losing\n118|         # data. Still feels correct; just might be cleaner to have even more\n119|         # Config API members around this sort of thing. Shrug.\n120|         connect_kwargs = {}\n121|         path = self.args[\"identity\"].value\n122|         if path:\n123|             connect_kwargs[\"key_filename\"] = path\n124|         # Secrets prompts that want to happen at handoff time instead of\n125|         # later/at user-time.\n126|         # TODO: should this become part of Invoke proper in case other\n127|         # downstreams have need of it? E.g. a prompt Argument 'type'? We're\n128|         # already doing a similar thing there for sudo password...\n129|         if self.args[\"prompt-for-login-password\"].value:\n130|             prompt = \"Enter login password for use with SSH auth: \"\n131|             connect_kwargs[\"password\"] = getpass.getpass(prompt)\n132|         if self.args[\"prompt-for-passphrase\"].value:\n133|             prompt = \"Enter passphrase for use unlocking SSH keys: \"\n134|             connect_kwargs[\"passphrase\"] = getpass.getpass(prompt)\n135|         self.config._overrides[\"connect_kwargs\"] = connect_kwargs\n136|         # Since we gave merge=False above, we must do it ourselves here. (Also\n137|         # allows us to 'compile' our overrides manipulation.)\n138|         self.config.merge()\n139| \n140| \n141| # Mostly a concession to testing.\n142| def make_program():\n143|     return Fab(\n144|         name=\"Fabric\",\n145|         version=fabric,\n146|         executor_class=FabExecutor,\n147|         config_class=Config,\n148|     )\n149| \n150| \n151| program = make_program()\n\n## Call sites to decide\ns221 | caller fabric.main.Fab.print_version | line 20 col 9 | call | `super(Fab, self).print_version()`\n    symbolic resolution: [invoke.Program.print_version]\n    package functions with this name: [fabric.main.Fab.print_version]\ns222 | caller fabric.main.Fab.print_version | line 20 col 9 | call | `super(Fab, self)`\n    symbolic resolution: [<builtin>.super] (certain)\n    package functions passed as arguments: [invoke.Program.__init__]\ns223 | caller fabric.main.Fab.print_version | line 21 col 9 | call | `print('Paramiko {}'.format(paramiko))`\n    symbolic resolution: [<builtin>.print] (certain)\ns224 | caller fabric.main.Fab.print_version | line 21 col 15 | call | `'Paramiko {}'.format(paramiko)`\n    symbolic resolution: [<builtin>.str.format]\ns225 | caller fabric.main.Fab.print_version | line 22 col 9 | call | `print('Invoke {}'.format(invoke))`\n    symbolic resolution: [<builtin>.print] (certain)\ns226 | caller fabric.main.Fab.print_version | line 22 col 15 | call | `'Invoke {}'.format(invoke)`\n    symbolic resolution: [<builtin>.str.format]\ns227 | caller fabric.main.Fab.core_args | line 25 col 21 | call | `super(Fab, self).core_args()`\n    symbolic resolution: [invoke.Program.core_args]\n    package functions with this name: [fabric.main.Fab.core_args]\ns228 | caller fabric.main.Fab.core_args | line 25 col 21 | call | `super(Fab, self)`\n    symbolic resolution: [<builtin>.super] (certain)\n    package functions passed as arguments: [invoke.Program.__init__]\ns229 | caller fabric.main.Fab.core_args | line 27 col 13 | call | `Argument(names=('S', 'ssh-config'), help='Path to runtime SSH config file.')`\n    symbolic resolution: [invoke.Argument] (certain)\ns230 | caller fabric.main.Fab.core_args | line 31 col 13 | call | `Argument(names=('H', 'hosts'), help='Comma-separated host name(s) to execute tasks against.')`\n    symbolic resolution: [invoke.Argument] (certain)\ns231 | caller fabric.main.Fab.core_args | line 35 col 13 | call | `Argument(names=('i', 'identity'), kind=list, help='Path to runtime SSH identity (key) file. May be given multiple tim...`\n    symbolic resolution: [invoke.Argument] (certain)\ns232 | caller fabric.main.Fab.core_args | line 43 col 13 | call | `Argument(names=('prompt-for-login-password',), kind=bool, help='Request an upfront SSH-auth password prompt.')`\n    symbolic resolution: [invoke.Argument] (certain)\ns233 | caller fabric.main.Fab.core_args | line 48 col 13 | call | `Argument(names=('prompt-for-passphrase',), kind=bool, help='Request an upfront SSH key passphrase prompt.')`\n    symbolic resolution: [invoke.Argument] (certain)\ns234 | caller fabric.main | line 56 col 6 | decorator | `@property`\n    symbolic resolution: [<builtin>.property]\ns235 | caller fabric.main.Fab.load_collection | line 76 col 12 | getattr | `self._remainder_only`\n    symbolic resolution: [fabric.main.Fab._remainder_only]\ns236 | caller fabric.main.Fab.load_collection | line 81 col 31 | call | `Collection()`\n    symbolic resolution: [invoke.Collection] (certain)\ns237 | caller fabric.main.Fab.load_collection | line 83 col 13 | call | `super(Fab, self).load_collection()`\n    symbolic resolution: [invoke.Program.load_collection]\n    package functions with this name: [fabric.main.Fab.load_collection]\ns238 | caller fabric.main.Fab.load_collection | line 83 col 13 | call | `super(Fab, self)`\n    symbolic resolution: [<builtin>.super] (certain)\n    package functions passed as arguments: [invoke.Program.__init__]\ns239 | caller fabric.main.Fab.no_tasks_given | line 88 col 16 | getattr | `self._remainder_only`\n    symbolic resolution: [fabric.main.Fab._remainder_only]\ns240 | caller fabric.main.Fab.no_tasks_given | line 89 col 13 | call | `super(Fab, self).no_tasks_given()`\n    symbolic resolution: [invoke.Program.no_tasks_given]\n    package functions with this name: [fabric.main.Fab.no_tasks_given]\ns241 | caller fabric.main.Fab.no_tasks_given | line 89 col 13 | call | `super(Fab, self)`\n    symbolic resolution: [<builtin>.super] (certain)\n    package functions passed as arguments: [invoke.Program.__init__]\ns242 | caller fabric.main.Fab.create_config | line 95 col 23 | call | `self.config_class(lazy=True)`\n    symbolic resolution: [invoke.Program.config_class]\ns243 | caller fabric.main.Fab.create_config | line 99 col 9 | call | `self.config.load_base_conf_files()`\n    symbolic resolution: [invoke.Program.config.load_base_conf_files, invoke.Program.config_class.load_base_conf_files]\ns244 | caller fabric.main.Fab.create_config | line 105 col 9 | call | `self.config.merge()`\n    symbolic resolution: [invoke.Program.config.merge, invoke.Program.config_class.merge]\ns245 | caller fabric.main.Fab.update_config | line 111 col 9 | call | `super(Fab, self).update_config(merge=False)`\n    symbolic resolution: [invoke.Program.update_config]\n    package functions with this name: [fabric.main.Fab.update_config]\ns246 | caller fabric.main.Fab.update_config | line 111 col 9 | call | `super(Fab, self)`\n    symbolic resolution: [<builtin>.super] (certain)\n    package functions passed as arguments: [invoke.Program.__init__]\ns247 | caller fabric.main.Fab.update_config | line 112 col 9 | call | `self.config.set_runtime_ssh_path(self.args['ssh-config'].value)`\n    symbolic resolution: [invoke.Program.config.set_runtime_ssh_path, invoke.Program.config_class.set_runtime_ssh_path]\n    package functions with this name: [fabric.config.Config.set_runtime_ssh_path]\ns248 | caller fabric.main.Fab.update_config | line 113 col 9 | call | `self.config.load_ssh_config()`\n    symbolic resolution: [invoke.Program.config.load_ssh_config, invoke.Program.config_class.load_ssh_config]\n    package functions with this name: [fabric.config.Config.load_ssh_config]\ns249 | caller fabric.main.Fab.update_config | line 131 col 42 | call | `getpass.getpass(prompt)`\n    symbolic resolution: [getpass.getpass]\ns250 | caller fabric.main.Fab.update_config | line 134 col 44 | call | `getpass.getpass(prompt)`\n    symbolic resolution: [getpass.getpass]\ns251 | caller fabric.main.Fab.update_config | line 138 col 9 | call | `self.config.merge()`\n    symbolic resolution: [invoke.Program.config.merge, invoke.Program.config_class.merge]\ns252 | caller fabric.main.make_program | line 143 col 12 | call | `Fab(name='Fabric', version=fabric, executor_class=FabExecutor, config_class=Config)`\n    symbolic resolution: [invoke.Program.__init__] (certain)\n    package functions passed as arguments: [invoke.Executor.__init__, fabric.config.Config.__init__]\ns253 | caller fabric.main | line 151 col 11 | call | `make_program()`\n    symbolic resolution: [fabric.main.make_program] (certain)\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s221",
+    "callees": [
+     "invoke.Program.print_version"
+    ]
+   },
+   {
+    "id": "s222",
+    "callees": [
+     "<builtin>.super"
+    ]
+   },
+   {
+    "id": "s223",
+    "callees": [
+     "<builtin>.print"
+    ]
+   },
+   {
+    "id": "s224",
+    "callees": [
+     "<builtin>.str.format"
+    ]
+   },
+   {
+    "id": "s225",
+    "callees": [
+     "<builtin>.print"
+    ]
+   },
+   {
+    "id": "s226",
+    "callees": [
+     "<builtin>.str.format"
+    ]
+   },
+   {
+    "id": "s227",
+    "callees": [
+     "invoke.Program.core_args"
+    ]
+   },
+   {
+    "id": "s228",
+    "callees": [
+     "<builtin>.super"
+    ]
+   },
+   {
+    "id": "s229",
+    "callees": [
+     "invoke.Argument"
+    ]
+   },
+   {
+    "id": "s230",
+    "callees": [
+     "invoke.Argument"
+    ]
+   },
+   {
+    "id": "s231",
+    "callees": [
+     "invoke.Argument"
+    ]
+   },
+   {
+    "id": "s232",
+    "callees": [
+     "invoke.Argument"
+    ]
+   },
+   {
+    "id": "s233",
+    "callees": [
+     "invoke.Argument"
+    ]
+   },
+   {
+    "id": "s234",
+    "callees": [
+     "<builtin>.property"
+    ]
+   },
+   {
+    "id": "s235",
+    "callees": [
+     "fabric.main.Fab._remainder_only"
+    ]
+   },
+   {
+    "id": "s236",
+    "callees": [
+     "invoke.Collection"
+    ]
+   },
+   {
+    "id": "s237",
+    "callees": [
+     "invoke.Program.load_collection"
+    ]
+   },
+   {
+    "id": "s238",
+    "callees": [
+     "<builtin>.super"
+    ]
+   },
+   {
+    "id": "s239",
+    "callees": [
+     "fabric.main.Fab._remainder_only"
+    ]
+   },
+   {
+    "id": "s240",
+    "callees": [
+     "invoke.Program.no_tasks_given"
+    ]
+   },
+   {
+    "id": "s241",
+    "callees": [
+     "<builtin>.super"
+    ]
+   },
+   {
+    "id": "s242",
+    "callees": [
+     "fabric.config.Config.__init__"
+    ]
+   },
+   {
+    "id": "s243",
+    "callees": [
+     "invoke.config.Config.load_base_conf_files"
+    ]
+   },
+   {
+    "id": "s244",
+    "callees": [
+     "invoke.config.Config.merge"
+    ]
+   },
+   {
+    "id": "s245",
+    "callees": [
+     "invoke.Program.update_config"
+    ]
+   },
+   {
+    "id": "s246",
+    "callees": [
+     "<builtin>.super"
+    ]
+   },
+   {
+    "id": "s247",
+    "callees": [
+     "fabric.config.Config.set_runtime_ssh_path"
+    ]
+   },
+   {
+    "id": "s248",
+    "callees": [
+     "fabric.config.Config.load_ssh_config"
+    ]
+   },
+   {
+    "id": "s249",
+    "callees": [
+     "getpass.getpass"
+    ]
+   },
+   {
+    "id": "s250",
+    "callees": [
+     "getpass.getpass"
+    ]
+   },
+   {
+    "id": "s251",
+    "callees": [
+     "invoke.config.Config.merge"
+    ]
+   },
+   {
+    "id": "s252",
+    "callees": [
+     "invoke.Program.__init__"
+    ]
+   },
+   {
+    "id": "s253",
+    "callees": [
+     "fabric.main.make_program"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 10388,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 2962,
+  "output_tokens_details": {
+   "thinking_tokens": 2092
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 10388,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2962,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 10388,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 10388
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00464908,
+ "seconds": 13.26,
+ "attempt": 1,
+ "time": "2026-11-18T18:08:36+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 10723,
+   "outputTokens": 2987,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 10388,
+   "webSearchRequests": 0,
+   "costUSD": 0.00464908,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 2092,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 10388,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

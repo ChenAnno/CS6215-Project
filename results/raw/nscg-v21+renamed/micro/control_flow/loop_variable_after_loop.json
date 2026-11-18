@@ -1,0 +1,1 @@
+{"units": [{"unit": "control_flow/loop_variable_after_loop", "answers": {"s1": ["main.qe559_0", "main.qe559_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 1, "kind": "call", "text": "handler()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

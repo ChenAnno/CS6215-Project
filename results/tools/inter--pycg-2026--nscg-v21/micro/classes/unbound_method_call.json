@@ -1,0 +1,7 @@
+{
+ "main.Child.greet": [],
+ "main": [
+  "main.Base.greet"
+ ],
+ "main.Base.greet": []
+}

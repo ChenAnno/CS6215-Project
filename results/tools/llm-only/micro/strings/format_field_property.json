@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.str.format",
+  "main.User.name"
+ ],
+ "main.User.name": []
+}

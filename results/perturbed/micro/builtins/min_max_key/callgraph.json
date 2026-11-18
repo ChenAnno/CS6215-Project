@@ -1,0 +1,18 @@
+{
+    "main": [
+        "main.qf37f_2",
+        "main.qf37f_3"
+    ],
+    "main.qf37f_3": [
+        "<builtin>.min",
+        "main.qf37f_0"
+    ],
+    "main.qf37f_2": [
+        "<builtin>.max",
+        "main.qf37f_1"
+    ],
+    "main.qf37f_0": [],
+    "main.qf37f_1": [],
+    "<builtin>.min": [],
+    "<builtin>.max": []
+}

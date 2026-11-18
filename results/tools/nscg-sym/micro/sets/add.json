@@ -1,0 +1,7 @@
+{
+ "main": [
+  "<builtin>.set",
+  "<builtin>.set.add"
+ ],
+ "main.func1": []
+}

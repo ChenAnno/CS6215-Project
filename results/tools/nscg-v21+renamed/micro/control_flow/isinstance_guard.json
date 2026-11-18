@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.q92d1_0"
+ ],
+ "main.q92d1_0": [
+  "<builtin>.dict.items",
+  "<builtin>.isinstance",
+  "json.loads"
+ ]
+}

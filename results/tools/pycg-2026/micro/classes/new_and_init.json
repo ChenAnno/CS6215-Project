@@ -1,0 +1,13 @@
+{
+ "<builtin>.object.__new__": [],
+ "<builtin>.super": [],
+ "main": [
+  "main.Point.__init__",
+  "main.Point.__new__"
+ ],
+ "main.Point.__init__": [],
+ "main.Point.__new__": [
+  "<builtin>.object.__new__",
+  "<builtin>.super"
+ ]
+}

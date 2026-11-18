@@ -1,0 +1,13 @@
+{
+ "logging.Handler.__init__": [],
+ "logging.Logger.addHandler": [],
+ "logging.Logger.warning": [],
+ "logging.getLogger": [],
+ "main": [
+  "logging.Handler.__init__",
+  "logging.Logger.addHandler",
+  "logging.Logger.warning",
+  "logging.getLogger"
+ ],
+ "main.q92bb_0.q92bb_1": []
+}

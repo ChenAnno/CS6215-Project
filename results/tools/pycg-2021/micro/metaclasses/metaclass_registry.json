@@ -1,0 +1,10 @@
+{
+ "<builtin>.super": [],
+ "main": [],
+ "main.Alpha.run": [],
+ "main.Base.run": [],
+ "main.Beta.run": [],
+ "main.Registered.__init__": [
+  "<builtin>.super"
+ ]
+}

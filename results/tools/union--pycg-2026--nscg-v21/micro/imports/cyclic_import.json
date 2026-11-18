@@ -1,0 +1,16 @@
+{
+ "main": [
+  "ping.start"
+ ],
+ "ping": [],
+ "ping.back": [
+  "pong.bounce"
+ ],
+ "pong.bounce": [
+  "ping.back"
+ ],
+ "pong": [],
+ "ping.start": [
+  "pong.bounce"
+ ]
+}

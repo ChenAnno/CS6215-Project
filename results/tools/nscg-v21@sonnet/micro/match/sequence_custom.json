@@ -1,0 +1,10 @@
+{
+ "main": [
+  "collections.abc.Sequence.__init__",
+  "main.func2"
+ ],
+ "main.Pair.__getitem__": [],
+ "main.Pair.__len__": [],
+ "main.func1": [],
+ "main.func2": []
+}

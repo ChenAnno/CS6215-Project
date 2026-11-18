@@ -1,0 +1,9 @@
+{
+ "commands": [],
+ "commands.build": [],
+ "main": [
+  "commands.build",
+  "main.local"
+ ],
+ "main.local": []
+}

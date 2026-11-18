@@ -1,0 +1,17 @@
+{
+    "main": [
+        "asyncio.run",
+        "main.q85c6_0",
+        "main.q85c6_1"
+    ],
+    "main.q85c6_0": [
+        "asyncio.EventLoop.call_soon",
+        "asyncio.get_running_loop",
+        "asyncio.sleep"
+    ],
+    "main.q85c6_1": [],
+    "asyncio.run": [],
+    "asyncio.get_running_loop": [],
+    "asyncio.EventLoop.call_soon": [],
+    "asyncio.sleep": []
+}

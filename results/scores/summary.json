@@ -1,0 +1,3514 @@
+{
+ "pycg-2026": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 534,
+   "sound": 549,
+   "exact": 466,
+   "inside": {
+    "tool": 1267,
+    "truth": 1252,
+    "tp": 1172,
+    "fp": 95,
+    "fn": 80,
+    "precision": 0.925,
+    "recall": 0.9361,
+    "f1": 0.9305
+   },
+   "outside": {
+    "tool": 458,
+    "truth": 474,
+    "tp": 456,
+    "fp": 2,
+    "fn": 18,
+    "precision": 0.9956,
+    "recall": 0.962,
+    "f1": 0.9785
+   },
+   "all": {
+    "tool": 1725,
+    "truth": 1726,
+    "tp": 1628,
+    "fp": 97,
+    "fn": 98,
+    "precision": 0.9438,
+    "recall": 0.9432,
+    "f1": 0.9435
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 761,
+    "truth": 955,
+    "tp": 680,
+    "fp": 81,
+    "fn": 275,
+    "precision": 0.8936,
+    "recall": 0.712,
+    "f1": 0.7925
+   },
+   "outside": {
+    "tool": 890,
+    "truth": 946,
+    "tp": 782,
+    "fp": 108,
+    "fn": 164,
+    "precision": 0.8787,
+    "recall": 0.8266,
+    "f1": 0.8519
+   },
+   "all": {
+    "tool": 1651,
+    "truth": 1901,
+    "tp": 1462,
+    "fp": 189,
+    "fn": 439,
+    "precision": 0.8855,
+    "recall": 0.7691,
+    "f1": 0.8232
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 39,
+     "truth": 35,
+     "tp": 35,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8974,
+     "recall": 1.0,
+     "f1": 0.9459
+    },
+    "outside": {
+     "tool": 81,
+     "truth": 100,
+     "tp": 80,
+     "fp": 1,
+     "fn": 20,
+     "precision": 0.9877,
+     "recall": 0.8,
+     "f1": 0.884
+    },
+    "all": {
+     "tool": 120,
+     "truth": 135,
+     "tp": 115,
+     "fp": 5,
+     "fn": 20,
+     "precision": 0.9583,
+     "recall": 0.8519,
+     "f1": 0.902
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 57,
+     "truth": 99,
+     "tp": 55,
+     "fp": 2,
+     "fn": 44,
+     "precision": 0.9649,
+     "recall": 0.5556,
+     "f1": 0.7051
+    },
+    "outside": {
+     "tool": 234,
+     "truth": 252,
+     "tp": 173,
+     "fp": 61,
+     "fn": 79,
+     "precision": 0.7393,
+     "recall": 0.6865,
+     "f1": 0.7119
+    },
+    "all": {
+     "tool": 291,
+     "truth": 351,
+     "tp": 228,
+     "fp": 63,
+     "fn": 123,
+     "precision": 0.7835,
+     "recall": 0.6496,
+     "f1": 0.7103
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 317,
+     "truth": 310,
+     "tp": 309,
+     "fp": 8,
+     "fn": 1,
+     "precision": 0.9748,
+     "recall": 0.9968,
+     "f1": 0.9856
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 437,
+     "truth": 430,
+     "tp": 429,
+     "fp": 8,
+     "fn": 1,
+     "precision": 0.9817,
+     "recall": 0.9977,
+     "f1": 0.9896
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 348,
+     "truth": 511,
+     "tp": 281,
+     "fp": 67,
+     "fn": 230,
+     "precision": 0.8075,
+     "recall": 0.5499,
+     "f1": 0.6542
+    },
+    "outside": {
+     "tool": 455,
+     "truth": 474,
+     "tp": 409,
+     "fp": 46,
+     "fn": 65,
+     "precision": 0.8989,
+     "recall": 0.8629,
+     "f1": 0.8805
+    },
+    "all": {
+     "tool": 803,
+     "truth": 985,
+     "tp": 690,
+     "fp": 113,
+     "fn": 295,
+     "precision": 0.8593,
+     "recall": 0.7005,
+     "f1": 0.7718
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-sym": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 508,
+   "sound": 235,
+   "exact": 118,
+   "inside": {
+    "tool": 852,
+    "truth": 1252,
+    "tp": 759,
+    "fp": 93,
+    "fn": 493,
+    "precision": 0.8908,
+    "recall": 0.6062,
+    "f1": 0.7215
+   },
+   "outside": {
+    "tool": 445,
+    "truth": 474,
+    "tp": 403,
+    "fp": 42,
+    "fn": 71,
+    "precision": 0.9056,
+    "recall": 0.8502,
+    "f1": 0.877
+   },
+   "all": {
+    "tool": 1297,
+    "truth": 1726,
+    "tp": 1162,
+    "fp": 135,
+    "fn": 564,
+    "precision": 0.8959,
+    "recall": 0.6732,
+    "f1": 0.7688
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 545,
+    "truth": 955,
+    "tp": 525,
+    "fp": 20,
+    "fn": 430,
+    "precision": 0.9633,
+    "recall": 0.5497,
+    "f1": 0.7
+   },
+   "outside": {
+    "tool": 758,
+    "truth": 946,
+    "tp": 675,
+    "fp": 83,
+    "fn": 271,
+    "precision": 0.8905,
+    "recall": 0.7135,
+    "f1": 0.7923
+   },
+   "all": {
+    "tool": 1303,
+    "truth": 1901,
+    "tp": 1200,
+    "fp": 103,
+    "fn": 701,
+    "precision": 0.921,
+    "recall": 0.6312,
+    "f1": 0.7491
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 31,
+     "truth": 35,
+     "tp": 31,
+     "fp": 0,
+     "fn": 4,
+     "precision": 1.0,
+     "recall": 0.8857,
+     "f1": 0.9394
+    },
+    "outside": {
+     "tool": 87,
+     "truth": 100,
+     "tp": 77,
+     "fp": 10,
+     "fn": 23,
+     "precision": 0.8851,
+     "recall": 0.77,
+     "f1": 0.8235
+    },
+    "all": {
+     "tool": 118,
+     "truth": 135,
+     "tp": 108,
+     "fp": 10,
+     "fn": 27,
+     "precision": 0.9153,
+     "recall": 0.8,
+     "f1": 0.8538
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 49,
+     "truth": 99,
+     "tp": 47,
+     "fp": 2,
+     "fn": 52,
+     "precision": 0.9592,
+     "recall": 0.4747,
+     "f1": 0.6351
+    },
+    "outside": {
+     "tool": 219,
+     "truth": 252,
+     "tp": 172,
+     "fp": 47,
+     "fn": 80,
+     "precision": 0.7854,
+     "recall": 0.6825,
+     "f1": 0.7304
+    },
+    "all": {
+     "tool": 268,
+     "truth": 351,
+     "tp": 219,
+     "fp": 49,
+     "fn": 132,
+     "precision": 0.8172,
+     "recall": 0.6239,
+     "f1": 0.7076
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 222,
+     "truth": 310,
+     "tp": 222,
+     "fp": 0,
+     "fn": 88,
+     "precision": 1.0,
+     "recall": 0.7161,
+     "f1": 0.8346
+    },
+    "outside": {
+     "tool": 101,
+     "truth": 120,
+     "tp": 101,
+     "fp": 0,
+     "fn": 19,
+     "precision": 1.0,
+     "recall": 0.8417,
+     "f1": 0.914
+    },
+    "all": {
+     "tool": 323,
+     "truth": 430,
+     "tp": 323,
+     "fp": 0,
+     "fn": 107,
+     "precision": 1.0,
+     "recall": 0.7512,
+     "f1": 0.8579
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 243,
+     "truth": 511,
+     "tp": 225,
+     "fp": 18,
+     "fn": 286,
+     "precision": 0.9259,
+     "recall": 0.4403,
+     "f1": 0.5968
+    },
+    "outside": {
+     "tool": 351,
+     "truth": 474,
+     "tp": 325,
+     "fp": 26,
+     "fn": 149,
+     "precision": 0.9259,
+     "recall": 0.6857,
+     "f1": 0.7879
+    },
+    "all": {
+     "tool": 594,
+     "truth": 985,
+     "tp": 550,
+     "fp": 44,
+     "fn": 435,
+     "precision": 0.9259,
+     "recall": 0.5584,
+     "f1": 0.6966
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "pycg-2021": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 486,
+   "sound": 256,
+   "exact": 201,
+   "inside": {
+    "tool": 873,
+    "truth": 1252,
+    "tp": 758,
+    "fp": 115,
+    "fn": 494,
+    "precision": 0.8683,
+    "recall": 0.6054,
+    "f1": 0.7134
+   },
+   "outside": {
+    "tool": 363,
+    "truth": 474,
+    "tp": 313,
+    "fp": 50,
+    "fn": 161,
+    "precision": 0.8623,
+    "recall": 0.6603,
+    "f1": 0.7479
+   },
+   "all": {
+    "tool": 1236,
+    "truth": 1726,
+    "tp": 1071,
+    "fp": 165,
+    "fn": 655,
+    "precision": 0.8665,
+    "recall": 0.6205,
+    "f1": 0.7232
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 317,
+    "truth": 955,
+    "tp": 294,
+    "fp": 23,
+    "fn": 661,
+    "precision": 0.9274,
+    "recall": 0.3079,
+    "f1": 0.4623
+   },
+   "outside": {
+    "tool": 313,
+    "truth": 946,
+    "tp": 272,
+    "fp": 41,
+    "fn": 674,
+    "precision": 0.869,
+    "recall": 0.2875,
+    "f1": 0.4321
+   },
+   "all": {
+    "tool": 630,
+    "truth": 1901,
+    "tp": 566,
+    "fp": 64,
+    "fn": 1335,
+    "precision": 0.8984,
+    "recall": 0.2977,
+    "f1": 0.4473
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 31,
+     "truth": 35,
+     "tp": 31,
+     "fp": 0,
+     "fn": 4,
+     "precision": 1.0,
+     "recall": 0.8857,
+     "f1": 0.9394
+    },
+    "outside": {
+     "tool": 70,
+     "truth": 100,
+     "tp": 67,
+     "fp": 3,
+     "fn": 33,
+     "precision": 0.9571,
+     "recall": 0.67,
+     "f1": 0.7882
+    },
+    "all": {
+     "tool": 101,
+     "truth": 135,
+     "tp": 98,
+     "fp": 3,
+     "fn": 37,
+     "precision": 0.9703,
+     "recall": 0.7259,
+     "f1": 0.8305
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 50,
+     "truth": 99,
+     "tp": 46,
+     "fp": 4,
+     "fn": 53,
+     "precision": 0.92,
+     "recall": 0.4646,
+     "f1": 0.6174
+    },
+    "outside": {
+     "tool": 171,
+     "truth": 252,
+     "tp": 134,
+     "fp": 37,
+     "fn": 118,
+     "precision": 0.7836,
+     "recall": 0.5317,
+     "f1": 0.6336
+    },
+    "all": {
+     "tool": 221,
+     "truth": 351,
+     "tp": 180,
+     "fp": 41,
+     "fn": 171,
+     "precision": 0.8145,
+     "recall": 0.5128,
+     "f1": 0.6294
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 236,
+     "truth": 310,
+     "tp": 217,
+     "fp": 19,
+     "fn": 93,
+     "precision": 0.9195,
+     "recall": 0.7,
+     "f1": 0.7949
+    },
+    "outside": {
+     "tool": 72,
+     "truth": 120,
+     "tp": 71,
+     "fp": 1,
+     "fn": 49,
+     "precision": 0.9861,
+     "recall": 0.5917,
+     "f1": 0.7396
+    },
+    "all": {
+     "tool": 308,
+     "truth": 430,
+     "tp": 288,
+     "fp": 20,
+     "fn": 142,
+     "precision": 0.9351,
+     "recall": 0.6698,
+     "f1": 0.7805
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 0,
+     "truth": 511,
+     "tp": 0,
+     "fp": 0,
+     "fn": 511,
+     "precision": null,
+     "recall": 0.0,
+     "f1": null
+    },
+    "outside": {
+     "tool": 0,
+     "truth": 474,
+     "tp": 0,
+     "fp": 0,
+     "fn": 474,
+     "precision": null,
+     "recall": 0.0,
+     "f1": null
+    },
+    "all": {
+     "tool": 0,
+     "truth": 985,
+     "tp": 0,
+     "fp": 0,
+     "fn": 985,
+     "precision": null,
+     "recall": 0.0,
+     "f1": null
+    },
+    "status": "timeout"
+   }
+  }
+ },
+ "nscg": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 476,
+   "sound": 574,
+   "exact": 251,
+   "inside": {
+    "tool": 1367,
+    "truth": 1252,
+    "tp": 1220,
+    "fp": 147,
+    "fn": 32,
+    "precision": 0.8925,
+    "recall": 0.9744,
+    "f1": 0.9317
+   },
+   "outside": {
+    "tool": 478,
+    "truth": 474,
+    "tp": 445,
+    "fp": 33,
+    "fn": 29,
+    "precision": 0.931,
+    "recall": 0.9388,
+    "f1": 0.9349
+   },
+   "all": {
+    "tool": 1845,
+    "truth": 1726,
+    "tp": 1665,
+    "fp": 180,
+    "fn": 61,
+    "precision": 0.9024,
+    "recall": 0.9647,
+    "f1": 0.9325
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 764,
+    "truth": 955,
+    "tp": 697,
+    "fp": 67,
+    "fn": 258,
+    "precision": 0.9123,
+    "recall": 0.7298,
+    "f1": 0.8109
+   },
+   "outside": {
+    "tool": 909,
+    "truth": 946,
+    "tp": 800,
+    "fp": 109,
+    "fn": 146,
+    "precision": 0.8801,
+    "recall": 0.8457,
+    "f1": 0.8625
+   },
+   "all": {
+    "tool": 1673,
+    "truth": 1901,
+    "tp": 1497,
+    "fp": 176,
+    "fn": 404,
+    "precision": 0.8948,
+    "recall": 0.7875,
+    "f1": 0.8377
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 100,
+     "truth": 100,
+     "tp": 88,
+     "fp": 12,
+     "fn": 12,
+     "precision": 0.88,
+     "recall": 0.88,
+     "f1": 0.88
+    },
+    "all": {
+     "tool": 135,
+     "truth": 135,
+     "tp": 123,
+     "fp": 12,
+     "fn": 12,
+     "precision": 0.9111,
+     "recall": 0.9111,
+     "f1": 0.9111
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 69,
+     "truth": 99,
+     "tp": 61,
+     "fp": 8,
+     "fn": 38,
+     "precision": 0.8841,
+     "recall": 0.6162,
+     "f1": 0.7262
+    },
+    "outside": {
+     "tool": 239,
+     "truth": 252,
+     "tp": 191,
+     "fp": 48,
+     "fn": 61,
+     "precision": 0.7992,
+     "recall": 0.7579,
+     "f1": 0.778
+    },
+    "all": {
+     "tool": 308,
+     "truth": 351,
+     "tp": 252,
+     "fp": 56,
+     "fn": 99,
+     "precision": 0.8182,
+     "recall": 0.7179,
+     "f1": 0.7648
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 309,
+     "truth": 310,
+     "tp": 308,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9968,
+     "recall": 0.9935,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 429,
+     "truth": 430,
+     "tp": 428,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9977,
+     "recall": 0.9953,
+     "f1": 0.9965
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 351,
+     "truth": 511,
+     "tp": 293,
+     "fp": 58,
+     "fn": 218,
+     "precision": 0.8348,
+     "recall": 0.5734,
+     "f1": 0.6798
+    },
+    "outside": {
+     "tool": 450,
+     "truth": 474,
+     "tp": 401,
+     "fp": 49,
+     "fn": 73,
+     "precision": 0.8911,
+     "recall": 0.846,
+     "f1": 0.868
+    },
+    "all": {
+     "tool": 801,
+     "truth": 985,
+     "tp": 694,
+     "fp": 107,
+     "fn": 291,
+     "precision": 0.8664,
+     "recall": 0.7046,
+     "f1": 0.7772
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "llm-only": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 481,
+   "sound": 554,
+   "exact": 265,
+   "inside": {
+    "tool": 1395,
+    "truth": 1252,
+    "tp": 1246,
+    "fp": 149,
+    "fn": 6,
+    "precision": 0.8932,
+    "recall": 0.9952,
+    "f1": 0.9414
+   },
+   "outside": {
+    "tool": 411,
+    "truth": 474,
+    "tp": 393,
+    "fp": 18,
+    "fn": 81,
+    "precision": 0.9562,
+    "recall": 0.8291,
+    "f1": 0.8881
+   },
+   "all": {
+    "tool": 1806,
+    "truth": 1726,
+    "tp": 1639,
+    "fp": 167,
+    "fn": 87,
+    "precision": 0.9075,
+    "recall": 0.9496,
+    "f1": 0.9281
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 683,
+    "truth": 955,
+    "tp": 654,
+    "fp": 29,
+    "fn": 301,
+    "precision": 0.9575,
+    "recall": 0.6848,
+    "f1": 0.7985
+   },
+   "outside": {
+    "tool": 749,
+    "truth": 946,
+    "tp": 723,
+    "fp": 26,
+    "fn": 223,
+    "precision": 0.9653,
+    "recall": 0.7643,
+    "f1": 0.8531
+   },
+   "all": {
+    "tool": 1432,
+    "truth": 1901,
+    "tp": 1377,
+    "fp": 55,
+    "fn": 524,
+    "precision": 0.9616,
+    "recall": 0.7244,
+    "f1": 0.8263
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 91,
+     "truth": 100,
+     "tp": 84,
+     "fp": 7,
+     "fn": 16,
+     "precision": 0.9231,
+     "recall": 0.84,
+     "f1": 0.8796
+    },
+    "all": {
+     "tool": 126,
+     "truth": 135,
+     "tp": 119,
+     "fp": 7,
+     "fn": 16,
+     "precision": 0.9444,
+     "recall": 0.8815,
+     "f1": 0.9119
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 73,
+     "truth": 99,
+     "tp": 61,
+     "fp": 12,
+     "fn": 38,
+     "precision": 0.8356,
+     "recall": 0.6162,
+     "f1": 0.7093
+    },
+    "outside": {
+     "tool": 194,
+     "truth": 252,
+     "tp": 181,
+     "fp": 13,
+     "fn": 71,
+     "precision": 0.933,
+     "recall": 0.7183,
+     "f1": 0.8117
+    },
+    "all": {
+     "tool": 267,
+     "truth": 351,
+     "tp": 242,
+     "fp": 25,
+     "fn": 109,
+     "precision": 0.9064,
+     "recall": 0.6895,
+     "f1": 0.7832
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 310,
+     "truth": 310,
+     "tp": 310,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 102,
+     "truth": 120,
+     "tp": 102,
+     "fp": 0,
+     "fn": 18,
+     "precision": 1.0,
+     "recall": 0.85,
+     "f1": 0.9189
+    },
+    "all": {
+     "tool": 412,
+     "truth": 430,
+     "tp": 412,
+     "fp": 0,
+     "fn": 18,
+     "precision": 1.0,
+     "recall": 0.9581,
+     "f1": 0.9786
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 265,
+     "truth": 511,
+     "tp": 248,
+     "fp": 17,
+     "fn": 263,
+     "precision": 0.9358,
+     "recall": 0.4853,
+     "f1": 0.6392
+    },
+    "outside": {
+     "tool": 362,
+     "truth": 474,
+     "tp": 356,
+     "fp": 6,
+     "fn": 118,
+     "precision": 0.9834,
+     "recall": 0.7511,
+     "f1": 0.8517
+    },
+    "all": {
+     "tool": 627,
+     "truth": 985,
+     "tp": 604,
+     "fp": 23,
+     "fn": 381,
+     "precision": 0.9633,
+     "recall": 0.6132,
+     "f1": 0.7494
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-nohints": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 493,
+   "sound": 573,
+   "exact": 258,
+   "inside": {
+    "tool": 1344,
+    "truth": 1252,
+    "tp": 1213,
+    "fp": 131,
+    "fn": 39,
+    "precision": 0.9025,
+    "recall": 0.9688,
+    "f1": 0.9345
+   },
+   "outside": {
+    "tool": 480,
+    "truth": 474,
+    "tp": 450,
+    "fp": 30,
+    "fn": 24,
+    "precision": 0.9375,
+    "recall": 0.9494,
+    "f1": 0.9434
+   },
+   "all": {
+    "tool": 1824,
+    "truth": 1726,
+    "tp": 1663,
+    "fp": 161,
+    "fn": 63,
+    "precision": 0.9117,
+    "recall": 0.9635,
+    "f1": 0.9369
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 694,
+    "truth": 955,
+    "tp": 671,
+    "fp": 23,
+    "fn": 284,
+    "precision": 0.9669,
+    "recall": 0.7026,
+    "f1": 0.8138
+   },
+   "outside": {
+    "tool": 854,
+    "truth": 946,
+    "tp": 781,
+    "fp": 73,
+    "fn": 165,
+    "precision": 0.9145,
+    "recall": 0.8256,
+    "f1": 0.8678
+   },
+   "all": {
+    "tool": 1548,
+    "truth": 1901,
+    "tp": 1452,
+    "fp": 96,
+    "fn": 449,
+    "precision": 0.938,
+    "recall": 0.7638,
+    "f1": 0.842
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 93,
+     "truth": 100,
+     "tp": 88,
+     "fp": 5,
+     "fn": 12,
+     "precision": 0.9462,
+     "recall": 0.88,
+     "f1": 0.9119
+    },
+    "all": {
+     "tool": 128,
+     "truth": 135,
+     "tp": 123,
+     "fp": 5,
+     "fn": 12,
+     "precision": 0.9609,
+     "recall": 0.9111,
+     "f1": 0.9354
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 228,
+     "truth": 252,
+     "tp": 191,
+     "fp": 37,
+     "fn": 61,
+     "precision": 0.8377,
+     "recall": 0.7579,
+     "f1": 0.7958
+    },
+    "all": {
+     "tool": 299,
+     "truth": 351,
+     "tp": 254,
+     "fp": 45,
+     "fn": 97,
+     "precision": 0.8495,
+     "recall": 0.7236,
+     "f1": 0.7815
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 310,
+     "truth": 310,
+     "tp": 309,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9968,
+     "recall": 0.9968,
+     "f1": 0.9968
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 430,
+     "truth": 430,
+     "tp": 429,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9977,
+     "recall": 0.9977,
+     "f1": 0.9977
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 278,
+     "truth": 511,
+     "tp": 264,
+     "fp": 14,
+     "fn": 247,
+     "precision": 0.9496,
+     "recall": 0.5166,
+     "f1": 0.6692
+    },
+    "outside": {
+     "tool": 413,
+     "truth": 474,
+     "tp": 382,
+     "fp": 31,
+     "fn": 92,
+     "precision": 0.9249,
+     "recall": 0.8059,
+     "f1": 0.8613
+    },
+    "all": {
+     "tool": 691,
+     "truth": 985,
+     "tp": 646,
+     "fp": 45,
+     "fn": 339,
+     "precision": 0.9349,
+     "recall": 0.6558,
+     "f1": 0.7709
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-hybrid": {
+  "macro": {
+   "inside": {
+    "tool": 754,
+    "truth": 955,
+    "tp": 696,
+    "fp": 58,
+    "fn": 259,
+    "precision": 0.9231,
+    "recall": 0.7288,
+    "f1": 0.8145
+   },
+   "outside": {
+    "tool": 910,
+    "truth": 946,
+    "tp": 817,
+    "fp": 93,
+    "fn": 129,
+    "precision": 0.8978,
+    "recall": 0.8636,
+    "f1": 0.8804
+   },
+   "all": {
+    "tool": 1664,
+    "truth": 1901,
+    "tp": 1513,
+    "fp": 151,
+    "fn": 388,
+    "precision": 0.9093,
+    "recall": 0.7959,
+    "f1": 0.8488
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 31,
+     "truth": 35,
+     "tp": 31,
+     "fp": 0,
+     "fn": 4,
+     "precision": 1.0,
+     "recall": 0.8857,
+     "f1": 0.9394
+    },
+    "outside": {
+     "tool": 99,
+     "truth": 100,
+     "tp": 88,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.8889,
+     "recall": 0.88,
+     "f1": 0.8844
+    },
+    "all": {
+     "tool": 130,
+     "truth": 135,
+     "tp": 119,
+     "fp": 11,
+     "fn": 16,
+     "precision": 0.9154,
+     "recall": 0.8815,
+     "f1": 0.8981
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 244,
+     "truth": 252,
+     "tp": 193,
+     "fp": 51,
+     "fn": 59,
+     "precision": 0.791,
+     "recall": 0.7659,
+     "f1": 0.7782
+    },
+    "all": {
+     "tool": 315,
+     "truth": 351,
+     "tp": 256,
+     "fp": 59,
+     "fn": 95,
+     "precision": 0.8127,
+     "recall": 0.7293,
+     "f1": 0.7688
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 310,
+     "truth": 310,
+     "tp": 309,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9968,
+     "recall": 0.9968,
+     "f1": 0.9968
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 430,
+     "truth": 430,
+     "tp": 429,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9977,
+     "recall": 0.9977,
+     "f1": 0.9977
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 342,
+     "truth": 511,
+     "tp": 293,
+     "fp": 49,
+     "fn": 218,
+     "precision": 0.8567,
+     "recall": 0.5734,
+     "f1": 0.687
+    },
+    "outside": {
+     "tool": 447,
+     "truth": 474,
+     "tp": 416,
+     "fp": 31,
+     "fn": 58,
+     "precision": 0.9306,
+     "recall": 0.8776,
+     "f1": 0.9034
+    },
+    "all": {
+     "tool": 789,
+     "truth": 985,
+     "tp": 709,
+     "fp": 80,
+     "fn": 276,
+     "precision": 0.8986,
+     "recall": 0.7198,
+     "f1": 0.7993
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-v21": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 474,
+   "sound": 574,
+   "exact": 251,
+   "inside": {
+    "tool": 1372,
+    "truth": 1252,
+    "tp": 1220,
+    "fp": 152,
+    "fn": 32,
+    "precision": 0.8892,
+    "recall": 0.9744,
+    "f1": 0.9299
+   },
+   "outside": {
+    "tool": 479,
+    "truth": 474,
+    "tp": 445,
+    "fp": 34,
+    "fn": 29,
+    "precision": 0.929,
+    "recall": 0.9388,
+    "f1": 0.9339
+   },
+   "all": {
+    "tool": 1851,
+    "truth": 1726,
+    "tp": 1665,
+    "fp": 186,
+    "fn": 61,
+    "precision": 0.8995,
+    "recall": 0.9647,
+    "f1": 0.9309
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 766,
+    "truth": 955,
+    "tp": 699,
+    "fp": 67,
+    "fn": 256,
+    "precision": 0.9125,
+    "recall": 0.7319,
+    "f1": 0.8123
+   },
+   "outside": {
+    "tool": 904,
+    "truth": 946,
+    "tp": 813,
+    "fp": 91,
+    "fn": 133,
+    "precision": 0.8993,
+    "recall": 0.8594,
+    "f1": 0.8789
+   },
+   "all": {
+    "tool": 1670,
+    "truth": 1901,
+    "tp": 1512,
+    "fp": 158,
+    "fn": 389,
+    "precision": 0.9054,
+    "recall": 0.7954,
+    "f1": 0.8468
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 99,
+     "truth": 100,
+     "tp": 88,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.8889,
+     "recall": 0.88,
+     "f1": 0.8844
+    },
+    "all": {
+     "tool": 134,
+     "truth": 135,
+     "tp": 123,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.9179,
+     "recall": 0.9111,
+     "f1": 0.9145
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 238,
+     "truth": 252,
+     "tp": 202,
+     "fp": 36,
+     "fn": 50,
+     "precision": 0.8487,
+     "recall": 0.8016,
+     "f1": 0.8245
+    },
+    "all": {
+     "tool": 309,
+     "truth": 351,
+     "tp": 265,
+     "fp": 44,
+     "fn": 86,
+     "precision": 0.8576,
+     "recall": 0.755,
+     "f1": 0.803
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 309,
+     "truth": 310,
+     "tp": 308,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9968,
+     "recall": 0.9935,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 429,
+     "truth": 430,
+     "tp": 428,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9977,
+     "recall": 0.9953,
+     "f1": 0.9965
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 351,
+     "truth": 511,
+     "tp": 293,
+     "fp": 58,
+     "fn": 218,
+     "precision": 0.8348,
+     "recall": 0.5734,
+     "f1": 0.6798
+    },
+    "outside": {
+     "tool": 447,
+     "truth": 474,
+     "tp": 403,
+     "fp": 44,
+     "fn": 71,
+     "precision": 0.9016,
+     "recall": 0.8502,
+     "f1": 0.8751
+    },
+    "all": {
+     "tool": 798,
+     "truth": 985,
+     "tp": 696,
+     "fp": 102,
+     "fn": 289,
+     "precision": 0.8722,
+     "recall": 0.7066,
+     "f1": 0.7807
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-hybrid-v21": {
+  "macro": {
+   "inside": {
+    "tool": 754,
+    "truth": 955,
+    "tp": 696,
+    "fp": 58,
+    "fn": 259,
+    "precision": 0.9231,
+    "recall": 0.7288,
+    "f1": 0.8145
+   },
+   "outside": {
+    "tool": 902,
+    "truth": 946,
+    "tp": 827,
+    "fp": 75,
+    "fn": 119,
+    "precision": 0.9169,
+    "recall": 0.8742,
+    "f1": 0.895
+   },
+   "all": {
+    "tool": 1656,
+    "truth": 1901,
+    "tp": 1523,
+    "fp": 133,
+    "fn": 378,
+    "precision": 0.9197,
+    "recall": 0.8012,
+    "f1": 0.8563
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 31,
+     "truth": 35,
+     "tp": 31,
+     "fp": 0,
+     "fn": 4,
+     "precision": 1.0,
+     "recall": 0.8857,
+     "f1": 0.9394
+    },
+    "outside": {
+     "tool": 98,
+     "truth": 100,
+     "tp": 88,
+     "fp": 10,
+     "fn": 12,
+     "precision": 0.898,
+     "recall": 0.88,
+     "f1": 0.8889
+    },
+    "all": {
+     "tool": 129,
+     "truth": 135,
+     "tp": 119,
+     "fp": 10,
+     "fn": 16,
+     "precision": 0.9225,
+     "recall": 0.8815,
+     "f1": 0.9015
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 240,
+     "truth": 252,
+     "tp": 201,
+     "fp": 39,
+     "fn": 51,
+     "precision": 0.8375,
+     "recall": 0.7976,
+     "f1": 0.8171
+    },
+    "all": {
+     "tool": 311,
+     "truth": 351,
+     "tp": 264,
+     "fp": 47,
+     "fn": 87,
+     "precision": 0.8489,
+     "recall": 0.7521,
+     "f1": 0.7976
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 310,
+     "truth": 310,
+     "tp": 309,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9968,
+     "recall": 0.9968,
+     "f1": 0.9968
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 430,
+     "truth": 430,
+     "tp": 429,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9977,
+     "recall": 0.9977,
+     "f1": 0.9977
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 342,
+     "truth": 511,
+     "tp": 293,
+     "fp": 49,
+     "fn": 218,
+     "precision": 0.8567,
+     "recall": 0.5734,
+     "f1": 0.687
+    },
+    "outside": {
+     "tool": 444,
+     "truth": 474,
+     "tp": 418,
+     "fp": 26,
+     "fn": 56,
+     "precision": 0.9414,
+     "recall": 0.8819,
+     "f1": 0.9107
+    },
+    "all": {
+     "tool": 786,
+     "truth": 985,
+     "tp": 711,
+     "fp": 75,
+     "fn": 274,
+     "precision": 0.9046,
+     "recall": 0.7218,
+     "f1": 0.8029
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "union--pycg-2026--nscg-v21": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 451,
+   "sound": 612,
+   "exact": 428,
+   "inside": {
+    "tool": 1423,
+    "truth": 1252,
+    "tp": 1245,
+    "fp": 178,
+    "fn": 7,
+    "precision": 0.8749,
+    "recall": 0.9944,
+    "f1": 0.9308
+   },
+   "outside": {
+    "tool": 503,
+    "truth": 474,
+    "tp": 469,
+    "fp": 34,
+    "fn": 5,
+    "precision": 0.9324,
+    "recall": 0.9895,
+    "f1": 0.9601
+   },
+   "all": {
+    "tool": 1926,
+    "truth": 1726,
+    "tp": 1714,
+    "fp": 212,
+    "fn": 12,
+    "precision": 0.8899,
+    "recall": 0.993,
+    "f1": 0.9387
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 844,
+    "truth": 955,
+    "tp": 712,
+    "fp": 132,
+    "fn": 243,
+    "precision": 0.8436,
+    "recall": 0.7455,
+    "f1": 0.7916
+   },
+   "outside": {
+    "tool": 1027,
+    "truth": 946,
+    "tp": 853,
+    "fp": 174,
+    "fn": 93,
+    "precision": 0.8306,
+    "recall": 0.9017,
+    "f1": 0.8647
+   },
+   "all": {
+    "tool": 1871,
+    "truth": 1901,
+    "tp": 1565,
+    "fp": 306,
+    "fn": 336,
+    "precision": 0.8365,
+    "recall": 0.8233,
+    "f1": 0.8298
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 39,
+     "truth": 35,
+     "tp": 35,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8974,
+     "recall": 1.0,
+     "f1": 0.9459
+    },
+    "outside": {
+     "tool": 100,
+     "truth": 100,
+     "tp": 89,
+     "fp": 11,
+     "fn": 11,
+     "precision": 0.89,
+     "recall": 0.89,
+     "f1": 0.89
+    },
+    "all": {
+     "tool": 139,
+     "truth": 135,
+     "tp": 124,
+     "fp": 15,
+     "fn": 11,
+     "precision": 0.8921,
+     "recall": 0.9185,
+     "f1": 0.9051
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 287,
+     "truth": 252,
+     "tp": 202,
+     "fp": 85,
+     "fn": 50,
+     "precision": 0.7038,
+     "recall": 0.8016,
+     "f1": 0.7495
+    },
+    "all": {
+     "tool": 358,
+     "truth": 351,
+     "tp": 265,
+     "fp": 93,
+     "fn": 86,
+     "precision": 0.7402,
+     "recall": 0.755,
+     "f1": 0.7475
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 317,
+     "truth": 310,
+     "tp": 309,
+     "fp": 8,
+     "fn": 1,
+     "precision": 0.9748,
+     "recall": 0.9968,
+     "f1": 0.9856
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 437,
+     "truth": 430,
+     "tp": 429,
+     "fp": 8,
+     "fn": 1,
+     "precision": 0.9817,
+     "recall": 0.9977,
+     "f1": 0.9896
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 417,
+     "truth": 511,
+     "tp": 305,
+     "fp": 112,
+     "fn": 206,
+     "precision": 0.7314,
+     "recall": 0.5969,
+     "f1": 0.6573
+    },
+    "outside": {
+     "tool": 520,
+     "truth": 474,
+     "tp": 442,
+     "fp": 78,
+     "fn": 32,
+     "precision": 0.85,
+     "recall": 0.9325,
+     "f1": 0.8893
+    },
+    "all": {
+     "tool": 937,
+     "truth": 985,
+     "tp": 747,
+     "fp": 190,
+     "fn": 238,
+     "precision": 0.7972,
+     "recall": 0.7584,
+     "f1": 0.7773
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "inter--pycg-2026--nscg-v21": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 557,
+   "sound": 516,
+   "exact": 450,
+   "inside": {
+    "tool": 1216,
+    "truth": 1252,
+    "tp": 1147,
+    "fp": 69,
+    "fn": 105,
+    "precision": 0.9433,
+    "recall": 0.9161,
+    "f1": 0.9295
+   },
+   "outside": {
+    "tool": 434,
+    "truth": 474,
+    "tp": 432,
+    "fp": 2,
+    "fn": 42,
+    "precision": 0.9954,
+    "recall": 0.9114,
+    "f1": 0.9515
+   },
+   "all": {
+    "tool": 1650,
+    "truth": 1726,
+    "tp": 1579,
+    "fp": 71,
+    "fn": 147,
+    "precision": 0.957,
+    "recall": 0.9148,
+    "f1": 0.9354
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 683,
+    "truth": 955,
+    "tp": 667,
+    "fp": 16,
+    "fn": 288,
+    "precision": 0.9766,
+    "recall": 0.6984,
+    "f1": 0.8144
+   },
+   "outside": {
+    "tool": 767,
+    "truth": 946,
+    "tp": 742,
+    "fp": 25,
+    "fn": 204,
+    "precision": 0.9674,
+    "recall": 0.7844,
+    "f1": 0.8663
+   },
+   "all": {
+    "tool": 1450,
+    "truth": 1901,
+    "tp": 1409,
+    "fp": 41,
+    "fn": 492,
+    "precision": 0.9717,
+    "recall": 0.7412,
+    "f1": 0.8409
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 80,
+     "truth": 100,
+     "tp": 79,
+     "fp": 1,
+     "fn": 21,
+     "precision": 0.9875,
+     "recall": 0.79,
+     "f1": 0.8778
+    },
+    "all": {
+     "tool": 115,
+     "truth": 135,
+     "tp": 114,
+     "fp": 1,
+     "fn": 21,
+     "precision": 0.9913,
+     "recall": 0.8444,
+     "f1": 0.912
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 57,
+     "truth": 99,
+     "tp": 55,
+     "fp": 2,
+     "fn": 44,
+     "precision": 0.9649,
+     "recall": 0.5556,
+     "f1": 0.7051
+    },
+    "outside": {
+     "tool": 185,
+     "truth": 252,
+     "tp": 173,
+     "fp": 12,
+     "fn": 79,
+     "precision": 0.9351,
+     "recall": 0.6865,
+     "f1": 0.7918
+    },
+    "all": {
+     "tool": 242,
+     "truth": 351,
+     "tp": 228,
+     "fp": 14,
+     "fn": 123,
+     "precision": 0.9421,
+     "recall": 0.6496,
+     "f1": 0.769
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 309,
+     "truth": 310,
+     "tp": 308,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9968,
+     "recall": 0.9935,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 429,
+     "truth": 430,
+     "tp": 428,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9977,
+     "recall": 0.9953,
+     "f1": 0.9965
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 282,
+     "truth": 511,
+     "tp": 269,
+     "fp": 13,
+     "fn": 242,
+     "precision": 0.9539,
+     "recall": 0.5264,
+     "f1": 0.6784
+    },
+    "outside": {
+     "tool": 382,
+     "truth": 474,
+     "tp": 370,
+     "fp": 12,
+     "fn": 104,
+     "precision": 0.9686,
+     "recall": 0.7806,
+     "f1": 0.8645
+    },
+    "all": {
+     "tool": 664,
+     "truth": 985,
+     "tp": 639,
+     "fp": 25,
+     "fn": 346,
+     "precision": 0.9623,
+     "recall": 0.6487,
+     "f1": 0.775
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-v21-novalidate": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 481,
+   "sound": 574,
+   "exact": 257,
+   "inside": {
+    "tool": 1367,
+    "truth": 1252,
+    "tp": 1220,
+    "fp": 147,
+    "fn": 32,
+    "precision": 0.8925,
+    "recall": 0.9744,
+    "f1": 0.9317
+   },
+   "outside": {
+    "tool": 473,
+    "truth": 474,
+    "tp": 445,
+    "fp": 28,
+    "fn": 29,
+    "precision": 0.9408,
+    "recall": 0.9388,
+    "f1": 0.9398
+   },
+   "all": {
+    "tool": 1840,
+    "truth": 1726,
+    "tp": 1665,
+    "fp": 175,
+    "fn": 61,
+    "precision": 0.9049,
+    "recall": 0.9647,
+    "f1": 0.9338
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 767,
+    "truth": 955,
+    "tp": 699,
+    "fp": 68,
+    "fn": 256,
+    "precision": 0.9113,
+    "recall": 0.7319,
+    "f1": 0.8118
+   },
+   "outside": {
+    "tool": 902,
+    "truth": 946,
+    "tp": 813,
+    "fp": 89,
+    "fn": 133,
+    "precision": 0.9013,
+    "recall": 0.8594,
+    "f1": 0.8799
+   },
+   "all": {
+    "tool": 1669,
+    "truth": 1901,
+    "tp": 1512,
+    "fp": 157,
+    "fn": 389,
+    "precision": 0.9059,
+    "recall": 0.7954,
+    "f1": 0.8471
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 99,
+     "truth": 100,
+     "tp": 88,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.8889,
+     "recall": 0.88,
+     "f1": 0.8844
+    },
+    "all": {
+     "tool": 134,
+     "truth": 135,
+     "tp": 123,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.9179,
+     "recall": 0.9111,
+     "f1": 0.9145
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 72,
+     "truth": 99,
+     "tp": 63,
+     "fp": 9,
+     "fn": 36,
+     "precision": 0.875,
+     "recall": 0.6364,
+     "f1": 0.7368
+    },
+    "outside": {
+     "tool": 238,
+     "truth": 252,
+     "tp": 202,
+     "fp": 36,
+     "fn": 50,
+     "precision": 0.8487,
+     "recall": 0.8016,
+     "f1": 0.8245
+    },
+    "all": {
+     "tool": 310,
+     "truth": 351,
+     "tp": 265,
+     "fp": 45,
+     "fn": 86,
+     "precision": 0.8548,
+     "recall": 0.755,
+     "f1": 0.8018
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 309,
+     "truth": 310,
+     "tp": 308,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9968,
+     "recall": 0.9935,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 429,
+     "truth": 430,
+     "tp": 428,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9977,
+     "recall": 0.9953,
+     "f1": 0.9965
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 351,
+     "truth": 511,
+     "tp": 293,
+     "fp": 58,
+     "fn": 218,
+     "precision": 0.8348,
+     "recall": 0.5734,
+     "f1": 0.6798
+    },
+    "outside": {
+     "tool": 445,
+     "truth": 474,
+     "tp": 403,
+     "fp": 42,
+     "fn": 71,
+     "precision": 0.9056,
+     "recall": 0.8502,
+     "f1": 0.877
+    },
+    "all": {
+     "tool": 796,
+     "truth": 985,
+     "tp": 696,
+     "fp": 100,
+     "fn": 289,
+     "precision": 0.8744,
+     "recall": 0.7066,
+     "f1": 0.7816
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-v21-nofloor": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 485,
+   "sound": 574,
+   "exact": 257,
+   "inside": {
+    "tool": 1362,
+    "truth": 1252,
+    "tp": 1220,
+    "fp": 142,
+    "fn": 32,
+    "precision": 0.8957,
+    "recall": 0.9744,
+    "f1": 0.9334
+   },
+   "outside": {
+    "tool": 473,
+    "truth": 474,
+    "tp": 445,
+    "fp": 28,
+    "fn": 29,
+    "precision": 0.9408,
+    "recall": 0.9388,
+    "f1": 0.9398
+   },
+   "all": {
+    "tool": 1835,
+    "truth": 1726,
+    "tp": 1665,
+    "fp": 170,
+    "fn": 61,
+    "precision": 0.9074,
+    "recall": 0.9647,
+    "f1": 0.9351
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 766,
+    "truth": 955,
+    "tp": 699,
+    "fp": 67,
+    "fn": 256,
+    "precision": 0.9125,
+    "recall": 0.7319,
+    "f1": 0.8123
+   },
+   "outside": {
+    "tool": 901,
+    "truth": 946,
+    "tp": 812,
+    "fp": 89,
+    "fn": 134,
+    "precision": 0.9012,
+    "recall": 0.8584,
+    "f1": 0.8793
+   },
+   "all": {
+    "tool": 1667,
+    "truth": 1901,
+    "tp": 1511,
+    "fp": 156,
+    "fn": 390,
+    "precision": 0.9064,
+    "recall": 0.7948,
+    "f1": 0.847
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 99,
+     "truth": 100,
+     "tp": 88,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.8889,
+     "recall": 0.88,
+     "f1": 0.8844
+    },
+    "all": {
+     "tool": 134,
+     "truth": 135,
+     "tp": 123,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.9179,
+     "recall": 0.9111,
+     "f1": 0.9145
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 238,
+     "truth": 252,
+     "tp": 202,
+     "fp": 36,
+     "fn": 50,
+     "precision": 0.8487,
+     "recall": 0.8016,
+     "f1": 0.8245
+    },
+    "all": {
+     "tool": 309,
+     "truth": 351,
+     "tp": 265,
+     "fp": 44,
+     "fn": 86,
+     "precision": 0.8576,
+     "recall": 0.755,
+     "f1": 0.803
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 309,
+     "truth": 310,
+     "tp": 308,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9968,
+     "recall": 0.9935,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 429,
+     "truth": 430,
+     "tp": 428,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9977,
+     "recall": 0.9953,
+     "f1": 0.9965
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 351,
+     "truth": 511,
+     "tp": 293,
+     "fp": 58,
+     "fn": 218,
+     "precision": 0.8348,
+     "recall": 0.5734,
+     "f1": 0.6798
+    },
+    "outside": {
+     "tool": 444,
+     "truth": 474,
+     "tp": 402,
+     "fp": 42,
+     "fn": 72,
+     "precision": 0.9054,
+     "recall": 0.8481,
+     "f1": 0.8758
+    },
+    "all": {
+     "tool": 795,
+     "truth": 985,
+     "tp": 695,
+     "fp": 100,
+     "fn": 290,
+     "precision": 0.8742,
+     "recall": 0.7056,
+     "f1": 0.7809
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-v21@sonnet": {
+  "micro": {
+   "cases": 622,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 498,
+   "sound": 566,
+   "exact": 273,
+   "inside": {
+    "tool": 1336,
+    "truth": 1252,
+    "tp": 1218,
+    "fp": 118,
+    "fn": 34,
+    "precision": 0.9117,
+    "recall": 0.9728,
+    "f1": 0.9413
+   },
+   "outside": {
+    "tool": 472,
+    "truth": 474,
+    "tp": 439,
+    "fp": 33,
+    "fn": 35,
+    "precision": 0.9301,
+    "recall": 0.9262,
+    "f1": 0.9281
+   },
+   "all": {
+    "tool": 1808,
+    "truth": 1726,
+    "tp": 1657,
+    "fp": 151,
+    "fn": 69,
+    "precision": 0.9165,
+    "recall": 0.96,
+    "f1": 0.9377
+   }
+  },
+  "macro": {
+   "inside": {
+    "tool": 761,
+    "truth": 955,
+    "tp": 706,
+    "fp": 55,
+    "fn": 249,
+    "precision": 0.9277,
+    "recall": 0.7393,
+    "f1": 0.8228
+   },
+   "outside": {
+    "tool": 819,
+    "truth": 946,
+    "tp": 778,
+    "fp": 41,
+    "fn": 168,
+    "precision": 0.9499,
+    "recall": 0.8224,
+    "f1": 0.8816
+   },
+   "all": {
+    "tool": 1580,
+    "truth": 1901,
+    "tp": 1484,
+    "fp": 96,
+    "fn": 417,
+    "precision": 0.9392,
+    "recall": 0.7806,
+    "f1": 0.8526
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 39,
+     "truth": 35,
+     "tp": 35,
+     "fp": 4,
+     "fn": 0,
+     "precision": 0.8974,
+     "recall": 1.0,
+     "f1": 0.9459
+    },
+    "outside": {
+     "tool": 96,
+     "truth": 100,
+     "tp": 87,
+     "fp": 9,
+     "fn": 13,
+     "precision": 0.9062,
+     "recall": 0.87,
+     "f1": 0.8878
+    },
+    "all": {
+     "tool": 135,
+     "truth": 135,
+     "tp": 122,
+     "fp": 13,
+     "fn": 13,
+     "precision": 0.9037,
+     "recall": 0.9037,
+     "f1": 0.9037
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 84,
+     "truth": 99,
+     "tp": 75,
+     "fp": 9,
+     "fn": 24,
+     "precision": 0.8929,
+     "recall": 0.7576,
+     "f1": 0.8197
+    },
+    "outside": {
+     "tool": 206,
+     "truth": 252,
+     "tp": 196,
+     "fp": 10,
+     "fn": 56,
+     "precision": 0.9515,
+     "recall": 0.7778,
+     "f1": 0.8559
+    },
+    "all": {
+     "tool": 290,
+     "truth": 351,
+     "tp": 271,
+     "fp": 19,
+     "fn": 80,
+     "precision": 0.9345,
+     "recall": 0.7721,
+     "f1": 0.8456
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 311,
+     "truth": 310,
+     "tp": 309,
+     "fp": 2,
+     "fn": 1,
+     "precision": 0.9936,
+     "recall": 0.9968,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 119,
+     "truth": 120,
+     "tp": 119,
+     "fp": 0,
+     "fn": 1,
+     "precision": 1.0,
+     "recall": 0.9917,
+     "f1": 0.9958
+    },
+    "all": {
+     "tool": 430,
+     "truth": 430,
+     "tp": 428,
+     "fp": 2,
+     "fn": 2,
+     "precision": 0.9953,
+     "recall": 0.9953,
+     "f1": 0.9953
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 327,
+     "truth": 511,
+     "tp": 287,
+     "fp": 40,
+     "fn": 224,
+     "precision": 0.8777,
+     "recall": 0.5616,
+     "f1": 0.685
+    },
+    "outside": {
+     "tool": 398,
+     "truth": 474,
+     "tp": 376,
+     "fp": 22,
+     "fn": 98,
+     "precision": 0.9447,
+     "recall": 0.7932,
+     "f1": 0.8624
+    },
+    "all": {
+     "tool": 725,
+     "truth": 985,
+     "tp": 663,
+     "fp": 62,
+     "fn": 322,
+     "precision": 0.9145,
+     "recall": 0.6731,
+     "f1": 0.7754
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "llm-only@sonnet": {
+  "macro": {
+   "inside": {
+    "tool": 626,
+    "truth": 955,
+    "tp": 591,
+    "fp": 35,
+    "fn": 364,
+    "precision": 0.9441,
+    "recall": 0.6188,
+    "f1": 0.7476
+   },
+   "outside": {
+    "tool": 731,
+    "truth": 946,
+    "tp": 712,
+    "fp": 19,
+    "fn": 234,
+    "precision": 0.974,
+    "recall": 0.7526,
+    "f1": 0.8491
+   },
+   "all": {
+    "tool": 1357,
+    "truth": 1901,
+    "tp": 1303,
+    "fp": 54,
+    "fn": 598,
+    "precision": 0.9602,
+    "recall": 0.6854,
+    "f1": 0.7999
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 37,
+     "truth": 35,
+     "tp": 34,
+     "fp": 3,
+     "fn": 1,
+     "precision": 0.9189,
+     "recall": 0.9714,
+     "f1": 0.9444
+    },
+    "outside": {
+     "tool": 89,
+     "truth": 100,
+     "tp": 83,
+     "fp": 6,
+     "fn": 17,
+     "precision": 0.9326,
+     "recall": 0.83,
+     "f1": 0.8783
+    },
+    "all": {
+     "tool": 126,
+     "truth": 135,
+     "tp": 117,
+     "fp": 9,
+     "fn": 18,
+     "precision": 0.9286,
+     "recall": 0.8667,
+     "f1": 0.8966
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 73,
+     "truth": 99,
+     "tp": 56,
+     "fp": 17,
+     "fn": 43,
+     "precision": 0.7671,
+     "recall": 0.5657,
+     "f1": 0.6512
+    },
+    "outside": {
+     "tool": 176,
+     "truth": 252,
+     "tp": 167,
+     "fp": 9,
+     "fn": 85,
+     "precision": 0.9489,
+     "recall": 0.6627,
+     "f1": 0.7804
+    },
+    "all": {
+     "tool": 249,
+     "truth": 351,
+     "tp": 223,
+     "fp": 26,
+     "fn": 128,
+     "precision": 0.8956,
+     "recall": 0.6353,
+     "f1": 0.7433
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 258,
+     "truth": 310,
+     "tp": 252,
+     "fp": 6,
+     "fn": 58,
+     "precision": 0.9767,
+     "recall": 0.8129,
+     "f1": 0.8873
+    },
+    "outside": {
+     "tool": 112,
+     "truth": 120,
+     "tp": 112,
+     "fp": 0,
+     "fn": 8,
+     "precision": 1.0,
+     "recall": 0.9333,
+     "f1": 0.9655
+    },
+    "all": {
+     "tool": 370,
+     "truth": 430,
+     "tp": 364,
+     "fp": 6,
+     "fn": 66,
+     "precision": 0.9838,
+     "recall": 0.8465,
+     "f1": 0.91
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 258,
+     "truth": 511,
+     "tp": 249,
+     "fp": 9,
+     "fn": 262,
+     "precision": 0.9651,
+     "recall": 0.4873,
+     "f1": 0.6476
+    },
+    "outside": {
+     "tool": 354,
+     "truth": 474,
+     "tp": 350,
+     "fp": 4,
+     "fn": 124,
+     "precision": 0.9887,
+     "recall": 0.7384,
+     "f1": 0.8454
+    },
+    "all": {
+     "tool": 612,
+     "truth": 985,
+     "tp": 599,
+     "fp": 13,
+     "fn": 386,
+     "precision": 0.9788,
+     "recall": 0.6081,
+     "f1": 0.7502
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-v21-r1": {
+  "macro": {
+   "inside": {
+    "tool": 785,
+    "truth": 955,
+    "tp": 699,
+    "fp": 86,
+    "fn": 256,
+    "precision": 0.8904,
+    "recall": 0.7319,
+    "f1": 0.8034
+   },
+   "outside": {
+    "tool": 880,
+    "truth": 946,
+    "tp": 799,
+    "fp": 81,
+    "fn": 147,
+    "precision": 0.908,
+    "recall": 0.8446,
+    "f1": 0.8751
+   },
+   "all": {
+    "tool": 1665,
+    "truth": 1901,
+    "tp": 1498,
+    "fp": 167,
+    "fn": 403,
+    "precision": 0.8997,
+    "recall": 0.788,
+    "f1": 0.8402
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 99,
+     "truth": 100,
+     "tp": 88,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.8889,
+     "recall": 0.88,
+     "f1": 0.8844
+    },
+    "all": {
+     "tool": 134,
+     "truth": 135,
+     "tp": 123,
+     "fp": 11,
+     "fn": 12,
+     "precision": 0.9179,
+     "recall": 0.9111,
+     "f1": 0.9145
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 232,
+     "truth": 252,
+     "tp": 195,
+     "fp": 37,
+     "fn": 57,
+     "precision": 0.8405,
+     "recall": 0.7738,
+     "f1": 0.8058
+    },
+    "all": {
+     "tool": 303,
+     "truth": 351,
+     "tp": 258,
+     "fp": 45,
+     "fn": 93,
+     "precision": 0.8515,
+     "recall": 0.735,
+     "f1": 0.789
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 309,
+     "truth": 310,
+     "tp": 308,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9968,
+     "recall": 0.9935,
+     "f1": 0.9952
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 429,
+     "truth": 430,
+     "tp": 428,
+     "fp": 1,
+     "fn": 2,
+     "precision": 0.9977,
+     "recall": 0.9953,
+     "f1": 0.9965
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 370,
+     "truth": 511,
+     "tp": 293,
+     "fp": 77,
+     "fn": 218,
+     "precision": 0.7919,
+     "recall": 0.5734,
+     "f1": 0.6652
+    },
+    "outside": {
+     "tool": 429,
+     "truth": 474,
+     "tp": 396,
+     "fp": 33,
+     "fn": 78,
+     "precision": 0.9231,
+     "recall": 0.8354,
+     "f1": 0.8771
+    },
+    "all": {
+     "tool": 799,
+     "truth": 985,
+     "tp": 689,
+     "fp": 110,
+     "fn": 296,
+     "precision": 0.8623,
+     "recall": 0.6995,
+     "f1": 0.7724
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "nscg-v21-r2": {
+  "macro": {
+   "inside": {
+    "tool": 747,
+    "truth": 955,
+    "tp": 699,
+    "fp": 48,
+    "fn": 256,
+    "precision": 0.9357,
+    "recall": 0.7319,
+    "f1": 0.8214
+   },
+   "outside": {
+    "tool": 882,
+    "truth": 946,
+    "tp": 801,
+    "fp": 81,
+    "fn": 145,
+    "precision": 0.9082,
+    "recall": 0.8467,
+    "f1": 0.8764
+   },
+   "all": {
+    "tool": 1629,
+    "truth": 1901,
+    "tp": 1500,
+    "fp": 129,
+    "fn": 401,
+    "precision": 0.9208,
+    "recall": 0.7891,
+    "f1": 0.8499
+   }
+  },
+  "macro_projects": {
+   "autojump": {
+    "inside": {
+     "tool": 35,
+     "truth": 35,
+     "tp": 35,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "outside": {
+     "tool": 97,
+     "truth": 100,
+     "tp": 85,
+     "fp": 12,
+     "fn": 15,
+     "precision": 0.8763,
+     "recall": 0.85,
+     "f1": 0.8629
+    },
+    "all": {
+     "tool": 132,
+     "truth": 135,
+     "tp": 120,
+     "fp": 12,
+     "fn": 15,
+     "precision": 0.9091,
+     "recall": 0.8889,
+     "f1": 0.8989
+    },
+    "status": "ok"
+   },
+   "fabric": {
+    "inside": {
+     "tool": 71,
+     "truth": 99,
+     "tp": 63,
+     "fp": 8,
+     "fn": 36,
+     "precision": 0.8873,
+     "recall": 0.6364,
+     "f1": 0.7412
+    },
+    "outside": {
+     "tool": 237,
+     "truth": 252,
+     "tp": 202,
+     "fp": 35,
+     "fn": 50,
+     "precision": 0.8523,
+     "recall": 0.8016,
+     "f1": 0.8262
+    },
+    "all": {
+     "tool": 308,
+     "truth": 351,
+     "tp": 265,
+     "fp": 43,
+     "fn": 86,
+     "precision": 0.8604,
+     "recall": 0.755,
+     "f1": 0.8042
+    },
+    "status": "ok"
+   },
+   "jmespath": {
+    "inside": {
+     "tool": 310,
+     "truth": 310,
+     "tp": 309,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9968,
+     "recall": 0.9968,
+     "f1": 0.9968
+    },
+    "outside": {
+     "tool": 120,
+     "truth": 120,
+     "tp": 120,
+     "fp": 0,
+     "fn": 0,
+     "precision": 1.0,
+     "recall": 1.0,
+     "f1": 1.0
+    },
+    "all": {
+     "tool": 430,
+     "truth": 430,
+     "tp": 429,
+     "fp": 1,
+     "fn": 1,
+     "precision": 0.9977,
+     "recall": 0.9977,
+     "f1": 0.9977
+    },
+    "status": "ok"
+   },
+   "funcy": {
+    "inside": {
+     "tool": 331,
+     "truth": 511,
+     "tp": 292,
+     "fp": 39,
+     "fn": 219,
+     "precision": 0.8822,
+     "recall": 0.5714,
+     "f1": 0.6936
+    },
+    "outside": {
+     "tool": 428,
+     "truth": 474,
+     "tp": 394,
+     "fp": 34,
+     "fn": 80,
+     "precision": 0.9206,
+     "recall": 0.8312,
+     "f1": 0.8736
+    },
+    "all": {
+     "tool": 759,
+     "truth": 985,
+     "tp": 686,
+     "fp": 73,
+     "fn": 299,
+     "precision": 0.9038,
+     "recall": 0.6964,
+     "f1": 0.7867
+    },
+    "status": "ok"
+   }
+  }
+ },
+ "pycg-2026+renamed": {
+  "micro": {
+   "cases": 580,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 493,
+   "sound": 523,
+   "exact": 441,
+   "inside": {
+    "tool": 1242,
+    "truth": 1213,
+    "tp": 1148,
+    "fp": 94,
+    "fn": 65,
+    "precision": 0.9243,
+    "recall": 0.9464,
+    "f1": 0.9352
+   },
+   "outside": {
+    "tool": 372,
+    "truth": 383,
+    "tp": 370,
+    "fp": 2,
+    "fn": 13,
+    "precision": 0.9946,
+    "recall": 0.9661,
+    "f1": 0.9801
+   },
+   "all": {
+    "tool": 1614,
+    "truth": 1596,
+    "tp": 1518,
+    "fp": 96,
+    "fn": 78,
+    "precision": 0.9405,
+    "recall": 0.9511,
+    "f1": 0.9458
+   }
+  }
+ },
+ "pycg-2021+renamed": {
+  "micro": {
+   "cases": 580,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 453,
+   "sound": 239,
+   "exact": 185,
+   "inside": {
+    "tool": 857,
+    "truth": 1213,
+    "tp": 744,
+    "fp": 113,
+    "fn": 469,
+    "precision": 0.8681,
+    "recall": 0.6134,
+    "f1": 0.7188
+   },
+   "outside": {
+    "tool": 288,
+    "truth": 383,
+    "tp": 248,
+    "fp": 40,
+    "fn": 135,
+    "precision": 0.8611,
+    "recall": 0.6475,
+    "f1": 0.7392
+   },
+   "all": {
+    "tool": 1145,
+    "truth": 1596,
+    "tp": 992,
+    "fp": 153,
+    "fn": 604,
+    "precision": 0.8664,
+    "recall": 0.6216,
+    "f1": 0.7238
+   }
+  }
+ },
+ "nscg-sym+renamed": {
+  "micro": {
+   "cases": 580,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 474,
+   "sound": 217,
+   "exact": 114,
+   "inside": {
+    "tool": 836,
+    "truth": 1213,
+    "tp": 743,
+    "fp": 93,
+    "fn": 470,
+    "precision": 0.8888,
+    "recall": 0.6125,
+    "f1": 0.7252
+   },
+   "outside": {
+    "tool": 358,
+    "truth": 383,
+    "tp": 327,
+    "fp": 31,
+    "fn": 56,
+    "precision": 0.9134,
+    "recall": 0.8538,
+    "f1": 0.8826
+   },
+   "all": {
+    "tool": 1194,
+    "truth": 1596,
+    "tp": 1070,
+    "fp": 124,
+    "fn": 526,
+    "precision": 0.8961,
+    "recall": 0.6704,
+    "f1": 0.767
+   }
+  }
+ },
+ "llm-only+renamed": {
+  "micro": {
+   "cases": 580,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 453,
+   "sound": 512,
+   "exact": 264,
+   "inside": {
+    "tool": 1341,
+    "truth": 1213,
+    "tp": 1210,
+    "fp": 131,
+    "fn": 3,
+    "precision": 0.9023,
+    "recall": 0.9975,
+    "f1": 0.9475
+   },
+   "outside": {
+    "tool": 313,
+    "truth": 383,
+    "tp": 296,
+    "fp": 17,
+    "fn": 87,
+    "precision": 0.9457,
+    "recall": 0.7728,
+    "f1": 0.8506
+   },
+   "all": {
+    "tool": 1654,
+    "truth": 1596,
+    "tp": 1506,
+    "fp": 148,
+    "fn": 90,
+    "precision": 0.9105,
+    "recall": 0.9436,
+    "f1": 0.9268
+   }
+  }
+ },
+ "nscg-v21+renamed": {
+  "micro": {
+   "cases": 580,
+   "skipped": 0,
+   "failed": 0,
+   "complete": 440,
+   "sound": 536,
+   "exact": 255,
+   "inside": {
+    "tool": 1326,
+    "truth": 1213,
+    "tp": 1184,
+    "fp": 142,
+    "fn": 29,
+    "precision": 0.8929,
+    "recall": 0.9761,
+    "f1": 0.9327
+   },
+   "outside": {
+    "tool": 384,
+    "truth": 383,
+    "tp": 356,
+    "fp": 28,
+    "fn": 27,
+    "precision": 0.9271,
+    "recall": 0.9295,
+    "f1": 0.9283
+   },
+   "all": {
+    "tool": 1710,
+    "truth": 1596,
+    "tp": 1540,
+    "fp": 170,
+    "fn": 56,
+    "precision": 0.9006,
+    "recall": 0.9649,
+    "f1": 0.9316
+   }
+  }
+ }
+}

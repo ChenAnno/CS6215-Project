@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/unpack_merge", "answers": {"s1": ["main.qe254_0", "main.qe254_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 1, "kind": "call", "text": "merged['run']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

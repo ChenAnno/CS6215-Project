@@ -1,0 +1,14 @@
+{
+ "functools.wraps": [],
+ "main": [
+  "main.qa7fb_0",
+  "main.qa7fb_1"
+ ],
+ "main.qa7fb_0": [],
+ "main.qa7fb_1": [
+  "functools.wraps"
+ ],
+ "main.qa7fb_1.qa7fb_2": [
+  "main.qa7fb_0"
+ ]
+}

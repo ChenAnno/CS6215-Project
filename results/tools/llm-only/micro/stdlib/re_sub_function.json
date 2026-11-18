@@ -1,0 +1,7 @@
+{
+ "main": [
+  "main.shout",
+  "re.sub"
+ ],
+ "main.shout": []
+}

@@ -1,0 +1,13 @@
+{
+ "asyncio.TaskGroup": [],
+ "asyncio.run": [],
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.start": [
+  "asyncio.TaskGroup",
+  "main.work"
+ ],
+ "main.work": []
+}

@@ -1,0 +1,11 @@
+{
+    "main": [
+        "main.q10c0_0.run",
+        "operator.methodcaller",
+        "operator.methodcaller.__call__"
+    ],
+    "main.q10c0_0.run": [],
+    "main.q10c0_0.q10c0_1": [],
+    "operator.methodcaller": [],
+    "operator.methodcaller.__call__": []
+}

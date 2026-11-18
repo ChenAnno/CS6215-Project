@@ -1,0 +1,8 @@
+{
+ "<builtin>.map": [],
+ "main": [
+  "<builtin>.map",
+  "main.double"
+ ],
+ "main.double": []
+}

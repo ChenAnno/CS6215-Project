@@ -1,0 +1,13 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.q0e4a_2"
+ ],
+ "main.q0e4a_0.__await__": [
+  "main.q0e4a_1"
+ ],
+ "main.q0e4a_1": [],
+ "main.q0e4a_2": [
+  "main.q0e4a_0.__await__"
+ ]
+}

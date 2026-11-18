@@ -1,0 +1,1 @@
+{"units": [{"unit": "dicts/computed_key", "answers": {"main": ["main.func1", "main.func2"], "main.func1": [], "main.func2": []}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "d[prefix + 'b']()", "resolved": [], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

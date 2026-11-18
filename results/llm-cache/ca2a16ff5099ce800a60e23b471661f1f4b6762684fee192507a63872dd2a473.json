@@ -1,0 +1,205 @@
+{
+ "key": "ca2a16ff5099ce800a60e23b471661f1f4b6762684fee192507a63872dd2a473",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "edges": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "caller": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "caller",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "edges"
+  ]
+ },
+ "prompt": "# Task\nBuild the static call graph of the Python code below.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Definitions of the whole package (for naming callees in other modules)\nmodule jmespath\n  imports: jmespath.parser, jmespath.visitor.Options\n  def jmespath.compile(expression)\n  def jmespath.search(expression, data, options)\nmodule jmespath.ast\n  def jmespath.ast.comparator(name, first, second)\n  def jmespath.ast.current_node()\n  def jmespath.ast.expref(expression)\n  def jmespath.ast.function_expression(name, args)\n  def jmespath.ast.field(name)\n  def jmespath.ast.filter_projection(left, right, comparator)\n  def jmespath.ast.flatten(node)\n  def jmespath.ast.identity()\n  def jmespath.ast.index(index)\n  def jmespath.ast.index_expression(children)\n  def jmespath.ast.key_val_pair(key_name, node)\n  def jmespath.ast.literal(literal_value)\n  def jmespath.ast.multi_select_dict(nodes)\n  def jmespath.ast.multi_select_list(nodes)\n  def jmespath.ast.or_expression(left, right)\n  def jmespath.ast.and_expression(left, right)\n  def jmespath.ast.not_expression(expr)\n  def jmespath.ast.pipe(left, right)\n  def jmespath.ast.projection(left, right)\n  def jmespath.ast.subexpression(children)\n  def jmespath.ast.slice(start, end, step)\n  def jmespath.ast.value_projection(left, right)\nmodule jmespath.compat\n  imports: itertools.zip_longest\n  def jmespath.compat.with_str_method(cls)\n  def jmespath.compat.with_repr_method(cls)\n  def jmespath.compat.get_methods(cls)\nmodule jmespath.exceptions\n  imports: jmespath.compat.with_str_method\n  class jmespath.exceptions.JMESPathError(<builtin>.ValueError)\n  class jmespath.exceptions.ParseError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lex_position, token_value, token_type, msg); __str__(self)\n    class attrs: _ERROR_MESSAGE='Invalid jmespath expression'\n  class jmespath.exceptions.IncompleteExpressionError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: set_expression(self, expression); __str__(self)\n  class jmespath.exceptions.LexerError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lexer_position, lexer_value, message, expression); __str__(self)\n  class jmespath.exceptions.ArityError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, expected, actual, name); __str__(self); _pluralize(self, word, count)\n  class jmespath.exceptions.VariadictArityError(jmespath.exceptions.ArityError) mro: jmespath.exceptions.ArityError > jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __str__(self)\n  class jmespath.exceptions.JMESPathTypeError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, function_name, current_value, actual_type, expected_types); __str__(self)\n  class jmespath.exceptions.EmptyExpressionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self)\n  class jmespath.exceptions.UnknownFunctionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\nmodule jmespath.functions\n  imports: STRING_TYPE=jmespath.compat.string_type, jmespath.compat.get_methods, jmespath.exceptions\n  def jmespath.functions.signature()\n  def jmespath.functions.signature._record_signature(func)\n  def jmespath.functions.Functions._create_key_func.keyfunc(x)\n  class jmespath.functions.FunctionRegistry(<builtin>.type)\n    methods: __init__(cls, name, bases, attrs); _populate_function_table(cls)\n  class jmespath.functions.Functions()\n    methods: call_function(self, function_name, resolved_args); _validate_arguments(self, args, signature, function_name); _type_check(self, actual, signature, function_name); _type_check_single(self, current, types, function_name); _get_allowed_pytypes(self, types); _subtype_check(self, current, allowed_subtypes, types, function_name); @signature({'types': ['number']}) _func_abs(self, arg); @signature({'types': ['array-number']}) _func_avg(self, arg); @signature({'types': [], 'variadic': True}) _func_not_null(self); @signature({'types': []}) _func_to_array(self, arg); @signature({'types': []}) _func_to_string(self, arg); @signature({'types': []}) _func_to_number(self, arg); @signature({'types': ['array', 'string']}, {'types': []}) _func_contains(self, subject, search); @signature({'types': ['string', 'array', 'object']}) _func_length(self, arg); @signature({'types': ['string']}, {'types': ['string']}) _func_ends_with(self, search, suffix); @signature({'types': ['string']}, {'types': ['string']}) _func_starts_with(self, search, suffix); @signature({'types': ['array', 'string']}) _func_reverse(self, arg); @signature({'types': ['number']}) _func_ceil(self, arg); @signature({'types': ['number']}) _func_floor(self, arg); @signature({'types': ['string']}, {'types': ['array-string... _func_join(self, separator, array); @signature({'types': ['expref']}, {'types': ['array']}) _func_map(self, expref, arg); @signature({'types': ['array-number', 'array-string']}) _func_max(self, arg); @signature({'types': ['object'], 'variadic': True}) _func_merge(self); @signature({'types': ['array-number', 'array-string']}) _func_min(self, arg); @signature({'types': ['array-string', 'array-number']}) _func_sort(self, arg); @signature({'types': ['array-number']}) _func_sum(self, arg); @signature({'types': ['object']}) _func_keys(self, arg); @signature({'types': ['object']}) _func_values(self, arg); @signature({'types': []}) _func_type(self, arg); @signature({'types': ['array']}, {'types': ['expref']}) _func_sort_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_min_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_max_by(self, array, expref); _create_key_func(self, expref, allowed_types, function_name); _convert_to_jmespath_type(self, pyobject)\n    class attrs: FUNCTION_TABLE={}\nmodule jmespath.lexer\n  imports: jmespath.exceptions.EmptyExpressionError, jmespath.exceptions.LexerError, json.loads\n  class jmespath.lexer.Lexer(<builtin>.object)\n    methods: tokenize(self, expression); _consume_number(self); _initialize_for_expression(self, expression); _next(self); _consume_until(self, delimiter); _consume_literal(self); _consume_quoted_identifier(self); _consume_raw_string_literal(self); _match_or_else(self, expected, match_type, else_type)\n    class attrs: START_IDENTIFIER=set(string.ascii_letters + '_'), VALID_IDENTIFIER=set(string.ascii_letters + string.dig..., VALID_NUMBER=set(string.digits), WHITESPACE=set(' \\t\\n\\r'), SIMPLE_TOKENS={'.': 'dot', '*': 'star', ']': 'rbrac...\nmodule jmespath.parser\n  imports: jmespath.ast, jmespath.compat.with_repr_method, jmespath.exceptions, jmespath.lexer, jmespath.visitor\n  class jmespath.parser.Parser(<builtin>.object)\n    methods: __init__(self, lookahead); parse(self, expression); _do_parse(self, expression); _parse(self, expression); _expression(self, binding_power); _token_nud_literal(self, token); _token_nud_unquoted_identifier(self, token); _token_nud_quoted_identifier(self, token); _token_nud_star(self, token); _token_nud_filter(self, token); _token_nud_lbrace(self, token); _token_nud_lparen(self, token); _token_nud_flatten(self, token); _token_nud_not(self, token); _token_nud_lbracket(self, token); _parse_index_expression(self); _parse_slice_expression(self); _token_nud_current(self, token); _token_nud_expref(self, token); _token_led_dot(self, left); _token_led_pipe(self, left); _token_led_or(self, left); _token_led_and(self, left); _token_led_lparen(self, left); _token_led_filter(self, left); _token_led_eq(self, left); _token_led_ne(self, left); _token_led_gt(self, left); _token_led_gte(self, left); _token_led_lt(self, left); _token_led_lte(self, left); _token_led_flatten(self, left); _token_led_lbracket(self, left); _project_if_slice(self, left, right); _parse_comparator(self, left, comparator); _parse_multi_select_list(self); _parse_multi_select_hash(self); _parse_projection_rhs(self, binding_power); _parse_dot_rhs(self, binding_power); _error_nud_token(self, token); _error_led_token(self, token); _match(self, token_type); _match_multiple_tokens(self, token_types); _advance(self); _current_token(self); _lookahead(self, number); _lookahead_token(self, number); _raise_parse_error_for_token(self, token, reason); _raise_parse_error_maybe_eof(self, expected_type, token); @classmethod purge(cls)\n    class attrs: BINDING_POWER={'eof': 0, 'unquoted_identifier': 0, ..., _PROJECTION_STOP=10, _CACHE={}, _MAX_SIZE=512\n  class jmespath.parser.ParsedResult(<builtin>.object)\n    methods: __init__(self, expression, parsed); search(self, value, options); _render_dot_file(self); __repr__(self)\nmodule jmespath.visitor\n  imports: jmespath.compat.string_type, jmespath.functions, numbers.Number\n  def jmespath.visitor._equals(x, y)\n  def jmespath.visitor._is_special_number_case(x, y)\n  def jmespath.visitor._is_comparable(x)\n  def jmespath.visitor._is_actual_number(x)\n  class jmespath.visitor.Options(<builtin>.object)\n    methods: __init__(self, dict_cls, custom_functions)\n  class jmespath.visitor._Expression(<builtin>.object)\n    methods: __init__(self, expression, interpreter); visit(self, node)\n  class jmespath.visitor.Visitor(<builtin>.object)\n    methods: __init__(self); visit(self, node); default_visit(self, node)\n  class jmespath.visitor.TreeInterpreter(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self, options); default_visit(self, node); visit_subexpression(self, node, value); visit_field(self, node, value); visit_comparator(self, node, value); visit_current(self, node, value); visit_expref(self, node, value); visit_function_expression(self, node, value); visit_filter_projection(self, node, value); visit_flatten(self, node, value); visit_identity(self, node, value); visit_index(self, node, value); visit_index_expression(self, node, value); visit_slice(self, node, value); visit_key_val_pair(self, node, value); visit_literal(self, node, value); visit_multi_select_dict(self, node, value); visit_multi_select_list(self, node, value); visit_or_expression(self, node, value); visit_and_expression(self, node, value); visit_not_expression(self, node, value); visit_pipe(self, node, value); visit_projection(self, node, value); visit_value_projection(self, node, value); _is_false(self, value); _is_true(self, value)\n    class attrs: COMPARATOR_FUNC={'eq': _equals, 'ne': lambda x, y: no..., _EQUALITY_OPS=['eq', 'ne'], MAP_TYPE=dict\n  class jmespath.visitor.GraphvizVisitor(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self); visit(self, node); _visit(self, node, current)\n\n## Source (module `jmespath.visitor` of package `jmespath`, part 2/2)\n  1| import operator\n  2| \n  3| from jmespath import functions\n  4| from jmespath.compat import string_type\n  5| from numbers import Number\n  6| \n  7| \n  8| def _equals(x, y):\n  9|     if _is_special_number_case(x, y):\n 10|         return False\n 11|     else:\n 12|         return x == y\n 13| \n 14| \n 15| def _is_special_number_case(x, y):\n 16|     # We need to special case comparing 0 or 1 to\n 17|     # True/False.  While normally comparing any\n 18|     # integer other than 0/1 to True/False will always\n 19|     # return False.  However 0/1 have this:\n 20|     # >>> 0 == True\n 21|     # False\n 22|     # >>> 0 == False\n 23|     # True\n 24|     # >>> 1 == True\n 25|     # True\n 26|     # >>> 1 == False\n 27|     # False\n 28|     #\n 29|     # Also need to consider that:\n 30|     # >>> 0 in [True, False]\n 31|     # True\n 32|     if _is_actual_number(x) and x in (0, 1):\n 33|         return isinstance(y, bool)\n 34|     elif _is_actual_number(y) and y in (0, 1):\n 35|         return isinstance(x, bool)\n 36| \n 37| \n 38| def _is_comparable(x):\n 39|     # The spec doesn't officially support string types yet,\n 40|     # but enough people are relying on this behavior that\n 41|     # it's been added back.  This should eventually become\n 42|     # part of the official spec.\n 43|     return _is_actual_number(x) or isinstance(x, string_type)\n 44| \n 45| \n 46| def _is_actual_number(x):\n 47|     # We need to handle python's quirkiness with booleans,\n 48|     # specifically:\n 49|     #\n 50|     # >>> isinstance(False, int)\n 51|     # True\n 52|     # >>> isinstance(True, int)\n 53|     # True\n 54|     if isinstance(x, bool):\n 55|         return False\n 56|     return isinstance(x, Number)\n 57| \n 58| \n 59| class Options(object):\n 60|     \"\"\"Options to control how a JMESPath function is evaluated.\"\"\"\n 61|     def __init__(self, dict_cls=None, custom_functions=None):\n 62|         #: The class to use when creating a dict.  The interpreter\n 63|         #  may create dictionaries during the evaluation of a JMESPath\n 64|         #  expression.  For example, a multi-select hash will\n 65|         #  create a dictionary.  By default we use a dict() type.\n 66|         #  You can set this value to change what dict type is used.\n 67|         #  The most common reason you would change this is if you\n 68|         #  want to set a collections.OrderedDict so that you can\n 69|         #  have predictable key ordering.\n 70|         self.dict_cls = dict_cls\n 71|         self.custom_functions = custom_functions\n 72| \n 73| \n 74| class _Expression(object):\n 75|     def __init__(self, expression, interpreter):\n 76|         self.expression = expression\n 77|         self.interpreter = interpreter\n 78| \n 79|     def visit(self, node, *args, **kwargs):\n 80|         return self.interpreter.visit(node, *args, **kwargs)\n 81| \n 82| \n 83| class Visitor(object):\n 84|     def __init__(self):\n 85|         self._method_cache = {}\n 86| \n 87|     def visit(self, node, *args, **kwargs):\n 88|         node_type = node['type']\n 89|         method = self._method_cache.get(node_type)\n 90|         if method is None:\n 91|             method = getattr(\n 92|                 self, 'visit_%s' % node['type'], self.default_visit)\n 93|             self._method_cache[node_type] = method\n 94|         return method(node, *args, **kwargs)\n 95| \n 96|     def default_visit(self, node, *args, **kwargs):\n 97|         raise NotImplementedError(\"default_visit\")\n 98| \n 99| \n100| class TreeInterpreter(Visitor):\n101|     COMPARATOR_FUNC = {\n102|         'eq': _equals,\n103|         'ne': lambda x, y: not _equals(x, y),\n104|         'lt': operator.lt,\n105|         'gt': operator.gt,\n106|         'lte': operator.le,\n107|         'gte': operator.ge\n108|     }\n109|     _EQUALITY_OPS = ['eq', 'ne']\n110|     MAP_TYPE = dict\n111| \n112|     def __init__(self, options=None):\n113|         super(TreeInterpreter, self).__init__()\n114|         self._dict_cls = self.MAP_TYPE\n115|         if options is None:\n116|             options = Options()\n117|         self._options = options\n118|         if options.dict_cls is not None:\n119|             self._dict_cls = self._options.dict_cls\n120|         if options.custom_functions is not None:\n121|             self._functions = self._options.custom_functions\n122|         else:\n123|             self._functions = functions.Functions()\n124| \n125|     def default_visit(self, node, *args, **kwargs):\n126|         raise NotImplementedError(node['type'])\n127| \n128|     def visit_subexpression(self, node, value):\n129|         result = value\n130|         for node in node['children']:\n131|             result = self.visit(node, result)\n132|         return result\n133| \n134|     def visit_field(self, node, value):\n135|         try:\n136|             return value.get(node['value'])\n137|         except AttributeError:\n138|             return None\n139| \n140|     def visit_comparator(self, node, value):\n141|         # Common case: comparator is == or !=\n142|         comparator_func = self.COMPARATOR_FUNC[node['value']]\n143|         if node['value'] in self._EQUALITY_OPS:\n144|             return comparator_func(\n145|                 self.visit(node['children'][0], value),\n146|                 self.visit(node['children'][1], value)\n147|             )\n148|         else:\n149|             # Ordering operators are only valid for numbers.\n150|             # Evaluating any other type with a comparison operator\n151|             # will yield a None value.\n152|             left = self.visit(node['children'][0], value)\n153|             right = self.visit(node['children'][1], value)\n154|             num_types = (int, float)\n155|             if not (_is_comparable(left) and\n156|                     _is_comparable(right)):\n157|                 return None\n158|             return comparator_func(left, right)\n159| \n160|     def visit_current(self, node, value):\n161|         return value\n162| \n163|     def visit_expref(self, node, value):\n164|         return _Expression(node['children'][0], self)\n165| \n166|     def visit_function_expression(self, node, value):\n167|         resolved_args = []\n168|         for child in node['children']:\n169|             current = self.visit(child, value)\n170|             resolved_args.append(current)\n171|         return self._functions.call_function(node['value'], resolved_args)\n172| \n173|     def visit_filter_projection(self, node, value):\n174|         base = self.visit(node['children'][0], value)\n175|         if not isinstance(base, list):\n176|             return None\n177|         comparator_node = node['children'][2]\n178|         collected = []\n179|         for element in base:\n180|             if self._is_true(self.visit(comparator_node, element)):\n181|                 current = self.visit(node['children'][1], element)\n182|                 if current is not None:\n183|                     collected.append(current)\n184|         return collected\n185| \n186|     def visit_flatten(self, node, value):\n187|         base = self.visit(node['children'][0], value)\n188|         if not isinstance(base, list):\n189|             # Can't flatten the object if it's not a list.\n190|             return None\n191|         merged_list = []\n192|         for element in base:\n193|             if isinstance(element, list):\n194|                 merged_list.extend(element)\n195|             else:\n196|                 merged_list.append(element)\n197|         return merged_list\n198| \n199|     def visit_identity(self, node, value):\n200|         return value\n201| \n202|     def visit_index(self, node, value):\n203|         # Even though we can index strings, we don't\n204|         # want to support that.\n205|         if not isinstance(value, list):\n206|             return None\n207|         try:\n208|             return value[node['value']]\n209|         except IndexError:\n210|             return None\n211| \n212|     def visit_index_expression(self, node, value):\n213|         result = value\n214|         for node in node['children']:\n215|             result = self.visit(node, result)\n216|         return result\n217| \n218|     def visit_slice(self, node, value):\n219|         if not isinstance(value, list):\n220|             return None\n221|         s = slice(*node['children'])\n222|         return value[s]\n223| \n224|     def visit_key_val_pair(self, node, value):\n225|         return self.visit(node['children'][0], value)\n226| \n227|     def visit_literal(self, node, value):\n228|         return node['value']\n229| \n230|     def visit_multi_select_dict(self, node, value):\n231|         if value is None:\n232|             return None\n233|         collected = self._dict_cls()\n234|         for child in node['children']:\n235|             collected[child['value']] = self.visit(child, value)\n236|         return collected\n237| \n238|     def visit_multi_select_list(self, node, value):\n239|         if value is None:\n240|             return None\n241|         collected = []\n242|         for child in node['children']:\n243|             collected.append(self.visit(child, value))\n244|         return collected\n245| \n246|     def visit_or_expression(self, node, value):\n247|         matched = self.visit(node['children'][0], value)\n248|         if self._is_false(matched):\n249|             matched = self.visit(node['children'][1], value)\n250|         return matched\n251| \n252|     def visit_and_expression(self, node, value):\n253|         matched = self.visit(node['children'][0], value)\n254|         if self._is_false(matched):\n255|             return matched\n256|         return self.visit(node['children'][1], value)\n257| \n258|     def visit_not_expression(self, node, value):\n259|         original_result = self.visit(node['children'][0], value)\n260|         if _is_actual_number(original_result) and original_result == 0:\n261|             # Special case for 0, !0 should be false, not true.\n262|             # 0 is not a special cased integer in jmespath.\n263|             return False\n264|         return not original_result\n265| \n266|     def visit_pipe(self, node, value):\n267|         result = value\n268|         for node in node['children']:\n269|             result = self.visit(node, result)\n270|         return result\n271| \n272|     def visit_projection(self, node, value):\n273|         base = self.visit(node['children'][0], value)\n274|         if not isinstance(base, list):\n275|             return None\n276|         collected = []\n277|         for element in base:\n278|             current = self.visit(node['children'][1], element)\n279|             if current is not None:\n280|                 collected.append(current)\n281|         return collected\n282| \n283|     def visit_value_projection(self, node, value):\n284|         base = self.visit(node['children'][0], value)\n285|         try:\n286|             base = base.values()\n287|         except AttributeError:\n288|             return None\n289|         collected = []\n290|         for element in base:\n291|             current = self.visit(node['children'][1], element)\n292|             if current is not None:\n293|                 collected.append(current)\n294|         return collected\n295| \n296|     def _is_false(self, value):\n297|         # This looks weird, but we're explicitly using equality checks\n298|         # because the truth/false values are different between\n299|         # python and jmespath.\n300|         return (value == '' or value == [] or value == {} or value is None or\n301|                 value is False)\n302| \n303|     def _is_true(self, value):\n304|         return not self._is_false(value)\n305| \n306| \n307| class GraphvizVisitor(Visitor):\n308|     def __init__(self):\n309|         super(GraphvizVisitor, self).__init__()\n310|         self._lines = []\n311|         self._count = 1\n312| \n313|     def visit(self, node, *args, **kwargs):\n314|         self._lines.append('digraph AST {')\n315|         current = '%s%s' % (node['type'], self._count)\n316|         self._count += 1\n317|         self._visit(node, current)\n318|         self._lines.append('}')\n319|         return '\\n'.join(self._lines)\n320| \n321|     def _visit(self, node, current):\n322|         self._lines.append('%s [label=\"%s(%s)\"]' % (\n323|             current, node['type'], node.get('value', '')))\n324|         for child in node.get('children', []):\n325|             child_name = '%s%s' % (child['type'], self._count)\n326|             self._count += 1\n327|             self._lines.append('  %s -> %s' % (current, child_name))\n328|             self._visit(child, child_name)\n\n## Output\nReturn {\"edges\": [{\"caller\": <node>, \"callees\": [<callee>, ...]}, ...]} with one entry for every caller node below (use an empty list when it calls nothing):\njmespath.visitor.GraphvizVisitor.__init__\njmespath.visitor.GraphvizVisitor._visit\njmespath.visitor.GraphvizVisitor.visit\njmespath.visitor.TreeInterpreter._is_true\njmespath.visitor.TreeInterpreter.visit_and_expression\njmespath.visitor.TreeInterpreter.visit_index\njmespath.visitor.TreeInterpreter.visit_index_expression\njmespath.visitor.TreeInterpreter.visit_key_val_pair\njmespath.visitor.TreeInterpreter.visit_multi_select_dict\njmespath.visitor.TreeInterpreter.visit_multi_select_list\njmespath.visitor.TreeInterpreter.visit_not_expression\njmespath.visitor.TreeInterpreter.visit_or_expression\njmespath.visitor.TreeInterpreter.visit_pipe\njmespath.visitor.TreeInterpreter.visit_projection\njmespath.visitor.TreeInterpreter.visit_slice\njmespath.visitor.TreeInterpreter.visit_value_projection",
+ "output": {
+  "edges": [
+   {
+    "caller": "jmespath.visitor.GraphvizVisitor.__init__",
+    "callees": [
+     "jmespath.visitor.Visitor.__init__"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.GraphvizVisitor._visit",
+    "callees": [
+     "<builtin>.list.append",
+     "<builtin>.dict.get",
+     "jmespath.visitor.GraphvizVisitor._visit"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.GraphvizVisitor.visit",
+    "callees": [
+     "<builtin>.list.append",
+     "jmespath.visitor.GraphvizVisitor._visit",
+     "<builtin>.str.join"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter._is_true",
+    "callees": [
+     "jmespath.visitor.TreeInterpreter._is_false"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_and_expression",
+    "callees": [
+     "jmespath.visitor.Visitor.visit",
+     "jmespath.visitor.TreeInterpreter._is_false"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_index",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_index_expression",
+    "callees": [
+     "jmespath.visitor.Visitor.visit"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_key_val_pair",
+    "callees": [
+     "jmespath.visitor.Visitor.visit"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_multi_select_dict",
+    "callees": [
+     "<builtin>.dict",
+     "jmespath.visitor.Visitor.visit"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_multi_select_list",
+    "callees": [
+     "jmespath.visitor.Visitor.visit",
+     "<builtin>.list.append"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_not_expression",
+    "callees": [
+     "jmespath.visitor.Visitor.visit",
+     "jmespath.visitor._is_actual_number"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_or_expression",
+    "callees": [
+     "jmespath.visitor.Visitor.visit",
+     "jmespath.visitor.TreeInterpreter._is_false"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_pipe",
+    "callees": [
+     "jmespath.visitor.Visitor.visit"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_projection",
+    "callees": [
+     "jmespath.visitor.Visitor.visit",
+     "<builtin>.isinstance",
+     "<builtin>.list.append"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_slice",
+    "callees": [
+     "<builtin>.isinstance",
+     "<builtin>.slice"
+    ]
+   },
+   {
+    "caller": "jmespath.visitor.TreeInterpreter.visit_value_projection",
+    "callees": [
+     "jmespath.visitor.Visitor.visit",
+     "<builtin>.dict.values",
+     "<builtin>.list.append"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 11617,
+  "cache_read_input_tokens": 570,
+  "output_tokens": 3522,
+  "output_tokens_details": {
+   "thinking_tokens": 2429
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 11617,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 3522,
+    "cache_read_input_tokens": 570,
+    "cache_creation_input_tokens": 11617,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 11617
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.0054082999999999996,
+ "seconds": 14.8,
+ "attempt": 1,
+ "time": "2026-11-18T18:14:14+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 11947,
+   "outputTokens": 3769,
+   "cacheReadInputTokens": 570,
+   "cacheCreationInputTokens": 11617,
+   "webSearchRequests": 0,
+   "costUSD": 0.0054082999999999996,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 2655,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 11617,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.first",
+  "main.second"
+ ],
+ "tasks": [],
+ "main.second": [
+  "tasks.run"
+ ],
+ "main.first": [
+  "tasks.run"
+ ],
+ "tasks.run": []
+}

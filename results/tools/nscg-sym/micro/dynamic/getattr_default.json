@@ -1,0 +1,6 @@
+{
+ "main": [
+  "<builtin>.getattr"
+ ],
+ "main.fallback": []
+}

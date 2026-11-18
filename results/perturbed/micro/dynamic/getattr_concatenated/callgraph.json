@@ -1,0 +1,12 @@
+{
+    "main": [
+        "main.q7b6e_1"
+    ],
+    "main.q7b6e_1": [
+        "<builtin>.getattr",
+        "main.q7b6e_0.q7b6e_2"
+    ],
+    "main.q7b6e_0.q7b6e_3": [],
+    "main.q7b6e_0.q7b6e_2": [],
+    "<builtin>.getattr": []
+}

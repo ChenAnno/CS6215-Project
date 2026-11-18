@@ -1,0 +1,1 @@
+{"units": [{"unit": "control_flow/continue_skips", "answers": {"s1": []}, "sites": [{"id": "s1", "caller": "main", "line": 13, "col": 5, "kind": "call", "text": "f()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

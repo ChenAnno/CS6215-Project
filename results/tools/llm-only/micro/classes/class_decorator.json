@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.Plugin.__init__",
+  "main.register"
+ ],
+ "main.Plugin.__init__": [],
+ "main.register": [
+  "<builtin>.list.append"
+ ]
+}

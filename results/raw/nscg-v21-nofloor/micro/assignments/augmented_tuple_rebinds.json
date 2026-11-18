@@ -1,0 +1,1 @@
+{"units": [{"unit": "assignments/augmented_tuple_rebinds", "answers": {"s1": ["main.func1"]}, "sites": [{"id": "s1", "caller": "main", "line": 10, "col": 1, "kind": "call", "text": "handlers[-1]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

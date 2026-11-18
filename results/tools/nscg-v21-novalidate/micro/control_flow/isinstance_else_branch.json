@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.show"
+ ],
+ "main.Image.render": [],
+ "main.Text.render": [],
+ "main.show": [
+  "<builtin>.isinstance",
+  "main.Image.render"
+ ]
+}

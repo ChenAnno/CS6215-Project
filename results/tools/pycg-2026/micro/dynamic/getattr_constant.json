@@ -1,0 +1,9 @@
+{
+ "<builtin>.getattr": [],
+ "main": [
+  "<builtin>.getattr",
+  "main.Service.start"
+ ],
+ "main.Service.start": [],
+ "main.Service.stop": []
+}

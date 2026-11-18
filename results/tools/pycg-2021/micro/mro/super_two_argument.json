@@ -1,0 +1,11 @@
+{
+ "<builtin>.super": [],
+ "main": [
+  "main.Child.save"
+ ],
+ "main.Base.save": [],
+ "main.Child.save": [
+  "<builtin>.super"
+ ],
+ "main.Middle.save": []
+}

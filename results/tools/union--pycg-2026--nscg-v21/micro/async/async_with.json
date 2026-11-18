@@ -1,0 +1,15 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "asyncio.run": [],
+ "main.Session.query": [],
+ "main.start": [
+  "main.Session.__aenter__",
+  "main.Session.__aexit__",
+  "main.Session.query"
+ ],
+ "main.Session.__aexit__": [],
+ "main.Session.__aenter__": []
+}

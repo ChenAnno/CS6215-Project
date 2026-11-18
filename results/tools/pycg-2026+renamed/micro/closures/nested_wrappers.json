@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.q132f_1",
+  "main.q132f_1.q132f_2"
+ ],
+ "main.q132f_0": [],
+ "main.q132f_1": [],
+ "main.q132f_1.q132f_2": [
+  "main.q132f_0",
+  "main.q132f_1.q132f_2"
+ ]
+}

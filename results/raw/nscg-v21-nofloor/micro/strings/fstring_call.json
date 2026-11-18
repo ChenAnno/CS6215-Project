@@ -1,0 +1,1 @@
+{"units": [{"unit": "strings/fstring_call", "answers": {"s1": ["main.name"]}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 20, "kind": "call", "text": "name()", "resolved": ["main.name"], "candidates": [], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

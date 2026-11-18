@@ -1,0 +1,278 @@
+{
+ "key": "415466b1030e46f287b55b49e15519229f0c8ea7fa6598d515a0697a45a06e50",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Definitions of the package (symbolic outline)\nmodule jmespath\n  imports: jmespath.parser, jmespath.visitor.Options\n  def jmespath.compile(expression)\n  def jmespath.search(expression, data, options)\nmodule jmespath.ast\n  def jmespath.ast.comparator(name, first, second)\n  def jmespath.ast.current_node()\n  def jmespath.ast.expref(expression)\n  def jmespath.ast.function_expression(name, args)\n  def jmespath.ast.field(name)\n  def jmespath.ast.filter_projection(left, right, comparator)\n  def jmespath.ast.flatten(node)\n  def jmespath.ast.identity()\n  def jmespath.ast.index(index)\n  def jmespath.ast.index_expression(children)\n  def jmespath.ast.key_val_pair(key_name, node)\n  def jmespath.ast.literal(literal_value)\n  def jmespath.ast.multi_select_dict(nodes)\n  def jmespath.ast.multi_select_list(nodes)\n  def jmespath.ast.or_expression(left, right)\n  def jmespath.ast.and_expression(left, right)\n  def jmespath.ast.not_expression(expr)\n  def jmespath.ast.pipe(left, right)\n  def jmespath.ast.projection(left, right)\n  def jmespath.ast.subexpression(children)\n  def jmespath.ast.slice(start, end, step)\n  def jmespath.ast.value_projection(left, right)\nmodule jmespath.compat\n  imports: itertools.zip_longest\n  def jmespath.compat.with_str_method(cls)\n  def jmespath.compat.with_repr_method(cls)\n  def jmespath.compat.get_methods(cls)\nmodule jmespath.exceptions\n  imports: jmespath.compat.with_str_method\n  class jmespath.exceptions.JMESPathError(<builtin>.ValueError)\n  class jmespath.exceptions.ParseError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lex_position, token_value, token_type, msg); __str__(self)\n    class attrs: _ERROR_MESSAGE='Invalid jmespath expression'\n  class jmespath.exceptions.IncompleteExpressionError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: set_expression(self, expression); __str__(self)\n  class jmespath.exceptions.LexerError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, lexer_position, lexer_value, message, expression); __str__(self)\n  class jmespath.exceptions.ArityError(jmespath.exceptions.ParseError) mro: jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, expected, actual, name); __str__(self); _pluralize(self, word, count)\n  class jmespath.exceptions.VariadictArityError(jmespath.exceptions.ArityError) mro: jmespath.exceptions.ArityError > jmespath.exceptions.ParseError > jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __str__(self)\n  class jmespath.exceptions.JMESPathTypeError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self, function_name, current_value, actual_type, expected_types); __str__(self)\n  class jmespath.exceptions.EmptyExpressionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\n    methods: __init__(self)\n  class jmespath.exceptions.UnknownFunctionError(jmespath.exceptions.JMESPathError) mro: jmespath.exceptions.JMESPathError > <builtin>.ValueError\nmodule jmespath.functions\n  imports: STRING_TYPE=jmespath.compat.string_type, jmespath.compat.get_methods, jmespath.exceptions\n  def jmespath.functions.signature()\n  def jmespath.functions.signature._record_signature(func)\n  def jmespath.functions.Functions._create_key_func.keyfunc(x)\n  class jmespath.functions.FunctionRegistry(<builtin>.type)\n    methods: __init__(cls, name, bases, attrs); _populate_function_table(cls)\n  class jmespath.functions.Functions()\n    methods: call_function(self, function_name, resolved_args); _validate_arguments(self, args, signature, function_name); _type_check(self, actual, signature, function_name); _type_check_single(self, current, types, function_name); _get_allowed_pytypes(self, types); _subtype_check(self, current, allowed_subtypes, types, function_name); @signature({'types': ['number']}) _func_abs(self, arg); @signature({'types': ['array-number']}) _func_avg(self, arg); @signature({'types': [], 'variadic': True}) _func_not_null(self); @signature({'types': []}) _func_to_array(self, arg); @signature({'types': []}) _func_to_string(self, arg); @signature({'types': []}) _func_to_number(self, arg); @signature({'types': ['array', 'string']}, {'types': []}) _func_contains(self, subject, search); @signature({'types': ['string', 'array', 'object']}) _func_length(self, arg); @signature({'types': ['string']}, {'types': ['string']}) _func_ends_with(self, search, suffix); @signature({'types': ['string']}, {'types': ['string']}) _func_starts_with(self, search, suffix); @signature({'types': ['array', 'string']}) _func_reverse(self, arg); @signature({'types': ['number']}) _func_ceil(self, arg); @signature({'types': ['number']}) _func_floor(self, arg); @signature({'types': ['string']}, {'types': ['array-string... _func_join(self, separator, array); @signature({'types': ['expref']}, {'types': ['array']}) _func_map(self, expref, arg); @signature({'types': ['array-number', 'array-string']}) _func_max(self, arg); @signature({'types': ['object'], 'variadic': True}) _func_merge(self); @signature({'types': ['array-number', 'array-string']}) _func_min(self, arg); @signature({'types': ['array-string', 'array-number']}) _func_sort(self, arg); @signature({'types': ['array-number']}) _func_sum(self, arg); @signature({'types': ['object']}) _func_keys(self, arg); @signature({'types': ['object']}) _func_values(self, arg); @signature({'types': []}) _func_type(self, arg); @signature({'types': ['array']}, {'types': ['expref']}) _func_sort_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_min_by(self, array, expref); @signature({'types': ['array']}, {'types': ['expref']}) _func_max_by(self, array, expref); _create_key_func(self, expref, allowed_types, function_name); _convert_to_jmespath_type(self, pyobject)\n    class attrs: FUNCTION_TABLE={}\nmodule jmespath.lexer\n  imports: jmespath.exceptions.EmptyExpressionError, jmespath.exceptions.LexerError, json.loads\n  class jmespath.lexer.Lexer(<builtin>.object)\n    methods: tokenize(self, expression); _consume_number(self); _initialize_for_expression(self, expression); _next(self); _consume_until(self, delimiter); _consume_literal(self); _consume_quoted_identifier(self); _consume_raw_string_literal(self); _match_or_else(self, expected, match_type, else_type)\n    class attrs: START_IDENTIFIER=set(string.ascii_letters + '_'), VALID_IDENTIFIER=set(string.ascii_letters + string.dig..., VALID_NUMBER=set(string.digits), WHITESPACE=set(' \\t\\n\\r'), SIMPLE_TOKENS={'.': 'dot', '*': 'star', ']': 'rbrac...\nmodule jmespath.parser\n  imports: jmespath.ast, jmespath.compat.with_repr_method, jmespath.exceptions, jmespath.lexer, jmespath.visitor\n  class jmespath.parser.Parser(<builtin>.object)\n    methods: __init__(self, lookahead); parse(self, expression); _do_parse(self, expression); _parse(self, expression); _expression(self, binding_power); _token_nud_literal(self, token); _token_nud_unquoted_identifier(self, token); _token_nud_quoted_identifier(self, token); _token_nud_star(self, token); _token_nud_filter(self, token); _token_nud_lbrace(self, token); _token_nud_lparen(self, token); _token_nud_flatten(self, token); _token_nud_not(self, token); _token_nud_lbracket(self, token); _parse_index_expression(self); _parse_slice_expression(self); _token_nud_current(self, token); _token_nud_expref(self, token); _token_led_dot(self, left); _token_led_pipe(self, left); _token_led_or(self, left); _token_led_and(self, left); _token_led_lparen(self, left); _token_led_filter(self, left); _token_led_eq(self, left); _token_led_ne(self, left); _token_led_gt(self, left); _token_led_gte(self, left); _token_led_lt(self, left); _token_led_lte(self, left); _token_led_flatten(self, left); _token_led_lbracket(self, left); _project_if_slice(self, left, right); _parse_comparator(self, left, comparator); _parse_multi_select_list(self); _parse_multi_select_hash(self); _parse_projection_rhs(self, binding_power); _parse_dot_rhs(self, binding_power); _error_nud_token(self, token); _error_led_token(self, token); _match(self, token_type); _match_multiple_tokens(self, token_types); _advance(self); _current_token(self); _lookahead(self, number); _lookahead_token(self, number); _raise_parse_error_for_token(self, token, reason); _raise_parse_error_maybe_eof(self, expected_type, token); @classmethod purge(cls)\n    class attrs: BINDING_POWER={'eof': 0, 'unquoted_identifier': 0, ..., _PROJECTION_STOP=10, _CACHE={}, _MAX_SIZE=512\n  class jmespath.parser.ParsedResult(<builtin>.object)\n    methods: __init__(self, expression, parsed); search(self, value, options); _render_dot_file(self); __repr__(self)\nmodule jmespath.visitor\n  imports: jmespath.compat.string_type, jmespath.functions, numbers.Number\n  def jmespath.visitor._equals(x, y)\n  def jmespath.visitor._is_special_number_case(x, y)\n  def jmespath.visitor._is_comparable(x)\n  def jmespath.visitor._is_actual_number(x)\n  class jmespath.visitor.Options(<builtin>.object)\n    methods: __init__(self, dict_cls, custom_functions)\n  class jmespath.visitor._Expression(<builtin>.object)\n    methods: __init__(self, expression, interpreter); visit(self, node)\n  class jmespath.visitor.Visitor(<builtin>.object)\n    methods: __init__(self); visit(self, node); default_visit(self, node)\n  class jmespath.visitor.TreeInterpreter(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self, options); default_visit(self, node); visit_subexpression(self, node, value); visit_field(self, node, value); visit_comparator(self, node, value); visit_current(self, node, value); visit_expref(self, node, value); visit_function_expression(self, node, value); visit_filter_projection(self, node, value); visit_flatten(self, node, value); visit_identity(self, node, value); visit_index(self, node, value); visit_index_expression(self, node, value); visit_slice(self, node, value); visit_key_val_pair(self, node, value); visit_literal(self, node, value); visit_multi_select_dict(self, node, value); visit_multi_select_list(self, node, value); visit_or_expression(self, node, value); visit_and_expression(self, node, value); visit_not_expression(self, node, value); visit_pipe(self, node, value); visit_projection(self, node, value); visit_value_projection(self, node, value); _is_false(self, value); _is_true(self, value)\n    class attrs: COMPARATOR_FUNC={'eq': _equals, 'ne': lambda x, y: no..., _EQUALITY_OPS=['eq', 'ne'], MAP_TYPE=dict\n  class jmespath.visitor.GraphvizVisitor(jmespath.visitor.Visitor) mro: jmespath.visitor.Visitor > <builtin>.object\n    methods: __init__(self); visit(self, node); _visit(self, node, current)\n\n## Source (module `jmespath.functions` of package `jmespath`, part 3/3), with line numbers\n  1| import math\n  2| import json\n  3| \n  4| from jmespath import exceptions\n  5| from jmespath.compat import string_type as STRING_TYPE\n  6| from jmespath.compat import get_methods\n  7| \n  8| \n  9| # python types -> jmespath types\n 10| TYPES_MAP = {\n 11|     'bool': 'boolean',\n 12|     'list': 'array',\n 13|     'dict': 'object',\n 14|     'NoneType': 'null',\n 15|     'unicode': 'string',\n 16|     'str': 'string',\n 17|     'float': 'number',\n 18|     'int': 'number',\n 19|     'long': 'number',\n 20|     'OrderedDict': 'object',\n 21|     '_Projection': 'array',\n 22|     '_Expression': 'expref',\n 23| }\n 24| \n 25| \n 26| # jmespath types -> python types\n 27| REVERSE_TYPES_MAP = {\n 28|     'boolean': ('bool',),\n 29|     'array': ('list', '_Projection'),\n 30|     'object': ('dict', 'OrderedDict',),\n 31|     'null': ('NoneType',),\n 32|     'string': ('unicode', 'str'),\n 33|     'number': ('float', 'int', 'long'),\n 34|     'expref': ('_Expression',),\n 35| }\n 36| \n 37| \n 38| def signature(*arguments):\n 39|     def _record_signature(func):\n 40|         func.signature = arguments\n 41|         return func\n 42|     return _record_signature\n 43| \n 44| \n 45| class FunctionRegistry(type):\n 46|     def __init__(cls, name, bases, attrs):\n 47|         cls._populate_function_table()\n 48|         super(FunctionRegistry, cls).__init__(name, bases, attrs)\n 49| \n 50|     def _populate_function_table(cls):\n 51|         function_table = {}\n 52|         # Any method with a @signature decorator that also\n 53|         # starts with \"_func_\" is registered as a function.\n 54|         # _func_max_by -> max_by function.\n 55|         for name, method in get_methods(cls):\n 56|             if not name.startswith('_func_'):\n 57|                 continue\n 58|             signature = getattr(method, 'signature', None)\n 59|             if signature is not None:\n 60|                 function_table[name[6:]] = {\n 61|                     'function': method,\n 62|                     'signature': signature,\n 63|                 }\n 64|         cls.FUNCTION_TABLE = function_table\n 65| \n 66| \n 67| class Functions(metaclass=FunctionRegistry):\n 68| \n 69|     FUNCTION_TABLE = {\n 70|     }\n 71| \n 72|     def call_function(self, function_name, resolved_args):\n 73|         try:\n 74|             spec = self.FUNCTION_TABLE[function_name]\n 75|         except KeyError:\n 76|             raise exceptions.UnknownFunctionError(\n 77|                 \"Unknown function: %s()\" % function_name)\n 78|         function = spec['function']\n 79|         signature = spec['signature']\n 80|         self._validate_arguments(resolved_args, signature, function_name)\n 81|         return function(self, *resolved_args)\n 82| \n 83|     def _validate_arguments(self, args, signature, function_name):\n 84|         if signature and signature[-1].get('variadic'):\n 85|             if len(args) < len(signature):\n 86|                 raise exceptions.VariadictArityError(\n 87|                     len(signature), len(args), function_name)\n 88|         elif len(args) != len(signature):\n 89|             raise exceptions.ArityError(\n 90|                 len(signature), len(args), function_name)\n 91|         return self._type_check(args, signature, function_name)\n 92| \n 93|     def _type_check(self, actual, signature, function_name):\n 94|         for i in range(len(signature)):\n 95|             allowed_types = signature[i]['types']\n 96|             if allowed_types:\n 97|                 self._type_check_single(actual[i], allowed_types,\n 98|                                         function_name)\n 99| \n100|     def _type_check_single(self, current, types, function_name):\n101|         # Type checking involves checking the top level type,\n102|         # and in the case of arrays, potentially checking the types\n103|         # of each element.\n104|         allowed_types, allowed_subtypes = self._get_allowed_pytypes(types)\n105|         # We're not using isinstance() on purpose.\n106|         # The type model for jmespath does not map\n107|         # 1-1 with python types (booleans are considered\n108|         # integers in python for example).\n109|         actual_typename = type(current).__name__\n110|         if actual_typename not in allowed_types:\n111|             raise exceptions.JMESPathTypeError(\n112|                 function_name, current,\n113|                 self._convert_to_jmespath_type(actual_typename), types)\n114|         # If we're dealing with a list type, we can have\n115|         # additional restrictions on the type of the list\n116|         # elements (for example a function can require a\n117|         # list of numbers or a list of strings).\n118|         # Arrays are the only types that can have subtypes.\n119|         if allowed_subtypes:\n120|             self._subtype_check(current, allowed_subtypes,\n121|                                 types, function_name)\n122| \n123|     def _get_allowed_pytypes(self, types):\n124|         allowed_types = []\n125|         allowed_subtypes = []\n126|         for t in types:\n127|             type_ = t.split('-', 1)\n128|             if len(type_) == 2:\n129|                 type_, subtype = type_\n130|                 allowed_subtypes.append(REVERSE_TYPES_MAP[subtype])\n131|             else:\n132|                 type_ = type_[0]\n133|             allowed_types.extend(REVERSE_TYPES_MAP[type_])\n134|         return allowed_types, allowed_subtypes\n135| \n136|     def _subtype_check(self, current, allowed_subtypes, types, function_name):\n137|         if len(allowed_subtypes) == 1:\n138|             # The easy case, we know up front what type\n139|             # we need to validate.\n140|             allowed_subtypes = allowed_subtypes[0]\n141|             for element in current:\n142|                 actual_typename = type(element).__name__\n143|                 if actual_typename not in allowed_subtypes:\n144|                     raise exceptions.JMESPathTypeError(\n145|                         function_name, element, actual_typename, types)\n146|         elif len(allowed_subtypes) > 1 and current:\n147|             # Dynamic type validation.  Based on the first\n148|             # type we see, we validate that the remaining types\n149|             # match.\n150|             first = type(current[0]).__name__\n151|             for subtypes in allowed_subtypes:\n152|                 if first in subtypes:\n153|                     allowed = subtypes\n154|                     break\n155|             else:\n156|                 raise exceptions.JMESPathTypeError(\n157|                     function_name, current[0], first, types)\n158|             for element in current:\n159|                 actual_typename = type(element).__name__\n160|                 if actual_typename not in allowed:\n161|                     raise exceptions.JMESPathTypeError(\n162|                         function_name, element, actual_typename, types)\n163| \n164|     @signature({'types': ['number']})\n165|     def _func_abs(self, arg):\n166|         return abs(arg)\n167| \n168|     @signature({'types': ['array-number']})\n169|     def _func_avg(self, arg):\n170|         if arg:\n171|             return sum(arg) / len(arg)\n172|         else:\n173|             return None\n174| \n175|     @signature({'types': [], 'variadic': True})\n176|     def _func_not_null(self, *arguments):\n177|         for argument in arguments:\n178|             if argument is not None:\n179|                 return argument\n180| \n181|     @signature({'types': []})\n182|     def _func_to_array(self, arg):\n183|         if isinstance(arg, list):\n184|             return arg\n185|         else:\n186|             return [arg]\n187| \n188|     @signature({'types': []})\n189|     def _func_to_string(self, arg):\n190|         if isinstance(arg, STRING_TYPE):\n191|             return arg\n192|         else:\n193|             return json.dumps(arg, separators=(',', ':'),\n194|                               default=str)\n195| \n196|     @signature({'types': []})\n197|     def _func_to_number(self, arg):\n198|         if isinstance(arg, (list, dict, bool)):\n199|             return None\n200|         elif arg is None:\n201|             return None\n202|         elif isinstance(arg, (int, float)):\n203|             return arg\n204|         else:\n205|             try:\n206|                 return int(arg)\n207|             except ValueError:\n208|                 try:\n209|                     return float(arg)\n210|                 except ValueError:\n211|                     return None\n212| \n213|     @signature({'types': ['array', 'string']}, {'types': []})\n214|     def _func_contains(self, subject, search):\n215|         return search in subject\n216| \n217|     @signature({'types': ['string', 'array', 'object']})\n218|     def _func_length(self, arg):\n219|         return len(arg)\n220| \n221|     @signature({'types': ['string']}, {'types': ['string']})\n222|     def _func_ends_with(self, search, suffix):\n223|         return search.endswith(suffix)\n224| \n225|     @signature({'types': ['string']}, {'types': ['string']})\n226|     def _func_starts_with(self, search, suffix):\n227|         return search.startswith(suffix)\n228| \n229|     @signature({'types': ['array', 'string']})\n230|     def _func_reverse(self, arg):\n231|         if isinstance(arg, STRING_TYPE):\n232|             return arg[::-1]\n233|         else:\n234|             return list(reversed(arg))\n235| \n236|     @signature({\"types\": ['number']})\n237|     def _func_ceil(self, arg):\n238|         return math.ceil(arg)\n239| \n240|     @signature({\"types\": ['number']})\n241|     def _func_floor(self, arg):\n242|         return math.floor(arg)\n243| \n244|     @signature({\"types\": ['string']}, {\"types\": ['array-string']})\n245|     def _func_join(self, separator, array):\n246|         return separator.join(array)\n247| \n248|     @signature({'types': ['expref']}, {'types': ['array']})\n249|     def _func_map(self, expref, arg):\n250|         result = []\n251|         for element in arg:\n252|             result.append(expref.visit(expref.expression, element))\n253|         return result\n254| \n255|     @signature({\"types\": ['array-number', 'array-string']})\n256|     def _func_max(self, arg):\n257|         if arg:\n258|             return max(arg)\n259|         else:\n260|             return None\n261| \n262|     @signature({\"types\": [\"object\"], \"variadic\": True})\n263|     def _func_merge(self, *arguments):\n264|         merged = {}\n265|         for arg in arguments:\n266|             merged.update(arg)\n267|         return merged\n268| \n269|     @signature({\"types\": ['array-number', 'array-string']})\n270|     def _func_min(self, arg):\n271|         if arg:\n272|             return min(arg)\n273|         else:\n274|             return None\n275| \n276|     @signature({\"types\": ['array-string', 'array-number']})\n277|     def _func_sort(self, arg):\n278|         return list(sorted(arg))\n279| \n280|     @signature({\"types\": ['array-number']})\n281|     def _func_sum(self, arg):\n282|         return sum(arg)\n283| \n284|     @signature({\"types\": ['object']})\n285|     def _func_keys(self, arg):\n286|         # To be consistent with .values()\n287|         # should we also return the indices of a list?\n288|         return list(arg.keys())\n289| \n290|     @signature({\"types\": ['object']})\n291|     def _func_values(self, arg):\n292|         return list(arg.values())\n293| \n294|     @signature({'types': []})\n295|     def _func_type(self, arg):\n296|         if isinstance(arg, STRING_TYPE):\n297|             return \"string\"\n298|         elif isinstance(arg, bool):\n299|             return \"boolean\"\n300|         elif isinstance(arg, list):\n301|             return \"array\"\n302|         elif isinstance(arg, dict):\n303|             return \"object\"\n304|         elif isinstance(arg, (float, int)):\n305|             return \"number\"\n306|         elif arg is None:\n307|             return \"null\"\n308| \n309|     @signature({'types': ['array']}, {'types': ['expref']})\n310|     def _func_sort_by(self, array, expref):\n311|         if not array:\n312|             return array\n313|         # sort_by allows for the expref to be either a number of\n314|         # a string, so we have some special logic to handle this.\n315|         # We evaluate the first array element and verify that it's\n316|         # either a string of a number.  We then create a key function\n317|         # that validates that type, which requires that remaining array\n318|         # elements resolve to the same type as the first element.\n319|         required_type = self._convert_to_jmespath_type(\n320|             type(expref.visit(expref.expression, array[0])).__name__)\n321|         if required_type not in ['number', 'string']:\n322|             raise exceptions.JMESPathTypeError(\n323|                 'sort_by', array[0], required_type, ['string', 'number'])\n324|         keyfunc = self._create_key_func(expref,\n325|                                         [required_type],\n326|                                         'sort_by')\n327|         return list(sorted(array, key=keyfunc))\n328| \n329|     @signature({'types': ['array']}, {'types': ['expref']})\n330|     def _func_min_by(self, array, expref):\n331|         keyfunc = self._create_key_func(expref,\n332|                                         ['number', 'string'],\n333|                                         'min_by')\n334|         if array:\n335|             return min(array, key=keyfunc)\n336|         else:\n337|             return None\n338| \n339|     @signature({'types': ['array']}, {'types': ['expref']})\n340|     def _func_max_by(self, array, expref):\n341|         keyfunc = self._create_key_func(expref,\n342|                                         ['number', 'string'],\n343|                                         'max_by')\n344|         if array:\n345|             return max(array, key=keyfunc)\n346|         else:\n347|             return None\n348| \n349|     def _create_key_func(self, expref, allowed_types, function_name):\n350|         def keyfunc(x):\n351|             result = expref.visit(expref.expression, x)\n352|             actual_typename = type(result).__name__\n353|             jmespath_type = self._convert_to_jmespath_type(actual_typename)\n354|             # allowed_types is in term of jmespath types, not python types.\n355|             if jmespath_type not in allowed_types:\n356|                 raise exceptions.JMESPathTypeError(\n357|                     function_name, result, jmespath_type, allowed_types)\n358|             return result\n359|         return keyfunc\n360| \n361|     def _convert_to_jmespath_type(self, pyobject):\n362|         return TYPES_MAP.get(pyobject, 'unknown')\n\n## Call sites to decide\ns113 | caller jmespath.functions.Functions._func_keys | line 288 col 16 | call | `list(arg.keys())`\n    symbolic resolution: [<builtin>.list] (certain)\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns114 | caller jmespath.functions.Functions._func_keys | line 288 col 21 | call | `arg.keys()`\n    no symbolic information\ns115 | caller jmespath.functions | line 290 col 6 | call | `signature({'types': ['object']})`\n    symbolic resolution: [jmespath.functions.signature] (certain)\ns116 | caller jmespath.functions.Functions._func_values | line 292 col 16 | call | `list(arg.values())`\n    symbolic resolution: [<builtin>.list] (certain)\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns117 | caller jmespath.functions.Functions._func_values | line 292 col 21 | call | `arg.values()`\n    no symbolic information\ns118 | caller jmespath.functions | line 294 col 6 | call | `signature({'types': []})`\n    symbolic resolution: [jmespath.functions.signature] (certain)\ns119 | caller jmespath.functions.Functions._func_type | line 296 col 12 | call | `isinstance(arg, STRING_TYPE)`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns120 | caller jmespath.functions.Functions._func_type | line 298 col 14 | call | `isinstance(arg, bool)`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns121 | caller jmespath.functions.Functions._func_type | line 300 col 14 | call | `isinstance(arg, list)`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns122 | caller jmespath.functions.Functions._func_type | line 302 col 14 | call | `isinstance(arg, dict)`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns123 | caller jmespath.functions.Functions._func_type | line 304 col 14 | call | `isinstance(arg, (float, int))`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns124 | caller jmespath.functions | line 309 col 6 | call | `signature({'types': ['array']}, {'types': ['expref']})`\n    symbolic resolution: [jmespath.functions.signature] (certain)\ns125 | caller jmespath.functions.Functions._func_sort_by | line 319 col 25 | call | `self._convert_to_jmespath_type(type(expref.visit(expref.expression, array[0])).__name__)`\n    symbolic resolution: [jmespath.functions.Functions._convert_to_jmespath_type]\ns126 | caller jmespath.functions.Functions._func_sort_by | line 320 col 13 | call | `type(expref.visit(expref.expression, array[0]))`\n    symbolic resolution: [<builtin>.type] (certain)\ns127 | caller jmespath.functions.Functions._func_sort_by | line 320 col 18 | call | `expref.visit(expref.expression, array[0])`\n    package functions with this name: [jmespath.visitor._Expression.visit, jmespath.visitor.Visitor.visit, jmespath.visitor.GraphvizVisitor.visit]\ns128 | caller jmespath.functions.Functions._func_sort_by | line 322 col 19 | call | `exceptions.JMESPathTypeError('sort_by', array[0], required_type, ['string', 'number'])`\n    symbolic resolution: [jmespath.exceptions.JMESPathTypeError.__init__] (certain)\ns129 | caller jmespath.functions.Functions._func_sort_by | line 324 col 19 | call | `self._create_key_func(expref, [required_type], 'sort_by')`\n    symbolic resolution: [jmespath.functions.Functions._create_key_func]\ns130 | caller jmespath.functions.Functions._func_sort_by | line 327 col 16 | call | `list(sorted(array, key=keyfunc))`\n    symbolic resolution: [<builtin>.list] (certain)\n    this builtin may call special methods: __iter__, __next__, __len__, __getitem__\ns131 | caller jmespath.functions.Functions._func_sort_by | line 327 col 21 | call | `sorted(array, key=keyfunc)`\n    symbolic resolution: [<builtin>.sorted] (certain)\n    this builtin may call special methods: __iter__, __next__, __lt__, __gt__\ns132 | caller jmespath.functions | line 329 col 6 | call | `signature({'types': ['array']}, {'types': ['expref']})`\n    symbolic resolution: [jmespath.functions.signature] (certain)\ns133 | caller jmespath.functions.Functions._func_min_by | line 331 col 19 | call | `self._create_key_func(expref, ['number', 'string'], 'min_by')`\n    symbolic resolution: [jmespath.functions.Functions._create_key_func]\ns134 | caller jmespath.functions.Functions._func_min_by | line 335 col 20 | call | `min(array, key=keyfunc)`\n    symbolic resolution: [<builtin>.min] (certain)\n    this builtin may call special methods: __iter__, __next__, __lt__, __gt__\ns135 | caller jmespath.functions | line 339 col 6 | call | `signature({'types': ['array']}, {'types': ['expref']})`\n    symbolic resolution: [jmespath.functions.signature] (certain)\ns136 | caller jmespath.functions.Functions._func_max_by | line 341 col 19 | call | `self._create_key_func(expref, ['number', 'string'], 'max_by')`\n    symbolic resolution: [jmespath.functions.Functions._create_key_func]\ns137 | caller jmespath.functions.Functions._func_max_by | line 345 col 20 | call | `max(array, key=keyfunc)`\n    symbolic resolution: [<builtin>.max] (certain)\n    this builtin may call special methods: __iter__, __next__, __lt__, __gt__\ns138 | caller jmespath.functions.Functions._create_key_func.keyfunc | line 351 col 22 | call | `expref.visit(expref.expression, x)`\n    package functions with this name: [jmespath.visitor._Expression.visit, jmespath.visitor.Visitor.visit, jmespath.visitor.GraphvizVisitor.visit]\ns139 | caller jmespath.functions.Functions._create_key_func.keyfunc | line 352 col 31 | call | `type(result)`\n    symbolic resolution: [<builtin>.type] (certain)\ns140 | caller jmespath.functions.Functions._create_key_func.keyfunc | line 353 col 29 | call | `self._convert_to_jmespath_type(actual_typename)`\n    symbolic resolution: [jmespath.functions.Functions._convert_to_jmespath_type]\ns141 | caller jmespath.functions.Functions._create_key_func.keyfunc | line 356 col 23 | call | `exceptions.JMESPathTypeError(function_name, result, jmespath_type, allowed_types)`\n    symbolic resolution: [jmespath.exceptions.JMESPathTypeError.__init__] (certain)\ns142 | caller jmespath.functions.Functions._convert_to_jmespath_type | line 362 col 16 | call | `TYPES_MAP.get(pyobject, 'unknown')`\n    symbolic resolution: [<builtin>.dict.get]\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s113",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s114",
+    "callees": [
+     "<builtin>.dict.keys"
+    ]
+   },
+   {
+    "id": "s115",
+    "callees": [
+     "jmespath.functions.signature"
+    ]
+   },
+   {
+    "id": "s116",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s117",
+    "callees": [
+     "<builtin>.dict.values"
+    ]
+   },
+   {
+    "id": "s118",
+    "callees": [
+     "jmespath.functions.signature"
+    ]
+   },
+   {
+    "id": "s119",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s120",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s121",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s122",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s123",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s124",
+    "callees": [
+     "jmespath.functions.signature"
+    ]
+   },
+   {
+    "id": "s125",
+    "callees": [
+     "jmespath.functions.Functions._convert_to_jmespath_type"
+    ]
+   },
+   {
+    "id": "s126",
+    "callees": [
+     "<builtin>.type"
+    ]
+   },
+   {
+    "id": "s127",
+    "callees": [
+     "jmespath.visitor._Expression.visit"
+    ]
+   },
+   {
+    "id": "s128",
+    "callees": [
+     "jmespath.exceptions.JMESPathTypeError.__init__"
+    ]
+   },
+   {
+    "id": "s129",
+    "callees": [
+     "jmespath.functions.Functions._create_key_func"
+    ]
+   },
+   {
+    "id": "s130",
+    "callees": [
+     "<builtin>.list"
+    ]
+   },
+   {
+    "id": "s131",
+    "callees": [
+     "<builtin>.sorted",
+     "jmespath.functions.Functions._create_key_func.keyfunc"
+    ]
+   },
+   {
+    "id": "s132",
+    "callees": [
+     "jmespath.functions.signature"
+    ]
+   },
+   {
+    "id": "s133",
+    "callees": [
+     "jmespath.functions.Functions._create_key_func"
+    ]
+   },
+   {
+    "id": "s134",
+    "callees": [
+     "<builtin>.min",
+     "jmespath.functions.Functions._create_key_func.keyfunc"
+    ]
+   },
+   {
+    "id": "s135",
+    "callees": [
+     "jmespath.functions.signature"
+    ]
+   },
+   {
+    "id": "s136",
+    "callees": [
+     "jmespath.functions.Functions._create_key_func"
+    ]
+   },
+   {
+    "id": "s137",
+    "callees": [
+     "<builtin>.max",
+     "jmespath.functions.Functions._create_key_func.keyfunc"
+    ]
+   },
+   {
+    "id": "s138",
+    "callees": [
+     "jmespath.visitor._Expression.visit"
+    ]
+   },
+   {
+    "id": "s139",
+    "callees": [
+     "<builtin>.type"
+    ]
+   },
+   {
+    "id": "s140",
+    "callees": [
+     "jmespath.functions.Functions._convert_to_jmespath_type"
+    ]
+   },
+   {
+    "id": "s141",
+    "callees": [
+     "jmespath.exceptions.JMESPathTypeError.__init__"
+    ]
+   },
+   {
+    "id": "s142",
+    "callees": [
+     "<builtin>.dict.get"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 582,
+  "cache_read_input_tokens": 15016,
+  "output_tokens": 2931,
+  "output_tokens_details": {
+   "thinking_tokens": 1993
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 582,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 2931,
+    "cache_read_input_tokens": 15016,
+    "cache_creation_input_tokens": 582,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 582
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00327826,
+ "seconds": 12.79,
+ "attempt": 1,
+ "time": "2026-11-18T18:24:22+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 15362,
+   "outputTokens": 2951,
+   "cacheReadInputTokens": 15016,
+   "cacheCreationInputTokens": 582,
+   "webSearchRequests": 0,
+   "costUSD": 0.00327826,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 1993,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 582,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

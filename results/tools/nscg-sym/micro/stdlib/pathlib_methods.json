@@ -1,0 +1,6 @@
+{
+ "main": [
+  "pathlib.Path",
+  "pathlib.Path.joinpath"
+ ]
+}

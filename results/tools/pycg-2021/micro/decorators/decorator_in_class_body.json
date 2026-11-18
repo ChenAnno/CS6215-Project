@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.Router.index"
+ ],
+ "main.Router": [
+  "main.Router.route"
+ ],
+ "main.Router.index": [],
+ "main.Router.route": []
+}

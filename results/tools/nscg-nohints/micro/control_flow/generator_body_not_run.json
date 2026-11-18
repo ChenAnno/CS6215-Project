@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.gen"
+ ],
+ "main.func1": [],
+ "main.gen": [
+  "main.func1"
+ ]
+}

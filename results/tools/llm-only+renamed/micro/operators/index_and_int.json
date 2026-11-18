@@ -1,0 +1,13 @@
+{
+ "main": [
+  "<builtin>.float",
+  "<builtin>.int",
+  "<builtin>.range",
+  "main.qbd9e_0.__float__",
+  "main.qbd9e_0.__int__",
+  "main.qbd9e_1.__index__"
+ ],
+ "main.qbd9e_0.__float__": [],
+ "main.qbd9e_0.__int__": [],
+ "main.qbd9e_1.__index__": []
+}

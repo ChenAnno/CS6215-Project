@@ -1,0 +1,11 @@
+{
+ "<builtin>.list.sort": [],
+ "main": [
+  "<builtin>.list.sort",
+  "main.<lambda1>",
+  "main.qbb8b_1"
+ ],
+ "main.<lambda1>": [],
+ "main.qbb8b_0": [],
+ "main.qbb8b_1": []
+}

@@ -1,0 +1,10 @@
+{
+    "main": [
+        "functools.partial.__call__",
+        "functools.partialmethod",
+        "main.qec5b_0.qec5b_1"
+    ],
+    "main.qec5b_0.qec5b_1": [],
+    "functools.partialmethod": [],
+    "functools.partial.__call__": []
+}

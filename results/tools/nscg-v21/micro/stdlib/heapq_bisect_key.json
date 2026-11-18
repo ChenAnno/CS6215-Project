@@ -1,0 +1,8 @@
+{
+ "main": [
+  "bisect.bisect",
+  "heapq.nsmallest",
+  "main.priority"
+ ],
+ "main.priority": []
+}

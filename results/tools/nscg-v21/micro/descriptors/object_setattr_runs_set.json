@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.Frozen.__init__"
+ ],
+ "main.Checked.__set__": [
+  "main.check"
+ ],
+ "main.Frozen.__init__": [
+  "<builtin>.object.__setattr__",
+  "main.Checked.__set__"
+ ],
+ "main.check": []
+}

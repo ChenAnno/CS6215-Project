@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.Config.__init__",
+  "main.Singleton.__call__"
+ ],
+ "<builtin>.type.__call__": [],
+ "main.Config.__init__": [],
+ "main.Singleton.__call__": [
+  "<builtin>.hasattr",
+  "<builtin>.super",
+  "<builtin>.type.__call__",
+  "main.Config.__init__"
+ ],
+ "<builtin>.super": [],
+ "<builtin>.hasattr": []
+}

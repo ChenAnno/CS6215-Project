@@ -1,0 +1,11 @@
+{
+    "main": [
+        "main.q6456_0"
+    ],
+    "main.q6456_0": [
+        "<builtin>.locals",
+        "main.q6456_0.step"
+    ],
+    "main.q6456_0.step": [],
+    "<builtin>.locals": []
+}

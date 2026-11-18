@@ -1,0 +1,19 @@
+{
+ "main": [
+  "<builtin>.dict.__init__",
+  "main.assign",
+  "main.bulk"
+ ],
+ "main.Tracked.__setitem__": [
+  "<builtin>.dict.__setitem__",
+  "<builtin>.super",
+  "main.record"
+ ],
+ "main.assign": [
+  "main.Tracked.__setitem__"
+ ],
+ "main.bulk": [
+  "<builtin>.dict.update"
+ ],
+ "main.record": []
+}

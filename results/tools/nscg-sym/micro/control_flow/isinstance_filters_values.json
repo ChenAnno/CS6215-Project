@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.round_area"
+ ],
+ "main.Circle.area": [],
+ "main.Square.area": [],
+ "main.round_area": [
+  "<builtin>.isinstance"
+ ]
+}

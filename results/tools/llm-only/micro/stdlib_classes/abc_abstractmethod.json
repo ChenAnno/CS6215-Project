@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.Shape.describe"
+ ],
+ "main.Shape.area": [],
+ "main.Shape.describe": [
+  "main.Shape.area",
+  "main.Square.area"
+ ],
+ "main.Square.area": []
+}

@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.func2",
+  "main.pair"
+ ],
+ "main.func1": [],
+ "main.pair": [],
+ "main.func2": []
+}

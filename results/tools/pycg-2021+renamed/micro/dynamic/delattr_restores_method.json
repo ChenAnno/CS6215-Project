@@ -1,0 +1,10 @@
+{
+ "<builtin>.delattr": [],
+ "main": [
+  "<builtin>.delattr",
+  "main.q995e_0.render",
+  "main.q995e_1"
+ ],
+ "main.q995e_0.render": [],
+ "main.q995e_1": []
+}

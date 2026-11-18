@@ -1,0 +1,1 @@
+{"units": [{"unit": "lists/del_element", "answers": {"s1": ["main.qd5be_0", "main.qd5be_1"]}, "sites": [{"id": "s1", "caller": "main", "line": 9, "col": 1, "kind": "call", "text": "handlers[0]()", "resolved": [], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

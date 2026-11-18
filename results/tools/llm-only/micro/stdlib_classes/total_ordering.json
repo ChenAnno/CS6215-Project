@@ -1,0 +1,11 @@
+{
+ "main": [
+  "functools.total_ordering",
+  "main.Version.__eq__",
+  "main.Version.__init__",
+  "main.Version.__lt__"
+ ],
+ "main.Version.__eq__": [],
+ "main.Version.__init__": [],
+ "main.Version.__lt__": []
+}

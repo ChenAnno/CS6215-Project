@@ -1,0 +1,15 @@
+{
+    "main": [
+        "main.q3524_3"
+    ],
+    "main.q3524_3": [
+        "main.q3524_1",
+        "main.q3524_2"
+    ],
+    "main.q3524_1": [
+        "<builtin>.PermissionError"
+    ],
+    "main.q3524_0": [],
+    "main.q3524_2": [],
+    "<builtin>.PermissionError": []
+}

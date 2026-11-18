@@ -1,0 +1,1 @@
+{"units": [{"unit": "type_hints/future_annotations_call", "answers": {"main": ["main.scale"], "main.make_type": [], "main.scale": []}, "sites": [{"id": "s1", "caller": "main", "line": 12, "col": 1, "kind": "call", "text": "scale(2)", "resolved": ["main.scale"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

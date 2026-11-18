@@ -1,0 +1,1 @@
+{"units": [{"unit": "lambdas/call", "answers": {"main": ["main.<lambda1>"], "main.<lambda1>": []}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "x(1)", "resolved": ["main.<lambda1>"], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {}, "missing_answers": 0, "rejected": []}

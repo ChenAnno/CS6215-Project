@@ -1,0 +1,12 @@
+{
+ "functools.reduce": [],
+ "main": [
+  "functools.reduce",
+  "operator.add",
+  "operator.getitem"
+ ],
+ "main.Vector.__add__": [],
+ "main.Vector.__getitem__": [],
+ "operator.add": [],
+ "operator.getitem": []
+}

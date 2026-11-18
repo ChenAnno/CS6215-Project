@@ -1,0 +1,8 @@
+{
+ "main": [
+  "typing.TypeVar"
+ ],
+ "main.Box.__init__": [],
+ "main.Box.get": [],
+ "typing.TypeVar": []
+}

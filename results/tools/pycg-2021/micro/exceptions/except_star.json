@@ -1,0 +1,15 @@
+{
+ "<builtin>.ExceptionGroup": [],
+ "main": [
+  "main.on_key",
+  "main.on_type",
+  "main.on_value",
+  "main.run"
+ ],
+ "main.on_key": [],
+ "main.on_type": [],
+ "main.on_value": [],
+ "main.run": [
+  "<builtin>.ExceptionGroup"
+ ]
+}

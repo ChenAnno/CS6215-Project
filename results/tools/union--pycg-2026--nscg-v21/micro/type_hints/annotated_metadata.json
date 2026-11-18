@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.positive",
+  "typing.get_type_hints"
+ ],
+ "main.set_price": [],
+ "main.non_empty": [],
+ "main.positive": [],
+ "typing.get_type_hints": []
+}

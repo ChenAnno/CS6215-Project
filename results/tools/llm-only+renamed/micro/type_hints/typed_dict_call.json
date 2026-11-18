@@ -1,0 +1,6 @@
+{
+ "main": [
+  "<builtin>.dict.__init__",
+  "<builtin>.dict.get"
+ ]
+}

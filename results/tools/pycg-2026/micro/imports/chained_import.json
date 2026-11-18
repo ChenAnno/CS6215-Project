@@ -1,0 +1,11 @@
+{
+ "chained_import": [],
+ "chained_import.func1": [],
+ "from_import": [],
+ "from_import.func2": [
+  "chained_import.func1"
+ ],
+ "main": [
+  "from_import.func2"
+ ]
+}

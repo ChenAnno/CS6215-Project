@@ -1,0 +1,1 @@
+{"units": [{"unit": "external/local_shadows_external", "answers": {"s1": ["main.qb97f_0"]}, "sites": [{"id": "s1", "caller": "main", "line": 6, "col": 1, "kind": "call", "text": "qb97f_0()", "resolved": ["ext.qb97f_0", "main.qb97f_0"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

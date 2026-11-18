@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.q7097_1.__init__",
+  "main.q7097_1.q7097_3",
+  "pickle.dumps"
+ ],
+ "main.q7097_0.q7097_2": [],
+ "main.q7097_1.__init__": [
+  "pickle.loads"
+ ],
+ "main.q7097_1.q7097_3": [
+  "main.q7097_0.q7097_2"
+ ],
+ "pickle.dumps": [],
+ "pickle.loads": []
+}

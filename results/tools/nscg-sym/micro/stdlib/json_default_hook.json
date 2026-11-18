@@ -1,0 +1,8 @@
+{
+ "main": [
+  "json.dumps"
+ ],
+ "main.encode": [
+  "<builtin>.sorted"
+ ]
+}

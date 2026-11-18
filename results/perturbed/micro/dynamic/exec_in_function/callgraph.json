@@ -1,0 +1,11 @@
+{
+    "main": [
+        "main.q0765_0"
+    ],
+    "main.q0765_0": [
+        "<builtin>.exec",
+        "main.helper"
+    ],
+    "main.helper": [],
+    "<builtin>.exec": []
+}

@@ -1,0 +1,16 @@
+{
+ "main": [
+  "main.action",
+  "main.clock",
+  "main.wait",
+  "sched.scheduler",
+  "sched.scheduler.enter",
+  "sched.scheduler.run"
+ ],
+ "sched.scheduler.run": [],
+ "main.wait": [],
+ "sched.scheduler": [],
+ "sched.scheduler.enter": [],
+ "main.action": [],
+ "main.clock": []
+}

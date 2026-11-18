@@ -1,0 +1,10 @@
+{
+ "main": [
+  "main.A.ping"
+ ],
+ "main.A.ping": [
+  "main.A.pong"
+ ],
+ "main.A.pong": [],
+ "main.C.pong": []
+}

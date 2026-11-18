@@ -1,0 +1,10 @@
+{
+ "main": [
+  "<builtin>.classmethod",
+  "main.q38d3_0.q38d3_1"
+ ],
+ "main.q38d3_0.q38d3_1": [
+  "main.q38d3_0.q38d3_2"
+ ],
+ "main.q38d3_0.q38d3_2": []
+}

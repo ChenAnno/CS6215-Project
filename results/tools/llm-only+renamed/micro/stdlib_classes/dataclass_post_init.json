@@ -1,0 +1,13 @@
+{
+ "main": [
+  "main.q387c_0.__post_init__",
+  "main.q387c_1"
+ ],
+ "main.q387c_0.__post_init__": [
+  "main.q387c_2"
+ ],
+ "main.q387c_1": [],
+ "main.q387c_2": [
+  "<builtin>.str.lower"
+ ]
+}

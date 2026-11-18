@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.type",
+  "<builtin>.type.greet"
+ ],
+ "main.Base.__init__": [],
+ "main.greet": []
+}

@@ -1,0 +1,9 @@
+{
+ "main": [
+  "functools.singledispatch",
+  "main.q8dcf_0"
+ ],
+ "main.q8dcf_0": [],
+ "main.q8dcf_1": [],
+ "main.q8dcf_2": []
+}

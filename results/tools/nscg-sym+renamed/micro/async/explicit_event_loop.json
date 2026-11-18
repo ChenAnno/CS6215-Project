@@ -1,0 +1,9 @@
+{
+ "main": [
+  "asyncio.new_event_loop",
+  "asyncio.new_event_loop.close",
+  "asyncio.new_event_loop.run_until_complete",
+  "main.qa218_0"
+ ],
+ "main.qa218_0": []
+}

@@ -1,0 +1,10 @@
+{
+ "main": [
+  "datetime.date",
+  "datetime.date.isoformat",
+  "datetime.timedelta"
+ ],
+ "datetime.timedelta": [],
+ "datetime.date.isoformat": [],
+ "datetime.date": []
+}

@@ -1,0 +1,8 @@
+{
+ "functools.partial": [],
+ "main": [
+  "functools.partial"
+ ],
+ "main.farewell": [],
+ "main.greet": []
+}

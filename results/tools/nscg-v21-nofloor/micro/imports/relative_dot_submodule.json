@@ -1,0 +1,12 @@
+{
+ "app": [],
+ "app.helpers": [],
+ "app.helpers.prepare": [],
+ "app.runner": [],
+ "app.runner.run": [
+  "app.helpers.prepare"
+ ],
+ "main": [
+  "app.runner.run"
+ ]
+}

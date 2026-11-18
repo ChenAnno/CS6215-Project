@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.Sequence.__getitem__"
+ ],
+ "<builtin>.IndexError": [],
+ "main.Sequence.__getitem__": [
+  "<builtin>.IndexError"
+ ]
+}

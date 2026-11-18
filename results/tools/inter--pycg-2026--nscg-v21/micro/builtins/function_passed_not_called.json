@@ -1,0 +1,15 @@
+{
+ "main": [
+  "<builtin>.callable",
+  "<builtin>.id",
+  "<builtin>.isinstance",
+  "<builtin>.issubclass",
+  "<builtin>.print"
+ ],
+ "<builtin>.id": [],
+ "<builtin>.issubclass": [],
+ "<builtin>.isinstance": [],
+ "main.handler": [],
+ "<builtin>.callable": [],
+ "<builtin>.print": []
+}

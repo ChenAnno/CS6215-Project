@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.q63d3_0.q63d3_1",
+  "main.q63d3_0.q63d3_2",
+  "typing.NamedTuple.__init__"
+ ],
+ "main.q63d3_0.q63d3_1": [
+  "typing.NamedTuple.__init__"
+ ],
+ "main.q63d3_0.q63d3_2": [],
+ "typing.NamedTuple.__init__": []
+}

@@ -1,0 +1,19 @@
+{
+    "main": [
+        "<builtin>.dict.__init__",
+        "main.q9b04_1",
+        "main.q9b04_3"
+    ],
+    "main.q9b04_1": [
+        "main.q9b04_0.__missing__"
+    ],
+    "main.q9b04_3": [
+        "<builtin>.dict.get"
+    ],
+    "main.q9b04_0.__missing__": [
+        "main.q9b04_2"
+    ],
+    "main.q9b04_2": [],
+    "<builtin>.dict.__init__": [],
+    "<builtin>.dict.get": []
+}

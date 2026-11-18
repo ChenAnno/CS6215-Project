@@ -1,0 +1,166 @@
+{
+ "key": "4e66405239ec033ac7cea439a301996e97401304cea15a5f9218dfd48a52cb58",
+ "model": "sonnet",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "edges": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "caller": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "caller",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "edges"
+  ]
+ },
+ "prompt": "# Task\nBuild the static call graph of the Python code below.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Definitions of the whole package (for naming callees in other modules)\nmodule fabric\n  imports: fabric._version.__version__, fabric._version.__version_info__, fabric.connection.Config, fabric.connection.Connection, fabric.group.Group, fabric.group.GroupResult, fabric.group.SerialGroup, fabric.group.ThreadingGroup, fabric.runners.Remote, fabric.runners.Result\nmodule fabric._version\nmodule fabric.config\n  imports: InvokeConfig=invoke.config.Config, fabric.runners.Remote, fabric.util.debug, fabric.util.get_local_user, invoke.config.merge_dicts, paramiko.config.SSHConfig\n  class fabric.config.Config(invoke.config.Config)\n    methods: __init__(self); set_runtime_ssh_path(self, path); load_ssh_config(self); clone(self); _clone_init_kwargs(self); _load_ssh_files(self); _load_ssh_file(self, path); @staticmethod global_defaults()\n    class attrs: prefix='fabric'\nmodule fabric.connection\n  imports: contextlib.contextmanager, decorator.decorator, fabric.config.Config, fabric.transfer.Transfer, fabric.tunnels.Tunnel, fabric.tunnels.TunnelManager, invoke.Context, invoke.exceptions.ThreadException, invoke.vendor.decorator.decorator, invoke.vendor.six.StringIO, invoke.vendor.six.string_types, paramiko.agent.AgentRequestHandler, paramiko.client.AutoAddPolicy, paramiko.client.SSHClient, paramiko.config.SSHConfig, paramiko.proxy.ProxyCommand, six.StringIO, six.string_types, threading.Event\n  def fabric.connection.opens(method, self) @decorator\n  def fabric.connection.Connection.forward_remote.callback(channel, src_addr_tup, dst_addr_tup)\n  class fabric.connection.Connection(invoke.Context)\n    methods: __init__(self, host, user, port, config, gateway, forward_agent, connect_timeout, connect_kwargs); resolve_connect_kwargs(self, connect_kwargs); get_gateway(self); __repr__(self); _identity(self); __eq__(self, other); __lt__(self, other); __hash__(self); derive_shorthand(self, host_string); @property is_connected(self); open(self); open_gateway(self); close(self); __enter__(self); __exit__(self); @opens create_session(self); @opens run(self, command); @opens sudo(self, command); local(self); @opens sftp(self); get(self); put(self); @contextmanager,opens forward_local(self, local_port, remote_port, remote_host, local_host); @contextmanager,opens forward_remote(self, remote_port, local_port, remote_host, local_host)\n    properties: is_connected\n    class attrs: host=None, original_host=None, user=None, port=None, ssh_config=None, gateway=None, forward_agent=None, connect_timeout=None, connect_kwargs=None, client=None, transport=None, _sftp=None\nmodule fabric.exceptions\n  class fabric.exceptions.NothingToDo(<builtin>.Exception)\n  class fabric.exceptions.GroupException(<builtin>.Exception)\n    methods: __init__(self, result)\nmodule fabric.executor\n  imports: fabric.Connection, fabric.exceptions.NothingToDo, fabric.util.debug, invoke.Call, invoke.Executor, invoke.Task\n  def fabric.executor.FabExecutor.expand_calls.anonymous(c)\n  class fabric.executor.FabExecutor(invoke.Executor)\n    methods: expand_calls(self, calls, apply_hosts); parameterize(self, call, host); dedupe(self, tasks)\n  class fabric.executor.ConnectionCall(invoke.Call)\n    methods: make_context(self, config)\nmodule fabric.group\n  imports: fabric.connection.Connection, fabric.exceptions.GroupException, invoke.util.ExceptionHandlingThread, invoke.vendor.six.moves.queue.Queue, six.moves.queue.Queue\n  def fabric.group.thread_worker(cxn, queue, args, kwargs)\n  class fabric.group.Group(<builtin>.list)\n    methods: __init__(self); @classmethod from_connections(cls, connections); run(self); get(self)\n  class fabric.group.SerialGroup(fabric.group.Group) mro: fabric.group.Group > <builtin>.list\n    methods: run(self)\n  class fabric.group.ThreadingGroup(fabric.group.Group) mro: fabric.group.Group > <builtin>.list\n    methods: run(self)\n  class fabric.group.GroupResult(<builtin>.dict)\n    methods: __init__(self); _bifurcate(self); @property succeeded(self); @property failed(self)\n    properties: failed, succeeded\nmodule fabric.main\n  imports: fabric.Config, fabric.executor.FabExecutor, fabric=fabric.__version__, invoke.Argument, invoke.Collection, invoke.Program, invoke=invoke.__version__, paramiko=paramiko.__version__\n  def fabric.main.make_program()\n  class fabric.main.Fab(invoke.Program)\n    methods: print_version(self); core_args(self); @property _remainder_only(self); load_collection(self); no_tasks_given(self); create_config(self); update_config(self)\n    properties: _remainder_only\nmodule fabric.runners\n  imports: InvokeResult=invoke.Result, invoke.Runner, invoke.pty_size\n  class fabric.runners.Remote(invoke.Runner)\n    methods: start(self, command, shell, env); read_proc_stdout(self, num_bytes); read_proc_stderr(self, num_bytes); _write_proc_stdin(self, data); @property process_is_finished(self); send_interrupt(self, interrupt); returncode(self); generate_result(self); stop(self)\n    properties: process_is_finished\n  class fabric.runners.Result(invoke.Result)\n    methods: __init__(self)\nmodule fabric.transfer\n  imports: fabric.util.debug\n  class fabric.transfer.Transfer(<builtin>.object)\n    methods: __init__(self, connection); @property sftp(self); is_remote_dir(self, path); get(self, remote, local, preserve_mode); put(self, local, remote, preserve_mode)\n    properties: sftp\n  class fabric.transfer.Result(<builtin>.object)\n    methods: __init__(self, local, orig_local, remote, orig_remote, connection)\nmodule fabric.tunnels\n  imports: invoke.exceptions.ThreadException, invoke.util.ExceptionHandlingThread, threading.Event\n  class fabric.tunnels.TunnelManager(invoke.util.ExceptionHandlingThread)\n    methods: __init__(self, local_host, local_port, remote_host, remote_port, transport, finished); _run(self)\n  class fabric.tunnels.Tunnel(invoke.util.ExceptionHandlingThread)\n    methods: __init__(self, channel, sock, finished); _run(self); read_and_write(self, reader, writer, chunk_size)\nmodule fabric.util\n  def fabric.util.get_local_user()\n\n## Source (module `fabric.runners` of package `fabric`)\n  1| from invoke import Runner, pty_size, Result as InvokeResult\n  2| \n  3| \n  4| class Remote(Runner):\n  5|     \"\"\"\n  6|     Run a shell command over an SSH connection.\n  7| \n  8|     This class subclasses `invoke.runners.Runner`; please see its documentation\n  9|     for most public API details.\n 10| \n 11|     .. note::\n 12|         `.Remote`'s ``__init__`` method expects a `.Connection` (or subclass)\n 13|         instance for its ``context`` argument.\n 14| \n 15|     .. versionadded:: 2.0\n 16|     \"\"\"\n 17| \n 18|     def start(self, command, shell, env):\n 19|         self.channel = self.context.create_session()\n 20|         if self.using_pty:\n 21|             rows, cols = pty_size()\n 22|             self.channel.get_pty(width=rows, height=cols)\n 23|         # TODO: consider adding an option to conditionally turn this\n 24|         # update_environment call into a command-string prefixing behavior\n 25|         # instead (e.g. when one isn't able/willing to update remote server's\n 26|         # AcceptEnv setting). OR: rely on higher-level generic command\n 27|         # prefixing functionality, when implemented.\n 28|         # TODO: honor SendEnv from ssh_config\n 29|         self.channel.update_environment(env)\n 30|         # TODO: pass in timeout= here when invoke grows timeout functionality\n 31|         # in Runner/Local.\n 32|         self.channel.exec_command(command)\n 33| \n 34|     def read_proc_stdout(self, num_bytes):\n 35|         return self.channel.recv(num_bytes)\n 36| \n 37|     def read_proc_stderr(self, num_bytes):\n 38|         return self.channel.recv_stderr(num_bytes)\n 39| \n 40|     def _write_proc_stdin(self, data):\n 41|         return self.channel.sendall(data)\n 42| \n 43|     @property\n 44|     def process_is_finished(self):\n 45|         return self.channel.exit_status_ready()\n 46| \n 47|     def send_interrupt(self, interrupt):\n 48|         # NOTE: in v1, we just reraised the KeyboardInterrupt unless a PTY was\n 49|         # present; this seems to have been because without a PTY, the\n 50|         # below escape sequence is ignored, so all we can do is immediately\n 51|         # terminate on our end.\n 52|         # NOTE: also in v1, the raising of the KeyboardInterrupt completely\n 53|         # skipped all thread joining & cleanup; presumably regular interpreter\n 54|         # shutdown suffices to tie everything off well enough.\n 55|         if self.using_pty:\n 56|             # Submit hex ASCII character 3, aka ETX, which most Unix PTYs\n 57|             # interpret as a foreground SIGINT.\n 58|             # TODO: is there anything else we can do here to be more portable?\n 59|             self.channel.send(u\"\\x03\")\n 60|         else:\n 61|             raise interrupt\n 62| \n 63|     def returncode(self):\n 64|         return self.channel.recv_exit_status()\n 65| \n 66|     def generate_result(self, **kwargs):\n 67|         kwargs[\"connection\"] = self.context\n 68|         return Result(**kwargs)\n 69| \n 70|     def stop(self):\n 71|         if hasattr(self, \"channel\"):\n 72|             self.channel.close()\n 73| \n 74|     # TODO: shit that is in fab 1 run() but could apply to invoke.Local too:\n 75|     # * command timeout control\n 76|     # * see rest of stuff in _run_command/_execute in operations.py...there is\n 77|     # a bunch that applies generally like optional exit codes, etc\n 78| \n 79|     # TODO: general shit not done yet\n 80|     # * stdin; Local relies on local process management to ensure stdin is\n 81|     # hooked up; we cannot do that.\n 82|     # * output prefixing\n 83|     # * agent forwarding\n 84|     # * reading at 4096 bytes/time instead of whatever inv defaults to (also,\n 85|     # document why we are doing that, iirc it changed recentlyish via ticket)\n 86|     # * TODO: oh god so much more, go look it up\n 87| \n 88|     # TODO: shit that has no Local equivalent that we probs need to backfill\n 89|     # into Runner, probably just as a \"finish()\" or \"stop()\" (to mirror\n 90|     # start()):\n 91|     # * channel close()\n 92|     # * agent-forward close()\n 93| \n 94| \n 95| class Result(InvokeResult):\n 96|     \"\"\"\n 97|     An `invoke.runners.Result` exposing which `.Connection` was run against.\n 98| \n 99|     Exposes all attributes from its superclass, then adds a ``.connection``,\n100|     which is simply a reference to the `.Connection` whose method yielded this\n101|     result.\n102| \n103|     .. versionadded:: 2.0\n104|     \"\"\"\n105| \n106|     def __init__(self, **kwargs):\n107|         connection = kwargs.pop(\"connection\")\n108|         super(Result, self).__init__(**kwargs)\n109|         self.connection = connection\n110| \n111|     # TODO: have useful str/repr differentiation from invoke.Result,\n112|     # transfer.Result etc.\n\n## Output\nReturn {\"edges\": [{\"caller\": <node>, \"callees\": [<callee>, ...]}, ...]} with one entry for every caller node below (use an empty list when it calls nothing):\nfabric.runners\nfabric.runners.Remote._write_proc_stdin\nfabric.runners.Remote.generate_result\nfabric.runners.Remote.process_is_finished\nfabric.runners.Remote.read_proc_stderr\nfabric.runners.Remote.read_proc_stdout\nfabric.runners.Remote.returncode\nfabric.runners.Remote.send_interrupt\nfabric.runners.Remote.start\nfabric.runners.Remote.stop\nfabric.runners.Result.__init__",
+ "output": {
+  "edges": [
+   {
+    "caller": "fabric.runners",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote._write_proc_stdin",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote.generate_result",
+    "callees": [
+     "fabric.runners.Result.__init__"
+    ]
+   },
+   {
+    "caller": "fabric.runners.Remote.process_is_finished",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote.read_proc_stderr",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote.read_proc_stdout",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote.returncode",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote.send_interrupt",
+    "callees": []
+   },
+   {
+    "caller": "fabric.runners.Remote.start",
+    "callees": [
+     "fabric.connection.Connection.create_session",
+     "invoke.pty_size"
+    ]
+   },
+   {
+    "caller": "fabric.runners.Remote.stop",
+    "callees": [
+     "<builtin>.hasattr"
+    ]
+   },
+   {
+    "caller": "fabric.runners.Result.__init__",
+    "callees": [
+     "<builtin>.dict.pop",
+     "<builtin>.super",
+     "invoke.Result.__init__"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 6728,
+  "cache_read_input_tokens": 570,
+  "output_tokens": 749,
+  "output_tokens_details": {
+   "thinking_tokens": 308
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 6728,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 749,
+    "cache_read_input_tokens": 570,
+    "cache_creation_input_tokens": 6728,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 6728
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.0352858,
+ "seconds": 6.88,
+ "attempt": 1,
+ "time": "2026-11-18T18:30:44+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 7078,
+   "outputTokens": 230,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 0,
+   "webSearchRequests": 0,
+   "costUSD": 0.0008228,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 211,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 0,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  },
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 749,
+   "cacheReadInputTokens": 570,
+   "cacheCreationInputTokens": 6728,
+   "webSearchRequests": 0,
+   "costUSD": 0.034463,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 308,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 6728,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

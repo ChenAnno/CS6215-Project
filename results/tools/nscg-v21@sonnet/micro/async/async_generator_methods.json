@@ -1,0 +1,15 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "main.cleanup": [],
+ "main.first": [],
+ "main.start": [
+  "main.first",
+  "main.ticks"
+ ],
+ "main.ticks": [
+  "main.cleanup"
+ ]
+}

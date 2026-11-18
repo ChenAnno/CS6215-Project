@@ -1,0 +1,14 @@
+{
+ "<builtin>.super": [],
+ "main": [
+  "main.qbf44_1.qbf44_2"
+ ],
+ "main.qbf44_0.qbf44_2": [],
+ "main.qbf44_1.qbf44_2": [
+  "main.qbf44_1.qbf44_2.<lambda1>"
+ ],
+ "main.qbf44_1.qbf44_2.<lambda1>": [
+  "<builtin>.super",
+  "main.qbf44_0.qbf44_2"
+ ]
+}

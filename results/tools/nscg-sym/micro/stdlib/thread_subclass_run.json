@@ -1,0 +1,8 @@
+{
+ "main": [
+  "threading.Thread.__init__",
+  "threading.Thread.join",
+  "threading.Thread.start"
+ ],
+ "main.Worker.run": []
+}

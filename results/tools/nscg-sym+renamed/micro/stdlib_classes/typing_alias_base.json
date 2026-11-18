@@ -1,0 +1,12 @@
+{
+ "main": [
+  "typing.AbstractSet.__init__",
+  "typing.AbstractSet.isdisjoint",
+  "typing.Iterator.__init__",
+  "typing.Iterator.__iter__"
+ ],
+ "main.qbadd_0.__next__": [],
+ "main.qbadd_1.__contains__": [],
+ "main.qbadd_1.__iter__": [],
+ "main.qbadd_1.__len__": []
+}

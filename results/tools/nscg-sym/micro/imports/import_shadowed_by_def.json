@@ -1,0 +1,9 @@
+{
+ "main": [
+  "main.process",
+  "tools.process"
+ ],
+ "main.process": [],
+ "tools": [],
+ "tools.process": []
+}

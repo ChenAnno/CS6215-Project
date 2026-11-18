@@ -1,0 +1,11 @@
+{
+ "<builtin>.Exception.__init__": [],
+ "<builtin>.super": [],
+ "main": [
+  "main.AppError.__init__"
+ ],
+ "main.AppError.__init__": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.super"
+ ]
+}

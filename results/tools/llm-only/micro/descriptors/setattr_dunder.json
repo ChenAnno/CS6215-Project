@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.Audited.__init__",
+  "main.Audited.__setattr__"
+ ],
+ "main.Audited.__init__": [
+  "main.Audited.__setattr__"
+ ],
+ "main.Audited.__setattr__": [
+  "<builtin>.object.__setattr__",
+  "main.log"
+ ],
+ "main.log": []
+}

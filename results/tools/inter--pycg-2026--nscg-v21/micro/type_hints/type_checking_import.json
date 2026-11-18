@@ -1,0 +1,12 @@
+{
+ "main": [
+  "main.run"
+ ],
+ "plugins.setup": [],
+ "plugins": [],
+ "main.LocalPlugin.start": [],
+ "plugins.Plugin.start": [],
+ "main.run": [
+  "main.LocalPlugin.start"
+ ]
+}

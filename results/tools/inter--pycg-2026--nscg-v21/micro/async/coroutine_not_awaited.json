@@ -1,0 +1,15 @@
+{
+ "main": [
+  "asyncio.run",
+  "main.start"
+ ],
+ "asyncio.run": [],
+ "types.CoroutineType.close": [],
+ "main.side_effect": [],
+ "main.start": [
+  "main.task"
+ ],
+ "main.task": [
+  "main.side_effect"
+ ]
+}

@@ -1,0 +1,28 @@
+{
+ "tool": "nscg-sym",
+ "variant": "sym",
+ "model": "haiku",
+ "benchmark": "micro",
+ "programs": 622,
+ "units": 622,
+ "sites": 1867,
+ "wall_seconds": 80.6,
+ "llm": {
+  "requests": 0,
+  "cache_hits": 0,
+  "cost_usd": 0.0,
+  "input_tokens": 0,
+  "output_tokens": 0,
+  "cache_read_tokens": 0,
+  "cache_write_tokens": 0,
+  "failures": 0,
+  "seconds": 0.0
+ },
+ "validation": {
+  "kept-internal": 908,
+  "missing_answers": 0,
+  "kept-external": 463
+ },
+ "errors": [],
+ "per_unit": {}
+}

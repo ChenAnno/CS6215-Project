@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.Registry.__init__",
+  "main.Registry.add"
+ ],
+ "main.Registry.__init__": [],
+ "main.Registry.add": [
+  "<builtin>.list.append"
+ ],
+ "main.task": []
+}

@@ -1,0 +1,12 @@
+{
+ "<builtin>.type": [],
+ "main": [
+  "main.Child.__init__",
+  "main.duplicate"
+ ],
+ "main.Base.__init__": [],
+ "main.Child.__init__": [],
+ "main.duplicate": [
+  "<builtin>.type"
+ ]
+}

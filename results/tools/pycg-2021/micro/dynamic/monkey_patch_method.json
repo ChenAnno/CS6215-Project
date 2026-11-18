@@ -1,0 +1,8 @@
+{
+ "main": [
+  "main.Greeter.greet",
+  "main.loud_greet"
+ ],
+ "main.Greeter.greet": [],
+ "main.loud_greet": []
+}

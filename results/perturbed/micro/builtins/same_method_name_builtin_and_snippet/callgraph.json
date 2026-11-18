@@ -1,0 +1,18 @@
+{
+    "main": [
+        "main.q5913_1",
+        "main.q5913_2"
+    ],
+    "main.q5913_1": [
+        "<builtin>.list.append"
+    ],
+    "main.q5913_2": [
+        "main.q5913_0.__init__",
+        "main.q5913_0.append"
+    ],
+    "main.q5913_0.__init__": [],
+    "main.q5913_0.append": [
+        "<builtin>.list.append"
+    ],
+    "<builtin>.list.append": []
+}

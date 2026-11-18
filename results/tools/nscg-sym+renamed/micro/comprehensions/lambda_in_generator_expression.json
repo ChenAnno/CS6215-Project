@@ -1,0 +1,15 @@
+{
+ "main": [
+  "<builtin>.next",
+  "<builtin>.range",
+  "main.<lambda1>"
+ ],
+ "main.<lambda1>": [
+  "main.q392e_0"
+ ],
+ "main.<lambda2>": [
+  "main.q392e_1"
+ ],
+ "main.q392e_0": [],
+ "main.q392e_1": []
+}

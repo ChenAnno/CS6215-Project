@@ -1,0 +1,6 @@
+{
+ "main": [
+  "<builtin>.len",
+  "main.__len__"
+ ]
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/submodule_import_as_call", "answers": {"s1": ["shop.pricing.total"]}, "sites": [{"id": "s1", "caller": "main", "line": 3, "col": 1, "kind": "call", "text": "pricing.total()", "resolved": ["shop.pricing.total"], "candidates": ["shop.total"], "callbacks": [], "certain": true, "hooks": []}]}], "validation": {}, "missing_answers": 0, "rejected": []}

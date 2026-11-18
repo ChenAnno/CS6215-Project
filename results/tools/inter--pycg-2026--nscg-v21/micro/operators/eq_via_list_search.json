@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.list.index",
+  "main.Item.__eq__"
+ ],
+ "main.Item.__eq__": [],
+ "<builtin>.list.index": []
+}

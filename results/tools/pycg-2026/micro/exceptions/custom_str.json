@@ -1,0 +1,13 @@
+{
+ "<builtin>.Exception.__init__": [],
+ "<builtin>.str": [],
+ "main": [
+  "<builtin>.Exception.__init__",
+  "<builtin>.str",
+  "main.ParseError.__str__"
+ ],
+ "main.ParseError.__str__": [
+  "main.describe"
+ ],
+ "main.describe": []
+}

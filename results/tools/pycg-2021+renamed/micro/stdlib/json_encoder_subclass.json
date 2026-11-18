@@ -1,0 +1,17 @@
+{
+ "<builtin>.sorted": [],
+ "json.dumps": [],
+ "main": [
+  "main.q295b_2",
+  "main.q295b_3"
+ ],
+ "main.q295b_0.q295b_1": [
+  "<builtin>.sorted"
+ ],
+ "main.q295b_2": [
+  "json.dumps"
+ ],
+ "main.q295b_3": [
+  "json.dumps"
+ ]
+}

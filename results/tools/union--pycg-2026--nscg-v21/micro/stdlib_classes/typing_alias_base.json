@@ -1,0 +1,19 @@
+{
+ "main": [
+  "collections.abc.Iterator.__iter__",
+  "collections.abc.Set.isdisjoint",
+  "main.Countdown.__next__",
+  "main.Empty.__contains__",
+  "main.Empty.__iter__",
+  "typing.AbstractSet.__init__",
+  "typing.AbstractSet.isdisjoint",
+  "typing.Iterator.__init__",
+  "typing.Iterator.__iter__"
+ ],
+ "main.Countdown.__next__": [],
+ "main.Empty.__contains__": [],
+ "collections.abc.Iterator.__iter__": [],
+ "collections.abc.Set.isdisjoint": [],
+ "main.Empty.__len__": [],
+ "main.Empty.__iter__": []
+}

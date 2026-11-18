@@ -1,0 +1,13 @@
+{
+ "<builtin>.super": [],
+ "ext.Model.__init__": [],
+ "ext.Model.save": [],
+ "main": [
+  "ext.Model.__init__",
+  "main.Repository.save"
+ ],
+ "main.Repository.save": [
+  "<builtin>.super",
+  "ext.Model.save"
+ ]
+}

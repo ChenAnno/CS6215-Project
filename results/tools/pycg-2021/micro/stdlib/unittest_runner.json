@@ -1,0 +1,18 @@
+{
+ "io.StringIO": [],
+ "main": [
+  "io.StringIO",
+  "unittest.TextTestRunner",
+  "unittest.TextTestRunner.run",
+  "unittest.defaultTestLoader.loadTestsFromTestCase"
+ ],
+ "main.HelperTest.check_manually": [],
+ "main.HelperTest.setUp": [],
+ "main.HelperTest.test_helper": [
+  "main.helper"
+ ],
+ "main.helper": [],
+ "unittest.TextTestRunner": [],
+ "unittest.TextTestRunner.run": [],
+ "unittest.defaultTestLoader.loadTestsFromTestCase": []
+}

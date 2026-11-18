@@ -1,0 +1,15 @@
+{
+ "main": [
+  "functools.total_ordering",
+  "main.qfbda_0.__eq__",
+  "main.qfbda_0.__init__",
+  "main.qfbda_0.__lt__"
+ ],
+ "main.qfbda_0.__eq__": [
+  "main.qfbda_0.__eq__"
+ ],
+ "main.qfbda_0.__init__": [],
+ "main.qfbda_0.__lt__": [
+  "main.qfbda_0.__lt__"
+ ]
+}

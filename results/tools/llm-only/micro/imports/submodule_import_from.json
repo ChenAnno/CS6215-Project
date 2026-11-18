@@ -1,0 +1,10 @@
+{
+ "from_module": [],
+ "from_module.nested_module": [],
+ "from_module.nested_module.func1": [],
+ "from_module.nested_module.func2": [],
+ "main": [
+  "from_module.nested_module.func1",
+  "from_module.nested_module.func2"
+ ]
+}

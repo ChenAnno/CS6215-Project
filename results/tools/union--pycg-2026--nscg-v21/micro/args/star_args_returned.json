@@ -1,0 +1,14 @@
+{
+ "main": [
+  "main.Base.__new__",
+  "main.Left.run",
+  "main.first",
+  "main.func1"
+ ],
+ "main.Left.run": [],
+ "main.Right.run": [],
+ "main.Base.__new__": [],
+ "main.func1": [],
+ "main.first": [],
+ "main.func2": []
+}

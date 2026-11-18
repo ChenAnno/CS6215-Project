@@ -1,0 +1,8 @@
+{
+ "main": [
+  "<builtin>.iter",
+  "<builtin>.next"
+ ],
+ "main.q7918_0.__iter__": [],
+ "main.q7918_0.__next__": []
+}

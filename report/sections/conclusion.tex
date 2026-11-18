@@ -1,0 +1,23 @@
+\section{Conclusion}
+\label{sec:conclusion}
+
+We compared two generations of the symbolic call-graph generator PyCG with
+\nscg, a neuro-symbolic analyzer in which a symbolic front-end enumerates call
+sites and proposes callees, an LLM decides, and a symbolic validator checks. On
+four real packages with audited ground truths, \nscg with a small model is on
+par with PyCG-2026 and far ahead of the 2021 analysis; on the micro-benchmark it
+is more complete but less exact. The comparison shows that the strengths are
+complementary --- PyCG for precisely specified semantics and outside names,
+the LLM for string-built dispatch, dynamic features and code that reads
+naturally --- and that their union has the best recall. It also shows the
+limits of the neuro-symbolic design: the LLM filters rather than discovers, so
+the recall of \nscg is bounded by its symbolic candidate generator, and the
+hard core of edges that every tool misses (library callbacks, documented
+parameter roles) needs information that no tool reads today. Extending the
+candidate generator to library code and documentation, and using the LLM's
+control-flow judgement instead of overriding it, are the most promising next
+steps.
+
+\section*{AI Usage Statement}
+
+\input{sections/ai}

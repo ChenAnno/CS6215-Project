@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/import_shadowed_by_def", "answers": {"s1": ["main.process"]}, "sites": [{"id": "s1", "caller": "main", "line": 6, "col": 1, "kind": "call", "text": "process()", "resolved": ["tools.process", "main.process"], "candidates": [], "callbacks": [], "certain": false, "hooks": []}]}], "validation": {"kept-internal": 1}, "missing_answers": 0, "rejected": []}

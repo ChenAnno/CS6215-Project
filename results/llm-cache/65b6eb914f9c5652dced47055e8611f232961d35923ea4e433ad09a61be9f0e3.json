@@ -1,0 +1,133 @@
+{
+ "key": "65b6eb914f9c5652dced47055e8611f232961d35923ea4e433ad09a61be9f0e3",
+ "model": "sonnet",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "edges": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "caller": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "caller",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "edges"
+  ]
+ },
+ "prompt": "# Task\nBuild the static call graph of the Python code below.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## Definitions of the whole package (for naming callees in other modules)\nmodule autojump_data\n  imports: __future__.print_function, autojump_utils.create_dir, autojump_utils.is_osx, autojump_utils.is_python3, autojump_utils.move_file, autojump_utils.unico, codecs.open, collections.namedtuple, itertools.ifilter, itertools.imap, tempfile.NamedTemporaryFile, time.time\n  def autojump_data.dictify(entries)\n  def autojump_data.entriefy(data)\n  def autojump_data.load(config)\n  def autojump_data.load_backup(config)\n  def autojump_data.migrate_osx_xdg_data(config)\n  def autojump_data.save(config, data)\nmodule autojump_match\n  imports: autojump_utils.is_python3, autojump_utils.last, difflib.SequenceMatcher, itertools.ifilter, itertools.imap\n  def autojump_match.match_anywhere(needles, haystack, ignore_case)\n  def autojump_match.match_consecutive(needles, haystack, ignore_case)\n  def autojump_match.match_fuzzy(needles, haystack, ignore_case, threshold)\nmodule autojump_utils\n  imports: __future__.print_function, itertools.imap, itertools.islice\n  def autojump_utils.create_dir(path)\n  def autojump_utils.encode_local(string)\n  def autojump_utils.first(xs)\n  def autojump_utils.get_tab_entry_info(entry, separator)\n  def autojump_utils.get_pwd()\n  def autojump_utils.has_uppercase(string)\n  def autojump_utils.in_bash()\n  def autojump_utils.is_autojump_sourced()\n  def autojump_utils.is_python2()\n  def autojump_utils.is_python3()\n  def autojump_utils.is_linux()\n  def autojump_utils.is_osx()\n  def autojump_utils.is_windows()\n  def autojump_utils.last(xs)\n  def autojump_utils.move_file(src, dst)\n  def autojump_utils.print_entry(entry)\n  def autojump_utils.print_local(string)\n  def autojump_utils.print_tab_menu(needle, tab_entries, separator)\n  def autojump_utils.sanitize(directories)\n  def autojump_utils.second(xs)\n  def autojump_utils.surround_quotes(string)\n  def autojump_utils.take(n, iterable)\n  def autojump_utils.unico(string)\n\n## Source (module `autojump_data` of package `autojump`, part 2/2)\n  1| #!/usr/bin/env python\n  2| # -*- coding: utf-8 -*-\n  3| from __future__ import print_function\n  4| \n  5| import os\n  6| import shutil\n  7| import sys\n  8| from codecs import open\n  9| from collections import namedtuple\n 10| from tempfile import NamedTemporaryFile\n 11| from time import time\n 12| \n 13| from autojump_utils import create_dir\n 14| from autojump_utils import is_osx\n 15| from autojump_utils import is_python3\n 16| from autojump_utils import move_file\n 17| from autojump_utils import unico\n 18| \n 19| \n 20| if sys.version_info[0] == 3:\n 21|     ifilter = filter\n 22|     imap = map\n 23| else:\n 24|     from itertools import ifilter  # noqa\n 25|     from itertools import imap  # noqa\n 26| \n 27| \n 28| BACKUP_THRESHOLD = 24 * 60 * 60\n 29| Entry = namedtuple('Entry', ['path', 'weight'])\n 30| \n 31| \n 32| def dictify(entries):\n 33|     \"\"\"\n 34|     Converts a list of entries into a dictionary where\n 35|         key = path\n 36|         value = weight\n 37|     \"\"\"\n 38|     result = {}\n 39|     for entry in entries:\n 40|         result[entry.path] = entry.weight\n 41|     return result\n 42| \n 43| \n 44| def entriefy(data):\n 45|     \"\"\"Converts a dictionary into an iterator of entries.\"\"\"\n 46|     convert = lambda tup: Entry(*tup)\n 47|     if is_python3():\n 48|         return map(convert, data.items())\n 49|     return imap(convert, data.iteritems())\n 50| \n 51| \n 52| def load(config):\n 53|     \"\"\"Returns a dictonary (key=path, value=weight) loaded from data file.\"\"\"\n 54|     xdg_aj_home = os.path.join(\n 55|         os.path.expanduser('~'),\n 56|         '.local',\n 57|         'share',\n 58|         'autojump',\n 59|     )\n 60| \n 61|     if is_osx() and os.path.exists(xdg_aj_home):\n 62|         migrate_osx_xdg_data(config)\n 63| \n 64|     if not os.path.exists(config['data_path']):\n 65|         return {}\n 66| \n 67|     # example: u'10.0\\t/home/user\\n' -> ['10.0', u'/home/user']\n 68|     parse = lambda line: line.strip().split('\\t')\n 69| \n 70|     correct_length = lambda x: len(x) == 2\n 71| \n 72|     # example: ['10.0', u'/home/user'] -> (u'/home/user', 10.0)\n 73|     tupleize = lambda x: (x[1], float(x[0]))\n 74| \n 75|     try:\n 76|         with open(\n 77|                 config['data_path'],\n 78|                 'r', encoding='utf-8',\n 79|                 errors='replace',\n 80|         ) as f:\n 81|             return dict(\n 82|                 imap(\n 83|                     tupleize,\n 84|                     ifilter(correct_length, imap(parse, f)),\n 85|                 ),\n 86|             )\n 87|     except (IOError, EOFError):\n 88|         return load_backup(config)\n 89| \n 90| \n 91| def load_backup(config):\n 92|     if os.path.exists(config['backup_path']):\n 93|         move_file(config['backup_path'], config['data_path'])\n 94|         return load(config)\n 95|     return {}\n 96| \n 97| \n 98| def migrate_osx_xdg_data(config):\n 99|     \"\"\"\n100|     Older versions incorrectly used Linux XDG_DATA_HOME paths on OS X. This\n101|     migrates autojump files from ~/.local/share/autojump to ~/Library/autojump\n102|     \"\"\"\n103|     assert is_osx(), 'This function should only be run on OS X.'\n104| \n105|     xdg_data_home = os.path.join(os.path.expanduser('~'), '.local', 'share')\n106|     xdg_aj_home = os.path.join(xdg_data_home, 'autojump')\n107|     data_path = os.path.join(xdg_aj_home, 'autojump.txt')\n108|     backup_path = os.path.join(xdg_aj_home, 'autojump.txt.bak')\n109| \n110|     if os.path.exists(data_path):\n111|         move_file(data_path, config['data_path'])\n112|     if os.path.exists(backup_path):\n113|         move_file(backup_path, config['backup_path'])\n114| \n115|     # cleanup\n116|     shutil.rmtree(xdg_aj_home)\n117|     if len(os.listdir(xdg_data_home)) == 0:\n118|         shutil.rmtree(xdg_data_home)\n119| \n120| \n121| def save(config, data):\n122|     \"\"\"Save data and create backup, creating a new data file if necessary.\"\"\"\n123|     data_dir = os.path.dirname(config['data_path'])\n124|     create_dir(data_dir)\n125| \n126|     # atomically save by writing to temporary file and moving to destination\n127|     try:\n128|         temp = NamedTemporaryFile(delete=False, dir=data_dir)\n129|         # Windows cannot reuse the same open file name\n130|         temp.close()\n131| \n132|         with open(temp.name, 'w', encoding='utf-8', errors='replace') as f:\n133|             for path, weight in data.items():\n134|                 f.write(unico('%s\\t%s\\n' % (weight, path)))\n135| \n136|             f.flush()\n137|             os.fsync(f)\n138|     except IOError as ex:\n139|         print('Error saving autojump data (disk full?)' % ex, file=sys.stderr)\n140|         sys.exit(1)\n141| \n142|     # move temp_file -> autojump.txt\n143|     move_file(temp.name, config['data_path'])\n144| \n145|     # create backup file if it doesn't exist or is older than BACKUP_THRESHOLD\n146|     if not os.path.exists(config['backup_path']) or \\\n147|             (time() - os.path.getmtime(config['backup_path']) > BACKUP_THRESHOLD):  # noqa\n148|         shutil.copy(config['data_path'], config['backup_path'])\n\n## Output\nReturn {\"edges\": [{\"caller\": <node>, \"callees\": [<callee>, ...]}, ...]} with one entry for every caller node below (use an empty list when it calls nothing):\nautojump_data.save",
+ "output": {
+  "edges": [
+   {
+    "caller": "autojump_data.save",
+    "callees": [
+     "os.path.dirname",
+     "autojump_utils.create_dir",
+     "tempfile.NamedTemporaryFile",
+     "tempfile._TemporaryFileWrapper.close",
+     "codecs.open",
+     "<builtin>.dict.items",
+     "codecs.StreamReaderWriter.write",
+     "autojump_utils.unico",
+     "codecs.StreamReaderWriter.flush",
+     "os.fsync",
+     "<builtin>.print",
+     "sys.exit",
+     "autojump_utils.move_file",
+     "os.path.exists",
+     "time.time",
+     "os.path.getmtime",
+     "shutil.copy"
+    ]
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 5765,
+  "cache_read_input_tokens": 0,
+  "output_tokens": 706,
+  "output_tokens_details": {
+   "thinking_tokens": 459
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 5765,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 706,
+    "cache_read_input_tokens": 0,
+    "cache_creation_input_tokens": 5765,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 5765
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.030688,
+ "seconds": 6.93,
+ "attempt": 1,
+ "time": "2026-11-18T18:30:41+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 5545,
+   "outputTokens": 19,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 0,
+   "webSearchRequests": 0,
+   "costUSD": 0.0005639999999999999,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 0,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 0,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  },
+  "claude-sonnet-5-5": {
+   "inputTokens": 2,
+   "outputTokens": 706,
+   "cacheReadInputTokens": 0,
+   "cacheCreationInputTokens": 5765,
+   "webSearchRequests": 0,
+   "costUSD": 0.030124,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 459,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 5765,
+   "canonicalModel": "claude-sonnet-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

@@ -1,0 +1,11 @@
+{
+ "main": [
+  "main.qbcca_2",
+  "pickle.dumps",
+  "pickle.loads"
+ ],
+ "main.qbcca_0.qbcca_1": [],
+ "main.qbcca_2": [
+  "<builtin>.isinstance"
+ ]
+}

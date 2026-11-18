@@ -1,0 +1,1 @@
+{"units": [{"unit": "imports/conditional_import", "answers": {"s1": ["fast.compute", "slow.compute"]}, "sites": [{"id": "s1", "caller": "main", "line": 8, "col": 1, "kind": "call", "text": "compute()", "resolved": ["fast.compute", "slow.compute"], "candidates": [], "callbacks": [], "certain": false}]}], "validation": {"kept-internal": 2}, "missing_answers": 0, "rejected": []}

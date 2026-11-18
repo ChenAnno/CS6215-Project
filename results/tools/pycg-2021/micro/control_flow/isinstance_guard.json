@@ -1,0 +1,13 @@
+{
+ "<builtin>.isinstance": [],
+ "json.loads": [],
+ "json.loads.items": [],
+ "main": [
+  "main.load"
+ ],
+ "main.load": [
+  "<builtin>.isinstance",
+  "json.loads",
+  "json.loads.items"
+ ]
+}

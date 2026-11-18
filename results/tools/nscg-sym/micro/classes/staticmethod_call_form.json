@@ -1,0 +1,11 @@
+{
+ "main": [
+  "<builtin>.staticmethod",
+  "main.Formatter.clean",
+  "main.Formatter.run"
+ ],
+ "main.Formatter.clean": [],
+ "main.Formatter.run": [
+  "main.Formatter.clean"
+ ]
+}

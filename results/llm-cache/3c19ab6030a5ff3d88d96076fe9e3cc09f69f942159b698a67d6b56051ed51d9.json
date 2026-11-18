@@ -1,0 +1,347 @@
+{
+ "key": "3c19ab6030a5ff3d88d96076fe9e3cc09f69f942159b698a67d6b56051ed51d9",
+ "model": "haiku",
+ "system": "You are the neural component of a neuro-symbolic static call-graph analyzer for Python. You reason about source code without running it. You answer only with the requested JSON.",
+ "schema": {
+  "type": "object",
+  "properties": {
+   "sites": {
+    "type": "array",
+    "items": {
+     "type": "object",
+     "properties": {
+      "id": {
+       "type": "string"
+      },
+      "callees": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      }
+     },
+     "required": [
+      "id",
+      "callees"
+     ]
+    }
+   }
+  },
+  "required": [
+   "sites"
+  ]
+ },
+ "prompt": "# Task\nYou are given call sites that a symbolic front-end found in the Python code below. For each site, decide which functions the site can call when its node runs.\n\n## Call-graph semantics (follow exactly)\nNodes: modules, functions, methods and lambdas of the analysed package. Classes, class bodies and\ncomprehensions are NOT nodes. Names are dotted: module path (a package `__init__.py` is the package\nname), then enclosing functions/classes: `pkg.mod.Class.method`, `pkg.mod.outer.inner`. Lambdas are\n`<lambdaN>`, numbered from 1 by source position inside the scope that evaluates them\n(`main.<lambda1>`, `main.f.<lambda2>`).\nEdge A -> B: code of A can call B when A runs (any input a client could pass through the public API,\non any supported Python version).\n- Calls in a class body, a comprehension, a default value or a decorator expression belong to the\n  enclosing function or module.\n- Instantiating a package class `C()` calls the first `__init__` in its MRO: `pkg.C.__init__` if a\n  package class defines it; if the first `__init__` is outside the package it is named through the\n  nearest outside base (`<builtin>.Exception.__init__`, `collections.UserDict.__init__`); if it is\n  `object.__init__` there is no edge. A package `__new__` is also a callee. Calling a builtin or\n  external class gives an edge to the class itself (`<builtin>.ValueError`, `threading.Thread`).\n- Implicit calls of package functions are edges: `__init__` on instantiation, `__enter__`/`__exit__`\n  in `with`, `__iter__`/`__next__` in `for`, operators (`__add__`, `__eq__`, ...), `x[k]`\n  (`__getitem__`), properties (the getter/setter function), `__bool__`/`__len__` in truth tests,\n  `__str__`/`__format__` in f-strings, decorators (applying `@d` calls `d`).\n  Implicit calls of builtin/library code are NOT edges (a `with open(...)` adds no `__enter__` edge).\n- Callbacks: a package function that builtin/library code calls belongs to the caller whose call\n  made it run (`list(map(f, xs))` in `main` gives `main -> main.f`; `sorted(xs, key=k)` gives `-> k`;\n  `Thread(target=t).start()` gives `-> t` in the scope that calls `start()`). A lazy `map` object\n  that is returned unconsumed does not call `f` in this scope.\n- Calling a generator or coroutine function is an edge from the calling scope (even if never iterated).\n- super(): `super().m()` calls the next `m` in the MRO after the current class.\n- Imports add no edges; module top-level code is the module node.\nNames of callees outside the package:\n- builtins: `<builtin>.len`, `<builtin>.print`, `<builtin>.isinstance`; methods of builtin types by\n  the receiver's type: `<builtin>.str.join`, `<builtin>.list.append`, `<builtin>.dict.get`.\n- library functions by the import path the code uses: `os.path.join`, `re.compile`, `json.dumps`;\n  methods by the public class of the receiver: `re.Pattern.match`, `logging.Logger.info`,\n  `threading.Thread.start`, `io.TextIOWrapper.write` (files from `open()` in text mode).\n- a module that is not installed/unknown: by the access path, e.g. `ext.Cls.fun`; calling `ext.f()`\n  returns an instance of the stub, so `ext.client().get()` calls `ext.client` and `ext.client.get`.\nList every possible callee (the analysis is a may-analysis), but do not guess: a callee needs a\nreason in the code (a binding, an assignment, an argument passed, a documented type, a class hierarchy).\n\n\n## How to use the site information\n- `symbolic resolution` comes from a flow-insensitive static resolver; it is usually right for plain names and module attributes (marked certain), but it can miss values and can over-approximate.\n- `package functions with this name` is a naive name match over the whole package: keep only those that the receiver can really be (check the types, the class hierarchy, the assignments).\n- For implicit sites (kind is not call/decorator/raise), answer only package functions that really run; an empty list is a valid answer.\n- For `call` and `decorator` sites also add callees outside the package (builtins, standard library, third-party), named by the conventions above.\n- Use only package names that appear in the definitions; never invent a package function.\n\n## Definitions of the package (symbolic outline)\nmodule funcy\nmodule funcy._inspect\n  imports: __future__.absolute_import, collections.namedtuple, funcy.decorators.unwrap, inspect.CO_VARARGS, inspect.CO_VARKEYWORDS, inspect.signature\n  def funcy._inspect.get_spec(func, _cache)\n  def funcy._inspect._code_to_spec(func)\n  def funcy._inspect._sig_to_spec(sig)\nmodule funcy.calc\n  imports: bisect.bisect, collections.deque, datetime.timedelta, funcy.decorators.wraps\n  def funcy.calc.memoize(_func, key_func)\n  def funcy.calc.cache(timeout, key_func)\n  def funcy.calc._memory_decorator(memory, key_func)\n  def funcy.calc._memory_decorator.decorator(func)\n  def funcy.calc._memory_decorator.decorator.wrapper() @wraps(func)\n  def funcy.calc._memory_decorator.decorator.invalidate()\n  def funcy.calc._memory_decorator.decorator.invalidate_all()\n  def funcy.calc._make_lookuper(silent)\n  def funcy.calc._make_lookuper.make_lookuper(func)\n  def funcy.calc._make_lookuper.make_lookuper.wrapper(arg)\n  def funcy.calc.has_arg_types(func)\n  class funcy.calc.SkipMemory(<builtin>.Exception)\n  class funcy.calc.CacheMemory(<builtin>.dict)\n    methods: __init__(self, timeout); __setitem__(self, key, value); __getitem__(self, key); expire(self); clear(self)\nmodule funcy.colls\n  imports: _all=builtins.all, _any=builtins.any, collections.abc.Iterable, collections.abc.Iterator, collections.abc.Mapping, collections.abc.Set, collections.defaultdict, copy.copy, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.funcs.compose, funcy.funcs.partial, funcy.primitives.EMPTY, funcy.seqs.take, itertools.chain, itertools.tee, operator.attrgetter, operator.itemgetter, operator.methodcaller, xfilter=funcy.seqs.filter, xmap=funcy.seqs.map\n  def funcy.colls._factory(coll, mapper)\n  def funcy.colls.empty(coll)\n  def funcy.colls.iteritems(coll)\n  def funcy.colls.itervalues(coll)\n  def funcy.colls.join(colls)\n  def funcy.colls.merge()\n  def funcy.colls.join_with(f, dicts, strict)\n  def funcy.colls.merge_with(f)\n  def funcy.colls.walk(f, coll)\n  def funcy.colls.walk_keys(f, coll)\n  def funcy.colls.walk_keys.pair_f(pair)\n  def funcy.colls.walk_values(f, coll)\n  def funcy.colls.walk_values.pair_f(pair)\n  def funcy.colls.select(pred, coll)\n  def funcy.colls.select_keys(pred, coll)\n  def funcy.colls.select_values(pred, coll)\n  def funcy.colls.split_keys(pred, coll)\n  def funcy.colls.compact(coll)\n  def funcy.colls.is_distinct(coll, key)\n  def funcy.colls.all(pred, seq)\n  def funcy.colls.any(pred, seq)\n  def funcy.colls.none(pred, seq)\n  def funcy.colls.one(pred, seq)\n  def funcy.colls.some(pred, seq)\n  def funcy.colls.zipdict(keys, vals)\n  def funcy.colls.flip(mapping)\n  def funcy.colls.flip.flip_pair(pair)\n  def funcy.colls.project(mapping, keys)\n  def funcy.colls.omit(mapping, keys)\n  def funcy.colls.zip_values()\n  def funcy.colls.zip_dicts()\n  def funcy.colls.get_in(coll, path, default)\n  def funcy.colls.get_lax(coll, path, default)\n  def funcy.colls.set_in(coll, path, value)\n  def funcy.colls.update_in(coll, path, update, default)\n  def funcy.colls.del_in(coll, path)\n  def funcy.colls.has_path(coll, path)\n  def funcy.colls.lwhere(mappings)\n  def funcy.colls.lpluck(key, mappings)\n  def funcy.colls.lpluck_attr(attr, objects)\n  def funcy.colls.linvoke(objects, name)\n  def funcy.colls.where(mappings)\n  def funcy.colls.pluck(key, mappings)\n  def funcy.colls.pluck_attr(attr, objects)\n  def funcy.colls.invoke(objects, name)\nmodule funcy.debug\n  imports: functools.partial, funcy.decorators.Call, funcy.decorators.decorator, funcy.decorators.wraps, itertools.chain, timer=timeit.default_timer\n  def funcy.debug.tap(x, label)\n  def funcy.debug.log_calls(call, print_func, errors, stack, repr_len) @decorator\n  def funcy.debug.print_calls(errors, stack, repr_len)\n  def funcy.debug.log_enters(call, print_func, repr_len) @decorator\n  def funcy.debug.print_enters(repr_len)\n  def funcy.debug.log_exits(call, print_func, errors, stack, repr_len) @decorator\n  def funcy.debug.print_exits(errors, stack, repr_len)\n  def funcy.debug.LabeledContextDecorator.decorator.inner() @wraps(func)\n  def funcy.debug.format_time(sec)\n  def funcy.debug.<lambda1>(sec)\n  def funcy.debug.<lambda2>(sec)\n  def funcy.debug.<lambda3>(sec)\n  def funcy.debug.<lambda4>(sec)\n  def funcy.debug.log_iter_durations(seq, print_func, label, unit)\n  def funcy.debug.print_iter_durations(seq, label, unit)\n  def funcy.debug._format_error(label, e, stack)\n  def funcy.debug.signature_repr(call, repr_len)\n  def funcy.debug.smart_repr(value, max_len)\n  class funcy.debug.LabeledContextDecorator(<builtin>.object)\n    methods: __init__(self, print_func, label, repr_len); __call__(self, label); decorator(self, func)\n  class funcy.debug.log_errors(funcy.debug.LabeledContextDecorator) mro: funcy.debug.LabeledContextDecorator > <builtin>.object\n    methods: __init__(self, print_func, label, stack, repr_len); __enter__(self); __exit__(self, exc_type, exc_value, tb)\n  class funcy.debug.log_durations(funcy.debug.LabeledContextDecorator) mro: funcy.debug.LabeledContextDecorator > <builtin>.object\n    methods: __init__(self, print_func, label, unit, threshold, repr_len); __enter__(self); __exit__(self)\nmodule funcy.decorators\n  imports: contextlib.ContextDecorator, contextlib.contextmanager, funcy.colls.omit, inspect.unwrap\n  def funcy.decorators.decorator(deco)\n  def funcy.decorators.decorator.decorator_fab()\n  def funcy.decorators.make_decorator(deco, dargs, dkwargs)\n  def funcy.decorators.make_decorator._decorator(func) @wraps(deco)\n  def funcy.decorators.make_decorator._decorator.wrapper()\n  def funcy.decorators.has_single_arg(func)\n  def funcy.decorators.has_1pos_and_kwonly(func)\n  def funcy.decorators.get_argnames(func)\n  def funcy.decorators.arggetter(func, _cache)\n  def funcy.decorators.arggetter.get_arg(name, args, kwargs)\n  def funcy.decorators.update_wrapper(wrapper, wrapped, assigned, updated)\n  def funcy.decorators.wraps(wrapped, assigned, updated)\n  class funcy.decorators.Call(<builtin>.object)\n    methods: __init__(self, func, args, kwargs); __call__(self); __getattr__(self, name); __str__(self); __repr__(self)\nmodule funcy.flow\n  imports: contextlib.nullcontext, contextlib.suppress, datetime.datetime, datetime.timedelta, funcy.decorators.arggetter, funcy.decorators.contextmanager, funcy.decorators.decorator, funcy.decorators.get_argnames, funcy.decorators.wraps\n  def funcy.flow.raiser(exception_or_class)\n  def funcy.flow.raiser._raiser()\n  def funcy.flow.ignore(errors, default)\n  def funcy.flow.ignore.decorator(func)\n  def funcy.flow.ignore.decorator.wrapper() @wraps(func)\n  def funcy.flow.silent(func)\n  def funcy.flow.reraise(errors, into) @contextmanager\n  def funcy.flow.retry(call, tries, errors, timeout, filter_errors) @decorator\n  def funcy.flow.fallback()\n  def funcy.flow._ensure_exceptable(errors)\n  def funcy.flow._is_exception_type(value)\n  def funcy.flow.limit_error_rate(fails, timeout, exception)\n  def funcy.flow.limit_error_rate.decorator(func)\n  def funcy.flow.limit_error_rate.decorator.wrapper() @wraps(func)\n  def funcy.flow.throttle(period)\n  def funcy.flow.throttle.decorator(func)\n  def funcy.flow.throttle.decorator.wrapper() @wraps(func)\n  def funcy.flow.post_processing(call, func) @decorator\n  def funcy.flow.joining(call, sep) @decorator\n  def funcy.flow.once_per()\n  def funcy.flow.once_per.once(func)\n  def funcy.flow.once_per.once.wrapper() @wraps(func)\n  def funcy.flow.once_per_args(func)\n  def funcy.flow.wrap_with(call, ctx) @decorator\n  class funcy.flow.nullcontext(<builtin>.object)\n    methods: __init__(self, enter_result); __enter__(self); __exit__(self)\n  class funcy.flow.ErrorRateExceeded(<builtin>.Exception)\nmodule funcy.funcmakers\n  imports: collections.abc.Mapping, collections.abc.Set, funcy.strings._re_type, funcy.strings.re_finder, funcy.strings.re_tester, operator.itemgetter\n  def funcy.funcmakers.make_func(f, test)\n  def funcy.funcmakers.make_pred(pred)\nmodule funcy.funcolls\n  imports: funcy.colls.none, funcy.colls.one, funcy.colls.some, funcy.funcs.compose, funcy.funcs.juxt\n  def funcy.funcolls.all_fn()\n  def funcy.funcolls.any_fn()\n  def funcy.funcolls.none_fn()\n  def funcy.funcolls.one_fn()\n  def funcy.funcolls.some_fn()\nmodule funcy.funcs\n  imports: functools.partial, functools.reduce, functools.wraps, funcy._inspect.Spec, funcy._inspect.get_spec, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.primitives.EMPTY, operator.__not__\n  def funcy.funcs.identity(x)\n  def funcy.funcs.constantly(x)\n  def funcy.funcs.caller()\n  def funcy.funcs.func_partial(func)\n  def funcy.funcs.rpartial(func)\n  def funcy.funcs.curry(func, n)\n  def funcy.funcs.rcurry(func, n)\n  def funcy.funcs.autocurry(func, n, _spec, _args, _kwargs)\n  def funcy.funcs.autocurry.autocurried() @wraps(func)\n  def funcy.funcs.iffy(pred, action, default)\n  def funcy.funcs.compose()\n  def funcy.funcs.rcompose()\n  def funcy.funcs.complement(pred)\n  def funcy.funcs.ljuxt()\n  def funcy.funcs.juxt()\nmodule funcy.objects\n  imports: funcy.strings.cut_prefix, inspect.isclass, inspect.ismodule\n  def funcy.objects.wrap_prop(ctx)\n  def funcy.objects.wrap_prop.decorator(prop)\n  def funcy.objects.monkey(cls, name)\n  def funcy.objects.monkey.decorator(value)\n  class funcy.objects.cached_property(<builtin>.object)\n    methods: __init__(self, fget); __get__(self, instance, type)\n    class attrs: fset=None, fdel=None\n  class funcy.objects.cached_readonly(funcy.objects.cached_property) mro: funcy.objects.cached_property > <builtin>.object\n    methods: __set__(self, instance, value)\n  class funcy.objects.wrap_prop.decorator.WrapperProp(<builtin>.object)\n    methods: __repr__(self); __get__(self, instance, type); __set__(self, name, value); __del__(self, name)\n  class funcy.objects.LazyObject(<builtin>.object)\n    methods: __init__(self, init); _setup(self); __getattr__(self, name); __setattr__(self, name, value)\nmodule funcy.primitives\n  def funcy.primitives.isnone(x)\n  def funcy.primitives.notnone(x)\n  def funcy.primitives.inc(x)\n  def funcy.primitives.dec(x)\n  def funcy.primitives.even(x)\n  def funcy.primitives.odd(x)\n  class funcy.primitives.EmptyType()\n    methods: __repr__(self)\nmodule funcy.seqs\n  imports: _dropwhile=itertools.dropwhile, _takewhile=itertools.takewhile, collections.abc.Sequence, collections.defaultdict, collections.deque, funcy.funcmakers.make_func, funcy.funcmakers.make_pred, funcy.primitives.EMPTY, funcy.types.is_seqcont, itertools.accumulate, itertools.chain, itertools.count, itertools.cycle, itertools.filterfalse, itertools.groupby, itertools.islice, itertools.repeat, itertools.tee\n  def funcy.seqs._lmap(f)\n  def funcy.seqs._lfilter(f, seq)\n  def funcy.seqs.repeatedly(f, n)\n  def funcy.seqs.iterate(f, x)\n  def funcy.seqs.take(n, seq)\n  def funcy.seqs.drop(n, seq)\n  def funcy.seqs.first(seq)\n  def funcy.seqs.second(seq)\n  def funcy.seqs.nth(n, seq)\n  def funcy.seqs.last(seq)\n  def funcy.seqs.rest(seq)\n  def funcy.seqs.butlast(seq)\n  def funcy.seqs.ilen(seq)\n  def funcy.seqs.lmap(f)\n  def funcy.seqs.lfilter(pred, seq)\n  def funcy.seqs.map(f)\n  def funcy.seqs.filter(pred, seq)\n  def funcy.seqs.lremove(pred, seq)\n  def funcy.seqs.remove(pred, seq)\n  def funcy.seqs.lkeep(f, seq)\n  def funcy.seqs.keep(f, seq)\n  def funcy.seqs.without(seq)\n  def funcy.seqs.lwithout(seq)\n  def funcy.seqs.lconcat()\n  def funcy.seqs.lcat(seqs)\n  def funcy.seqs.flatten(seq, follow)\n  def funcy.seqs.lflatten(seq, follow)\n  def funcy.seqs.lmapcat(f)\n  def funcy.seqs.mapcat(f)\n  def funcy.seqs.interleave()\n  def funcy.seqs.interpose(sep, seq)\n  def funcy.seqs.takewhile(pred, seq)\n  def funcy.seqs.dropwhile(pred, seq)\n  def funcy.seqs.ldistinct(seq, key)\n  def funcy.seqs.distinct(seq, key)\n  def funcy.seqs.split(pred, seq)\n  def funcy.seqs.split._split(q)\n  def funcy.seqs.lsplit(pred, seq)\n  def funcy.seqs.split_at(n, seq)\n  def funcy.seqs.lsplit_at(n, seq)\n  def funcy.seqs.split_by(pred, seq)\n  def funcy.seqs.lsplit_by(pred, seq)\n  def funcy.seqs.group_by(f, seq)\n  def funcy.seqs.group_by_keys(get_keys, seq)\n  def funcy.seqs.group_values(seq)\n  def funcy.seqs.count_by(f, seq)\n  def funcy.seqs.count_reps(seq)\n  def funcy.seqs._cut_seq(drop_tail, n, step, seq)\n  def funcy.seqs._cut_iter(drop_tail, n, step, seq)\n  def funcy.seqs._cut(drop_tail, n, step, seq)\n  def funcy.seqs.partition(n, step, seq)\n  def funcy.seqs.lpartition(n, step, seq)\n  def funcy.seqs.chunks(n, step, seq)\n  def funcy.seqs.lchunks(n, step, seq)\n  def funcy.seqs.partition_by(f, seq)\n  def funcy.seqs.lpartition_by(f, seq)\n  def funcy.seqs.with_prev(seq, fill)\n  def funcy.seqs.with_next(seq, fill)\n  def funcy.seqs.pairwise(seq)\n  def funcy.seqs.lzip(strict)\n  def funcy.seqs._zip_strict()\n  def funcy.seqs._zip_strict_iters()\n  def funcy.seqs._zip_strict_error(short_i, long_i)\n  def funcy.seqs._reductions(f, seq, acc)\n  def funcy.seqs.reductions(f, seq, acc)\n  def funcy.seqs.lreductions(f, seq, acc)\n  def funcy.seqs.sums(seq, acc)\n  def funcy.seqs.lsums(seq, acc)\nmodule funcy.strings\n  imports: funcy.primitives.EMPTY, operator.methodcaller\n  def funcy.strings._make_getter(regex)\n  def funcy.strings._prepare(regex, flags)\n  def funcy.strings.re_iter(regex, s, flags)\n  def funcy.strings.re_all(regex, s, flags)\n  def funcy.strings.re_find(regex, s, flags)\n  def funcy.strings.re_test(regex, s, flags)\n  def funcy.strings.re_finder(regex, flags)\n  def funcy.strings.re_tester(regex, flags)\n  def funcy.strings.str_join(sep, seq)\n  def funcy.strings.cut_prefix(s, prefix)\n  def funcy.strings.cut_suffix(s, suffix)\nmodule funcy.tree\n  imports: collections.deque, funcy.types.is_seqcont\n  def funcy.tree.tree_leaves(root, follow, children)\n  def funcy.tree.ltree_leaves(root, follow, children)\n  def funcy.tree.tree_nodes(root, follow, children)\n  def funcy.tree.ltree_nodes(root, follow, children)\nmodule funcy.types\n  imports: collections.abc.Iterable, collections.abc.Iterator, collections.abc.Mapping, collections.abc.Sequence, collections.abc.Set\n  def funcy.types.isa()\n\n## Attribute assignments in the package that matter for these sites (symbolic facts)\n  self.format_time = time_formatters[unit]   (in funcy.debug.log_durations.__init__)\n  self.print_func = print_func   (in funcy.debug.LabeledContextDecorator.__init__)\n\n## A static analyzer (PyCG) reports these callees for the callers of the sites below\nTreat them as evidence, not as truth: the analyzer can miss callees and can report spurious ones.\nfuncy.debug: [funcy.debug.log_durations.__init__, funcy.debug.log_errors.__init__, funcy.decorators.decorator]\nfuncy.debug._format_error: [<builtin>.isinstance, traceback.format_exc]\nfuncy.debug.log_durations.__enter__: []\nfuncy.debug.log_durations.__exit__: [<builtin>.print, funcy.debug.format_time]\nfuncy.debug.log_durations.__init__: [<builtin>.ValueError, funcy.debug.LabeledContextDecorator.__init__]\nfuncy.debug.log_errors.__exit__: [<builtin>.print, <builtin>.str.join, funcy.debug._format_error, traceback.format_exception]\nfuncy.debug.log_errors.__init__: [funcy.debug.LabeledContextDecorator.__init__]\nfuncy.debug.log_iter_durations: [<builtin>.ValueError, <builtin>.enumerate, <builtin>.iter, <builtin>.print, funcy.debug.<lambda1>, funcy.debug.<lambda2>, funcy.debug.<lambda3>, funcy.debug.<lambda4>, funcy.debug.format_time]\nfuncy.debug.print_iter_durations: [funcy.debug.log_iter_durations]\nfuncy.debug.signature_repr: [<builtin>.dict.items, <builtin>.getattr, <builtin>.hasattr, <builtin>.isinstance, <builtin>.str.join, funcy.debug.smart_repr, funcy.decorators.Call.__getattr__, itertools.chain]\nfuncy.debug.smart_repr: [<builtin>.isinstance, <builtin>.len, <builtin>.repr, <builtin>.str, re.sub]\n\n## Source (module `funcy.debug` of package `funcy`, part 2/2), with line numbers\n  1| import re\n  2| import traceback\n  3| from itertools import chain\n  4| from functools import partial\n  5| from timeit import default_timer as timer\n  6| \n  7| from .decorators import decorator, wraps, Call\n  8| \n  9| \n 10| __all__ = [\n 11|     'tap',\n 12|     'log_calls', 'print_calls',\n 13|     'log_enters', 'print_enters',\n 14|     'log_exits', 'print_exits',\n 15|     'log_errors', 'print_errors',\n 16|     'log_durations', 'print_durations',\n 17|     'log_iter_durations', 'print_iter_durations',\n 18| ]\n 19| \n 20| REPR_LEN = 25\n 21| \n 22| \n 23| def tap(x, label=None):\n 24|     \"\"\"Prints x and then returns it.\"\"\"\n 25|     if label:\n 26|         print('%s: %s' % (label, x))\n 27|     else:\n 28|         print(x)\n 29|     return x\n 30| \n 31| \n 32| @decorator\n 33| def log_calls(call, print_func, errors=True, stack=True, repr_len=REPR_LEN):\n 34|     \"\"\"Logs or prints all function calls,\n 35|        including arguments, results and raised exceptions.\"\"\"\n 36|     signature = signature_repr(call, repr_len)\n 37|     try:\n 38|         print_func('Call %s' % signature)\n 39|         result = call()\n 40|         # NOTE: using full repr of result\n 41|         print_func('-> %s from %s' % (smart_repr(result, max_len=None), signature))\n 42|         return result\n 43|     except BaseException as e:\n 44|         if errors:\n 45|             print_func('-> ' + _format_error(signature, e, stack))\n 46|         raise\n 47| \n 48| def print_calls(errors=True, stack=True, repr_len=REPR_LEN):\n 49|     if callable(errors):\n 50|         return log_calls(print)(errors)\n 51|     else:\n 52|         return log_calls(print, errors, stack, repr_len)\n 53| print_calls.__doc__ = log_calls.__doc__\n 54| \n 55| \n 56| @decorator\n 57| def log_enters(call, print_func, repr_len=REPR_LEN):\n 58|     \"\"\"Logs each entrance to a function.\"\"\"\n 59|     print_func('Call %s' % signature_repr(call, repr_len))\n 60|     return call()\n 61| \n 62| \n 63| def print_enters(repr_len=REPR_LEN):\n 64|     \"\"\"Prints on each entrance to a function.\"\"\"\n 65|     if callable(repr_len):\n 66|         return log_enters(print)(repr_len)\n 67|     else:\n 68|         return log_enters(print, repr_len)\n 69| \n 70| \n 71| @decorator\n 72| def log_exits(call, print_func, errors=True, stack=True, repr_len=REPR_LEN):\n 73|     \"\"\"Logs exits from a function.\"\"\"\n 74|     signature = signature_repr(call, repr_len)\n 75|     try:\n 76|         result = call()\n 77|         # NOTE: using full repr of result\n 78|         print_func('-> %s from %s' % (smart_repr(result, max_len=None), signature))\n 79|         return result\n 80|     except BaseException as e:\n 81|         if errors:\n 82|             print_func('-> ' + _format_error(signature, e, stack))\n 83|         raise\n 84| \n 85| def print_exits(errors=True, stack=True, repr_len=REPR_LEN):\n 86|     \"\"\"Prints on exits from a function.\"\"\"\n 87|     if callable(errors):\n 88|         return log_exits(print)(errors)\n 89|     else:\n 90|         return log_exits(print, errors, stack, repr_len)\n 91| \n 92| \n 93| class LabeledContextDecorator(object):\n 94|     \"\"\"\n 95|     A context manager which also works as decorator, passing call signature as its label.\n 96|     \"\"\"\n 97|     def __init__(self, print_func, label=None, repr_len=REPR_LEN):\n 98|         self.print_func = print_func\n 99|         self.label = label\n100|         self.repr_len = repr_len\n101| \n102|     def __call__(self, label=None, **kwargs):\n103|         if callable(label):\n104|             return self.decorator(label)\n105|         else:\n106|             return self.__class__(self.print_func, label, **kwargs)\n107| \n108|     def decorator(self, func):\n109|         @wraps(func)\n110|         def inner(*args, **kwargs):\n111|             # Recreate self with a new label so that nested and recursive calls will work\n112|             cm = self.__class__.__new__(self.__class__)\n113|             cm.__dict__.update(self.__dict__)\n114|             cm.label = signature_repr(Call(func, args, kwargs), self.repr_len)\n115|             with cm:\n116|                 return func(*args, **kwargs)\n117|         return inner\n118| \n119| \n120| class log_errors(LabeledContextDecorator):\n121|     \"\"\"Logs or prints all errors within a function or block.\"\"\"\n122|     def __init__(self, print_func, label=None, stack=True, repr_len=REPR_LEN):\n123|         LabeledContextDecorator.__init__(self, print_func, label=label, repr_len=repr_len)\n124|         self.stack = stack\n125| \n126|     def __enter__(self):\n127|         return self\n128| \n129|     def __exit__(self, exc_type, exc_value, tb):\n130|         if exc_type:\n131|             if self.stack:\n132|                 exc_message = ''.join(traceback.format_exception(exc_type, exc_value, tb))\n133|             else:\n134|                 exc_message = '%s: %s' % (exc_type.__name__, exc_value)\n135|             self.print_func(_format_error(self.label, exc_message, self.stack))\n136| \n137| print_errors = log_errors(print)\n138| \n139| \n140| # Duration utils\n141| \n142| def format_time(sec):\n143|     if sec < 1e-6:\n144|         return '%8.2f ns' % (sec * 1e9)\n145|     elif sec < 1e-3:\n146|         return '%8.2f mks' % (sec * 1e6)\n147|     elif sec < 1:\n148|         return '%8.2f ms' % (sec * 1e3)\n149|     else:\n150|         return '%8.2f s' % sec\n151| \n152| time_formatters = {\n153|     'auto': format_time,\n154|     'ns': lambda sec: '%8.2f ns' % (sec * 1e9),\n155|     'mks': lambda sec: '%8.2f mks' % (sec * 1e6),\n156|     'ms': lambda sec: '%8.2f ms' % (sec * 1e3),\n157|     's': lambda sec: '%8.2f s' % sec,\n158| }\n159| \n160| \n161| class log_durations(LabeledContextDecorator):\n162|     \"\"\"Times each function call or block execution.\"\"\"\n163|     def __init__(self, print_func, label=None, unit='auto', threshold=-1, repr_len=REPR_LEN):\n164|         LabeledContextDecorator.__init__(self, print_func, label=label, repr_len=repr_len)\n165|         if unit not in time_formatters:\n166|             raise ValueError('Unknown time unit: %s. It should be ns, mks, ms, s or auto.' % unit)\n167|         self.format_time = time_formatters[unit]\n168|         self.threshold = threshold\n169| \n170|     def __enter__(self):\n171|         self.start = timer()\n172|         return self\n173| \n174|     def __exit__(self, *exc):\n175|         duration = timer() - self.start\n176|         if duration >= self.threshold:\n177|             duration_str = self.format_time(duration)\n178|             self.print_func(\"%s in %s\" % (duration_str, self.label) if self.label else duration_str)\n179| \n180| print_durations = log_durations(print)\n181| \n182| \n183| def log_iter_durations(seq, print_func, label=None, unit='auto'):\n184|     \"\"\"Times processing of each item in seq.\"\"\"\n185|     if unit not in time_formatters:\n186|         raise ValueError('Unknown time unit: %s. It should be ns, mks, ms, s or auto.' % unit)\n187|     _format_time = time_formatters[unit]\n188|     suffix = \" of %s\" % label if label else \"\"\n189|     it = iter(seq)\n190|     for i, item in enumerate(it):\n191|         start = timer()\n192|         yield item\n193|         duration = _format_time(timer() - start)\n194|         print_func(\"%s in iteration %d%s\" % (duration, i, suffix))\n195| \n196| def print_iter_durations(seq, label=None, unit='auto'):\n197|     \"\"\"Times processing of each item in seq.\"\"\"\n198|     return log_iter_durations(seq, print, label, unit=unit)\n199| \n200| \n201| ### Formatting utils\n202| \n203| def _format_error(label, e, stack=True):\n204|     if isinstance(e, Exception):\n205|         if stack:\n206|             e_message = traceback.format_exc()\n207|         else:\n208|             e_message = '%s: %s' % (e.__class__.__name__, e)\n209|     else:\n210|         e_message = e\n211| \n212|     if label:\n213|         template = '%s    raised in %s' if stack else '%s raised in %s'\n214|         return template % (e_message, label)\n215|     else:\n216|         return e_message\n217| \n218| \n219| ### Call signature stringification utils\n220| \n221| def signature_repr(call, repr_len=REPR_LEN):\n222|     if isinstance(call._func, partial):\n223|         if hasattr(call._func.func, '__name__'):\n224|             name = '<%s partial>' % call._func.func.__name__\n225|         else:\n226|             name = '<unknown partial>'\n227|     else:\n228|         name = getattr(call._func, '__name__', '<unknown>')\n229|     args_repr = (smart_repr(arg, repr_len) for arg in call._args)\n230|     kwargs_repr = ('%s=%s' % (key, smart_repr(value, repr_len))\n231|                    for key, value in call._kwargs.items())\n232|     return '%s(%s)' % (name, ', '.join(chain(args_repr, kwargs_repr)))\n233| \n234| def smart_repr(value, max_len=REPR_LEN):\n235|     if isinstance(value, (bytes, str)):\n236|         res = repr(value)\n237|     else:\n238|         res = str(value)\n239| \n240|     res = re.sub(r'\\s+', ' ', res)\n241|     if max_len and len(res) > max_len:\n242|         res = res[:max_len-3] + '...'\n243|     return res\n\n## Call sites to decide\ns402 | caller funcy.debug.log_errors.__init__ | line 123 col 9 | call | `LabeledContextDecorator.__init__(self, print_func, label=label, repr_len=repr_len)`\n    symbolic resolution: [funcy.debug.LabeledContextDecorator.__init__]\n    package functions with this name: [funcy.calc.CacheMemory.__init__, funcy.debug.log_errors.__init__, funcy.debug.log_durations.__init__, funcy.decorators.Call.__init__, funcy.flow.nullcontext.__init__, funcy.objects.cached_property.__init__, funcy.objects.LazyObject.__init__]\ns403 | caller funcy.debug.log_errors.__exit__ | line 132 col 31 | call | `''.join(traceback.format_exception(exc_type, exc_value, tb))`\n    symbolic resolution: [<builtin>.str.join]\n    package functions with this name: [funcy.colls.join]\ns404 | caller funcy.debug.log_errors.__exit__ | line 132 col 39 | call | `traceback.format_exception(exc_type, exc_value, tb)`\n    symbolic resolution: [traceback.format_exception]\ns405 | caller funcy.debug.log_errors.__exit__ | line 135 col 13 | call | `self.print_func(_format_error(self.label, exc_message, self.stack))`\n    no symbolic information\ns406 | caller funcy.debug.log_errors.__exit__ | line 135 col 29 | call | `_format_error(self.label, exc_message, self.stack)`\n    symbolic resolution: [funcy.debug._format_error] (certain)\ns407 | caller funcy.debug | line 137 col 16 | call | `log_errors(print)`\n    symbolic resolution: [funcy.debug.log_errors.__init__] (certain)\ns408 | caller funcy.debug.log_durations.__init__ | line 164 col 9 | call | `LabeledContextDecorator.__init__(self, print_func, label=label, repr_len=repr_len)`\n    symbolic resolution: [funcy.debug.LabeledContextDecorator.__init__]\n    package functions with this name: [funcy.calc.CacheMemory.__init__, funcy.debug.log_errors.__init__, funcy.debug.log_durations.__init__, funcy.decorators.Call.__init__, funcy.flow.nullcontext.__init__, funcy.objects.cached_property.__init__, funcy.objects.LazyObject.__init__]\ns409 | caller funcy.debug.log_durations.__init__ | line 165 col 12 | op | `unit not in time_formatters`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __contains__, __iter__, __getitem__\ns410 | caller funcy.debug.log_durations.__init__ | line 166 col 19 | call | `ValueError('Unknown time unit: %s. It should be ns, mks, ms, s or auto.' % unit)`\n    symbolic resolution: [<builtin>.ValueError] (certain)\ns411 | caller funcy.debug.log_durations.__init__ | line 167 col 28 | getitem | `time_formatters[unit]`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __getitem__, __missing__, __class_getitem__\ns412 | caller funcy.debug.log_durations.__enter__ | line 171 col 22 | call | `timer()`\n    symbolic resolution: [timeit.default_timer] (certain)\ns413 | caller funcy.debug.log_durations.__exit__ | line 175 col 20 | call | `timer()`\n    symbolic resolution: [timeit.default_timer] (certain)\ns414 | caller funcy.debug.log_durations.__exit__ | line 177 col 28 | call | `self.format_time(duration)`\n    package functions with this name: [funcy.debug.format_time]\ns415 | caller funcy.debug.log_durations.__exit__ | line 178 col 13 | call | `self.print_func('%s in %s' % (duration_str, self.label) if self.label else duration_str)`\n    no symbolic information\ns416 | caller funcy.debug | line 180 col 19 | call | `log_durations(print)`\n    symbolic resolution: [funcy.debug.log_durations.__init__] (certain)\ns417 | caller funcy.debug.log_iter_durations | line 185 col 8 | op | `unit not in time_formatters`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __contains__, __iter__, __getitem__\ns418 | caller funcy.debug.log_iter_durations | line 186 col 15 | call | `ValueError('Unknown time unit: %s. It should be ns, mks, ms, s or auto.' % unit)`\n    symbolic resolution: [<builtin>.ValueError] (certain)\ns419 | caller funcy.debug.log_iter_durations | line 187 col 20 | getitem | `time_formatters[unit]`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __getitem__, __missing__, __class_getitem__\ns420 | caller funcy.debug.log_iter_durations | line 189 col 10 | call | `iter(seq)`\n    symbolic resolution: [<builtin>.iter] (certain)\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    this builtin may call special methods: __iter__, __getitem__\ns421 | caller funcy.debug.log_iter_durations | line 190 col 20 | call | `enumerate(it)`\n    symbolic resolution: [<builtin>.enumerate] (certain)\n    this builtin may call special methods: __iter__\ns422 | caller funcy.debug.log_iter_durations | line 191 col 17 | call | `timer()`\n    symbolic resolution: [timeit.default_timer] (certain)\ns423 | caller funcy.debug.log_iter_durations | line 193 col 20 | call | `_format_time(timer() - start)`\n    no symbolic information\ns424 | caller funcy.debug.log_iter_durations | line 193 col 33 | call | `timer()`\n    symbolic resolution: [timeit.default_timer] (certain)\ns425 | caller funcy.debug.log_iter_durations | line 194 col 9 | call | `print_func('%s in iteration %d%s' % (duration, i, suffix))`\n    no symbolic information\ns426 | caller funcy.debug.print_iter_durations | line 198 col 12 | call | `log_iter_durations(seq, print, label, unit=unit)`\n    symbolic resolution: [funcy.debug.log_iter_durations] (certain)\ns427 | caller funcy.debug._format_error | line 204 col 8 | call | `isinstance(e, Exception)`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns428 | caller funcy.debug._format_error | line 206 col 25 | call | `traceback.format_exc()`\n    symbolic resolution: [traceback.format_exc]\ns429 | caller funcy.debug.signature_repr | line 222 col 8 | call | `isinstance(call._func, partial)`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns430 | caller funcy.debug.signature_repr | line 223 col 12 | call | `hasattr(call._func.func, '__name__')`\n    symbolic resolution: [<builtin>.hasattr] (certain)\ns431 | caller funcy.debug.signature_repr | line 228 col 16 | call | `getattr(call._func, '__name__', '<unknown>')`\n    symbolic resolution: [<builtin>.getattr] (certain)\n    package functions with this name: [funcy.decorators.Call.__getattr__, funcy.objects.LazyObject.__getattr__]\n    this builtin may call special methods: __getattr__, __getattribute__\ns432 | caller funcy.debug.signature_repr | line 229 col 18 | call | `smart_repr(arg, repr_len)`\n    symbolic resolution: [funcy.debug.smart_repr] (certain)\ns433 | caller funcy.debug.signature_repr | line 229 col 55 | iter | `call._args`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __iter__, __next__, __getitem__\ns434 | caller funcy.debug.signature_repr | line 230 col 36 | call | `smart_repr(value, repr_len)`\n    symbolic resolution: [funcy.debug.smart_repr] (certain)\ns435 | caller funcy.debug.signature_repr | line 231 col 38 | call | `call._kwargs.items()`\n    no symbolic information\ns436 | caller funcy.debug.signature_repr | line 232 col 30 | call | `', '.join(chain(args_repr, kwargs_repr))`\n    symbolic resolution: [<builtin>.str.join]\n    package functions with this name: [funcy.colls.join]\ns437 | caller funcy.debug.signature_repr | line 232 col 40 | call | `chain(args_repr, kwargs_repr)`\n    symbolic resolution: [itertools.chain] (certain)\ns438 | caller funcy.debug.smart_repr | line 235 col 8 | call | `isinstance(value, (bytes, str))`\n    symbolic resolution: [<builtin>.isinstance] (certain)\n    this builtin may call special methods: __instancecheck__\ns439 | caller funcy.debug.smart_repr | line 236 col 15 | call | `repr(value)`\n    symbolic resolution: [<builtin>.repr] (certain)\n    package functions with this name: [funcy.decorators.Call.__repr__, funcy.objects.wrap_prop.decorator.WrapperProp.__repr__, funcy.primitives.EmptyType.__repr__]\n    this builtin may call special methods: __repr__\ns440 | caller funcy.debug.smart_repr | line 238 col 15 | call | `str(value)`\n    symbolic resolution: [<builtin>.str] (certain)\n    package functions with this name: [funcy.decorators.Call.__str__, funcy.decorators.Call.__repr__, funcy.objects.wrap_prop.decorator.WrapperProp.__repr__, funcy.primitives.EmptyType.__repr__]\n    this builtin may call special methods: __str__, __repr__\ns441 | caller funcy.debug.smart_repr | line 240 col 11 | call | `re.sub('\\\\s+', ' ', res)`\n    symbolic resolution: [re.sub]\ns442 | caller funcy.debug.smart_repr | line 241 col 20 | call | `len(res)`\n    symbolic resolution: [<builtin>.len] (certain)\n    this builtin may call special methods: __len__\ns443 | caller funcy.debug.smart_repr | line 242 col 15 | getitem | `res[:max_len - 3]`\n    package functions with this name: [funcy.calc.CacheMemory.__getitem__]\n    special methods involved: __getitem__, __missing__, __class_getitem__\n\n## Output\nReturn {\"sites\": [{\"id\": <site id>, \"callees\": [...]}, ...]} with one entry for every site id above.",
+ "output": {
+  "sites": [
+   {
+    "id": "s402",
+    "callees": [
+     "funcy.debug.LabeledContextDecorator.__init__"
+    ]
+   },
+   {
+    "id": "s403",
+    "callees": [
+     "<builtin>.str.join"
+    ]
+   },
+   {
+    "id": "s404",
+    "callees": [
+     "traceback.format_exception"
+    ]
+   },
+   {
+    "id": "s405",
+    "callees": [
+     "<builtin>.print"
+    ]
+   },
+   {
+    "id": "s406",
+    "callees": [
+     "funcy.debug._format_error"
+    ]
+   },
+   {
+    "id": "s407",
+    "callees": [
+     "funcy.debug.log_errors.__init__"
+    ]
+   },
+   {
+    "id": "s408",
+    "callees": [
+     "funcy.debug.LabeledContextDecorator.__init__"
+    ]
+   },
+   {
+    "id": "s409",
+    "callees": []
+   },
+   {
+    "id": "s410",
+    "callees": [
+     "<builtin>.ValueError"
+    ]
+   },
+   {
+    "id": "s411",
+    "callees": []
+   },
+   {
+    "id": "s412",
+    "callees": [
+     "timeit.default_timer"
+    ]
+   },
+   {
+    "id": "s413",
+    "callees": [
+     "timeit.default_timer"
+    ]
+   },
+   {
+    "id": "s414",
+    "callees": [
+     "funcy.debug.format_time",
+     "funcy.debug.<lambda1>",
+     "funcy.debug.<lambda2>",
+     "funcy.debug.<lambda3>",
+     "funcy.debug.<lambda4>"
+    ]
+   },
+   {
+    "id": "s415",
+    "callees": [
+     "<builtin>.print"
+    ]
+   },
+   {
+    "id": "s416",
+    "callees": [
+     "funcy.debug.log_durations.__init__"
+    ]
+   },
+   {
+    "id": "s417",
+    "callees": []
+   },
+   {
+    "id": "s418",
+    "callees": [
+     "<builtin>.ValueError"
+    ]
+   },
+   {
+    "id": "s419",
+    "callees": []
+   },
+   {
+    "id": "s420",
+    "callees": [
+     "<builtin>.iter"
+    ]
+   },
+   {
+    "id": "s421",
+    "callees": [
+     "<builtin>.enumerate"
+    ]
+   },
+   {
+    "id": "s422",
+    "callees": [
+     "timeit.default_timer"
+    ]
+   },
+   {
+    "id": "s423",
+    "callees": [
+     "funcy.debug.format_time",
+     "funcy.debug.<lambda1>",
+     "funcy.debug.<lambda2>",
+     "funcy.debug.<lambda3>",
+     "funcy.debug.<lambda4>"
+    ]
+   },
+   {
+    "id": "s424",
+    "callees": [
+     "timeit.default_timer"
+    ]
+   },
+   {
+    "id": "s425",
+    "callees": [
+     "<builtin>.print"
+    ]
+   },
+   {
+    "id": "s426",
+    "callees": [
+     "funcy.debug.log_iter_durations"
+    ]
+   },
+   {
+    "id": "s427",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s428",
+    "callees": [
+     "traceback.format_exc"
+    ]
+   },
+   {
+    "id": "s429",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s430",
+    "callees": [
+     "<builtin>.hasattr"
+    ]
+   },
+   {
+    "id": "s431",
+    "callees": [
+     "<builtin>.getattr"
+    ]
+   },
+   {
+    "id": "s432",
+    "callees": [
+     "funcy.debug.smart_repr"
+    ]
+   },
+   {
+    "id": "s433",
+    "callees": []
+   },
+   {
+    "id": "s434",
+    "callees": [
+     "funcy.debug.smart_repr"
+    ]
+   },
+   {
+    "id": "s435",
+    "callees": [
+     "<builtin>.dict.items"
+    ]
+   },
+   {
+    "id": "s436",
+    "callees": [
+     "<builtin>.str.join"
+    ]
+   },
+   {
+    "id": "s437",
+    "callees": [
+     "itertools.chain"
+    ]
+   },
+   {
+    "id": "s438",
+    "callees": [
+     "<builtin>.isinstance"
+    ]
+   },
+   {
+    "id": "s439",
+    "callees": [
+     "<builtin>.repr"
+    ]
+   },
+   {
+    "id": "s440",
+    "callees": [
+     "<builtin>.str",
+     "funcy.decorators.Call.__str__",
+     "funcy.decorators.Call.__repr__",
+     "funcy.objects.wrap_prop.decorator.WrapperProp.__repr__",
+     "funcy.primitives.EmptyType.__repr__"
+    ]
+   },
+   {
+    "id": "s441",
+    "callees": [
+     "re.sub"
+    ]
+   },
+   {
+    "id": "s442",
+    "callees": [
+     "<builtin>.len"
+    ]
+   },
+   {
+    "id": "s443",
+    "callees": []
+   }
+  ]
+ },
+ "usage": {
+  "input_tokens": 2,
+  "cache_creation_input_tokens": 17701,
+  "cache_read_input_tokens": 568,
+  "output_tokens": 5979,
+  "output_tokens_details": {
+   "thinking_tokens": 4753
+  },
+  "server_tool_use": {
+   "web_search_requests": 0,
+   "web_fetch_requests": 0
+  },
+  "service_tier": "standard",
+  "cache_creation": {
+   "ephemeral_1h_input_tokens": 17701,
+   "ephemeral_5m_input_tokens": 0
+  },
+  "inference_geo": "global",
+  "iterations": [
+   {
+    "input_tokens": 2,
+    "output_tokens": 5979,
+    "cache_read_input_tokens": 568,
+    "cache_creation_input_tokens": 17701,
+    "cache_creation": {
+     "ephemeral_5m_input_tokens": 0,
+     "ephemeral_1h_input_tokens": 17701
+    },
+    "type": "message"
+   }
+  ],
+  "speed": "standard",
+  "fallback_credit": null
+ },
+ "cost_usd": 0.00834938,
+ "seconds": 25.5,
+ "attempt": 1,
+ "time": "2026-11-18T18:21:17+0800",
+ "model_usage": {
+  "claude-haiku-5-5": {
+   "inputTokens": 18040,
+   "outputTokens": 5999,
+   "cacheReadInputTokens": 568,
+   "cacheCreationInputTokens": 17701,
+   "webSearchRequests": 0,
+   "costUSD": 0.00834938,
+   "contextWindow": 1000000,
+   "maxOutputTokens": 128000,
+   "thinkingTokens": 4753,
+   "cacheCreationEphemeral5mInputTokens": 0,
+   "cacheCreationEphemeral1hInputTokens": 17701,
+   "canonicalModel": "claude-haiku-5-5",
+   "provider": "firstParty",
+   "costBasis": "list"
+  }
+ }
+}

@@ -1,0 +1,1 @@
+{"units": [{"unit": "strings/fstring_format_spec_call", "answers": {"main": ["main.width"], "main.width": []}, "sites": [{"id": "s1", "caller": "main", "line": 4, "col": 18, "kind": "call", "text": "width()", "resolved": ["main.width"], "candidates": [], "callbacks": [], "certain": true}]}], "validation": {}, "missing_answers": 0, "rejected": []}

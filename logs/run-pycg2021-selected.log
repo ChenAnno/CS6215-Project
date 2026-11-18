@@ -1,0 +1,4 @@
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.prefix, expected <repo>/.venv, got <repo>/third_party/pycg-evaluation/../../.venv
+<frozen site>:101: RuntimeWarning: Unexpected value in sys.exec_prefix, expected <repo>/.venv, got <repo>/third_party/pycg-evaluation/../../.venv
+pycg-2021 macro/autojump: ok, 0.057 s, 20.0 MiB
+pycg-2021 macro/fabric: ok, 0.199 s, 21.0 MiB
