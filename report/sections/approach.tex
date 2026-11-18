@@ -77,7 +77,7 @@ bases, MRO, methods, properties and class attributes) used for naming callees
 in other modules. \emph{V2.1 only:} at a call of a library method on a package
 instance whose class derives from that library, (vi) the methods of the
 package's subclasses of that library's classes, which the library may call back
-(template methods, hooks).
+(template methods, hooks).\looseness=-1
 
 \subsection{N: LLM resolution of call sites}
 
@@ -100,8 +100,8 @@ so each request is a pure, stateless LLM call; Claude Code here is only the
 transport and the structured-output enforcement. The default model is Claude
 Haiku~5.5 (the cheapest current Claude model); we also report Claude
 Sonnet~5.5. Every request and answer is stored in a content-addressed cache,
-so all reported numbers can be replayed offline, and its token usage and cost
-are recorded.
+so all reported numbers can be replayed offline, and its token usage
+and cost are recorded (Table~\ref{tab:cost}).\looseness=-1
 
 \subsection{S2: symbolic validation}
 \label{sec:s2}
@@ -121,16 +121,16 @@ decision is counted (Table~\ref{tab:validation}).
 \label{sec:variants}
 
 To find out which components matter, we built the design incrementally and
-kept each version as a variant that runs on the same subjects:
+kept each version as a variant that runs on the same subjects and is scored the same way:\looseness=-1
 
 \begin{itemize}[leftmargin=*]
 \item \textbf{S1-only} (\texttt{nscg-sym}): the symbolic pre-resolutions alone,
 no LLM --- the symbolic half of NSCG as an analysis of its own.
 \item \textbf{V0, LLM-only}: the model receives the skill, the outline and the
-source and writes the call graph \texttt{\{caller: [callees]\}} directly. This
-is the obvious way to use an LLM and our neural reference point.
+source and writes the call graph \texttt{\{caller: [callees]\}} directly. It is
+the obvious use of an LLM and our neural reference.\looseness=-1
 \item \textbf{V1, sites without hints}: S1 enumerates the sites, but the prompt
-contains no per-site symbolic information and no facts; S2 validates.
+contains no per-site symbolic information and no facts; S2 validates the answers exactly as in V2.\looseness=-1
 \item \textbf{V2, NSCG}: the full design of Sections~\ref{sec:s1}--\ref{sec:s2}.
 \item \textbf{V2.1}: the revision after the error analysis of V2
 (Section~\ref{sec:rq3}): library-hook candidates (vi), and three fixes of the
@@ -138,7 +138,7 @@ validator's alias expansion, which had rewritten correct outside names (e.g.\
 \code{time.time} into \code{time.time.time} after an import \texttt{from time
 import time}, an \code{invoke} module path into a path through
 \code{invoke.__version__}, and \code{builtins.all} not into
-\code{<builtin>.all}).
+\code{<builtin>.all}, as the benchmark requires).\looseness=-1
 \item \textbf{V3, hybrid}: V2/V2.1 plus, for each caller of the chunk, the
 callees that PyCG-2026 reports, presented as evidence that can be wrong.
 We also evaluate the offline set combinations PyCG\,$\cup$\,NSCG and

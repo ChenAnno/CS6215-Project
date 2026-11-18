@@ -13,9 +13,12 @@
 \usepackage{url}
 \DeclareUrlCommand\code{\urlstyle{tt}}
 \setlength{\emergencystretch}{1.5em}
+\raggedbottom
+% A highlighted answer box at the end of each research question.
+\newcommand{\answer}[2]{\par\smallskip\noindent\fcolorbox{black!40}{black!5}{\parbox{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}{\small\textbf{Answer to #1.} #2}}\par\smallskip}
 \newcommand{\nscg}{NSCG\xspace}
 \input{numbers}
-\newcommand{\repo}{\url{https://github.com/ChenAnno/cs6215-nscg}}
+\newcommand{\repo}{\url{https://github.com/ChenAnno/CS6215-Project}}
 
 \begin{document}
 
@@ -54,7 +57,7 @@ library-hook candidates to recover Fabric's callbacks from Invoke) but not the
 LLM alone. Both approaches miss the same hard core of edges --- library
 callbacks and documented parameter roles --- while making different false
 positives, so their intersection is the most precise configuration. All LLM
-requests of the study cost US\$\R{total-cost}.
+requests of the study cost US\$\R{total-cost}.\looseness=-1
 \end{abstract}
 
 \keywords{call graph, Python, static analysis, large language models, neuro-symbolic analysis, PyCG}

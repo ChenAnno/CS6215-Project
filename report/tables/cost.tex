@@ -1,25 +1,22 @@
-\begin{tabular}{l l r r r r r}
+\begin{tabular}{l rr rr rr}
 \toprule
-Run & bench. & req. & input tok. & output tok. & USD & wall s\\
+& \multicolumn{2}{c}{micro} & \multicolumn{2}{c}{macro} & \multicolumn{2}{c}{tokens}\\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}
+Run & req. & USD & req. & USD & in & out\\
 \midrule
-V2 & micro & 616 & 2.03M & 293k & 0.67 & 1337 \\
-V2 & macro & 64 & 0.91M & 223k & 0.38 & 82 \\
-V0 & micro & 622 & 1.80M & 339k & 0.66 & 232 \\
-V0 & macro & 67 & 0.76M & 250k & 0.35 & 79 \\
-V1 & micro & 616 & 1.88M & 312k & 0.64 & 254 \\
-V1 & macro & 64 & 0.83M & 213k & 0.35 & 70 \\
-V3 (V2) & macro & 64 & 0.95M & 222k & 0.39 & 80 \\
-V2.1 & micro & 7 & 0.02M & 6k & 0.01 & 73 \\
-V2.1 & macro & 6 & 0.10M & 27k & 0.04 & 27 \\
-V3 (V2.1) & macro & 6 & 0.10M & 26k & 0.04 & 26 \\
-V2.1 rep.~2 & macro & 64 & 0.94M & 228k & 0.22 & 90 \\
-V2.1 rep.~3 & macro & 64 & 0.94M & 211k & 0.21 & 70 \\
-V2.1 Sonnet & micro & 616 & 2.03M & 106k & 7.88 & 204 \\
-V2.1 Sonnet & macro & 64 & 0.94M & 65k & 4.39 & 35 \\
-V0 Sonnet & macro & 67 & 0.76M & 64k & 3.64 & 40 \\
-V2.1 renamed & micro & 574 & 1.91M & 306k & 0.64 & 196 \\
-V0 renamed & micro & 580 & 1.70M & 356k & 0.64 & 192 \\
+V2 & 616 & 0.67 & 64 & 0.38 & 2.94M & 516k \\
+V0 & 622 & 0.66 & 67 & 0.35 & 2.56M & 589k \\
+V1 & 616 & 0.64 & 64 & 0.35 & 2.71M & 525k \\
+V3 (V2) & -- & -- & 64 & 0.39 & 0.95M & 222k \\
+V2.1 & 7 & 0.01 & 6 & 0.04 & 0.12M & 33k \\
+V3 (V2.1) & -- & -- & 6 & 0.04 & 0.10M & 26k \\
+V2.1 rep.~2 & -- & -- & 64 & 0.22 & 0.94M & 228k \\
+V2.1 rep.~3 & -- & -- & 64 & 0.21 & 0.94M & 211k \\
+V2.1 Sonnet & 616 & 7.88 & 64 & 4.39 & 2.97M & 171k \\
+V0 Sonnet & -- & -- & 67 & 3.64 & 0.76M & 64k \\
+V2.1 renamed & 574 & 0.64 & -- & -- & 1.91M & 306k \\
+V0 renamed & 580 & 0.64 & -- & -- & 1.70M & 356k \\
 \midrule
-Total & & 4161 & 18.62M & 3248k & 21.15 & \\
+\textbf{Total} & \multicolumn{4}{c}{4161 requests, \textbf{US\$21.15}} & 18.6M & 3248k \\
 \bottomrule
 \end{tabular}

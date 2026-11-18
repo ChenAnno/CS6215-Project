@@ -37,7 +37,8 @@ PyCG~\cite{salis2021pycg} is the reference static call-graph generator for
 Python and the strongest open-source baseline in the comparison of its
 evaluation repository (\textsc{Jarvis}, pyan3, PyAnalyzer, HeaderGen and
 CPyGraph are lower in both precision and recall). We use \emph{two} versions,
-both executable and both run by the official runner of the evaluation:
+both executable and both run by the official runner of the
+evaluation, which we describe in turn:\looseness=-1
 
 \textbf{PyCG-2021} (the analysis of the ICSE 2021 paper, commit
 \texttt{046479e}, ported to Python~3.12+ by its authors). It builds an
@@ -46,8 +47,7 @@ classes, modules, attributes), processes imports module by module, and
 resolves a call by following the assignment relations from the called
 expression to the functions and classes that may reach it, until a fixpoint.
 It is flow- and context-insensitive and computes MROs for method lookup, but it
-models neither the standard library nor the builtins beyond their names, so
-calls through library values are mostly lost.
+models neither the standard library nor the builtins beyond their names, so calls through library values are mostly lost (Section~\ref{sec:rq1}).\looseness=-1
 
 \textbf{PyCG-2026} (the redesigned engine, commit \texttt{c5c6a89}). In our
 reading of its design document, it keeps the idea of a whole-program
@@ -60,8 +60,8 @@ resolves to \code{re.Match.group}), annotations and ``entry point''
 receivers supply the values that only clients could pass, and implicit calls
 of the interpreter and the special methods that builtins call are modelled.
 It deliberately does not model what outside code calls back, has no calling
-context and no flow-sensitive heap. Both versions read code and never import
-or run it.
+context and no flow-sensitive heap. Both versions read
+code and never import or run the analysed program.
 
 \textbf{How we use the baseline.} We run both engines unmodified, through
 \texttt{evaluation/common/run.py} of the evaluation repository (each analysis

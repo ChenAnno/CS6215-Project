@@ -8,7 +8,7 @@ model matter?
 \textbf{RQ3} Which edges does each approach get wrong, and why?
 \textbf{RQ4} Do the LLM's answers depend on memorised names, and are they stable
 across runs?
-\textbf{RQ5} Do hybrids of PyCG and \nscg combine their strengths?
+\textbf{RQ5} Do hybrids of PyCG and \nscg combine the strengths of the two approaches?\looseness=-1
 
 \textbf{Subjects.} We use the two benchmarks of the PyCG evaluation repository~\cite{pycgeval2026}
 (commit \texttt{8a2e52c}), because they are the only Python call-graph
@@ -30,7 +30,7 @@ two from the ICSE~2021 set and two from later batches.
 \begin{table}[t]
   \caption{The four packages (sources at the pinned commits of the benchmark).
   Edges in/out: ground-truth edges inside / outside the package. Sites: call
-  sites found by the \nscg front-end.}
+  sites that the \nscg front-end finds and the LLM then decides.}
   \label{tab:subjects}
   \small
   \setlength{\tabcolsep}{3.2pt}

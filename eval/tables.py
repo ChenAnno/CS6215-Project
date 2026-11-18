@@ -104,7 +104,7 @@ def main_table():
     cols = list(zip(*[r for _, r in data]))[1:]
     best = [best_marks(c) for c in cols]
     for tool, row in data:
-        cells = [row[0]]
+        cells = ["\\textbf{" + row[0] + "}" if tool == "nscg-v21" else row[0]]
         md.append("| " + " | ".join([row[0]] + [fmt(v) if i != 5 else (str(v) if v is not None else "--")
                                                 for i, v in enumerate(row[1:])]) + " |")
         for i, v in enumerate(row[1:]):
@@ -136,21 +136,38 @@ PROJ_ROWS = [("pycg-2021", "PyCG-2021"), ("pycg-2026", "PyCG-2026"), ("nscg-sym"
 
 def project_table():
     projs = subjects.SELECTED
-    lines, md = [], ["| Tool | " + " | ".join(projs) + " |", "|---|" + "---|" * len(projs)]
+    rows = []
     for tool, label in PROJ_ROWS:
         s = load(tool)
         if s is None or "macro" not in s:
             continue
-        cells, mcells = [label], [label]
+        vals = []
         for pname in projs:
             r = s["macro"][pname]
-            if r["status"] != "ok":
-                cells += ["\\multicolumn{3}{c}{" + r["status"].split(":")[0] + "}"]
-                mcells.append(r["status"])
+            vals.append(None if r["status"] != "ok" else counts_pr(r["inside"]))
+        rows.append((tool, label, vals))
+    # best value per column among single tools (bold); the union row is not a single tool
+    best = {}
+    for j in range(len(projs)):
+        for k in range(3):
+            xs = [round(v[j][k], 2) for t, _, v in rows if v[j] is not None and not t.startswith("union")]
+            best[(j, k)] = max(xs)
+    lines, md = [], ["| Tool | " + " | ".join(projs) + " |", "|---|" + "---|" * len(projs)]
+    for tool, label, vals in rows:
+        name = "\\textbf{" + label + "}" if tool == "nscg-v21" else label
+        cells, mcells = [name], [label]
+        for j, v in enumerate(vals):
+            if v is None:
+                status = load(tool)["macro"][projs[j]]["status"].split(":")[0]
+                cells.append("\\multicolumn{3}{c}{" + status + "}")
+                mcells.append(status)
                 continue
-            p, rc, f = counts_pr(r["inside"])
-            cells += [fmt(p, 2), fmt(rc, 2), fmt(f, 2)]
-            mcells.append(f"{fmt(p)}/{fmt(rc)}/{fmt(f)}")
+            for k in range(3):
+                t = fmt(v[k], 2)
+                if not tool.startswith("union") and round(v[k], 2) == best[(j, k)]:
+                    t = "\\textbf{" + t + "}"
+                cells.append(t)
+            mcells.append(f"{fmt(v[0])}/{fmt(v[1])}/{fmt(v[2])}")
         lines.append(" & ".join(cells) + " \\\\")
         md.append("| " + " | ".join(mcells) + " |")
     head = " & ".join("\\multicolumn{3}{c}{" + p + "}" for p in projs)
@@ -202,11 +219,13 @@ COST_ROWS = [("nscg", "V2"), ("llm-only", "V0"), ("nscg-nohints", "V1"), ("nscg-
 
 def cost_table():
     """Cost of the requests each run really sent: a cached answer is counted once, for the first run
-    (in the order of COST_ROWS, the order in which the runs were made) that needed it."""
-    lines, md = [], ["| Run | benchmark | new requests | input tok (incl. cache) | output tok | cost USD | wall s |",
-                     "|---|---|---|---|---|---|---|"]
+    (in the order of COST_ROWS, the order in which the runs were made) that needed it. One LaTeX row
+    per run (micro and macro side by side)."""
+    md = ["| Run | benchmark | new requests | input tok (incl. cache) | output tok | cost USD | wall s |",
+          "|---|---|---|---|---|---|---|"]
     tot, seen = 0.0, set()
     totals = {"req": 0, "itok": 0, "otok": 0}
+    per_run = {}
     for tool, label in COST_ROWS:
         for bench in ("micro", "macro"):
             p = RES / "runs" / f"{tool}-{bench}.json"
@@ -223,12 +242,23 @@ def cost_table():
             totals["req"] += len(units)
             totals["itok"] += itok
             totals["otok"] += otok
-            lines.append(f"{label} & {bench} & {len(units)} & {itok / 1e6:.2f}M & {otok / 1e3:.0f}k & {cost:.2f} & {r['wall_seconds']:.0f} \\\\")
+            d = per_run.setdefault(label, {"micro": None, "macro": None, "itok": 0, "otok": 0})
+            d[bench] = (len(units), cost)
+            d["itok"] += itok
+            d["otok"] += otok
             md.append(f"| {label} | {bench} | {len(units)} | {itok} | {otok} | {cost:.3f} | {r['wall_seconds']} |")
-    lines.append(f"\\midrule\nTotal & & {totals['req']} & {totals['itok'] / 1e6:.2f}M & {totals['otok'] / 1e3:.0f}k & {tot:.2f} & \\\\")
+    lines = []
+    for label, d in per_run.items():
+        mi = d["micro"]
+        ma = d["macro"]
+        lines.append(f"{label} & {mi[0] if mi else '--'} & {f'{mi[1]:.2f}' if mi else '--'} & {ma[0] if ma else '--'} & "
+                     f"{f'{ma[1]:.2f}' if ma else '--'} & {d['itok'] / 1e6:.2f}M & {d['otok'] / 1e3:.0f}k \\\\")
+    lines.append(f"\\midrule\n\\textbf{{Total}} & \\multicolumn{{4}}{{c}}{{{totals['req']} requests, \\textbf{{US\\${tot:.2f}}}}} & "
+                 f"{totals['itok'] / 1e6:.1f}M & {totals['otok'] / 1e3:.0f}k \\\\")
     md.append(f"| Total | | {totals['req']} | {totals['itok']} | {totals['otok']} | {tot:.3f} | |")
-    tex = ("\\begin{tabular}{l l r r r r r}\n\\toprule\nRun & bench. & req. & input tok. & output tok. & USD & wall s\\\\\n"
-           "\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
+    tex = ("\\begin{tabular}{l rr rr rr}\n\\toprule\n& \\multicolumn{2}{c}{micro} & \\multicolumn{2}{c}{macro} & "
+           "\\multicolumn{2}{c}{tokens}\\\\\n\\cmidrule(lr){2-3}\\cmidrule(lr){4-5}\\cmidrule(lr){6-7}\n"
+           "Run & req. & USD & req. & USD & in & out\\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
     write("cost", tex)
     (TEX / "total_cost.tex").write_text(f"{tot:.2f}")
     NUMBERS["total-cost"] = f"{tot:.2f}"
