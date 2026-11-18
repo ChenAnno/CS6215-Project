@@ -10,21 +10,23 @@
 
 \usepackage{enumitem}
 \usepackage{xspace}
+\usepackage{url}
+\DeclareUrlCommand\code{\urlstyle{tt}}
+\setlength{\emergencystretch}{1.5em}
 \newcommand{\nscg}{NSCG\xspace}
 \input{numbers}
 \newcommand{\repo}{\url{https://github.com/YOUR-GITHUB-ID/cs6215-nscg}}
 
 \begin{document}
 
-\title{Symbolic vs.\ Neuro-Symbolic Call-Graph Construction for Python:\\
-An Empirical Comparison of PyCG and an LLM-Guided Analyzer}
+\title{Symbolic vs.\ Neuro-Symbolic Call Graphs for Python:\\
+PyCG Compared with an LLM-Guided Analyzer}
 
-\author{YOUR NAME}
+\author{YOUR NAME (Student ID: A0000000X)}
 \affiliation{%
   \institution{School of Computing, National University of Singapore}
   \city{Singapore}
   \country{Singapore}}
-\email{Student ID: A0000000X}
 
 \begin{abstract}
 Static call graphs underlie most interprocedural analyses, but for Python every
@@ -52,7 +54,7 @@ library-hook candidates to recover Fabric's callbacks from Invoke) but not the
 LLM alone. Both approaches miss the same hard core of edges --- library
 callbacks and documented parameter roles --- while making different false
 positives, so their intersection is the most precise configuration. All LLM
-requests of the study cost US\$\input{tables/total_cost}.
+requests of the study cost US\$\R{total-cost}.
 \end{abstract}
 
 \keywords{call graph, Python, static analysis, large language models, neuro-symbolic analysis, PyCG}

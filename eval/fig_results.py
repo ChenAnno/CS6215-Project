@@ -55,7 +55,7 @@ OFFSETS = {
 def scatter():
     import numpy as np
 
-    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.5), gridspec_kw={"wspace": 0.28})
+    fig, axes = plt.subplots(1, 2, figsize=(7.0, 2.5), gridspec_kw={"wspace": 0.38})
     for ax, key, title in ((axes[0], "micro", "Micro-benchmark, inside edges"),
                            (axes[1], "macro", "Four packages, inside edges")):
         pts = []

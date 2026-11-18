@@ -23,7 +23,12 @@ graphs and made 6 of them inexact; in 5 of the 13 it re-introduced calls in
 code that cannot run (a constant-false branch, code after \texttt{return}, an
 exception handler that cannot be reached) that the model had correctly left
 out, which shows that the model reasons about control flow that the
-flow-insensitive front-end ignores. (iii) Library hooks only paid off with
+flow-insensitive front-end ignores. On funcy the floor also re-added the
+front-end's non-canonical name \code{builtins.all} for \texttt{from builtins
+import all as \_all} where the model had answered the correct
+\code{<builtin>.all}: V2.1's renaming of \code{builtins.X} applies to the model's
+answers but not to the floor, a bug we found only while writing this report and
+left in the reported results. (iii) Library hooks only paid off with
 the stronger model (Fabric recall \R{fabric-in-r-nscg-v21} with Haiku,
 \R{fabric-in-r-nscg-v21@sonnet} with Sonnet). (iv) A stronger model alone is not
 better: Sonnet as LLM-only scores \R{macro-ins-f1-llm-only@sonnet} on the

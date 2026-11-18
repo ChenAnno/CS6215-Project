@@ -19,7 +19,7 @@ evaluation uses to compare tools), small programs of 34 feature categories
 with a ground truth validated against a dynamic trace. (ii) Four packages of the
 \emph{macro-benchmark} (Table~\ref{tab:subjects}), whose ground truths are
 call-site ledgers written by hand, checked against the traces of the packages'
-test suites, and audited four times. Given a limited budget and the course's
+test suites, and audited four times. Given the time frame and the course's
 guidance of three to four real projects, we selected them to cover both regimes
 of the baseline: two where PyCG-2026 is strong (autojump, a small script-like
 utility; jmespath, an interpreter with visitor dispatch through
@@ -45,7 +45,7 @@ exactly. A run that fails counts every edge of its program as missed.
 
 \textbf{Setup.} All runs use one machine (Ubuntu 22.04, 128 cores, 755\,GB
 RAM) and Python~3.14.3. The baselines run through the official runner with a
-30-minute and 16\,GiB limit per program (PyCG-2021 timed out on funcy, as in
+30-minute limit per program (PyCG-2021 timed out on funcy, as in
 the PyCG evaluation). \nscg uses Claude Haiku~5.5 (and Sonnet~5.5 for RQ2)
 through \texttt{claude -p} 2.1.321, 16 requests in parallel, default sampling
 (the CLI exposes no temperature), one sample per request; RQ4 repeats the
@@ -55,7 +55,7 @@ skill text of the prompts was written from the benchmark's documented
 conventions (the same information the PyCG authors had), and the prompts were
 developed on a handful of micro cases only; the four packages were not used to
 tune the prompts before the V2 run. The total LLM cost of every request of the
-study is US\$\input{tables/total_cost} (Table~\ref{tab:cost}), of which the
+study is US\$\R{total-cost} (Table~\ref{tab:cost}), of which the
 Sonnet runs are three quarters. Money was not the binding constraint; the time
 frame of the project (one week of wall-clock time, including the 30-minute
 limits of the baselines) and the course's guidance limited the macro

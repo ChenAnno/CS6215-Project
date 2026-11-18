@@ -231,6 +231,7 @@ def cost_table():
            "\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
     write("cost", tex)
     (TEX / "total_cost.tex").write_text(f"{tot:.2f}")
+    NUMBERS["total-cost"] = f"{tot:.2f}"
     MD.append("## Cost\n\n" + "\n".join(md))
     return tot
 
@@ -271,9 +272,14 @@ def validation_table():
             v = json.loads(p.read_text())["validation"]
             md.append(f"| {label} | {bench} | " + " | ".join(str(v.get(k, 0)) for k in keys) + " |")
             lines.append(f"{label} & {bench} & " + " & ".join(str(v.get(k, 0)) for k in keys) + " \\\\")
-    short = ["kept in", "kept out", "rejected", "repaired", "cls$\\to$ctor", "inh.$\\to$def", "init$\\to$ctor",
-             "out@impl.", "builtins", "floor"]
-    tex = ("\\begin{tabular}{l l " + "r" * len(keys) + "}\n\\toprule\nRun & bench. & " + " & ".join(short)
+    # the LaTeX table keeps the columns in which some run has a non-zero count
+    short = dict(zip(keys, ["kept in", "kept out", "rejected", "repaired", "cls$\\to$ctor", "inh.$\\to$def",
+                            "init$\\to$ctor", "out@impl.", "builtins", "floor"]))
+    runs = [(label, bench, json.loads((RES / "runs" / f"{tool}-{bench}.json").read_text())["validation"])
+            for tool, label in rows for bench in ("micro", "macro") if (RES / "runs" / f"{tool}-{bench}.json").exists()]
+    used = [k for k in keys if any(v.get(k, 0) for _, _, v in runs)]
+    lines = [f"{label} & {bench} & " + " & ".join(str(v.get(k, 0)) for k in used) + " \\\\" for label, bench, v in runs]
+    tex = ("\\begin{tabular}{l l " + "r" * len(used) + "}\n\\toprule\nRun & bench. & " + " & ".join(short[k] for k in used)
            + "\\\\\n\\midrule\n" + "\n".join(lines) + "\n\\bottomrule\n\\end{tabular}\n")
     write("validation", tex)
     MD.append("## Validation decisions\n\n" + "\n".join(md))
@@ -382,7 +388,7 @@ NUMBERS = {}
 
 def numbers():
     """report/numbers.tex: every number quoted in the text, as \\R{key}."""
-    allt = [t for t, _ in ROWS] + ["nscg-v21-r1", "nscg-v21-r2", "nscg-hybrid", "nscg-nohints"]
+    allt = [t for t, _ in ROWS] + ["nscg-v21-r1", "nscg-v21-r2", "nscg-hybrid", "nscg-nohints", "nscg-v21-novalidate", "nscg-v21-nofloor"]
     for t in dict.fromkeys(allt):
         s = load(t)
         if s is None:

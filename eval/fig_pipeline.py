@@ -36,7 +36,7 @@ def arrow(x0, y0, x1, y1, text=None, dashed=False):
 
 
 box(0.5, 7, 9.5, 20, "Python\nprogram", ["source", "modules", "(read only)"], "#f4f4f2")
-box(13, 4, 23.5, 26, "S1 Symbolic\nfront-end", ["benchmark naming of nodes", "11 kinds of call sites",
+box(13, 4, 23.5, 26, "S1 Symbolic\nfront-end", ["benchmark naming of nodes", "13 kinds of call sites",
                                                "(explicit + implicit)", "value resolver + C3 MRO",
                                                "name candidates, callbacks,", "argument flows, attr. facts",
                                                "package outline"], SYM)

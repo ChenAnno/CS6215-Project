@@ -1,9 +1,10 @@
-\begin{table*}[t]
-  \caption{Decisions of the symbolic validator S2 (counts of callee names over all sites). kept in/out:
-  package / outside names kept; rejected: package-looking names that name nothing; cls$\to$ctor etc.: names
-  rewritten through the class hierarchy; out@impl.: outside names dropped at implicit sites; builtins:
-  \texttt{builtins.X}$\to$\texttt{<builtin>.X} (V2.1); floor: certain symbolic resolutions added.}
+\begin{table}[t]
+  \caption{Decisions of the validator S2 (callee names over all sites): package / outside names kept,
+  unknown package names rejected, \texttt{C.\_\_init\_\_} mapped to the constructor through the MRO,
+  and certain symbolic resolutions added by the floor. The other rules (path repair, class$\to$constructor,
+  inherited$\to$definer, outside names at implicit sites, and V2.1's \texttt{builtins.X} renaming) never fired.}
   \label{tab:validation}
   \small
+  \setlength{\tabcolsep}{4pt}
   \input{tables/validation}
-\end{table*}
+\end{table}

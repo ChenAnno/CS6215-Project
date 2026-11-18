@@ -11,13 +11,13 @@ answers symbolically. All tools are scored with the official scorer of the PyCG 
 PyCG micro-benchmark (622 cases) and on four real packages with audited ground truths
 (autojump, fabric, jmespath, funcy).
 
-The report is `report/main.pdf` (source `report/main.tex`).
+The report is `report/main.pdf` (source `report/main.tex`, compiled with tectonic 0.15.0: `cd report && tectonic main.tex`).
 
 ## Repository layout
 
 | Path | What it is |
 |---|---|
-| `nscg/frontend.py` | S1, the symbolic front-end: benchmark naming of nodes, 11 kinds of call sites, value resolver with C3 MRO, name candidates, callbacks, argument flows, attribute facts, package outline, library hooks (V2.1) |
+| `nscg/frontend.py` | S1, the symbolic front-end: benchmark naming of nodes, 13 kinds of call sites, value resolver with C3 MRO, name candidates, callbacks, argument flows, attribute facts, package outline, library hooks (V2.1) |
 | `nscg/prompts.py` | All LLM-facing text: the conventions "skill", the per-site prompt (V1/V2/V3), the LLM-only prompt (V0), JSON schemas |
 | `nscg/llm.py` | LLM backend: `claude -p` with `--json-schema`, on-disk cache of every request (prompt, answer, tokens, cost); optional OpenAI-compatible backend (e.g. SoCLaaS) |
 | `nscg/validate.py` | S2, symbolic validation of the answers (index check, constructor/MRO mapping, path repair, alias expansion, symbolic floor) |
@@ -26,10 +26,13 @@ The report is `report/main.pdf` (source `report/main.tex`).
 | `eval/score_all.py` | Scores every tool with `pycg-evaluation/evaluation/common/score.py` (raw mode) |
 | `eval/errors.py` | Error taxonomy of FP/FN edges and overlap with a baseline |
 | `eval/combine.py` | Offline hybrids: union / intersection of two tools' graphs |
-| `eval/tables.py`, `eval/fig_*.py` | The tables and figures of the report |
+| `eval/perturb.py` | Renaming probe: renamed micro cases, ground truth rewritten and checked by the benchmark's dynamic validator |
+| `eval/tables.py`, `eval/fig_*.py` | The tables (`report/tables/`, `report/numbers.tex`, `results/tables.md`) and figures of the report |
 | `scripts/setup.sh` | Fetches the baselines and benchmark at their pinned commits and creates the environment |
 | `scripts/run_baselines.sh` | Runs PyCG-2026 and PyCG-2021 with the official runner |
-| `scripts/run_experiments.sh`, `scripts/run_experiments_2.sh` | Run every NSCG variant (round 1 and round 2) |
+| `scripts/run_experiments.sh`, `_2.sh`, `_3.sh` | Run every NSCG variant (round 1: V0–V3; round 2: V2.1, repetitions, Sonnet; round 3: renaming probe) |
+| `scripts/run_baselines_renamed.py`, `scripts/run_pycg2021_selected.py` | Baselines on the renamed cases; PyCG-2021 on selected packages (`results/tools-extra/`) |
+| `results/perturbed/` | The renamed micro cases and the probe's cohort (`micro-perturbation.json`) |
 | `results/tools/<tool>/` | Call graphs of every tool: `micro/<category>/<case>.json`, `macro/<project>.json` |
 | `results/scores/` | Scores per tool (per case, per project, FP/FN lists) and `summary.json` |
 | `results/raw/<tool>/` | Per site: what the front-end proposed and what the LLM answered |

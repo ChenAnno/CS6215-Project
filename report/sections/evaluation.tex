@@ -52,20 +52,20 @@ more complete}: they rarely miss a call, but they add plausible edges that the
 precise semantics excludes and spell outside callees differently.
 Figure~\ref{fig:categories} shows where the tools differ most. The LLM-based
 variants win on \emph{dynamic} features (\texttt{eval} of a constructed string,
-\texttt{getattr}/\texttt{operator.methodcaller}, \texttt{sys.modules}, monkey
+\texttt{getattr}/\code{operator.methodcaller}, \code{sys.modules}, monkey
 patching), on the standard library, on context managers and on missing external
 modules --- cases where reading the code as a developer does beats an
 abstraction; PyCG-2026 wins on exactly specified semantics: tuples, strings,
 \texttt{match}, argument binding, async code and class hierarchies.
 
-\begin{figure}[t]
+\begin{figure*}[t]
   \centering
-  \includegraphics[width=\columnwidth]{figures/pr.pdf}
+  \includegraphics[width=0.86\textwidth]{figures/pr.pdf}
   \caption{Precision and recall of inside edges; grey lines are $F_1$
-  iso-curves. Left: micro-benchmark (PyCG-2021 is off-scale at
-  R\,\R{micro-ins-r-pycg-2021}); right: the four packages.}
+  iso-curves. Left: micro-benchmark; right: the four packages (PyCG-2021 timed
+  out on funcy, whose edges count as missed).}
   \label{fig:pr}
-\end{figure}
+\end{figure*}
 
 \begin{table*}[t]
   \caption{Inside edges per package (P / R / $F_1$). PyCG-2021 timed out on funcy.}
@@ -99,7 +99,7 @@ of the study. On the packages it has higher precision than V2.1
 micro it has the best inside recall of all single tools. Its weaknesses are
 systematic rather than random: it omits calls that are easy to overlook in a
 whole-program answer (V0 loses most of its micro \emph{mro} points by omitting the
-\texttt{<builtin>.super} edge that every \texttt{super()} call creates, which
+\code{<builtin>.super} edge that every \texttt{super()} call creates, which
 \nscg's site enumeration never misses), it names outside callees less
 consistently, and it cannot be checked.
 
@@ -111,7 +111,7 @@ adding resolutions, name candidates, callbacks and facts raises recall to
 unchanged (\R{macro-ins-f1-nscg-nohints} vs.\ \R{macro-ins-f1-nscg}). The model
 tends to \emph{accept} plausible candidates: 57 of V2's inside false
 positives were proposed by the front-end (Table~\ref{tab:errors}), most of them
-name matches in funcy (e.g.\ every \texttt{\_\_getitem\_\_} of the package at a
+name matches in funcy (e.g.\ every \code{__getitem__} of the package at a
 subscript of an unknown mapping).
 
 \textbf{The validator} turned out to be nearly neutral (a negative result).
@@ -129,12 +129,12 @@ Section~\ref{sec:discussion}).
 
 \textbf{Library hooks and the model.} With Haiku, the library hooks of V2.1
 recovered only two Fabric edges: at \texttt{self.\_run(runner, command)} in
-\texttt{Connection.run}, the prompt listed the methods of Fabric's
-\texttt{Remote} runner that Invoke's \texttt{Runner.run} calls back, but Haiku
-kept only \texttt{invoke.Context.\_run}. With Sonnet~5.5 and the same prompt,
+\code{Connection.run}, the prompt listed the methods of Fabric's
+\texttt{Remote} runner that Invoke's \code{Runner.run} calls back, but Haiku
+kept only \code{invoke.Context._run}. With Sonnet~5.5 and the same prompt,
 the model used its knowledge of Invoke and recovered 18 of these callbacks
-(\texttt{Connection.run}/\texttt{sudo} $\rightarrow$ \texttt{Remote.start},
-\texttt{read\_proc\_stdout}, \texttt{send\_interrupt}, \dots), raising Fabric's
+(\code{Connection.run}/\texttt{sudo} $\rightarrow$ \code{Remote.start},
+\code{read_proc_stdout}, \code{send_interrupt}, \dots), raising Fabric's
 recall from \R{fabric-in-r-nscg-v21} to \R{fabric-in-r-nscg-v21@sonnet}. Overall,
 Sonnet improves V2.1 moderately (inside $F_1$ \R{macro-ins-f1-nscg-v21@sonnet}
 on the packages, \R{micro-ins-f1-nscg-v21@sonnet} on micro) at about ten times
@@ -176,26 +176,26 @@ is there, the model is good at keeping the right callees: only
 \textbf{A hard core that no tool finds.} Of V2.1's
 \R{macro-ins-fn-nscg-v21} missed inside edges, 243 are also missed by
 PyCG-2026 (which misses only 32 inside edges that V2.1 finds). They come from
-two mechanisms. (1) \emph{Library callbacks}: Fabric's \texttt{Connection.run}
-hands a \texttt{Remote} runner to Invoke, whose \texttt{Runner.run} calls back
-\texttt{start}, \texttt{read\_proc\_stdout}, \texttt{send\_start\_message} and
+two mechanisms. (1) \emph{Library callbacks}: Fabric's \code{Connection.run}
+hands a \texttt{Remote} runner to Invoke, whose \code{Runner.run} calls back
+\texttt{start}, \code{read_proc_stdout}, \code{send_start_message} and
 others; the ground truth reads Invoke's code to find them, PyCG-2026 does not
 model outside code that calls back, and \nscg's model did not supply the
 knowledge. (2) \emph{Documented roles}: funcy's ground truth gives a parameter
-such as \texttt{pred} of \texttt{\_lfilter} every package function that the
+such as \texttt{pred} of \code{_lfilter} every package function that the
 documentation or the tests pass in that role (\texttt{isnone}, \texttt{even},
-the lambdas made by \texttt{re\_tester}, \dots); no tool reads the
+the lambdas made by \code{re_tester}, \dots); no tool reads the
 documentation, so most of funcy's \R{funcy-in-fn-nscg-v21} missed edges are
 of this kind.
 
 \textbf{Where reading beats abstracting.} In jmespath, the metaclass
-\texttt{FunctionRegistry} registers only the methods whose name starts with
-\texttt{\_func\_}, and \texttt{call\_function} calls the registered function.
+\code{FunctionRegistry} registers only the methods whose name starts with
+\code{_func_}, and \code{call_function} calls the registered function.
 PyCG-2026 cannot evaluate the string filter and reports every method of the
-class (7 false positives such as \texttt{\_type\_check}); \nscg calls only the
-\texttt{\_func\_} methods. In the micro-benchmark, \nscg resolves
+class (7 false positives such as \code{_type_check}); \nscg calls only the
+\code{_func_} methods. In the micro-benchmark, \nscg resolves
 \texttt{eval(measure + "()")} with \texttt{measure = "area"} to
-\texttt{main.area}, and similar string-built dispatches, which PyCG treats as
+\code{main.area}, and similar string-built dispatches, which PyCG treats as
 unknowable by design.
 
 \textbf{Where abstracting beats reading.} PyCG-2026's 466 exact micro graphs
@@ -204,16 +204,16 @@ semantics excludes, names every outside callee through typeshed, and handles
 argument binding and \texttt{match} precisely. \nscg's micro false positives
 are mostly over-approximations accepted from the flow-insensitive hints (a dict
 entry overwritten before the call; a lazily built \texttt{map} that is never
-consumed) and \emph{misnamed outside callees} (\texttt{<builtin>.iter.\_\_next\_\_}
-for \texttt{builtins.list\_iterator.\_\_next\_\_},
-\texttt{paramiko.transport.Transport.open\_session} for the benchmark's access
-path \texttt{paramiko.client.SSHClient.get\_transport.open\_session}). Of
+consumed) and \emph{misnamed outside callees} (\code{<builtin>.iter.__next__}
+for \code{builtins.list_iterator.__next__},
+\code{paramiko.transport.Transport.open_session} for the benchmark's access
+path \code{paramiko.client.SSHClient.get_transport.open_session}). Of
 V2.1's 224 outside errors on the packages, 96 (43\%) are such near misses with
 the right last name component (Table~\ref{tab:errors}).
 
 \textbf{Unexpected behaviours.} (i) Evidence can \emph{hurt}: in the hybrid
 V3, the model dropped four lambda callbacks of \texttt{autojump} (three in
-\texttt{autojump\_data.load}) that both PyCG-2026 and V2 had found and that
+\code{autojump_data.load}) that both PyCG-2026 and V2 had found and that
 PyCG's evidence listed. (ii) The validator itself had bugs that only
 the error analysis exposed (the three alias expansions of V2.1). (iii) V0 is
 more precise than V2 on the packages, the opposite of what we designed for.
@@ -225,7 +225,7 @@ more precise than V2 on the packages, the opposite of what we designed for.
 have seen the programs, and even the micro-benchmark's ground-truth files. To
 test whether its accuracy depends on familiar names, we consistently renamed
 every package-defined function and class of the micro cases (to names like
-\texttt{q3f1\_0}) where this is syntactically safe, rewrote the ground truth,
+\code{q3f1_0}) where this is syntactically safe, rewrote the ground truth,
 and kept the 580 cases whose renamed ground truth the benchmark's own dynamic
 validator still accepts. Table~\ref{tab:probe} compares the same 580 cases
 before and after renaming.
@@ -234,9 +234,8 @@ before and after renaming.
   \caption{Renaming probe on 580 micro cases (inside edges; all-edge $F_1$;
   exact cases). Symbolic tools are name-invariant by construction.}
   \label{tab:probe}
-  \small
-  \setlength{\tabcolsep}{2.4pt}
-  \input{tables/probe}
+  \setlength{\tabcolsep}{3pt}
+  \resizebox{\columnwidth}{!}{\input{tables/probe}}
 \end{table}
 
 \input{sections/probe_text}
@@ -246,7 +245,7 @@ before and after renaming.
 inside $F_1$; \R{repeat-agree} edges reported by any run are reported by all
 three (\R{repeat-agree-pct}\%). All variation is in precision
 (\R{repeat-min-p}--\R{repeat-max-p}, mostly funcy's name-matched
-\texttt{\_\_getitem\_\_} candidates); recall is the same in every run. The differences between the variants in RQ2 that
+\code{__getitem__} candidates); recall is the same in every run. The differences between the variants in RQ2 that
 are smaller than about two standard deviations should therefore not be read
 as real effects.
 

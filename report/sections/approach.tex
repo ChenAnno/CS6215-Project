@@ -7,7 +7,7 @@ following bindings and class hierarchies --- and the part where static
 analyses are forced to over- or under-approximate --- deciding which of several
 possible values reaches a call site, how a library behaves, and how an
 outside callee is named. Figure~\ref{fig:pipeline} shows the three stages. S1
-and S2 are deterministic Python code (about 1,200 lines, standard library only)
+and S2 are deterministic Python code (about 1,300 lines, standard library only)
 written for this project; N is a single LLM request per chunk of call sites.
 
 \begin{figure*}[t]
@@ -37,15 +37,15 @@ node sets exactly (634 nodes); on the micro-benchmark they are equal in 613 of
 makes it (a decorator or default value to the enclosing scope, a class body to
 the function or module that runs it). It finds 13 kinds of sites: explicit
 calls, decorators, \texttt{raise C} without a call, and class creation
-(\texttt{\_\_init\_subclass\_\_}, metaclass hooks, \texttt{\_\_set\_name\_\_}),
+(\code{__init_subclass__}, metaclass hooks, \code{__set_name__}),
 plus nine implicit kinds: \texttt{with}, iteration (\texttt{for},
 comprehensions, \texttt{yield from}, unpacking), \texttt{**} mappings,
 \texttt{await}, operators (binary, augmented, unary, comparisons and
 \texttt{in}), subscripts (get/set/del), property accesses, truth tests and
 f-string formatting. An implicit site is kept only if some package function has
 a matching special-method name, because only package callees of implicit calls
-are edges. The four packages yield 1,973 sites (the ground-truth ledgers have
-1,846 sites of the kinds that need an entry).
+are edges. The four packages yield 1,973 sites (the hand-written ground-truth
+ledgers list 1,846).
 
 \textbf{Symbolic pre-resolution.} A flow-insensitive, demand-driven resolver
 maps an expression to abstract values: package functions, bound methods,
@@ -57,9 +57,9 @@ recursively up to depth~6), the C3 MRO of package classes (an outside base
 terminates the lookup and names the member through that base), instance
 attributes through \emph{attribute facts} (\texttt{self.x = e} in any class of
 the receiver's hierarchy), and return expressions of called functions. A call of
-a class targets what instantiation runs (first \texttt{\_\_init\_\_} of the MRO,
+a class targets what instantiation runs (first \code{__init__} of the MRO,
 inside or named through the nearest outside base, a package
-\texttt{\_\_new\_\_}, a metaclass \texttt{\_\_call\_\_}). A resolution is
+\code{__new__}, a metaclass \code{__call__}). A resolution is
 marked \emph{certain} when the callee is a static path with one binding (a
 plain name bound once, or an attribute chain on a module).
 
@@ -83,7 +83,7 @@ package's subclasses of that library's classes, which the library may call back
 
 The sites of a module are split into chunks of at most 45, and each chunk
 becomes one request. The prompt contains: a fixed ``skill'' that restates the
-call-graph semantics in 40 lines (node names, which implicit calls and
+call-graph semantics in 37 lines (node names, which implicit calls and
 callbacks are edges, the MRO rule for constructors, how outside callees are
 named); instructions on how to treat the symbolic information (pre-resolutions
 are usually right when certain, name candidates are naive and must be filtered
@@ -104,10 +104,11 @@ so all reported numbers can be replayed offline, and its token usage and cost
 are recorded.
 
 \subsection{S2: symbolic validation}
+\label{sec:s2}
 
 The model's names are checked against the definition index of S1. A name that
 is a package node is kept; a package class is replaced by what instantiating it
-runs; \texttt{pkg.C.m} for a method that \texttt{C} inherits is mapped through
+runs; \code{pkg.C.m} for a method that \texttt{C} inherits is mapped through
 the MRO to the defining class; a package-looking name that names nothing is
 repaired if exactly one node shares its last two components (a wrong module
 path) and is otherwise rejected as a hallucination; an outside name whose head
@@ -130,14 +131,14 @@ source and writes the call graph \texttt{\{caller: [callees]\}} directly. This
 is the obvious way to use an LLM and our neural reference point.
 \item \textbf{V1, sites without hints}: S1 enumerates the sites, but the prompt
 contains no per-site symbolic information and no facts; S2 validates.
-\item \textbf{V2, NSCG}: the full design of Sections~\ref{sec:s1}--S2.
+\item \textbf{V2, NSCG}: the full design of Sections~\ref{sec:s1}--\ref{sec:s2}.
 \item \textbf{V2.1}: the revision after the error analysis of V2
-(Section~\ref{sec:rq3}): library-hook candidates (vi) and three fixes of the
-validator's alias expansion that wrongly rewrote correct names
-(\texttt{time.time}$\rightarrow$\texttt{time.time.time} after \texttt{from time
-import time}, \texttt{invoke.Argument}$\rightarrow$\texttt{invoke.\_\_version\_\_.Argument}
-after \texttt{from invoke import \_\_version\_\_ as invoke}, and
-\texttt{builtins.all} instead of \texttt{<builtin>.all}).
+(Section~\ref{sec:rq3}): library-hook candidates (vi), and three fixes of the
+validator's alias expansion, which had rewritten correct outside names (e.g.\
+\code{time.time} into \code{time.time.time} after an import \texttt{from time
+import time}, an \code{invoke} module path into a path through
+\code{invoke.__version__}, and \code{builtins.all} not into
+\code{<builtin>.all}).
 \item \textbf{V3, hybrid}: V2/V2.1 plus, for each caller of the chunk, the
 callees that PyCG-2026 reports, presented as evidence that can be wrong.
 We also evaluate the offline set combinations PyCG\,$\cup$\,NSCG and

@@ -1,12 +1,12 @@
-\begin{tabular}{l l rrrrrrrrrr}
+\begin{tabular}{l l rrrrr}
 \toprule
-Run & bench. & kept in & kept out & rejected & repaired & cls$\to$ctor & inh.$\to$def & init$\to$ctor & out@impl. & builtins & floor\\
+Run & bench. & kept in & kept out & rejected & init$\to$ctor & floor\\
 \midrule
-V2 & micro & 1438 & 490 & 5 & 0 & 0 & 0 & 2 & 0 & 0 & 18 \\
-V2 & macro & 928 & 1093 & 3 & 0 & 0 & 0 & 0 & 0 & 0 & 16 \\
-V2.1 & micro & 1444 & 493 & 5 & 0 & 0 & 0 & 2 & 0 & 0 & 16 \\
-V2.1 & macro & 930 & 1095 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 5 \\
-V1 & micro & 1405 & 489 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 28 \\
-V1 & macro & 843 & 1034 & 12 & 0 & 0 & 0 & 0 & 0 & 0 & 16 \\
+V2 & micro & 1438 & 490 & 5 & 2 & 18 \\
+V2 & macro & 928 & 1093 & 3 & 0 & 16 \\
+V2.1 & micro & 1444 & 493 & 5 & 2 & 16 \\
+V2.1 & macro & 930 & 1095 & 1 & 0 & 5 \\
+V1 & micro & 1405 & 489 & 1 & 0 & 28 \\
+V1 & macro & 843 & 1034 & 12 & 0 & 16 \\
 \bottomrule
 \end{tabular}
